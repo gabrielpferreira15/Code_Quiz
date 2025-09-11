@@ -5,13 +5,7 @@ Entrega 1:
 
 Docs com histórias criadas e seus reespectivos cenários de validação: https://docs.google.com/document/d/1UeAU_MFhKVN97qK53aVPeA1HHAd_CnOmHTp-CfQ48H0/edit?tab=t.0
 
-
-
-
-<img width="1440" height="900" alt="Image" src="https://github.com/user-attachments/assets/28619592-70cf-4d30-8188-5274d4632c75" />
-
-
-
+<img width="1440" height="785" alt="Image" src="https://github.com/user-attachments/assets/ef6c655e-14f0-4d7b-9417-6e552e231c5d" />
 
 <img width="1440" height="900" alt="Image" src="https://github.com/user-attachments/assets/331454ee-eed6-4ed8-b895-829bc34099a6" />
 
