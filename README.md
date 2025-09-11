@@ -5,7 +5,7 @@ Entrega 1:
 
 Docs com histórias criadas e seus reespectivos cenários de validação: https://docs.google.com/document/d/1UeAU_MFhKVN97qK53aVPeA1HHAd_CnOmHTp-CfQ48H0/edit?tab=t.0
 
-![Backlog do Jira - Entrega 1](https://drive.google.com/file/d/1gJxe2oEP5I_wBRyyZsUdnuaI_1O5P997/view)
+![Backlog do Jira - Entrega 1]<img width="1440" height="900" alt="Image" src="https://github.com/user-attachments/assets/28619592-70cf-4d30-8188-5274d4632c75" />
 
 ![Quadro do Jira - Entrega 1]<img width="1440" height="900" alt="Image" src="https://github.com/user-attachments/assets/331454ee-eed6-4ed8-b895-829bc34099a6" />
 
