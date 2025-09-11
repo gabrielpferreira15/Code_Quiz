@@ -7,6 +7,6 @@ Docs com histórias criadas e seus reespectivos cenários de validação: https:
 
 ![Backlog do Jira - Entrega 1](https://drive.google.com/file/d/1gJxe2oEP5I_wBRyyZsUdnuaI_1O5P997/view)
 
-![Quadro do Jira - Entrega 1](https://drive.google.com/file/d/1bOh1HtiVfieqgyS6gbgZN7fLwOqGv_LJ/view)
+![Quadro do Jira - Entrega 1]<img width="1440" height="900" alt="Image" src="https://github.com/user-attachments/assets/331454ee-eed6-4ed8-b895-829bc34099a6" />
 
 Vídeo do protótipo realizado com o Figma: https://www.youtube.com/watch?v=i03dsHpBiZw (Histórias implementadas: 1; 2; 3; 5; 8)
