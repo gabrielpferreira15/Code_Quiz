@@ -7,7 +7,7 @@ Docs com histórias criadas e seus reespectivos cenários de validação: https:
 
 <img width="1440" height="785" alt="Image" src="https://github.com/user-attachments/assets/ef6c655e-14f0-4d7b-9417-6e552e231c5d" />
 
-<img width="1440" height="900" alt="Image" src="https://github.com/user-attachments/assets/331454ee-eed6-4ed8-b895-829bc34099a6" />
+<img width="1440" height="784" alt="Image" src="https://github.com/user-attachments/assets/fb523b29-fee4-40ba-ae0e-26a9da00c519" />
 
 Link de viewer do Jira: https://cesar-team-x3e02y0v.atlassian.net/jira/software/projects/CD/boards/1?atlOrigin=eyJpIjoiM2MyY2ZlZjliNDhlNDdmZmIxMjE5MzQ2N2JmYjUxNGUiLCJwIjoiaiJ9
 
