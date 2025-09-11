@@ -1,1 +1,12 @@
 # Code_Quiz
+O Code Quiz é site de quizzes de programação com intuito pedagócigo para que as pessoas possam melhorar suas habilidades através de questionários sobre diversas linguagens e de dificuldades variadas para de se adequar ao usuário.
+
+Entrega 1:
+
+Docs com histórias criadas e seus reespectivos cenários de validação: https://docs.google.com/document/d/1UeAU_MFhKVN97qK53aVPeA1HHAd_CnOmHTp-CfQ48H0/edit?tab=t.0
+
+![Backlog do Jira - Entrega 1](https://drive.google.com/file/d/1gJxe2oEP5I_wBRyyZsUdnuaI_1O5P997/view)
+
+![Quadro do Jira - Entrega 1](https://drive.google.com/file/d/1bOh1HtiVfieqgyS6gbgZN7fLwOqGv_LJ/view)
+
+Vídeo do protótipo realizado com o Figma: https://www.youtube.com/watch?v=i03dsHpBiZw (Histórias implementadas: 1; 2; 3; 5; 8)
