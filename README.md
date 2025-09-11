@@ -12,3 +12,5 @@ Docs com histórias criadas e seus reespectivos cenários de validação: https:
 Link de viewer do Jira: https://cesar-team-x3e02y0v.atlassian.net/jira/software/projects/CD/boards/1?atlOrigin=eyJpIjoiM2MyY2ZlZjliNDhlNDdmZmIxMjE5MzQ2N2JmYjUxNGUiLCJwIjoiaiJ9
 
 Vídeo do protótipo realizado com o Figma: https://www.youtube.com/watch?v=i03dsHpBiZw (Histórias implementadas: 1; 2; 3; 5; 8)
+
+Link para o mapa de telas do protótipo criado no canva: https://www.canva.com/design/DAGyrq9rwas/b7T0zFltTxqTPScMl9rwhg/view?utm_content=DAGyrq9rwas&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h261d96abeb
