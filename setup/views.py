@@ -84,3 +84,15 @@ def python_er(request):
 
     context = {'perguntas': perguntas, 'assunto': assunto_atual}
     return render(request, 'iniciar_quiz.html', context)
+
+def python_c(request):
+    pass
+
+def c_sb(request):
+    pass
+
+def c_er(request):
+    pass
+
+def c_c(request):
+    pass
