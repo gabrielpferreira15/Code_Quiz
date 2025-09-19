@@ -50,3 +50,33 @@ def python_sb(request):
 
     context = {'perguntas': perguntas, 'assunto': assunto_atual}
     return render(request, 'iniciar_quiz.html', context)
+
+
+def python_er(request):
+    try:
+        assunto_atual = Assunto.objects.get(nome__iexact="Estrutura de Repetição", linguagem__nome__iexact="Python")
+    except Assunto.DoesNotExist:
+        messages.error(request, "O quiz de 'Estrutura de Repetição em Python' não está configurado.")
+        return redirect('configurar_quiz')
+
+    perguntas = Pergunta.objects.filter(assunto=assunto_atual)
+
+    if not perguntas.exists():
+        messages.warning(request, "Ainda não há perguntas para 'Estrutura de Repetição em Python'.")
+        return redirect('configurar_quiz')
+
+    if request.method == 'POST':
+        score = 0
+        total_perguntas = len(perguntas)
+        for pergunta in perguntas:
+            id_alternativa_selecionada = request.POST.get(f'pergunta_{pergunta.id}')
+            if id_alternativa_selecionada:
+                alternativa_correta = pergunta.alternativas.filter(is_correta=True).first()
+                if alternativa_correta and int(id_alternativa_selecionada) == alternativa_correta.id:
+                    score += 1
+        
+        contexto_resultado = {'score': score, 'total_perguntas': total_perguntas, 'assunto': assunto_atual}
+        return render(request, 'resultado_quiz.html', contexto_resultado)
+
+    context = {'perguntas': perguntas, 'assunto': assunto_atual}
+    return render(request, 'iniciar_quiz.html', context)
