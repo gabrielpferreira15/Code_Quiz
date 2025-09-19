@@ -14,7 +14,7 @@ class Assunto(models.Model):
     def __str__(self):
         return f"{self.linguagem.nome}  -  {self.nome}"
 
-class Perguntas(models.Model):
+class Pergunta(models.Model):
     texto = models.TextField()
     assunto = models.ForeignKey(Assunto, on_delete=models.CASCADE)
 

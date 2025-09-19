@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .models import Linguagem, Assunto
+from .models import Linguagem, Assunto, Pergunta  
+from django.http import JsonResponse 
 
 def configurar_quiz(request):
     linguagens = Linguagem.objects.all()
-    assuntos = Assunto.objects.all()
     
     if request.method == 'POST':
         linguagem_id = request.POST.get('linguagem')
@@ -18,10 +18,14 @@ def configurar_quiz(request):
             messages.error(request, 'Por favor, selecione um assunto.')
             return redirect('configurar_quiz')
             
-   
         return render(request, 'quiz_gerado.html', {'linguagem': linguagem_id, 'assunto': assunto_id})
         
-    return render(request, 'configurar_quiz.html', {'linguagens': linguagens, 'assuntos': assuntos})
+    return render(request, 'configurar_quiz.html', {'linguagens': linguagens})
+
+def get_assuntos(request, linguagem_id):
+    assuntos = Assunto.objects.filter(linguagem_id=linguagem_id).values('id', 'nome')
+    return JsonResponse(list(assuntos), safe=False)
+
 def python_sb(request):
     try:
         assunto_atual = Assunto.objects.get(nome__iexact="Sintaxe Básica", linguagem__nome__iexact="Python")
