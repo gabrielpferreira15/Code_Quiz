@@ -28,3 +28,19 @@ class Resposta(models.Model):
 
     def __str__(self):
         return f"{self.texto} ({'Correta' if self.correta else 'Errada'})"
+    
+class Usuario(models.Model):
+    nome = models.CharField(max_length=100)
+    email = models.EmailField(unique=True)
+
+    def __str__(self):
+        return self.nome
+
+class Resultado(models.Model):
+    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    total_perguntas = models.IntegerField()   
+    acertos = models.IntegerField()         
+    data = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.usuario.nome} - {self.acertos}/{self.total_perguntas} acertos"
