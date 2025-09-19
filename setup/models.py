@@ -22,7 +22,7 @@ class Pergunta(models.Model):
         return self.texto[:50]
     
 class Resposta(models.Model):
-    pergunta = models.ForeignKey(Perguntas, on_delete=models.CASCADE, related_name="respostas")
+    pergunta = models.ForeignKey(Pergunta, on_delete=models.CASCADE, related_name="respostas")
     texto = models.CharField(max_length=255)
     correta = models.BooleanField(default=False)
 
