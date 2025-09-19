@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Configurar Quiz</title>
+</head>
+<body>
+    <h1>Configurar Quiz</h1>
+
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li style="color:red;">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        
+        <label for="linguagem">Selecione a Linguagem:</label>
+        <select name="linguagem" id="linguagem">
+            <option value="">-- Escolha a Linguagem --</option>
+            {% for linguagem in linguagens %}
+                <option value="{{ linguagem.id }}">{{ linguagem.nome }}</option>
+            {% endfor %}
+        </select>
+        
+        <br><br>
+        
+        <label for="assunto">Selecione o Assunto:</label>
+        <select name="assunto" id="assunto">
+            <option value="">-- Escolha o Assunto --</option>
+            {% for assunto in assuntos %}
+                <option value="{{ assunto.id }}">{{ assunto }}</option>
+            {% endfor %}
+        </select>
+        
+        <br><br>
+        
+        <button type="submit">Gerar Quiz</button>
+    </form>
+</body>
+</html>
