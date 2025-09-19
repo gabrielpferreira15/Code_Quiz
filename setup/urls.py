@@ -1,8 +1,11 @@
+# setup/urls.py
+
 from django.urls import path
 from . import views
 
 urlpatterns = [
     path('configurar/', views.configurar_quiz, name='configurar_quiz'),
+    path('api/assuntos/<int:linguagem_id>/', views.get_assuntos, name='get_assuntos'),
     path('python/sintaxe-basica/', views.python_sb, name='python_sb'),
     path('python/repeticao/', views.python_er, name='python_er'),
     path('python/condicionais/', views.python_c, name='python_c'),
