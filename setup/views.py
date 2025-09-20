@@ -84,36 +84,6 @@ def python_er(request):
 
     context = {'perguntas': perguntas, 'assunto': assunto_atual}
     return render(request, 'iniciar_quiz.html', context)
-<<<<<<< HEAD
-def python_c(request):
-    try:
-        assunto_atual = Assunto.objects.get(nome__iexact="Condicionais", linguagem__nome__iexact="Python")
-    except Assunto.DoesNotExist:
-        messages.error(request, "O quiz de 'Condicionais em Python' não está configurado.")
-        return redirect('configurar_quiz')
-
-    perguntas = Pergunta.objects.filter(assunto=assunto_atual)
-
-    if not perguntas.exists():
-        messages.warning(request, "Ainda não há perguntas para 'Condicionais em Python'.")
-        return redirect('configurar_quiz')
-
-    if request.method == 'POST':
-        score = 0
-        total_perguntas = len(perguntas)
-        for pergunta in perguntas:
-            id_alternativa_selecionada = request.POST.get(f'pergunta_{pergunta.id}')
-            if id_alternativa_selecionada:
-                alternativa_correta = pergunta.alternativas.filter(is_correta=True).first()
-                if alternativa_correta and int(id_alternativa_selecionada) == alternativa_correta.id:
-                    score += 1
-        
-        contexto_resultado = {'score': score, 'total_perguntas': total_perguntas, 'assunto': assunto_atual}
-        return render(request, 'resultado_quiz.html', contexto_resultado)
-
-    context = {'perguntas': perguntas, 'assunto': assunto_atual}
-    return render(request, 'iniciar_quiz.html', context)
-=======
 
 def python_c(request):
     pass
@@ -126,4 +96,3 @@ def c_er(request):
 
 def c_c(request):
     pass
->>>>>>> c1b8db6785df0b7128335978d32c221f71e69f7d
