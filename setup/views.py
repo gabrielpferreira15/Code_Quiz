@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import Linguagem, Assunto, Pergunta  
 from django.http import JsonResponse 
+from django.urls import reverse
 
 def configurar_quiz(request):
     linguagens = Linguagem.objects.all()
@@ -22,10 +23,26 @@ def configurar_quiz(request):
         
     return render(request, 'configurar_quiz.html', {'linguagens': linguagens})
 
-def get_assuntos(request, linguagem_id):
-    assuntos = Assunto.objects.filter(linguagem_id=linguagem_id).values('id', 'nome')
-    return JsonResponse(list(assuntos), safe=False)
 
+def get_assuntos(request, linguagem_id):
+ 
+    assuntos_obj = Assunto.objects.filter(linguagem_id=linguagem_id)
+    
+    assuntos_lista = []
+    for assunto in assuntos_obj:
+        
+        linguagem_slug = assunto.linguagem.slug 
+        assunto_slug_curto = assunto.slug_curto 
+
+        url_name = f'{linguagem_slug}_{assunto_slug_curto}'
+        
+        assuntos_lista.append({
+            'id': assunto.id,
+            'nome': assunto.nome,
+            'url': reverse(url_name) 
+        })
+        
+    return JsonResponse(assuntos_lista, safe=False)
 def python_sb(request):
     try:
         assunto_atual = Assunto.objects.get(nome__iexact="Sintaxe Básica", linguagem__nome__iexact="Python")
