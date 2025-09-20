@@ -18,7 +18,7 @@
         {% csrf_token %}
         
         <label for="linguagem">Selecione a Linguagem:</label>
-        <select name="linguagem" id="linguagem">
+        <select name="linguagem" id="linguagem-select">
             <option value="">-- Escolha a Linguagem --</option>
             {% for linguagem in linguagens %}
                 <option value="{{ linguagem.id }}">{{ linguagem.nome }}</option>
@@ -28,16 +28,57 @@
         <br><br>
         
         <label for="assunto">Selecione o Assunto:</label>
-        <select name="assunto" id="assunto">
-            <option value="">-- Escolha o Assunto --</option>
-            {% for assunto in assuntos %}
-                <option value="{{ assunto.id }}">{{ assunto }}</option>
-            {% endfor %}
+        <select name="assunto" id="assunto-select">
+            <option value="">-- Primeiro, escolha uma linguagem --</option>
         </select>
         
         <br><br>
         
         <button type="submit">Gerar Quiz</button>
     </form>
+
+    <script>
+        const linguagemSelect = document.getElementById('linguagem-select');
+        const assuntoSelect = document.getElementById('assunto-select');
+
+        // Garante que o select de assunto comece desabilitado
+        assuntoSelect.disabled = true;
+
+        // Adiciona um "espião" para quando o valor do select de linguagem mudar
+        linguagemSelect.addEventListener('change', function() {
+            const linguagemId = this.value;
+
+            // Limpa as opções antigas
+            assuntoSelect.innerHTML = '<option value="">-- Carregando... --</option>';
+
+            if (!linguagemId) {
+                assuntoSelect.innerHTML = '<option value="">-- Primeiro, escolha uma linguagem --</option>';
+                assuntoSelect.disabled = true;
+                return;
+            }
+
+            // Faz a chamada para a nossa API no Django
+            fetch(`/api/assuntos/${linguagemId}/`)
+                .then(response => response.json())
+                .then(data => {
+                    assuntoSelect.innerHTML = '<option value="">-- Escolha o Assunto --</option>';
+
+                    // Adiciona as novas opções
+                    data.forEach(assunto => {
+                        const option = document.createElement('option');
+                        option.value = assunto.id;
+                        option.textContent = assunto.nome;
+                        assuntoSelect.appendChild(option);
+                    });
+
+                    // Habilita o select de assunto
+                    assuntoSelect.disabled = false;
+                })
+                .catch(error => {
+                    console.error('Erro ao buscar assuntos:', error);
+                    assuntoSelect.innerHTML = '<option value="">-- Erro ao carregar --</option>';
+                });
+        });
+    </script>
 </body>
 </html>

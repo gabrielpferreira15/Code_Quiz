@@ -14,7 +14,7 @@ class Assunto(models.Model):
     def __str__(self):
         return f"{self.linguagem.nome}  -  {self.nome}"
 
-class Perguntas(models.Model):
+class Pergunta(models.Model):
     texto = models.TextField()
     assunto = models.ForeignKey(Assunto, on_delete=models.CASCADE)
 
@@ -22,7 +22,7 @@ class Perguntas(models.Model):
         return self.texto[:50]
     
 class Resposta(models.Model):
-    pergunta = models.ForeignKey(Perguntas, on_delete=models.CASCADE, related_name="respostas")
+    pergunta = models.ForeignKey(Pergunta, on_delete=models.CASCADE, related_name="respostas")
     texto = models.CharField(max_length=255)
     correta = models.BooleanField(default=False)
 
