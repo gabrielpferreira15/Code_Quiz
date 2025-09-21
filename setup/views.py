@@ -136,7 +136,33 @@ def c_sb(request):
 
 
 def c_er(request):
-    pass
+    try:
+        assunto_atual = Assunto.objects.get(nome_iexact="Estrutura de Repetição", linguagemnome_iexact="C")
+    except Assunto.DoesNotExist:
+        messages.error(request, "O quiz de 'Estrutura de Repetição em C' não está configurado.")
+        return redirect('configurar_quiz')
+
+    perguntas = Pergunta.objects.filter(assunto=assunto_atual)
+
+    if not perguntas.exists():
+        messages.warning(request, "Ainda não há perguntas para 'Estrutura de Repetição em C'.")
+        return redirect('configurar_quiz')
+
+    if request.method == 'POST':
+        score = 0
+        total_perguntas = len(perguntas)
+        for pergunta in perguntas:
+            id_alternativa_selecionada = request.POST.get(f'pergunta_{pergunta.id}')
+            if id_alternativa_selecionada:
+                alternativa_correta = pergunta.alternativas.filter(is_correta=True).first()
+                if alternativa_correta and int(id_alternativa_selecionada) == alternativa_correta.id:
+                    score += 1
+        
+        contexto_resultado = {'score': score, 'total_perguntas': total_perguntas, 'assunto': assunto_atual}
+        return render(request, 'resultado_quiz.html', contexto_resultado)
+
+    context = {'perguntas': perguntas, 'assunto': assunto_atual}
+    return render(request, 'iniciar_quiz.html', context)
 
 def c_c(request):
     pass
