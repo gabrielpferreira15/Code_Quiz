@@ -11,12 +11,11 @@
     </h2>
 
     {% if score == total_perguntas %}
-        <p>Parabéns, você gabaritou!</p>
-    {% elif score > total_perguntas|floordiv:2 %}
-        <p>Muito bem! Continue praticando.</p>
-    {% else %}
-        <p>Não desanime! Estudar mais um pouco é o caminho.</p>
-    {% endif %}
+    <p>Parabéns, você gabaritou!</p>
+{% elif acertou_mais_da_metade %} <p>Muito bem! Continue praticando.</p>
+{% else %}
+    <p>Não desanime! Estudar mais um pouco é o caminho.</p>
+{% endif %}
 
     <br>
     <a href="{% url 'configurar_quiz' %}">Tentar outro quiz</a>
