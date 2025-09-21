@@ -1,4 +1,5 @@
 from django.db import migrations
+from django.utils.text import slugify
 
 def popular_dados(apps, schema_editor):
     Linguagem = apps.get_model('setup', 'Linguagem')
@@ -12,13 +13,18 @@ def popular_dados(apps, schema_editor):
     Linguagem.objects.all().delete()
 
     # --- LINGUAGENS ---
-    python = Linguagem.objects.create(nome='Python')
-    c_lang = Linguagem.objects.create(nome='C')
+    python = Linguagem.objects.create(nome='Python', slug=slugify('Python'))
+    c_lang = Linguagem.objects.create(nome='C', slug=slugify('C'))
 
     # ====================================================================
     # === QUIZ PYTHON: SINTAXE BÁSICA ===
     # ====================================================================
-    assunto_py_sb = Assunto.objects.create(linguagem=python, nome='Sintaxe Básica')
+    assunto_py_sb_nome = 'Sintaxe Básica'
+    assunto_py_sb = Assunto.objects.create(
+        linguagem=python, 
+        nome=assunto_py_sb_nome,
+        slug=slugify(f'{python.nome} {assunto_py_sb_nome}')
+    )
 
     p1 = Pergunta.objects.create(assunto=assunto_py_sb, texto="Como você declara uma variável chamada idade com o valor 25 em Python?")
     Resposta.objects.create(pergunta=p1, texto="int idade = 25", correta=False)
@@ -53,7 +59,12 @@ def popular_dados(apps, schema_editor):
     # ====================================================================
     # === QUIZ PYTHON: ESTRUTURAS DE REPETIÇÃO ===
     # ====================================================================
-    assunto_py_er = Assunto.objects.create(linguagem=python, nome='Estruturas de Repetição')
+    assunto_py_er_nome = 'Estruturas de Repetição'
+    assunto_py_er = Assunto.objects.create(
+        linguagem=python, 
+        nome=assunto_py_er_nome,
+        slug=slugify(f'{python.nome} {assunto_py_er_nome}')
+    )
 
     p6 = Pergunta.objects.create(assunto=assunto_py_er, texto="Qual estrutura de repetição é mais adequada para iterar sobre os itens de uma lista?")
     Resposta.objects.create(pergunta=p6, texto="O laço while", correta=False)
@@ -88,7 +99,12 @@ def popular_dados(apps, schema_editor):
     # ====================================================================
     # === QUIZ PYTHON: CONDICIONAIS ===
     # ====================================================================
-    assunto_py_c = Assunto.objects.create(linguagem=python, nome='Condicionais')
+    assunto_py_c_nome = 'Condicionais'
+    assunto_py_c = Assunto.objects.create(
+        linguagem=python, 
+        nome=assunto_py_c_nome,
+        slug=slugify(f'{python.nome} {assunto_py_c_nome}')
+    )
 
     p11 = Pergunta.objects.create(assunto=assunto_py_c, texto='Qual palavra-chave é usada para a parte "senão se" em uma estrutura condicional em Python?')
     Resposta.objects.create(pergunta=p11, texto="else if", correta=False)
@@ -123,7 +139,12 @@ def popular_dados(apps, schema_editor):
     # ====================================================================
     # === QUIZ C: SINTAXE BÁSICA ===
     # ====================================================================
-    assunto_c_sb = Assunto.objects.create(linguagem=c_lang, nome='Sintaxe Básica')
+    assunto_c_sb_nome = 'Sintaxe Básica'
+    assunto_c_sb = Assunto.objects.create(
+        linguagem=c_lang, 
+        nome=assunto_c_sb_nome,
+        slug=slugify(f'{c_lang.nome} {assunto_c_sb_nome}')
+    )
 
     p16 = Pergunta.objects.create(assunto=assunto_c_sb, texto="Como você declara uma variável inteira chamada quantidade com o valor 50 em C?")
     Resposta.objects.create(pergunta=p16, texto="quantidade = 50;", correta=False)
@@ -158,7 +179,12 @@ def popular_dados(apps, schema_editor):
     # ====================================================================
     # === QUIZ C: ESTRUTURAS DE REPETIÇÃO ===
     # ====================================================================
-    assunto_c_er = Assunto.objects.create(linguagem=c_lang, nome='Estruturas de Repetição')
+    assunto_c_er_nome = 'Estruturas de Repetição'
+    assunto_c_er = Assunto.objects.create(
+        linguagem=c_lang, 
+        nome=assunto_c_er_nome,
+        slug=slugify(f'{c_lang.nome} {assunto_c_er_nome}')
+    )
 
     p21 = Pergunta.objects.create(assunto=assunto_c_er, texto="Qual é a sintaxe completa de um laço for em C que vai de 0 a 9?")
     Resposta.objects.create(pergunta=p21, texto="for (int i=0; i < 10; i++)", correta=True)
@@ -193,7 +219,12 @@ def popular_dados(apps, schema_editor):
     # ====================================================================
     # === QUIZ C: CONDICIONAIS ===
     # ====================================================================
-    assunto_c_c = Assunto.objects.create(linguagem=c_lang, nome='Estruturas Condicionais')
+    assunto_c_c_nome = 'Condicionais'
+    assunto_c_c = Assunto.objects.create(
+        linguagem=c_lang, 
+        nome=assunto_c_c_nome,
+        slug=slugify(f'{c_lang.nome} {assunto_c_c_nome}')
+    )
 
     p26 = Pergunta.objects.create(assunto=assunto_c_c, texto='Qual é a sintaxe para a parte "senão se" em uma estrutura condicional em C?')
     Resposta.objects.create(pergunta=p26, texto="elif", correta=False)
@@ -228,7 +259,7 @@ def popular_dados(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('setup', '0002_usuario_pergunta_resposta_resultado'),
+        ('setup', '0001_initial'),
     ]
 
     operations = [
