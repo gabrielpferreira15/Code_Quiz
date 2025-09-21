@@ -1,194 +1,65 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
-from .models import Linguagem, Assunto, Pergunta  
-from django.http import JsonResponse 
-from django.urls import reverse
+from .models import Linguagem, Assunto, Pergunta
+from django.http import JsonResponse
 
 def configurar_quiz(request):
+    """
+    Exibe a página de configuração inicial para o usuário escolher o quiz.
+    """
     linguagens = Linguagem.objects.all()
-    
-    if request.method == 'POST':
-        linguagem_id = request.POST.get('linguagem')
-        assunto_id = request.POST.get('assunto')
-        
-        if not linguagem_id:
-            messages.error(request, 'Por favor, selecione uma linguagem de programação.')
-            return redirect('configurar_quiz')
-            
-        if not assunto_id:
-            messages.error(request, 'Por favor, selecione um assunto.')
-            return redirect('configurar_quiz')
-            
-        return render(request, 'quiz_gerado.html', {'linguagem': linguagem_id, 'assunto': assunto_id})
-        
-    return render(request, 'configurar_quiz.html', {'linguagens': linguagens})
+    return render(request, 'setup/configurar_quiz.html', {'linguagens': linguagens})
 
 
 def get_assuntos(request, linguagem_id):
- 
-    assuntos_obj = Assunto.objects.filter(linguagem_id=linguagem_id)
+    """
+    API que retorna os assuntos de uma determinada linguagem em formato JSON.
+    Usada pelo JavaScript para popular o dropdown de assuntos dinamicamente.
+    """
+    assuntos = Assunto.objects.filter(linguagem_id=linguagem_id)
     
     assuntos_lista = []
-    for assunto in assuntos_obj:
-        
-        linguagem_slug = assunto.linguagem.slug 
-        assunto_slug_curto = assunto.slug_curto 
-
-        url_name = f'{linguagem_slug}_{assunto_slug_curto}'
-        
+    for assunto in assuntos:
         assuntos_lista.append({
             'id': assunto.id,
             'nome': assunto.nome,
-            'url': reverse(url_name) 
+            'url': f'/quiz/{assunto.id}/' 
         })
-        
+            
     return JsonResponse(assuntos_lista, safe=False)
-def python_sb(request):
-    try:
-        assunto_atual = Assunto.objects.get(nome__iexact="Sintaxe Básica", linguagem__nome__iexact="Python")
-    except Assunto.DoesNotExist:
-        messages.error(request, "O quiz de 'Sintaxe Básica de Python' não está configurado.")
-        return redirect('configurar_quiz')
 
-    perguntas = Pergunta.objects.filter(assunto=assunto_atual)
+
+def iniciar_quiz(request, assunto_id):
+    """
+    View unificada que funciona para QUALQUER quiz.
+    Ela recebe o ID do assunto pela URL.
+    """
+    assunto_atual = get_object_or_404(Assunto, id=assunto_id)
+    perguntas = Pergunta.objects.filter(assunto=assunto_atual).prefetch_related('alternativas')
 
     if not perguntas.exists():
-        messages.warning(request, "Ainda não há perguntas para 'Sintaxe Básica de Python'.")
+        messages.warning(request, f"Ainda não há perguntas para '{assunto_atual}'.")
         return redirect('configurar_quiz')
 
     if request.method == 'POST':
         score = 0
-        total_perguntas = len(perguntas)
+        total_perguntas = perguntas.count()
         for pergunta in perguntas:
             id_alternativa_selecionada = request.POST.get(f'pergunta_{pergunta.id}')
             if id_alternativa_selecionada:
-                alternativa_correta = pergunta.alternativas.filter(is_correta=True).first()
+                alternativa_correta = next((alt for alt in pergunta.alternativas.all() if alt.correta), None)
                 if alternativa_correta and int(id_alternativa_selecionada) == alternativa_correta.id:
                     score += 1
+        acertou_mais_da_metade = score > (total_perguntas // 2)
         
-        contexto_resultado = {'score': score, 'total_perguntas': total_perguntas, 'assunto': assunto_atual}
-        return render(request, 'resultado_quiz.html', contexto_resultado)
+        acertou_mais_da_metade = score > (total_perguntas // 2)
+        contexto_resultado = {
+            'score': score, 
+            'total_perguntas': total_perguntas, 
+            'assunto': assunto_atual,
+            'acertou_mais_da_metade': acertou_mais_da_metade
+        }
+        return render(request, 'setup/resultado_quiz.html', contexto_resultado)
 
     context = {'perguntas': perguntas, 'assunto': assunto_atual}
-    return render(request, 'iniciar_quiz.html', context)
-
-
-def python_er(request):
-    try:
-        assunto_atual = Assunto.objects.get(nome__iexact="Estrutura de Repetição", linguagem__nome__iexact="Python")
-    except Assunto.DoesNotExist:
-        messages.error(request, "O quiz de 'Estrutura de Repetição em Python' não está configurado.")
-        return redirect('configurar_quiz')
-
-    perguntas = Pergunta.objects.filter(assunto=assunto_atual)
-
-    if not perguntas.exists():
-        messages.warning(request, "Ainda não há perguntas para 'Estrutura de Repetição em Python'.")
-        return redirect('configurar_quiz')
-
-    if request.method == 'POST':
-        score = 0
-        total_perguntas = len(perguntas)
-        for pergunta in perguntas:
-            id_alternativa_selecionada = request.POST.get(f'pergunta_{pergunta.id}')
-            if id_alternativa_selecionada:
-                alternativa_correta = pergunta.alternativas.filter(is_correta=True).first()
-                if alternativa_correta and int(id_alternativa_selecionada) == alternativa_correta.id:
-                    score += 1
-        
-        contexto_resultado = {'score': score, 'total_perguntas': total_perguntas, 'assunto': assunto_atual}
-        return render(request, 'resultado_quiz.html', contexto_resultado)
-
-    context = {'perguntas': perguntas, 'assunto': assunto_atual}
-    return render(request, 'iniciar_quiz.html', context)
-
-def python_c(request):
-    pass
-
-def c_sb(request):
-    try:
-        assunto_atual = Assunto.objects.get(nome_iexact="Sintaxe Básica", linguagemnome_iexact="C")
-    except Assunto.DoesNotExist:
-        messages.error(request, "O quiz de 'Sintaxe Básica de C' não está configurado.")
-        return redirect('configurar_quiz')
-
-    perguntas = Pergunta.objects.filter(assunto=assunto_atual)
-
-    if not perguntas.exists():
-        messages.warning(request, "Ainda não há perguntas para 'Sintaxe Básica de C'.")
-        return redirect('configurar_quiz')
-
-    if request.method == 'POST':
-        score = 0
-        total_perguntas = len(perguntas)
-        for pergunta in perguntas:
-            id_alternativa_selecionada = request.POST.get(f'pergunta_{pergunta.id}')
-            if id_alternativa_selecionada:
-                alternativa_correta = pergunta.alternativas.filter(is_correta=True).first()
-                if alternativa_correta and int(id_alternativa_selecionada) == alternativa_correta.id:
-                    score += 1
-        
-        contexto_resultado = {'score': score, 'total_perguntas': total_perguntas, 'assunto': assunto_atual}
-        return render(request, 'resultado_quiz.html', contexto_resultado)
-
-    context = {'perguntas': perguntas, 'assunto': assunto_atual}
-    return render(request, 'iniciar_quiz.html', context)
-
-
-def c_er(request):
-    try:
-        assunto_atual = Assunto.objects.get(nome_iexact="Estrutura de Repetição", linguagemnome_iexact="C")
-    except Assunto.DoesNotExist:
-        messages.error(request, "O quiz de 'Estrutura de Repetição em C' não está configurado.")
-        return redirect('configurar_quiz')
-
-    perguntas = Pergunta.objects.filter(assunto=assunto_atual)
-
-    if not perguntas.exists():
-        messages.warning(request, "Ainda não há perguntas para 'Estrutura de Repetição em C'.")
-        return redirect('configurar_quiz')
-
-    if request.method == 'POST':
-        score = 0
-        total_perguntas = len(perguntas)
-        for pergunta in perguntas:
-            id_alternativa_selecionada = request.POST.get(f'pergunta_{pergunta.id}')
-            if id_alternativa_selecionada:
-                alternativa_correta = pergunta.alternativas.filter(is_correta=True).first()
-                if alternativa_correta and int(id_alternativa_selecionada) == alternativa_correta.id:
-                    score += 1
-        
-        contexto_resultado = {'score': score, 'total_perguntas': total_perguntas, 'assunto': assunto_atual}
-        return render(request, 'resultado_quiz.html', contexto_resultado)
-
-    context = {'perguntas': perguntas, 'assunto': assunto_atual}
-    return render(request, 'iniciar_quiz.html', context)
-
-def c_c(request):
-    try:
-        assunto_atual = Assunto.objects.get(nome_iexact="Condicionais", linguagemnome_iexact="C")
-    except Assunto.DoesNotExist:
-        messages.error(request, "O quiz de 'Condicionais em C' não está configurado.")
-        return redirect('configurar_quiz')
-
-    perguntas = Pergunta.objects.filter(assunto=assunto_atual)
-
-    if not perguntas.exists():
-        messages.warning(request, "Ainda não há perguntas para 'Condicionais em C'.")
-        return redirect('configurar_quiz')
-
-    if request.method == 'POST':
-        score = 0
-        total_perguntas = len(perguntas)
-        for pergunta in perguntas:
-            id_alternativa_selecionada = request.POST.get(f'pergunta_{pergunta.id}')
-            if id_alternativa_selecionada:
-                alternativa_correta = pergunta.alternativas.filter(is_correta=True).first()
-                if alternativa_correta and int(id_alternativa_selecionada) == alternativa_correta.id:
-                    score += 1
-        
-        contexto_resultado = {'score': score, 'total_perguntas': total_perguntas, 'assunto': assunto_atual}
-        return render(request, 'resultado_quiz.html', contexto_resultado)
-
-    context = {'perguntas': perguntas, 'assunto': assunto_atual}
-    return render(request, 'iniciar_quiz.html', context)
+    return render(request, 'setup/iniciar_quiz.html', context)

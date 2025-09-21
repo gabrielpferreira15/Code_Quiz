@@ -26,10 +26,6 @@ class Assunto(models.Model):
         if not self.slug:
             self.slug = slugify(f"{self.linguagem.nome} {self.nome}")
         super().save(*args, **kwargs)
-
-    def __str__(self):
-        return f"{self.linguagem.nome} - {self.nome}"
-
     class Meta:
         verbose_name_plural = "Assuntos"
 
@@ -46,7 +42,7 @@ class Pergunta(models.Model):
         return self.texto[:50]
     
 class Resposta(models.Model):
-    pergunta = models.ForeignKey(Pergunta, on_delete=models.CASCADE, related_name="respostas")
+    pergunta = models.ForeignKey(Pergunta, on_delete=models.CASCADE, related_name="alternativas")
     texto = models.CharField(max_length=255)
     correta = models.BooleanField(default=False)
     class Meta:
