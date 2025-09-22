@@ -4,18 +4,11 @@ from .models import Linguagem, Assunto, Pergunta
 from django.http import JsonResponse
 
 def configurar_quiz(request):
-    """
-    Exibe a página de configuração inicial para o usuário escolher o quiz.
-    """
     linguagens = Linguagem.objects.all()
     return render(request, 'setup/configurar_quiz.html', {'linguagens': linguagens})
 
 
 def get_assuntos(request, linguagem_id):
-    """
-    API que retorna os assuntos de uma determinada linguagem em formato JSON.
-    Usada pelo JavaScript para popular o dropdown de assuntos dinamicamente.
-    """
     assuntos = Assunto.objects.filter(linguagem_id=linguagem_id)
     
     assuntos_lista = []
@@ -30,10 +23,6 @@ def get_assuntos(request, linguagem_id):
 
 
 def iniciar_quiz(request, assunto_id):
-    """
-    View unificada que funciona para QUALQUER quiz.
-    Ela recebe o ID do assunto pela URL.
-    """
     assunto_atual = get_object_or_404(Assunto, id=assunto_id)
     perguntas = Pergunta.objects.filter(assunto=assunto_atual).prefetch_related('alternativas')
 
