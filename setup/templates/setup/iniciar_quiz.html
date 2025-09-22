@@ -5,7 +5,7 @@
 </head>
 <body>
     <h1>Quiz de {{ assunto.linguagem.nome }}: {{ assunto.nome }}</h1>
-    <p>Pergunta {{ total_perguntas_quiz|sub:perguntas_restantes|add:1 }} de {{ total_perguntas_quiz }}</p>
+    <p>Pergunta {{ pergunta_numero_atual }} de {{ total_perguntas_quiz }}</p>
     <hr>
     
     <form method="POST" action="{% url 'jogar_quiz' assunto.id %}">

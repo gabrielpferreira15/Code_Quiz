@@ -16,9 +16,9 @@ def get_assuntos(request, linguagem_id):
         assuntos_lista.append({
             'id': assunto.id,
             'nome': assunto.nome,
-            'url': f'/quiz/{assunto.id}/' 
+            'url': f'/quiz/iniciar/{assunto.id}/' 
         })
-            
+
     return JsonResponse(assuntos_lista, safe=False)
 
 
@@ -48,11 +48,15 @@ def jogar_quiz(request, assunto_id):
     id_pergunta_atual = lista_perguntas_ids[0]
     pergunta_atual = get_object_or_404(Pergunta, id=id_pergunta_atual)
     
+    total_perguntas_quiz = Pergunta.objects.filter(assunto=assunto).count()
+    perguntas_restantes = len(lista_perguntas_ids)
+    pergunta_numero_atual = total_perguntas_quiz - perguntas_restantes + 1
+    
     contexto = {
         'assunto': assunto,
         'pergunta': pergunta_atual,
-        'total_perguntas_quiz': Pergunta.objects.filter(assunto=assunto).count(),
-        'perguntas_restantes': len(lista_perguntas_ids)
+        'total_perguntas_quiz': total_perguntas_quiz,
+        'pergunta_numero_atual': pergunta_numero_atual, # Passa o número já calculado
     }
 
     if request.method == 'POST':
