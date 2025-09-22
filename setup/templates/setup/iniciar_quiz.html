@@ -5,25 +5,45 @@
 </head>
 <body>
     <h1>Quiz de {{ assunto.linguagem.nome }}: {{ assunto.nome }}</h1>
+    <p>Pergunta {{ total_perguntas_quiz|sub:perguntas_restantes|add:1 }} de {{ total_perguntas_quiz }}</p>
+    <hr>
     
-    <form method="POST" action="">
+    <form method="POST" action="{% url 'jogar_quiz' assunto.id %}">
         {% csrf_token %}
         
-        {% for pergunta in perguntas %}
-            <fieldset style="margin-top: 20px;">
-                <legend><h3>{{ forloop.counter }}. {{ pergunta.texto }}</h3></legend>
-                
-                {% for alternativa in pergunta.alternativas.all %}
-                    <div>
-                        <input type="radio" name="pergunta_{{ pergunta.id }}" value="{{ alternativa.id }}" id="alt_{{ alternativa.id }}" required>
-                        <label for="alt_{{ alternativa.id }}">{{ alternativa.texto }}</label>
-                    </div>
-                {% endfor %}
-            </fieldset>
-        {% endfor %}
+        <fieldset>
+            <legend><h3>{{ pergunta.texto }}</h3></legend>
+            
+            {% for alternativa in pergunta.alternativas.all %}
+                <div>
+                    <input type="radio" name="resposta" value="{{ alternativa.id }}" id="alt_{{ alternativa.id }}" required {% if show_feedback %}disabled{% endif %}>
+                    <label for="alt_{{ alternativa.id }}">{{ alternativa.texto }}</label>
+                </div>
+            {% endfor %}
+        </fieldset>
 
         <br>
-        <button type="submit">Finalizar e Ver Resultado</button>
+        
+        {% if not show_feedback %}
+            <button type="submit">Responder</button>
+        {% endif %}
     </form>
+
+    {% if show_feedback %}
+        <hr>
+        <h3>Feedback:</h3>
+        {% if resposta_selecionada.correta %}
+            <p style="color: green;">Você acertou!</p>
+        {% else %}
+            <p style="color: red;">Você errou! A resposta correta era: "{{ resposta_correta.texto }}"</p>
+        {% endif %}
+
+        {% if pergunta.explicacao %}
+            <p><strong>Explicação:</strong> {{ pergunta.explicacao }}</p>
+        {% endif %}
+        
+        <a href="{% url 'jogar_quiz' assunto.id %}"><button>Prosseguir</button></a>
+    {% endif %}
+
 </body>
 </html>
