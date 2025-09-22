@@ -35,6 +35,7 @@ class Assunto(models.Model):
 class Pergunta(models.Model):
     texto = models.TextField()
     assunto = models.ForeignKey(Assunto, on_delete=models.CASCADE)
+    explicacao = models.TextField(blank=True, help_text="Explicação exibida após o usuário responder.")
     class Meta:
         verbose_name_plural = "Perguntas"
 
