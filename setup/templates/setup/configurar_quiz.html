@@ -1,44 +1,48 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <title>Configurar Quiz</title>
+    <meta charset="UTF-8">
+    <title>Configurar Quiz</title>
+    <link rel="stylesheet" href="{% static 'setup/style.css' %}">
 </head>
 <body>
-    <h1>Configurar Quiz</h1>
+    <div class="container">
+                <h2>Configurar Quiz</h2>
 
-    {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-                <li style="color:red;">{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li style="color:red;">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
 
-    <form id="quiz-config-form">
-        
-        <label for="linguagem-select">Selecione a Linguagem:</label>
-        <select name="linguagem" id="linguagem-select">
-            <option value="">-- Escolha a Linguagem --</option>
-            {% for linguagem in linguagens %}
-                <option value="{{ linguagem.id }}">{{ linguagem.nome }}</option>
-            {% endfor %}
-        </select>
-        
-        <br><br>
-        
-        <label for="assunto-select">Selecione o Assunto:</label>
-        <select name="assunto" id="assunto-select" disabled>
-            <option value="">-- Primeiro, escolha uma linguagem --</option>
-        </select>
-        
-        <br><br>
-        
-        <button type="submit" id="gerar-quiz-btn" disabled>Gerar Quiz</button>
-    </form>
+        <form id="quiz-config-form">
+            
+            <div class="form-group">
+                <label for="linguagem-select">Selecione a Linguagem:</label>
+                <select name="linguagem" id="linguagem-select">
+                    <option value="">-- Escolha a Linguagem --</option>
+                    {% for linguagem in linguagens %}
+                        <option value="{{ linguagem.id }}">{{ linguagem.nome }}</option>
+                    {% endfor %}
+                </select>
+            </div>
 
-    <script>
-        // Seleciona os elementos da página
+            <div class="form-group">
+                <label for="assunto-select">Selecione o Assunto:</label>
+                <select name="assunto" id="assunto-select" disabled>
+                    <option value="">-- Primeiro, escolha uma linguagem --</option>
+                </select>
+            </div>
+
+            
+            <button type="submit" id="gerar-quiz-btn" disabled>Gerar Quiz</button>
+        </form>
+
+    <script>
+        // Seu código JavaScript... (sem alterações)
         const linguagemSelect = document.getElementById('linguagem-select');
         const assuntoSelect = document.getElementById('assunto-select');
         const quizForm = document.getElementById('quiz-config-form');
@@ -96,6 +100,7 @@
                 alert('Por favor, selecione um assunto.');
             }
         });
-    </script>
+    </script>
+    </div>
 </body>
 </html>

@@ -61,8 +61,10 @@ class Usuario(models.Model):
 
 class Resultado(models.Model):
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    assunto = models.ForeignKey('Assunto', on_delete=models.CASCADE, null=True, blank=True) 
     total_perguntas = models.IntegerField()   
-    acertos = models.IntegerField()         
+    acertos = models.IntegerField()
+    status = models.CharField(max_length=12, default='COMPLETO')         
     data = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
