@@ -1,12 +1,15 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
     <title>Quiz: {{ assunto.nome }}</title>
+    <link rel="stylesheet" href="{% static 'setup/iniciar_quiz.css' %}">
 </head>
 <body>
-    <h1>Quiz de {{ assunto.linguagem.nome }}: {{ assunto.nome }}</h1>
-    <p>Pergunta {{ pergunta_numero_atual }} de {{ total_perguntas_quiz }}</p>
-    <hr>
+    <div class="quiz-container">
+        <h1>Quiz de {{ assunto.linguagem.nome }}: {{ assunto.nome }}</h1>
+        <p>Pergunta {{ pergunta_numero_atual }} de {{ total_perguntas_quiz }}</p>
+        <hr>
     
     <form method="POST" action="{% url 'jogar_quiz' assunto.id %}">
         {% csrf_token %}

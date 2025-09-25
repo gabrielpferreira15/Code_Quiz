@@ -1,7 +1,9 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
     <title>Resultado do Quiz</title>
+    <link rel="stylesheet" href="{% static 'setup/resultado_quiz.css' %}">
 </head>
 <body>
     <h1>Resultado do Quiz de {{ assunto.nome }}</h1>
