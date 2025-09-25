@@ -2,53 +2,53 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <title>Configurar Quiz</title>
+    <meta charset="UTF-8">
+    <title>Configurar Quiz</title>
     <link rel="stylesheet" href="{% static 'setup/style.css' %}">
 </head>
 <body>
     <div class="container">
-                <h2>Configurar Quiz</h2>
+        
+        <img src="{% static 'unnamed.png' %}" alt="Logo Code Quiz" class="logo-image">
+        
+        <h2>Configurar Quiz</h2>
 
-        {% if messages %}
-            <ul class="messages">
-                {% for message in messages %}
-                    <li style="color:red;">{{ message }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li style="color:red;">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
 
-        <form id="quiz-config-form">
-            
+        <form id="quiz-config-form">
+            
             <div class="form-group">
-                <label for="linguagem-select">Selecione a Linguagem:</label>
-                <select name="linguagem" id="linguagem-select">
-                    <option value="">-- Escolha a Linguagem --</option>
-                    {% for linguagem in linguagens %}
-                        <option value="{{ linguagem.id }}">{{ linguagem.nome }}</option>
-                    {% endfor %}
-                </select>
+                <label for="linguagem-select">Selecione a Linguagem:</label>
+                <select name="linguagem" id="linguagem-select">
+                    <option value="">-- Escolha a Linguagem --</option>
+                    {% for linguagem in linguagens %}
+                        <option value="{{ linguagem.id }}">{{ linguagem.nome }}</option>
+                    {% endfor %}
+                </select>
             </div>
 
             <div class="form-group">
-                <label for="assunto-select">Selecione o Assunto:</label>
-                <select name="assunto" id="assunto-select" disabled>
-                    <option value="">-- Primeiro, escolha uma linguagem --</option>
-                </select>
+                <label for="assunto-select">Selecione o Assunto:</label>
+                <select name="assunto" id="assunto-select" disabled>
+                    <option value="">-- Primeiro, escolha uma linguagem --</option>
+                </select>
             </div>
+            
+            <button type="submit" id="gerar-quiz-btn" disabled>Gerar Quiz</button>
+        </form>
 
-            
-            <button type="submit" id="gerar-quiz-btn" disabled>Gerar Quiz</button>
-        </form>
-
-    <script>
-        // Seu código JavaScript... (sem alterações)
+    <script>
         const linguagemSelect = document.getElementById('linguagem-select');
         const assuntoSelect = document.getElementById('assunto-select');
         const quizForm = document.getElementById('quiz-config-form');
         const gerarQuizBtn = document.getElementById('gerar-quiz-btn');
 
-        // Adiciona um "espião" para quando a linguagem for alterada
         linguagemSelect.addEventListener('change', function() {
             const linguagemId = this.value;
             assuntoSelect.innerHTML = '<option value="">-- Carregando... --</option>';
@@ -60,7 +60,6 @@
                 return;
             }
 
-            // Faz a chamada para a nossa API no Django para buscar os assuntos
             fetch(`/api/assuntos/${linguagemId}/`)
                 .then(response => {
                     if (!response.ok) { throw new Error('Erro na rede ao buscar assuntos'); }
@@ -70,7 +69,6 @@
                     assuntoSelect.innerHTML = '<option value="">-- Escolha o Assunto --</option>';
                     data.forEach(assunto => {
                         const option = document.createElement('option');
-                        // O valor da opção é a URL que a view 'get_assuntos' nos dá
                         option.value = assunto.url; 
                         option.textContent = assunto.nome;
                         assuntoSelect.appendChild(option);
@@ -83,24 +81,22 @@
                 });
         });
 
-        // Habilita o botão de "Gerar Quiz" quando um assunto é selecionado
         assuntoSelect.addEventListener('change', function() {
             gerarQuizBtn.disabled = !this.value;
         });
 
-        // Define o que acontece quando o formulário é enviado
         quizForm.addEventListener('submit', function(event) {
-            event.preventDefault(); // Impede o envio padrão do formulário
+            event.preventDefault(); 
             
             const redirectUrl = assuntoSelect.value;
 
             if (redirectUrl) {
-                window.location.href = redirectUrl; // Redireciona o usuário para a URL do quiz
+                window.location.href = redirectUrl;
             } else {
                 alert('Por favor, selecione um assunto.');
             }
         });
-    </script>
+    </script>
     </div>
 </body>
 </html>

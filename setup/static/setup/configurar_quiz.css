@@ -1,20 +1,16 @@
-/* setup/static/setup/style.css */
-
-/* 1. Estilos Base (Fundo e Fonte) */
 body {
     font-family: Arial, sans-serif;
-    background-color: #0b1a2b; /* Azul Escuro */
-    color: #f0f8ff; /* Branco Suave */
+    background-color: #0b1a2b;
+    color: #f0f8ff; 
     display: flex;
-    justify-content: center; /* Centraliza horizontalmente */
-    align-items: center; /* Centraliza verticalmente */
+    justify-content: center; 
+    align-items: center; 
     min-height: 100vh; 
     margin: 0;
 }
 
-/* 2. Container (O Card Central) */
 .container {
-    background-color: #1a2c3e; /* Fundo do card */
+    background-color: #1a2c3e; 
     padding: 40px;
     border-radius: 12px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6); 
@@ -22,16 +18,14 @@ body {
     max-width: 500px;
 }
 
-/* 3. Título */
 h2 {
-    color: #4CAF50; /* Verde Principal */
+    color: #4CAF50; 
     text-align: center;
     margin-bottom: 30px;
     border-bottom: 2px solid #2e4a62;
     padding-bottom: 10px;
 }
 
-/* 4. Inputs e Dropdowns */
 .form-group {
     margin-bottom: 25px;
 }
@@ -61,13 +55,12 @@ select:focus {
     box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.4);
 }
 
-/* 5. Botão "Gerar Quiz" */
 button[type="submit"] {
     display: block;
     width: 100%;
     padding: 15px;
     margin-top: 40px;
-    background-color: #4CAF50; /* Verde */
+    background-color: #4CAF50; 
     color: #0b1a2b; 
     border: none;
     border-radius: 6px;
