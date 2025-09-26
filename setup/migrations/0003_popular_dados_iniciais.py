@@ -41,14 +41,14 @@ def popular_dados(apps, schema_editor):
     Resposta.objects.create(pergunta=p3, texto="echo()", correta=False)
     Resposta.objects.create(pergunta=p3, texto="print()", correta=True)
 
-    # --- Perguntas SEM explicação (daqui para baixo) ---
-    p4 = Pergunta.objects.create(assunto=assunto_py_sb, texto="Qual é o tipo de dado de resultado = 10 / 2 em Python 3?")
+    p4 = Pergunta.objects.create(assunto=assunto_py_sb, texto="Qual é o tipo de dado de resultado = 10 / 2 em Python 3?", explicacao="Em Python 3, o operador de divisão `/` sempre retorna um número de ponto flutuante (float), mesmo que a divisão seja exata. Para uma divisão inteira, usa-se `//`.")
     Resposta.objects.create(pergunta=p4, texto="int", correta=False)
     Resposta.objects.create(pergunta=p4, texto="float", correta=True)
     Resposta.objects.create(pergunta=p4, texto="string", correta=False)
     Resposta.objects.create(pergunta=p4, texto="double", correta=False)
 
-    p5 = Pergunta.objects.create(assunto=assunto_py_sb, texto='Como você converte uma string "100" para um número inteiro em Python?')
+    p5 = Pergunta.objects.create(assunto=assunto_py_sb, texto='Como você converte uma string "100" para um número inteiro em Python?', explicacao="Python oferece funções de conversão de tipo com o mesmo nome do tipo desejado. Para converter para um inteiro, usa-se a função `int()`.")
+    Resposta.objects.create(pergunta=p5, texto='(int)"100"', correta=False)
     Resposta.objects.create(pergunta=p5, texto='(int)"100"', correta=False)
     Resposta.objects.create(pergunta=p5, texto='to_int("100")', correta=False)
     Resposta.objects.create(pergunta=p5, texto='int("100")', correta=True)
@@ -60,7 +60,8 @@ def popular_dados(apps, schema_editor):
     assunto_py_er_nome = 'Estruturas de Repetição'
     assunto_py_er = Assunto.objects.create(linguagem=python, nome=assunto_py_er_nome, slug=slugify(f'{python.nome} {assunto_py_er_nome}'))
 
-    p6 = Pergunta.objects.create(assunto=assunto_py_er, texto="Qual estrutura de repetição é mais adequada para iterar sobre os itens de uma lista?")
+    p6 = Pergunta.objects.create(assunto=assunto_py_er, texto="Qual estrutura de repetição é mais adequada para iterar sobre os itens de uma lista?", explicacao="O laço `for` em Python é projetado para iterar sobre sequências (como listas, tuplas e strings) de forma direta e legível, sendo a escolha ideal para essa tarefa.")
+    Resposta.objects.create(pergunta=p6, texto="O laço while", correta=False)
     Resposta.objects.create(pergunta=p6, texto="O laço while", correta=False)
     Resposta.objects.create(pergunta=p6, texto="O laço do-while", correta=False)
     Resposta.objects.create(pergunta=p6, texto="O laço for", correta=True)
