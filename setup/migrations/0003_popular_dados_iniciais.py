@@ -217,13 +217,13 @@ def popular_dados(apps, schema_editor):
     Resposta.objects.create(pergunta=p27, texto="if [x >= y]", correta=False)
     Resposta.objects.create(pergunta=p27, texto="if (x >|= y)", correta=False)
 
-    p28 = Pergunta.objects.create(assunto=assunto_c_c, texto='Qual é o operador lógico para "OU" em C?')
+    p28 = Pergunta.objects.create(assunto=assunto_c_c, texto='Qual é o operador lógico para "OU" em C?', explicacao="A estrutura switch permite que uma variável seja testada por igualdade contra uma lista de valores (chamados de case). É uma alternativa mais limpa para múltiplos if-else.")
     Resposta.objects.create(pergunta=p28, texto="or", correta=False)
     Resposta.objects.create(pergunta=p28, texto="||", correta=True)
     Resposta.objects.create(pergunta=p28, texto="|", correta=False)
     Resposta.objects.create(pergunta=p28, texto="OR", correta=False)
 
-    p29 = Pergunta.objects.create(assunto=assunto_c_c, texto="Além de if-else, qual outra estrutura de seleção permite testar uma variável contra uma lista de valores?")
+    p29 = Pergunta.objects.create(assunto=assunto_c_c, texto="Além de if-else, qual outra estrutura de seleção permite testar uma variável contra uma lista de valores?", explicacao="Em C, o sinal de igual único (=) é para atribuição. Para comparar se dois valores são iguais, deve-se usar o sinal de igual duplo (==).")
     Resposta.objects.create(pergunta=p29, texto="select", correta=False)
     Resposta.objects.create(pergunta=p29, texto="case", correta=False)
     Resposta.objects.create(pergunta=p29, texto="match", correta=False)
