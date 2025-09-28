@@ -73,3 +73,10 @@ button[type="submit"] {
 button[type="submit"]:hover {
     background-color: #6ed072; 
 }
+
+.logo-image {
+    max-width: 150px; 
+    height: auto;   
+    display: block;  
+    margin: 0 auto 20px auto; 
+}
