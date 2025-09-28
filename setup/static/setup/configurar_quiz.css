@@ -75,8 +75,8 @@ button[type="submit"]:hover {
 }
 
 .logo-image {
-    max-width: 150px; 
-    height: auto;   
-    display: block;  
-    margin: 0 auto 20px auto; 
+    max-width: 175px;
+    height: auto;
+    display: block;
+    margin: 0 auto 0px auto;
 }

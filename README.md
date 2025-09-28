@@ -1,5 +1,5 @@
 # Code_Quiz
-O Code Quiz é site de quizzes de programação com intuito pedagógico para que as pessoas possam melhorar suas habilidades através de questionários sobre diversas linguagens e de dificuldades variadas para se adequar ao usuário.
+O Code Quiz é site de quizzes de programação com intuito pedagócigo para que as pessoas possam melhorar suas habilidades através de questionários sobre diversas linguagens e de dificuldades variadas para se adequar ao usuário.
 
 Entrega 1:
 
