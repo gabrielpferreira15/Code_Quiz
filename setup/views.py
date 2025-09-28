@@ -56,7 +56,7 @@ def jogar_quiz(request, assunto_id):
         'assunto': assunto,
         'pergunta': pergunta_atual,
         'total_perguntas_quiz': total_perguntas_quiz,
-        'pergunta_numero_atual': pergunta_numero_atual, # Passa o número já calculado
+        'pergunta_numero_atual': pergunta_numero_atual,
     }
 
     if request.method == 'POST':
