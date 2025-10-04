@@ -229,7 +229,7 @@ def popular_dados(apps, schema_editor):
     Resposta.objects.create(pergunta=p29, texto="match", correta=False)
     Resposta.objects.create(pergunta=p29, texto="switch", correta=True)
 
-    p30 = Pergunta.objects.create(assunto=assunto_c_c, texto="Qual operador é usado para comparação de igualdade em C?")
+    p30 = Pergunta.objects.create(assunto=assunto_c_c, texto="Qual operador é usado para comparação de igualdade em C?", explicacao="Em C, o sinal de igual único (=) é para atribuição. Para comparar se dois valores são iguais, deve-se usar o sinal de igual duplo (==).")
     Resposta.objects.create(pergunta=p30, texto="=", correta=False)
     Resposta.objects.create(pergunta=p30, texto=":=", correta=False)
     Resposta.objects.create(pergunta=p30, texto="eq", correta=False)
