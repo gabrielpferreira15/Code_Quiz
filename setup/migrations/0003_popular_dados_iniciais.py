@@ -193,7 +193,7 @@ def popular_dados(apps, schema_editor):
     Resposta.objects.create(pergunta=p24, texto="O incremento/decremento", correta=True)
     Resposta.objects.create(pergunta=p24, texto="A declaração da variável", correta=False)
 
-    p25 = Pergunta.objects.create(assunto=assunto_c_er, texto="Como a palavra-chave break funciona dentro de um laço while em C?")
+    p25 = Pergunta.objects.create(assunto=assunto_c_er, texto="Como a palavra-chave break funciona dentro de um laço while em C?", explicacao="Assim como em Python, a instrução break em C causa a terminação imediata do laço em que está contida, transferindo o controle do programa para a primeira instrução após o laço.")
     Resposta.objects.create(pergunta=p25, texto="Pula para a próxima iteração do laço.", correta=False)
     Resposta.objects.create(pergunta=p25, texto="Encerra a função atual.", correta=False)
     Resposta.objects.create(pergunta=p25, texto="Encerra o laço imediatamente.", correta=True)
