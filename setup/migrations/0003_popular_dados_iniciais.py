@@ -109,19 +109,19 @@ def popular_dados(apps, schema_editor):
     Resposta.objects.create(pergunta=p12, texto="if a != b:", correta=True)
     Resposta.objects.create(pergunta=p12, texto="if a is not b:", correta=False)
 
-    p13 = Pergunta.objects.create(assunto=assunto_py_c, texto='Qual é o operador lógico para "E" em Python?')
+    p13 = Pergunta.objects.create(assunto=assunto_py_c, texto='Qual é o operador lógico para "E" em Python?', explicacao="Python usa palavras em inglês para operadores lógicos. O operador `and` retorna `True` somente se ambas as condições, à sua esquerda e direita, forem verdadeiras.")
     Resposta.objects.create(pergunta=p13, texto="&&", correta=False)
     Resposta.objects.create(pergunta=p13, texto="and", correta=True)
     Resposta.objects.create(pergunta=p13, texto="&", correta=False)
     Resposta.objects.create(pergunta=p13, texto="AND", correta=False)
 
-    p14 = Pergunta.objects.create(assunto=assunto_py_c, texto="O que a seguinte expressão booleana retornaria: not (True and False)?")
+    p14 = Pergunta.objects.create(assunto=assunto_py_c, texto="O que a seguinte expressão booleana retornaria: not (True and False)?", explicacao="A ordem de operação é: primeiro o que está dentro dos parênteses. `True and False` resulta em `False`. Depois, o operador `not` inverte o resultado, então `not False` retorna `True`.")
     Resposta.objects.create(pergunta=p14, texto="True", correta=True)
     Resposta.objects.create(pergunta=p14, texto="False", correta=False)
     Resposta.objects.create(pergunta=p14, texto="None", correta=False)
     Resposta.objects.create(pergunta=p14, texto="Error", correta=False)
 
-    p15 = Pergunta.objects.create(assunto=assunto_py_c, texto='Qual é a sintaxe correta para um bloco if em Python que verifica se a variável nome é igual a "Ana"?')
+    p15 = Pergunta.objects.create(assunto=assunto_py_c, texto='Qual é a sintaxe correta para um bloco if em Python que verifica se a variável nome é igual a "Ana"?', explicacao="A sintaxe de um `if` em Python exige a condição seguida de dois pontos (`:`). O operador de comparação de igualdade é `==`.")
     Resposta.objects.create(pergunta=p15, texto='if (nome == "Ana")', correta=False)
     Resposta.objects.create(pergunta=p15, texto='if nome = "Ana":', correta=False)
     Resposta.objects.create(pergunta=p15, texto='if nome == "Ana":', correta=True)
