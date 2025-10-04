@@ -145,13 +145,13 @@ def popular_dados(apps, schema_editor):
     Resposta.objects.create(pergunta=p17, texto="; (ponto e vírgula)", correta=True)
     Resposta.objects.create(pergunta=p17, texto="O final da linha", correta=False)
 
-    p18 = Pergunta.objects.create(assunto=assunto_c_sb, texto="Qual função da biblioteca stdio.h é usada para imprimir texto formatado no console?")
+    p18 = Pergunta.objects.create(assunto=assunto_c_sb, texto="Qual função da biblioteca stdio.h é usada para imprimir texto formatado no console?", explicacao="A função `printf()` (print formatted) faz parte da biblioteca padrão de entrada/saída (`stdio.h`) e é a principal forma de exibir texto no console em C.")
     Resposta.objects.create(pergunta=p18, texto="print()", correta=False)
     Resposta.objects.create(pergunta=p18, texto="cout <<", correta=False)
     Resposta.objects.create(pergunta=p18, texto="printf()", correta=True)
     Resposta.objects.create(pergunta=p18, texto="log()", correta=False)
 
-    p19 = Pergunta.objects.create(assunto=assunto_c_sb, texto="Como você escreve um comentário de múltiplas linhas em C?")
+    p19 = Pergunta.objects.create(assunto=assunto_c_sb, texto="Como você escreve um comentário de múltiplas linhas em C?", explicacao="Em C, um comentário de bloco (múltiplas linhas) começa com `/*` e termina com `*/`. Tudo que estiver entre esses dois marcadores é considerado um comentário.")
     Resposta.objects.create(pergunta=p19, texto="// ... //", correta=False)
     Resposta.objects.create(pergunta=p19, texto="# ... #", correta=False)
     Resposta.objects.create(pergunta=p19, texto="/* ... */", correta=True)
