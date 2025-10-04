@@ -181,13 +181,13 @@ def popular_dados(apps, schema_editor):
     Resposta.objects.create(pergunta=p22, texto="do-while", correta=True)
     Resposta.objects.create(pergunta=p22, texto="repeat-until", correta=False)
     
-    p23 = Pergunta.objects.create(assunto=assunto_c_er, texto="Qual é a sintaxe para um laço while que continua enquanto a variável ativo for verdadeira (considerando 1 como verdadeiro)?")
+    p23 = Pergunta.objects.create(assunto=assunto_c_er, texto="Qual é a sintaxe para um laço while que continua enquanto a variável ativo for verdadeira (considerando 1 como verdadeiro)?", explicacao="A sintaxe do laço while em C requer que a condição seja colocada entre parênteses. Em C, qualquer valor diferente de zero é considerado 'verdadeiro', então while (ativo) funciona se ativo for 1.")
     Resposta.objects.create(pergunta=p23, texto="while [ativo == 1]", correta=False)
     Resposta.objects.create(pergunta=p23, texto="while (ativo)", correta=True)
     Resposta.objects.create(pergunta=p23, texto="while {ativo}", correta=False)
     Resposta.objects.create(pergunta=p23, texto="while ativo is 1", correta=False)
 
-    p24 = Pergunta.objects.create(assunto=assunto_c_er, texto="Dentro de um laço for, o que a terceira expressão (i++) geralmente representa?")
+    p24 = Pergunta.objects.create(assunto=assunto_c_er, texto="Dentro de um laço for, o que a terceira expressão (i++) geralmente representa?", explicacao="A terceira parte da declaração de um laço for em C é executada ao final de cada iteração e é tipicamente usada para incrementar ou decrementar a variável de controle do laço.")
     Resposta.objects.create(pergunta=p24, texto="A inicialização", correta=False)
     Resposta.objects.create(pergunta=p24, texto="A condição de parada", correta=False)
     Resposta.objects.create(pergunta=p24, texto="O incremento/decremento", correta=True)
