@@ -133,13 +133,13 @@ def popular_dados(apps, schema_editor):
     assunto_c_sb_nome = 'Sintaxe Básica'
     assunto_c_sb = Assunto.objects.create(linguagem=c_lang, nome=assunto_c_sb_nome, slug=slugify(f'{c_lang.nome} {assunto_c_sb_nome}'))
 
-    p16 = Pergunta.objects.create(assunto=assunto_c_sb, texto="Como você declara uma variável inteira chamada quantidade com o valor 50 em C?")
+    p16 = Pergunta.objects.create(assunto=assunto_c_sb, texto="Como você declara uma variável inteira chamada quantidade com o valor 50 em C?", explicacao="Em C, uma linguagem de tipagem estática, você deve declarar o tipo da variável (`int` para inteiro) antes do seu nome, seguido pela atribuição e terminando com ponto e vírgula.")
     Resposta.objects.create(pergunta=p16, texto="quantidade = 50;", correta=False)
     Resposta.objects.create(pergunta=p16, texto="int quantidade = 50;", correta=True)
     Resposta.objects.create(pergunta=p16, texto="integer quantidade = 50;", correta=False)
     Resposta.objects.create(pergunta=p16, texto="var quantidade = 50;", correta=False)
 
-    p17 = Pergunta.objects.create(assunto=assunto_c_sb, texto="Qual é o símbolo usado para indicar o fim de uma instrução em C?")
+    p17 = Pergunta.objects.create(assunto=assunto_c_sb, texto="Qual é o símbolo usado para indicar o fim de uma instrução em C?", explicacao="O ponto e vírgula (`;`) é um terminador de instrução em C. Ele informa ao compilador que um comando específico foi concluído.")
     Resposta.objects.create(pergunta=p17, texto=". (ponto final)", correta=False)
     Resposta.objects.create(pergunta=p17, texto=": (dois pontos)", correta=False)
     Resposta.objects.create(pergunta=p17, texto="; (ponto e vírgula)", correta=True)
