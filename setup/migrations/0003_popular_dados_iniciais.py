@@ -67,19 +67,19 @@ def popular_dados(apps, schema_editor):
     Resposta.objects.create(pergunta=p6, texto="O laço for", correta=True)
     Resposta.objects.create(pergunta=p6, texto="A recursão", correta=False)
 
-    p7 = Pergunta.objects.create(assunto=assunto_py_er, texto="Como você cria um laço que executa 5 vezes usando a função range()?")
+    p7 = Pergunta.objects.create(assunto=assunto_py_er, texto="Como você cria um laço que executa 5 vezes usando a função range()?", explicacao="A função `range(5)` gera uma sequência de números de 0 a 4 (cinco números no total). O laço `for` itera sobre essa sequência, executando seu bloco de código 5 vezes.")
     Resposta.objects.create(pergunta=p7, texto="for i in range(1, 5):", correta=False)
     Resposta.objects.create(pergunta=p7, texto="for i in range(5):", correta=True)
     Resposta.objects.create(pergunta=p7, texto="for i in range(0, 6):", correta=False)
     Resposta.objects.create(pergunta=p7, texto="for i in range(5-1):", correta=False)
 
-    p8 = Pergunta.objects.create(assunto=assunto_py_er, texto="Qual palavra-chave é usada para parar completamente a execução de um laço?")
+    p8 = Pergunta.objects.create(assunto=assunto_py_er, texto="Qual palavra-chave é usada para parar completamente a execução de um laço?", explicacao="A instrução `break` interrompe a execução do laço mais interno (seja `for` ou `while`) e o programa continua a execução na linha seguinte ao laço.")
     Resposta.objects.create(pergunta=p8, texto="stop", correta=False)
     Resposta.objects.create(pergunta=p8, texto="exit", correta=False)
     Resposta.objects.create(pergunta=p8, texto="break", correta=True)
     Resposta.objects.create(pergunta=p8, texto="return", correta=False)
 
-    p9 = Pergunta.objects.create(assunto=assunto_py_er, texto="Qual palavra-chave pula para a próxima iteração de um laço sem terminar o laço por completo?")
+    p9 = Pergunta.objects.create(assunto=assunto_py_er, texto="Qual palavra-chave pula para a próxima iteração de um laço sem terminar o laço por completo?", explicacao="A instrução `continue` interrompe a iteração atual e imediatamente passa para a próxima iteração do laço, ignorando o resto do código no bloco daquela iteração.")
     Resposta.objects.create(pergunta=p9, texto="skip", correta=False)
     Resposta.objects.create(pergunta=p9, texto="next", correta=False)
     Resposta.objects.create(pergunta=p9, texto="pass", correta=False)
