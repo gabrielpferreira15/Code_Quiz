@@ -205,13 +205,13 @@ def popular_dados(apps, schema_editor):
     assunto_c_c_nome = 'Estruturas Condicionais'
     assunto_c_c = Assunto.objects.create(linguagem=c_lang, nome=assunto_c_c_nome, slug=slugify(f'{c_lang.nome} {assunto_c_c_nome}'))
 
-    p26 = Pergunta.objects.create(assunto=assunto_c_c, texto='Qual é a sintaxe para a parte "senão se" em uma estrutura condicional em C?')
+    p26 = Pergunta.objects.create(assunto=assunto_c_c, texto='Qual é a sintaxe para a parte "senão se" em uma estrutura condicional em C?', explicacao="Em C, a estrutura para testar condições múltiplas é uma combinação das palavras-chave else e if.")
     Resposta.objects.create(pergunta=p26, texto="elif", correta=False)
     Resposta.objects.create(pergunta=p26, texto="else if", correta=True)
     Resposta.objects.create(pergunta=p26, texto="elseif", correta=False)
     Resposta.objects.create(pergunta=p26, texto="elsif", correta=False)
 
-    p27 = Pergunta.objects.create(assunto=assunto_c_c, texto='Como se escreve a condição "se x é maior ou igual a y" em C?')
+    p27 = Pergunta.objects.create(assunto=assunto_c_c, texto='Como se escreve a condição "se x é maior ou igual a y" em C?', explicacao="O operador relacional para 'maior ou igual a' em C é >=. A condição completa em um if deve estar entre parênteses.")
     Resposta.objects.create(pergunta=p27, texto="if (x >= y)", correta=True)
     Resposta.objects.create(pergunta=p27, texto="if x >= y then", correta=False)
     Resposta.objects.create(pergunta=p27, texto="if [x >= y]", correta=False)
