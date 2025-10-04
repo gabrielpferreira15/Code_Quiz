@@ -157,7 +157,7 @@ def popular_dados(apps, schema_editor):
     Resposta.objects.create(pergunta=p19, texto="/* ... */", correta=True)
     Resposta.objects.create(pergunta=p19, texto='""" ... """', correta=False)
 
-    p20 = Pergunta.objects.create(assunto=assunto_c_sb, texto="Qual diretiva de pré-processador é necessária para usar a função printf?")
+    p20 = Pergunta.objects.create(assunto=assunto_c_sb, texto="Qual diretiva de pré-processador é necessária para usar a função printf?", explicacao="A diretiva `#include <stdio.h>` instrui o pré-processador C a incluir o conteúdo do arquivo de cabeçalho `stdio.h` (Standard Input/Output) no programa, que contém a declaração da função `printf()`.")
     Resposta.objects.create(pergunta=p20, texto="#import <stdio.h>", correta=False)
     Resposta.objects.create(pergunta=p20, texto="#require <stdio.h>", correta=False)
     Resposta.objects.create(pergunta=p20, texto='#include "stdio.h"', correta=False)
