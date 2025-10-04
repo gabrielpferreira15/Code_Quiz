@@ -169,13 +169,13 @@ def popular_dados(apps, schema_editor):
     assunto_c_er_nome = 'Estruturas de Repetição'
     assunto_c_er = Assunto.objects.create(linguagem=c_lang, nome=assunto_c_er_nome, slug=slugify(f'{c_lang.nome} {assunto_c_er_nome}'))
 
-    p21 = Pergunta.objects.create(assunto=assunto_c_er, texto="Qual é a sintaxe completa de um laço for em C que vai de 0 a 9?")
+    p21 = Pergunta.objects.create(assunto=assunto_c_er, texto="Qual é a sintaxe completa de um laço for em C que vai de 0 a 9?", explicacao="O laço for em C tem três partes entre parênteses, separadas por ponto e vírgula: a inicialização (int i=0), a condição de continuação (i < 10), e o incremento (i++).")
     Resposta.objects.create(pergunta=p21, texto="for (int i=0; i < 10; i++)", correta=True)
     Resposta.objects.create(pergunta=p21, texto="for (i < 10; i++)", correta=False)
     Resposta.objects.create(pergunta=p21, texto="for (int i=0; i < 10)", correta=False)
     Resposta.objects.create(pergunta=p21, texto="for (int i=0 to 9)", correta=False)
 
-    p22 = Pergunta.objects.create(assunto=assunto_c_er, texto="Qual laço em C garante que seu corpo seja executado pelo menos uma vez?")
+    p22 = Pergunta.objects.create(assunto=assunto_c_er, texto="Qual laço em C garante que seu corpo seja executado pelo menos uma vez?", explicacao="O laço do-while é uma estrutura de repetição pós-teste. Ele executa o bloco de código primeiro e só então verifica a condição, garantindo pelo menos uma execução.")
     Resposta.objects.create(pergunta=p22, texto="for", correta=False)
     Resposta.objects.create(pergunta=p22, texto="while", correta=False)
     Resposta.objects.create(pergunta=p22, texto="do-while", correta=True)
