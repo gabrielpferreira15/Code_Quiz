@@ -85,7 +85,7 @@ def popular_dados(apps, schema_editor):
     Resposta.objects.create(pergunta=p9, texto="pass", correta=False)
     Resposta.objects.create(pergunta=p9, texto="continue", correta=True)
 
-    p10 = Pergunta.objects.create(assunto=assunto_py_er, texto="Qual é a sintaxe para um laço while que continua enquanto a variável contador for menor que 10?")
+    p10 = Pergunta.objects.create(assunto=assunto_py_er, texto="Qual é a sintaxe para um laço while que continua enquanto a variável contador for menor que 10?", explicacao="A sintaxe do `while` em Python começa com a palavra-chave `while`, seguida pela condição de continuação e terminando com dois pontos (`:`).")
     Resposta.objects.create(pergunta=p10, texto="while (contador < 10)", correta=False)
     Resposta.objects.create(pergunta=p10, texto="while contador < 10:", correta=True)
     Resposta.objects.create(pergunta=p10, texto="while: contador < 10", correta=False)
@@ -97,13 +97,13 @@ def popular_dados(apps, schema_editor):
     assunto_py_c_nome = 'Condicionais'
     assunto_py_c = Assunto.objects.create(linguagem=python, nome=assunto_py_c_nome, slug=slugify(f'{python.nome} {assunto_py_c_nome}'))
 
-    p11 = Pergunta.objects.create(assunto=assunto_py_c, texto='Qual palavra-chave é usada para a parte "senão se" em uma estrutura condicional em Python?')
+    p11 = Pergunta.objects.create(assunto=assunto_py_c, texto='Qual palavra-chave é usada para a parte "senão se" em uma estrutura condicional em Python?', explicacao="Python utiliza a contração `elif` (uma abreviação de 'else if') para testar múltiplas condições em sequência após um `if` inicial.")
     Resposta.objects.create(pergunta=p11, texto="else if", correta=False)
     Resposta.objects.create(pergunta=p11, texto="elif", correta=True)
     Resposta.objects.create(pergunta=p11, texto="elseif", correta=False)
     Resposta.objects.create(pergunta=p11, texto="elsif", correta=False)
     
-    p12 = Pergunta.objects.create(assunto=assunto_py_c, texto='Como se escreve a condição "se a não for igual a b" em Python?')
+    p12 = Pergunta.objects.create(assunto=assunto_py_c, texto='Como se escreve a condição "se a não for igual a b" em Python?', explicacao="O operador de desigualdade em Python é `!=`. Ele retorna `True` se os dois valores comparados forem diferentes.")
     Resposta.objects.create(pergunta=p12, texto="if a <> b:", correta=False)
     Resposta.objects.create(pergunta=p12, texto="if not(a == b):", correta=False)
     Resposta.objects.create(pergunta=p12, texto="if a != b:", correta=True)
