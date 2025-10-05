@@ -64,7 +64,7 @@ def popular_dados(apps, schema_editor):
 
 
     p4 = Pergunta.objects.create(assunto=assunto_py_sb, texto="Qual é o tipo de dado de resultado = 10 / 2 em Python 3?", explicacao="Em Python 3, o operador de divisão `/` sempre retorna um float...")
-    PerguntaDificuldade.objects.create(pergunta=p4, dificuldade=medio)
+    PerguntaDificuldade.objects.create(pergunta=p4, dificuldade=facil)
     Resposta.objects.create(pergunta=p4, texto="int", correta=False)
     Resposta.objects.create(pergunta=p4, texto="float", correta=True)
     Resposta.objects.create(pergunta=p4, texto="string", correta=False)
@@ -262,7 +262,7 @@ def popular_dados(apps, schema_editor):
 
     # --- NOVA PERGUNTA MÉDIA ADICIONADA ---
     p37 = Pergunta.objects.create(assunto=assunto_c_sb, texto="Em C, qual símbolo é usado para obter o endereço de memória de uma variável?", explicacao="O operador `&` (E comercial), conhecido como 'operador de endereço', retorna o local na memória onde a variável está armazenada, sendo fundamental para o uso de ponteiros.")
-    PerguntaDificuldade.objects.create(pergunta=p37, dificuldade=medio)
+    PerguntaDificuldade.objects.create(pergunta=p37, dificuldade=facil)
     Resposta.objects.create(pergunta=p37, texto="& (E comercial)", correta=True)
     Resposta.objects.create(pergunta=p37, texto="* (Asterisco)", correta=False)
     Resposta.objects.create(pergunta=p37, texto="-> (Seta)", correta=False)
@@ -277,7 +277,7 @@ def popular_dados(apps, schema_editor):
 
 
     p21 = Pergunta.objects.create(assunto=assunto_c_er, texto="Qual é a sintaxe completa de um laço for em C que vai de 0 a 9?", explicacao="O laço for em C tem três partes...")
-    PerguntaDificuldade.objects.create(pergunta=p21, dificuldade=medio)
+    PerguntaDificuldade.objects.create(pergunta=p21, dificuldade=facil)
     Resposta.objects.create(pergunta=p21, texto="for (int i=0; i < 10; i++)", correta=True)
     Resposta.objects.create(pergunta=p21, texto="for (i < 10; i++)", correta=False)
     Resposta.objects.create(pergunta=p21, texto="for (int i=0; i < 10)", correta=False)
@@ -363,7 +363,7 @@ def popular_dados(apps, schema_editor):
 
 
     p30 = Pergunta.objects.create(assunto=assunto_c_c, texto="Qual operador é usado para comparação de igualdade em C?", explicacao="Em C, o sinal de igual único (=) é para atribuição...")
-    PerguntaDificuldade.objects.create(pergunta=p30, dificuldade=dificil)
+    PerguntaDificuldade.objects.create(pergunta=p30, dificuldade=medio)
     Resposta.objects.create(pergunta=p30, texto="=", correta=False)
     Resposta.objects.create(pergunta=p30, texto=":=", correta=False)
     Resposta.objects.create(pergunta=p30, texto="eq", correta=False)
