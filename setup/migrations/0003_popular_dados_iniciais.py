@@ -69,6 +69,14 @@ def popular_dados(apps, schema_editor):
     Resposta.objects.create(pergunta=p5, texto='int("100")', correta=True)
     Resposta.objects.create(pergunta=p5, texto='integer("100")', correta=False)
 
+    # --- NOVA PERGUNTA FÁCIL ADICIONADA ---
+    p31 = Pergunta.objects.create(assunto=assunto_py_sb, texto="Qual será o resultado da expressão `'Py' + 'thon'` em Python?", explicacao="O operador `+` quando usado com strings realiza uma 'concatenação', que é a junção dos textos um após o outro, sem espaços.")
+    PerguntaDificuldade.objects.create(pergunta=p31, dificuldade=facil)
+    Resposta.objects.create(pergunta=p31, texto="'Python'", correta=True)
+    Resposta.objects.create(pergunta=p31, texto="'Py thon'", correta=False)
+    Resposta.objects.create(pergunta=p31, texto="Erro de sintaxe", correta=False)
+    Resposta.objects.create(pergunta=p31, texto="'Py-thon'", correta=False)
+
     # ====================================================================
     # === QUIZ PYTHON: ESTRUTURAS CONDICIONAIS ===
     # ====================================================================
@@ -109,6 +117,14 @@ def popular_dados(apps, schema_editor):
     Resposta.objects.create(pergunta=p15, texto='if nome = "Ana":', correta=False)
     Resposta.objects.create(pergunta=p15, texto='if nome == "Ana":', correta=True)
     Resposta.objects.create(pergunta=p15, texto='if nome is "Ana" then', correta=False)
+
+    # --- NOVA PERGUNTA FÁCIL ADICIONADA ---
+    p32 = Pergunta.objects.create(assunto=assunto_py_c, texto="Em um bloco `if-elif-else`, qual palavra-chave define o código a ser executado se nenhuma condição anterior for verdadeira?", explicacao="A cláusula `else` captura todos os casos em que as condições `if` e `elif` anteriores foram falsas, funcionando como um bloco 'padrão'.")
+    PerguntaDificuldade.objects.create(pergunta=p32, dificuldade=facil)
+    Resposta.objects.create(pergunta=p32, texto="else", correta=True)
+    Resposta.objects.create(pergunta=p32, texto="final", correta=False)
+    Resposta.objects.create(pergunta=p32, texto="default", correta=False)
+    Resposta.objects.create(pergunta=p32, texto="otherwise", correta=False)
     
     # ====================================================================
     # === QUIZ PYTHON: ESTRUTURAS DE REPETIÇÃO ===
@@ -192,6 +208,14 @@ def popular_dados(apps, schema_editor):
     Resposta.objects.create(pergunta=p20, texto='#include "stdio.h"', correta=False)
     Resposta.objects.create(pergunta=p20, texto="#include <stdio.h>", correta=True)
 
+    # --- NOVA PERGUNTA FÁCIL ADICIONADA ---
+    p33 = Pergunta.objects.create(assunto=assunto_c_sb, texto="Qual tipo de dado é usado em C para armazenar um único caractere, como 'A'?", explicacao="O tipo `char` em C é projetado para armazenar um único caractere. Internamente, ele é um tipo inteiro de 8 bits.")
+    PerguntaDificuldade.objects.create(pergunta=p33, dificuldade=facil)
+    Resposta.objects.create(pergunta=p33, texto="char", correta=True)
+    Resposta.objects.create(pergunta=p33, texto="character", correta=False)
+    Resposta.objects.create(pergunta=p33, texto="string", correta=False)
+    Resposta.objects.create(pergunta=p33, texto="byte", correta=False)
+
     # ====================================================================
     # === QUIZ C: ESTRUTURAS DE REPETIÇÃO ===
     # ====================================================================
@@ -273,6 +297,14 @@ def popular_dados(apps, schema_editor):
     Resposta.objects.create(pergunta=p30, texto=":=", correta=False)
     Resposta.objects.create(pergunta=p30, texto="eq", correta=False)
     Resposta.objects.create(pergunta=p30, texto="==", correta=True)
+
+    # --- NOVA PERGUNTA FÁCIL ADICIONADA ---
+    p34 = Pergunta.objects.create(assunto=assunto_c_c, texto="Em C, quais símbolos delimitam o início e o fim de um bloco de código `if` com múltiplas instruções?", explicacao="Em C, as chaves `{}` são usadas para agrupar múltiplas instruções em um único bloco de código, que é tratado como uma única instrução.")
+    PerguntaDificuldade.objects.create(pergunta=p34, dificuldade=facil)
+    Resposta.objects.create(pergunta=p34, texto="{ e } (chaves)", correta=True)
+    Resposta.objects.create(pergunta=p34, texto="( e ) (parênteses)", correta=False)
+    Resposta.objects.create(pergunta=p34, texto="[ e ] (colchetes)", correta=False)
+    Resposta.objects.create(pergunta=p34, texto="begin e end", correta=False)
 
 
 class Migration(migrations.Migration):
