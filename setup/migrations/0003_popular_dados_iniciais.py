@@ -19,7 +19,6 @@ def popular_dados(apps, schema_editor):
     Dificuldade.objects.all().delete()
 
     # --- NÍVEIS DE DIFICULDADE ---
-    # Criamos os três níveis de dificuldade que serão usados
     facil = Dificuldade.objects.create(nome='Fácil')
     medio = Dificuldade.objects.create(nome='Médio')
     dificil = Dificuldade.objects.create(nome='Difícil')
@@ -69,13 +68,20 @@ def popular_dados(apps, schema_editor):
     Resposta.objects.create(pergunta=p5, texto='int("100")', correta=True)
     Resposta.objects.create(pergunta=p5, texto='integer("100")', correta=False)
 
-    # --- NOVA PERGUNTA FÁCIL ADICIONADA ---
     p31 = Pergunta.objects.create(assunto=assunto_py_sb, texto="Qual será o resultado da expressão `'Py' + 'thon'` em Python?", explicacao="O operador `+` quando usado com strings realiza uma 'concatenação', que é a junção dos textos um após o outro, sem espaços.")
     PerguntaDificuldade.objects.create(pergunta=p31, dificuldade=facil)
     Resposta.objects.create(pergunta=p31, texto="'Python'", correta=True)
     Resposta.objects.create(pergunta=p31, texto="'Py thon'", correta=False)
     Resposta.objects.create(pergunta=p31, texto="Erro de sintaxe", correta=False)
     Resposta.objects.create(pergunta=p31, texto="'Py-thon'", correta=False)
+
+    # --- NOVA PERGUNTA MÉDIA ADICIONADA ---
+    p35 = Pergunta.objects.create(assunto=assunto_py_sb, texto="Em Python, qual é a principal diferença entre os operadores `==` e `is`?", explicacao="O operador `==` verifica a igualdade de valor (se dois objetos têm o mesmo conteúdo), enquanto o `is` verifica a identidade (se duas variáveis apontam para o exato mesmo local na memória).")
+    PerguntaDificuldade.objects.create(pergunta=p35, dificuldade=medio)
+    Resposta.objects.create(pergunta=p35, texto="`==` compara valores, `is` compara a identidade do objeto na memória.", correta=True)
+    Resposta.objects.create(pergunta=p35, texto="`is` é uma versão mais rápida de `==`.", correta=False)
+    Resposta.objects.create(pergunta=p35, texto="`==` é para números e `is` é para strings.", correta=False)
+    Resposta.objects.create(pergunta=p35, texto="Não há diferença, são sinônimos.", correta=False)
 
     # ====================================================================
     # === QUIZ PYTHON: ESTRUTURAS CONDICIONAIS ===
@@ -118,7 +124,6 @@ def popular_dados(apps, schema_editor):
     Resposta.objects.create(pergunta=p15, texto='if nome == "Ana":', correta=True)
     Resposta.objects.create(pergunta=p15, texto='if nome is "Ana" then', correta=False)
 
-    # --- NOVA PERGUNTA FÁCIL ADICIONADA ---
     p32 = Pergunta.objects.create(assunto=assunto_py_c, texto="Em um bloco `if-elif-else`, qual palavra-chave define o código a ser executado se nenhuma condição anterior for verdadeira?", explicacao="A cláusula `else` captura todos os casos em que as condições `if` e `elif` anteriores foram falsas, funcionando como um bloco 'padrão'.")
     PerguntaDificuldade.objects.create(pergunta=p32, dificuldade=facil)
     Resposta.objects.create(pergunta=p32, texto="else", correta=True)
@@ -167,6 +172,14 @@ def popular_dados(apps, schema_editor):
     Resposta.objects.create(pergunta=p10, texto="while: contador < 10", correta=False)
     Resposta.objects.create(pergunta=p10, texto="loop while contador < 10:", correta=False)
 
+    # --- NOVA PERGUNTA MÉDIA ADICIONADA ---
+    p36 = Pergunta.objects.create(assunto=assunto_py_er, texto="Qual é a forma 'Pythônica' de criar uma lista de números pares de 0 a 9 em uma única linha?", explicacao="List comprehensions (`[valor for item in iterável if condição]`) oferecem uma sintaxe concisa e legível para criar listas a partir de outras sequências.")
+    PerguntaDificuldade.objects.create(pergunta=p36, dificuldade=medio)
+    Resposta.objects.create(pergunta=p36, texto="[x for x in range(10) if x % 2 == 0]", correta=True)
+    Resposta.objects.create(pergunta=p36, texto="list(range(0, 10, 2))", correta=False)
+    Resposta.objects.create(pergunta=p36, texto="for x in range(10): if x % 2 == 0", correta=False)
+    Resposta.objects.create(pergunta=p36, texto="[x if x % 2 == 0 for x in range(10)]", correta=False)
+
     # ====================================================================
     # === QUIZ C: SINTAXE BÁSICA ===
     # ====================================================================
@@ -208,13 +221,20 @@ def popular_dados(apps, schema_editor):
     Resposta.objects.create(pergunta=p20, texto='#include "stdio.h"', correta=False)
     Resposta.objects.create(pergunta=p20, texto="#include <stdio.h>", correta=True)
 
-    # --- NOVA PERGUNTA FÁCIL ADICIONADA ---
     p33 = Pergunta.objects.create(assunto=assunto_c_sb, texto="Qual tipo de dado é usado em C para armazenar um único caractere, como 'A'?", explicacao="O tipo `char` em C é projetado para armazenar um único caractere. Internamente, ele é um tipo inteiro de 8 bits.")
     PerguntaDificuldade.objects.create(pergunta=p33, dificuldade=facil)
     Resposta.objects.create(pergunta=p33, texto="char", correta=True)
     Resposta.objects.create(pergunta=p33, texto="character", correta=False)
     Resposta.objects.create(pergunta=p33, texto="string", correta=False)
     Resposta.objects.create(pergunta=p33, texto="byte", correta=False)
+
+    # --- NOVA PERGUNTA MÉDIA ADICIONADA ---
+    p37 = Pergunta.objects.create(assunto=assunto_c_sb, texto="Em C, qual símbolo é usado para obter o endereço de memória de uma variável?", explicacao="O operador `&` (E comercial), conhecido como 'operador de endereço', retorna o local na memória onde a variável está armazenada, sendo fundamental para o uso de ponteiros.")
+    PerguntaDificuldade.objects.create(pergunta=p37, dificuldade=medio)
+    Resposta.objects.create(pergunta=p37, texto="& (E comercial)", correta=True)
+    Resposta.objects.create(pergunta=p37, texto="* (Asterisco)", correta=False)
+    Resposta.objects.create(pergunta=p37, texto="-> (Seta)", correta=False)
+    Resposta.objects.create(pergunta=p37, texto="ptr()", correta=False)
 
     # ====================================================================
     # === QUIZ C: ESTRUTURAS DE REPETIÇÃO ===
@@ -256,6 +276,14 @@ def popular_dados(apps, schema_editor):
     Resposta.objects.create(pergunta=p25, texto="Encerra a função atual.", correta=False)
     Resposta.objects.create(pergunta=p25, texto="Encerra o laço imediatamente.", correta=True)
     Resposta.objects.create(pergunta=p25, texto="Pausa a execução do laço temporariamente.", correta=False)
+    
+    # --- NOVA PERGUNTA MÉDIA ADICIONADA ---
+    p38 = Pergunta.objects.create(assunto=assunto_c_er, texto="Qual é a sintaxe correta para criar um laço infinito usando `for` em C?", explicacao="No laço `for (inicialização; condição; incremento)`, omitir as três expressões, especialmente a condição, faz com que ela nunca seja falsa, criando um laço infinito.")
+    PerguntaDificuldade.objects.create(pergunta=p38, dificuldade=medio)
+    Resposta.objects.create(pergunta=p38, texto="for (;;)", correta=True)
+    Resposta.objects.create(pergunta=p38, texto="for ()", correta=False)
+    Resposta.objects.create(pergunta=p38, texto="for (true)", correta=False)
+    Resposta.objects.create(pergunta=p38, texto="while (1) {}", correta=False)
 
     # ====================================================================
     # === QUIZ C: ESTRUTURAS CONDICIONAIS ===
@@ -298,7 +326,6 @@ def popular_dados(apps, schema_editor):
     Resposta.objects.create(pergunta=p30, texto="eq", correta=False)
     Resposta.objects.create(pergunta=p30, texto="==", correta=True)
 
-    # --- NOVA PERGUNTA FÁCIL ADICIONADA ---
     p34 = Pergunta.objects.create(assunto=assunto_c_c, texto="Em C, quais símbolos delimitam o início e o fim de um bloco de código `if` com múltiplas instruções?", explicacao="Em C, as chaves `{}` são usadas para agrupar múltiplas instruções em um único bloco de código, que é tratado como uma única instrução.")
     PerguntaDificuldade.objects.create(pergunta=p34, dificuldade=facil)
     Resposta.objects.create(pergunta=p34, texto="{ e } (chaves)", correta=True)
