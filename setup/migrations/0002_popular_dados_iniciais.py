@@ -89,7 +89,7 @@ def popular_dados(apps, schema_editor):
 
     # --- NOVA PERGUNTA MÉDIA ADICIONADA ---
     p35 = Pergunta.objects.create(assunto=assunto_py_sb, texto="Em Python, qual é a principal diferença entre os operadores `==` e `is`?", explicacao="O operador `==` verifica a igualdade de valor (se dois objetos têm o mesmo conteúdo), enquanto o `is` verifica a identidade (se duas variáveis apontam para o exato mesmo local na memória).")
-    PerguntaDificuldade.objects.create(pergunta=p35, dificuldade=medio)
+    PerguntaDificuldade.objects.create(pergunta=p35, dificuldade=dificil)
     Resposta.objects.create(pergunta=p35, texto="`==` compara valores, `is` compara a identidade do objeto na memória.", correta=True)
     Resposta.objects.create(pergunta=p35, texto="`is` é uma versão mais rápida de `==`.", correta=False)
     Resposta.objects.create(pergunta=p35, texto="`==` é para números e `is` é para strings.", correta=False)
@@ -262,7 +262,7 @@ def popular_dados(apps, schema_editor):
 
     # --- NOVA PERGUNTA MÉDIA ADICIONADA ---
     p37 = Pergunta.objects.create(assunto=assunto_c_sb, texto="Em C, qual símbolo é usado para obter o endereço de memória de uma variável?", explicacao="O operador `&` (E comercial), conhecido como 'operador de endereço', retorna o local na memória onde a variável está armazenada, sendo fundamental para o uso de ponteiros.")
-    PerguntaDificuldade.objects.create(pergunta=p37, dificuldade=facil)
+    PerguntaDificuldade.objects.create(pergunta=p37, dificuldade=medio)
     Resposta.objects.create(pergunta=p37, texto="& (E comercial)", correta=True)
     Resposta.objects.create(pergunta=p37, texto="* (Asterisco)", correta=False)
     Resposta.objects.create(pergunta=p37, texto="-> (Seta)", correta=False)
