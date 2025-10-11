@@ -139,10 +139,14 @@ STATICFILES_STORAGE = ('whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# seu_projeto/settings.py
+# settings.py
 
 TEMPLATES = [
     {
+        # Linha CRÍTICA que estava faltando:
+        'BACKEND': 'django.template.backends.django.DjangoTemplates', 
+        
+        # As linhas que você já tinha:
         'DIRS': [BASE_DIR / 'templates'], 
         'APP_DIRS': True,
         'OPTIONS': {
@@ -156,5 +160,6 @@ TEMPLATES = [
     },
 ]
 
+# As configurações de redirecionamento estão corretas:
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/accounts/login/'
