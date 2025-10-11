@@ -7,3 +7,12 @@ urlpatterns = [
     path('quiz/iniciar/<int:assunto_id>/', views.iniciar_novo_quiz, name='iniciar_novo_quiz'),
     path('quiz/jogar/<int:assunto_id>/', views.jogar_quiz, name='jogar_quiz'),
 ]
+from django.contrib import admin
+from django.urls import path, include
+from django.views.generic.base import TemplateView
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('', TemplateView.as_view(template_name='home.html'), name='home'),
+]
