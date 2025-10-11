@@ -87,7 +87,6 @@ def popular_dados(apps, schema_editor):
     Resposta.objects.create(pergunta=p31, texto="'Py-thon'", correta=False)
 
 
-    # --- NOVA PERGUNTA MÉDIA ADICIONADA ---
     p35 = Pergunta.objects.create(assunto=assunto_py_sb, texto="Em Python, qual é a principal diferença entre os operadores `==` e `is`?", explicacao="O operador `==` verifica a igualdade de valor (se dois objetos têm o mesmo conteúdo), enquanto o `is` verifica a identidade (se duas variáveis apontam para o exato mesmo local na memória).")
     PerguntaDificuldade.objects.create(pergunta=p35, dificuldade=dificil)
     Resposta.objects.create(pergunta=p35, texto="`==` compara valores, `is` compara a identidade do objeto na memória.", correta=True)

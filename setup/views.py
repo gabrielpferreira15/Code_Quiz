@@ -2,6 +2,17 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from .models import Linguagem, Assunto, Pergunta, Resposta
 from django.http import JsonResponse
+from django.contrib.auth.forms import UserCreationForm 
+
+def signup(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save() 
+            return redirect('login')
+    else:
+        form = UserCreationForm()
+    return render(request, 'registration/signup.html', {'form': form})
 
 def configurar_quiz(request):
     linguagens = Linguagem.objects.all()
