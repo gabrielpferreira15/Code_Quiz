@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Acesso ao Sistema</h2>
+    
+    <form method="post">
+        {% csrf_token %}
+        
+        {{ form.as_p }}
+        
+        <button type="submit">Entrar</button>
+    </form>
+    
+    {% if form.errors %}
+        <p style="color: red;">Nome de usuário ou senha incorretos. Tente novamente.</p>
+    {% endif %}
+
+    <p>
+        <a href="{% url 'password_reset' %}">Esqueceu a senha?</a>
+    
+    </p>Não tem uma conta? <a href="{% url 'signup' %}">Cadastre-se</a></p>
+</div>
+{% endblock %}
