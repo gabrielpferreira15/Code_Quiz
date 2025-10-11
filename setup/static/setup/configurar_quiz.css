@@ -1,26 +1,15 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #0b1a2b;
-    color: #f0f8ff; 
-    display: flex;
-    justify-content: center; 
-    align-items: center; 
-    min-height: 100vh; 
-    margin: 0;
-}
-
-.container {
+.config-container {
     background-color: #1a2c3e; 
     padding: 40px;
     border-radius: 12px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6); 
     width: 90%;
     max-width: 500px;
+    text-align: center;
 }
 
-h2 {
+h1 {
     color: #4CAF50; 
-    text-align: center;
     margin-bottom: 30px;
     border-bottom: 2px solid #2e4a62;
     padding-bottom: 10px;
@@ -28,6 +17,7 @@ h2 {
 
 .form-group {
     margin-bottom: 25px;
+    text-align: left;
 }
 
 label {
@@ -72,11 +62,4 @@ button[type="submit"] {
 
 button[type="submit"]:hover {
     background-color: #6ed072; 
-}
-
-.logo-image {
-    max-width: 175px;
-    height: auto;
-    display: block;
-    margin: 0 auto 0px auto;
 }

@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -6,24 +7,89 @@
     <title>{% block title %}Meu App Django{% endblock %}</title>
     
     <style>
-        .container {
-            max-width: 400px;
-            margin: 50px auto;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
+    /* Estilo principal do corpo da página */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #0b1a2b;
+        color: #f0f8ff;
+        display: flex;
+        flex-direction: column; /* Organiza os elementos principais (header, main, footer) em uma coluna vertical */
+        min-height: 100vh;      /* Garante que o corpo ocupe pelo menos 100% da altura da tela */
+        margin: 0;
+    }
+
+    /* Estilo do cabeçalho */
+    header {
+        width: 100%;
+        padding: 10px 40px; 
+        background-color: #1a2c3e;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        display: flex;                  /* Ativa o Flexbox para alinhar os itens internos */
+        justify-content: space-between; /* Empurra os filhos (header-left e nav) para os cantos opostos */
+        align-items: center;            /* Alinha os filhos verticalmente no centro */
+        box-sizing: border-box;
+    }
+
+    /* Agrupador para a logo e o título, para mantê-los juntos */
+    .header-left {
+        display: flex;
+        align-items: center; /* Alinha a logo e o título verticalmente */
+    }
+
+    /* Estilo da logo no cabeçalho */
+    .header-logo {
+        height: 60px; 
+        width: auto;
+        margin-right: 15px; /* Cria um espaço entre a logo e o título */
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 2.0em;
+        color: #4CAF50;
+    }
+
+    header a {
+        color: #6ed072;
+        text-decoration: none; /* Remove o sublinhado dos links */
+    }
+
+    /* Estilo da área de conteúdo principal */
+    main {
+        flex-grow: 1;           /* FAZ O CONTEÚDO CRESCER: Esta é a regra mais importante para empurrar o rodapé para baixo */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 40px 20px; 
+    }
+
+    /* Estilo do rodapé */
+    footer {
+        width: 100%;
+        padding: 15px 40px;
+        font-size: 0.9em;
+        color: #c0d0e0;
+        text-align: right; /* Alinha o texto do copyright à direita */
+        box-sizing: border-box;
+    }
     </style>
+
+    {% block extra_css %}{% endblock %}
 </head>
+
 <body>
     <header>
-        <h1>Minha Aplicação</h1>
+        <div class="header-left">
+            <img src="{% static 'setup/logo.png' %}" alt="Logo Code Quiz" class="header-logo">
+            <h1>Code Quiz</h1>
+        </div>
+        
         <nav>
             {% if user.is_authenticated %}
                 Olá, {{ user.username }}! 
-                <a href="{% url 'logout' %}">Sair</a>
+                <a href="{% url 'logout' %}"> Sair</a>
             {% else %}
-                <a href="{% url 'login' %}">Login</a>
+                <a href="{% url 'login' %}"> Login</a>
             {% endif %}
         </nav>
     </header>
@@ -35,7 +101,7 @@
     </main>
 
     <footer>
-        <p>&copy; {% now "Y" %} Meu Projeto Django</p>
+        <p>&copy; {% now "Y" %} Code Quiz</p>
     </footer>
 </body>
 </html>

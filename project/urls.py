@@ -24,6 +24,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/signup/', setup_views.signup, name='signup'),
-    path('', RedirectView.as_view(url='/accounts/login/', permanent=False)),
+    path('', setup_views.home_redirect, name='home_redirect'),
     path('quiz/', include('setup.urls')),
 ]

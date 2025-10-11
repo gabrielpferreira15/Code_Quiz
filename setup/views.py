@@ -1,8 +1,14 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
-from .models import Linguagem, Assunto, Pergunta, Resposta
+from .models import Linguagem, Assunto, Pergunta, Resposta, Dificuldade, PerguntaDificuldade
 from django.http import JsonResponse
 from django.contrib.auth.forms import UserCreationForm 
+
+def home_redirect(request):
+    if request.user.is_authenticated:
+        return redirect('/quiz/')
+    else:
+        return redirect('login')
 
 def signup(request):
     if request.method == 'POST':
@@ -18,6 +24,10 @@ def configurar_quiz(request):
     linguagens = Linguagem.objects.all()
     return render(request, 'setup/configurar_quiz.html', {'linguagens': linguagens})
 
+def get_dificuldades(request):
+    dificuldades = Dificuldade.objects.all()
+    dificuldades_lista = [{'id': d.id, 'nome': d.nome} for d in dificuldades]
+    return JsonResponse(dificuldades_lista, safe=False)
 
 def get_assuntos(request, linguagem_id):
     assuntos = Assunto.objects.filter(linguagem_id=linguagem_id)
@@ -33,12 +43,23 @@ def get_assuntos(request, linguagem_id):
     return JsonResponse(assuntos_lista, safe=False)
 
 
-def iniciar_novo_quiz(request, assunto_id):
+def iniciar_novo_quiz(request, assunto_id, dificuldade_id):
     assunto = get_object_or_404(Assunto, id=assunto_id)
-    lista_perguntas = list(Pergunta.objects.filter(assunto=assunto).values_list('id', flat=True))
+    
+    lista_perguntas = list(
+        Pergunta.objects.filter(
+            assunto_id=assunto_id,
+            dificuldade_link__dificuldade_id=dificuldade_id
+        ).values_list('id', flat=True)
+    )
+
+    if not lista_perguntas:
+        messages.error(request, "Não foram encontradas perguntas para a seleção de assunto e dificuldade informada.")
+        return redirect('configurar_quiz')
+
     request.session['lista_perguntas'] = lista_perguntas
     request.session['placar'] = 0
-    request.session['perguntas_erradas_info'] = [] 
+    request.session['perguntas_erradas_info'] = []
     
     return redirect('jogar_quiz', assunto_id=assunto_id)
 
