@@ -91,6 +91,19 @@ def popular_dados(apps, schema_editor):
     Resposta.objects.create(pergunta=p8, texto="[3]", correta=False)
     Resposta.objects.create(pergunta=p8, texto="O código resultará em um erro.", correta=False)
 
+    p9 = Pergunta.objects.create(assunto=assunto_py_sb, texto='Qual é a maneira mais "pythônica" de inverter a string `s = "python"`?', explicacao="A sintaxe de fatiamento (slicing) `[::-1]` é a forma idiomática e mais eficiente de criar uma cópia invertida de uma sequência em Python. `s.reverse()` não existe para strings.")
+    PerguntaDificuldade.objects.create(pergunta=p9, dificuldade=medio)
+    Resposta.objects.create(pergunta=p9, texto="s.reverse()", correta=False)
+    Resposta.objects.create(pergunta=p9, texto="reversed(s)", correta=False)
+    Resposta.objects.create(pergunta=p9, texto="s[::-1]", correta=True)
+    Resposta.objects.create(pergunta=p9, texto="for c in s: s = c + s", correta=False)
+
+    p10 = Pergunta.objects.create(assunto=assunto_py_sb, texto="O que a expressão `(1, 2, 3) + (4, 5)` produzirá?", explicacao="Embora as tuplas sejam imutáveis, o operador `+` pode ser usado para concatená-las. Isso não modifica as tuplas originais, mas cria uma nova tupla contendo os elementos de ambas.")
+    PerguntaDificuldade.objects.create(pergunta=p10, dificuldade=medio)
+    Resposta.objects.create(pergunta=p10, texto="(1, 2, 3, 4, 5)", correta=True)
+    Resposta.objects.create(pergunta=p10, texto="(5, 7, 3)", correta=False)
+    Resposta.objects.create(pergunta=p10, texto="Um TypeError, pois tuplas são imutáveis.", correta=False)
+    Resposta.objects.create(pergunta=p10, texto="(1, 2, 3, [4, 5])", correta=False)
 
     # --- PERGUNTAS DE NÍVEL DIFÍCIL ---
     # Adicione aqui as perguntas de nível DIFÍCIL para 'Sintaxe Básica' de Python
@@ -104,45 +117,49 @@ def popular_dados(apps, schema_editor):
     assunto_py_er = Assunto.objects.create(linguagem=python, nome=assunto_py_er_nome, slug=slugify(f'{python.nome}-{assunto_py_er_nome}'))
 
     # --- PERGUNTAS DE NÍVEL FÁCIL ---
-    p6 = Pergunta.objects.create(assunto=assunto_py_er, texto="Qual estrutura de repetição é mais adequada para iterar sobre os itens de uma lista?", explicacao="O laço `for` em Python é projetado para...")
-    PerguntaDificuldade.objects.create(pergunta=p6, dificuldade=facil)
-    Resposta.objects.create(pergunta=p6, texto="O laço while", correta=False)
-    Resposta.objects.create(pergunta=p6, texto="O laço do-while", correta=False)
-    Resposta.objects.create(pergunta=p6, texto="O laço for", correta=True)
-    Resposta.objects.create(pergunta=p6, texto="A recursão", correta=False)
+    p11 = Pergunta.objects.create(assunto=assunto_py_er, texto="Qual estrutura de repetição é mais adequada para iterar sobre os itens de uma lista?", explicacao="O laço `for` em Python é projetado para iterar diretamente sobre os elementos de uma sequência (como uma lista, tupla ou string).")
+    PerguntaDificuldade.objects.create(pergunta=p11, dificuldade=facil)
+    Resposta.objects.create(pergunta=p11, texto="O laço while", correta=False)
+    Resposta.objects.create(pergunta=p11, texto="O laço do-while", correta=False)
+    Resposta.objects.create(pergunta=p11, texto="O laço for", correta=True)
+    Resposta.objects.create(pergunta=p11, texto="A recursão", correta=False)
 
-    p7 = Pergunta.objects.create(assunto=assunto_py_er, texto="Como você cria um laço que executa 5 vezes usando a função range()?", explicacao="A função `range(5)` gera uma sequência...")
-    PerguntaDificuldade.objects.create(pergunta=p7, dificuldade=facil)
-    Resposta.objects.create(pergunta=p7, texto="for i in range(1, 5):", correta=False)
-    Resposta.objects.create(pergunta=p7, texto="for i in range(5):", correta=True)
-    Resposta.objects.create(pergunta=p7, texto="for i in range(0, 6):", correta=False)
-    Resposta.objects.create(pergunta=p7, texto="for i in range(5-1):", correta=False)
+    p12 = Pergunta.objects.create(assunto=assunto_py_er, texto="Como você cria um laço que executa 5 vezes usando a função range()?", explicacao="A função `range(5)` gera uma sequência de números de 0 a 4 (cinco números no total), que é ideal para ser usada em um laço `for` para repetir uma ação 5 vezes.")
+    PerguntaDificuldade.objects.create(pergunta=p12, dificuldade=facil)
+    Resposta.objects.create(pergunta=p12, texto="for i in range(1, 5):", correta=False)
+    Resposta.objects.create(pergunta=p12, texto="for i in range(5):", correta=True)
+    Resposta.objects.create(pergunta=p12, texto="for i in range(0, 6):", correta=False)
+    Resposta.objects.create(pergunta=p12, texto="for i in range(5-1):", correta=False)
 
-    p8 = Pergunta.objects.create(assunto=assunto_py_er, texto="Qual palavra-chave é usada para parar completamente a execução de um laço?", explicacao="A instrução `break` interrompe a execução...")
-    PerguntaDificuldade.objects.create(pergunta=p8, dificuldade=facil)
-    Resposta.objects.create(pergunta=p8, texto="stop", correta=False)
-    Resposta.objects.create(pergunta=p8, texto="exit", correta=False)
-    Resposta.objects.create(pergunta=p8, texto="break", correta=True)
-    Resposta.objects.create(pergunta=p8, texto="return", correta=False)
+    p13 = Pergunta.objects.create(assunto=assunto_py_er, texto="Qual palavra-chave é usada para parar completamente a execução de um laço?", explicacao="A instrução `break` interrompe a execução do laço mais interno (seja `for` ou `while`) e o programa continua na próxima linha após o laço.")
+    PerguntaDificuldade.objects.create(pergunta=p13, dificuldade=facil)
+    Resposta.objects.create(pergunta=p13, texto="stop", correta=False)
+    Resposta.objects.create(pergunta=p13, texto="exit", correta=False)
+    Resposta.objects.create(pergunta=p13, texto="break", correta=True)
+    Resposta.objects.create(pergunta=p13, texto="return", correta=False)
 
-    p9 = Pergunta.objects.create(assunto=assunto_py_er, texto="Qual palavra-chave pula para a próxima iteração de um laço sem terminar o laço por completo?", explicacao="A instrução `continue` interrompe a iteração...")
-    PerguntaDificuldade.objects.create(pergunta=p9, dificuldade=facil)
-    Resposta.objects.create(pergunta=p9, texto="skip", correta=False)
-    Resposta.objects.create(pergunta=p9, texto="next", correta=False)
-    Resposta.objects.create(pergunta=p9, texto="pass", correta=False)
-    Resposta.objects.create(pergunta=p9, texto="continue", correta=True)
+    p14 = Pergunta.objects.create(assunto=assunto_py_er, texto="Qual palavra-chave pula para a próxima iteração de um laço sem terminar o laço por completo?", explicacao="A instrução `continue` interrompe a iteração atual e faz com que o laço pule imediatamente para o início da próxima iteração.")
+    PerguntaDificuldade.objects.create(pergunta=p14, dificuldade=facil)
+    Resposta.objects.create(pergunta=p14, texto="skip", correta=False)
+    Resposta.objects.create(pergunta=p14, texto="next", correta=False)
+    Resposta.objects.create(pergunta=p14, texto="pass", correta=False)
+    Resposta.objects.create(pergunta=p14, texto="continue", correta=True)
 
-    p10 = Pergunta.objects.create(assunto=assunto_py_er, texto="Qual é a sintaxe para um laço while que continua enquanto a variável contador for menor que 10?", explicacao="A sintaxe do `while` em Python começa...")
-    PerguntaDificuldade.objects.create(pergunta=p10, dificuldade=facil)
-    Resposta.objects.create(pergunta=p10, texto="while (contador < 10)", correta=False)
-    Resposta.objects.create(pergunta=p10, texto="while contador < 10:", correta=True)
-    Resposta.objects.create(pergunta=p10, texto="while: contador < 10", correta=False)
-    Resposta.objects.create(pergunta=p10, texto="loop while contador < 10:", correta=False)
-    
+    p15 = Pergunta.objects.create(assunto=assunto_py_er, texto="Qual é a sintaxe para um laço while que continua enquanto a variável contador for menor que 10?", explicacao="A sintaxe do `while` em Python começa com a palavra-chave `while`, seguida pela condição, e termina com dois pontos (`:`) para iniciar o bloco de código.")
+    PerguntaDificuldade.objects.create(pergunta=p15, dificuldade=facil)
+    Resposta.objects.create(pergunta=p15, texto="while (contador < 10)", correta=False)
+    Resposta.objects.create(pergunta=p15, texto="while contador < 10:", correta=True)
+    Resposta.objects.create(pergunta=p15, texto="while: contador < 10", correta=False)
+    Resposta.objects.create(pergunta=p15, texto="loop while contador < 10:", correta=False)
+
     # --- PERGUNTAS DE NÍVEL MÉDIO ---
-    # Adicione aqui as perguntas de nível MÉDIO para 'Estruturas de Repetição' de Python
-    # ...
-
+    p16 = Pergunta.objects.create(assunto=assunto_py_er, texto="O que será impresso pelo código `for i in range(5): if i == 3: break; else: print('Fim do laço')`?", explicacao="A cláusula `else` de um laço `for` só é executada se o laço terminar naturalmente (sem ser interrompido por um `break`). Como o `break` é acionado, o `else` é ignorado.")
+    PerguntaDificuldade.objects.create(pergunta=p16, dificuldade=medio)
+    Resposta.objects.create(pergunta=p16, texto="Fim do laço", correta=False)
+    Resposta.objects.create(pergunta=p16, texto="Nada será impresso.", correta=True)
+    Resposta.objects.create(pergunta=p16, texto="0 1 2", correta=False)
+    Resposta.objects.create(pergunta=p16, texto="O código resultará em um erro de sintaxe.", correta=False)
+    
     # --- PERGUNTAS DE NÍVEL DIFÍCIL ---
     # Adicione aqui as perguntas de nível DIFÍCIL para 'Estruturas de Repetição' de Python
     # ...
