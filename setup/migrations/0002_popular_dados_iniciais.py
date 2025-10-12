@@ -34,14 +34,14 @@ def popular_dados(apps, schema_editor):
     assunto_py_sb = Assunto.objects.create(linguagem=python, nome=assunto_py_sb_nome, slug=slugify(f'{python.nome}-{assunto_py_sb_nome}'))
 
     # --- PERGUNTAS DE NÍVEL FÁCIL ---
-    p1 = Pergunta.objects.create(assunto=assunto_py_sb, texto="Como você declara uma variável chamada idade com o valor 25 em Python?", explicacao="Python utiliza tipagem dinâmica, então basta atribuir o valor à variável sem declarar seu tipo explicitamente.")
+    p1 = Pergunta.objects.create(assunto=assunto_py_sb, texto="Qual das opções abaixo representa uma declaração válida de variável em Python?", explicacao="Em Python, não é necessário declarar o tipo da variável. Basta usar o operador '=' para atribuir um valor.")
     PerguntaDificuldade.objects.create(pergunta=p1, dificuldade=facil)
     Resposta.objects.create(pergunta=p1, texto="int idade = 25", correta=False)
     Resposta.objects.create(pergunta=p1, texto="idade = 25", correta=True)
-    Resposta.objects.create(pergunta=p1, texto="idade := 25", correta=False)
+    Resposta.objects.create(pergunta=p1, texto="var idade = 25", correta=False)
     Resposta.objects.create(pergunta=p1, texto="let idade = 25", correta=False)
 
-    p2 = Pergunta.objects.create(assunto=assunto_py_sb, texto="Qual é o símbolo usado para escrever um comentário de uma única linha em Python?", explicacao="Em Python, o caractere '#' (cerquilha) é usado para iniciar um comentário que vai até o final da linha.")
+    p2 = Pergunta.objects.create(assunto=assunto_py_sb, texto="Como se escreve um comentário de uma única linha em Python?", explicacao="O caractere '#' é usado para iniciar um comentário em Python. Tudo após ele na mesma linha é ignorado pelo interpretador.")
     PerguntaDificuldade.objects.create(pergunta=p2, dificuldade=facil)
     Resposta.objects.create(pergunta=p2, texto="//", correta=False)
     Resposta.objects.create(pergunta=p2, texto="/* ... */", correta=False)
