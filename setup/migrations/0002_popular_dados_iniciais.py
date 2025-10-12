@@ -250,6 +250,20 @@ def popular_dados(apps, schema_editor):
     Resposta.objects.create(pergunta=p28, texto="None", correta=False)
     Resposta.objects.create(pergunta=p28, texto="SyntaxError", correta=False)
 
+    p29 = Pergunta.objects.create(assunto=assunto_py_c, texto="Considere `a = [1]; b = [1]`. Qual o resultado de `a == b` e `a is b`, respectivamente?", explicacao="O operador `==` compara o VALOR dos objetos (ambas as listas contêm `[1]`, então é `True`). O operador `is` compara a IDENTIDADE (se são o mesmo objeto na memória, o que não são, então é `False`).")
+    PerguntaDificuldade.objects.create(pergunta=p29, dificuldade=medio)
+    Resposta.objects.create(pergunta=p29, texto="True, True", correta=False)
+    Resposta.objects.create(pergunta=p29, texto="False, False", correta=False)
+    Resposta.objects.create(pergunta=p29, texto="True, False", correta=True)
+    Resposta.objects.create(pergunta=p29, texto="False, True", correta=False)
+
+    p30 = Pergunta.objects.create(assunto=assunto_py_c, texto="Qual será o valor de `y` no código `x=5; if 3<x<4: y=1; elif 4<x<6: y=2; else: y=3`?", explicacao="Python permite comparações encadeadas. A expressão `4 < x < 6` é o mesmo que `4 < x and x < 6`. Como `x` é 5, essa condição é verdadeira, e `y` recebe o valor 2.")
+    PerguntaDificuldade.objects.create(pergunta=p30, dificuldade=medio)
+    Resposta.objects.create(pergunta=p30, texto="1", correta=False)
+    Resposta.objects.create(pergunta=p30, texto="2", correta=True)
+    Resposta.objects.create(pergunta=p30, texto="3", correta=False)
+    Resposta.objects.create(pergunta=p30, texto="A variável `y` não será definida.", correta=False)
+    
     # --- PERGUNTAS DE NÍVEL DIFÍCIL ---
     # Adicione aqui as perguntas de nível DIFÍCIL para 'Condicionais' de Python
     # ...
@@ -262,43 +276,49 @@ def popular_dados(apps, schema_editor):
     assunto_c_sb = Assunto.objects.create(linguagem=c_lang, nome=assunto_c_sb_nome, slug=slugify(f'{c_lang.nome}-{assunto_c_sb_nome}'))
 
     # --- PERGUNTAS DE NÍVEL FÁCIL ---
-    p16 = Pergunta.objects.create(assunto=assunto_c_sb, texto="Como você declara uma variável inteira chamada quantidade com o valor 50 em C?", explicacao="Em C, uma linguagem de tipagem estática...")
+    p31 = Pergunta.objects.create(assunto=assunto_c_sb, texto="Como você declara uma variável inteira chamada quantidade com o valor 50 em C?", explicacao="Em C, uma linguagem de tipagem estática...")
     PerguntaDificuldade.objects.create(pergunta=p16, dificuldade=facil)
     Resposta.objects.create(pergunta=p16, texto="quantidade = 50;", correta=False)
     Resposta.objects.create(pergunta=p16, texto="int quantidade = 50;", correta=True)
     Resposta.objects.create(pergunta=p16, texto="integer quantidade = 50;", correta=False)
     Resposta.objects.create(pergunta=p16, texto="var quantidade = 50;", correta=False)
 
-    p17 = Pergunta.objects.create(assunto=assunto_c_sb, texto="Qual é o símbolo usado para indicar o fim de uma instrução em C?", explicacao="O ponto e vírgula (`;`) é um terminador...")
+    p32 = Pergunta.objects.create(assunto=assunto_c_sb, texto="Qual é o símbolo usado para indicar o fim de uma instrução em C?", explicacao="O ponto e vírgula (`;`) é um terminador...")
     PerguntaDificuldade.objects.create(pergunta=p17, dificuldade=facil)
     Resposta.objects.create(pergunta=p17, texto=". (ponto final)", correta=False)
     Resposta.objects.create(pergunta=p17, texto=": (dois pontos)", correta=False)
     Resposta.objects.create(pergunta=p17, texto="; (ponto e vírgula)", correta=True)
     Resposta.objects.create(pergunta=p17, texto="O final da linha", correta=False)
 
-    p18 = Pergunta.objects.create(assunto=assunto_c_sb, texto="Qual função da biblioteca stdio.h é usada para imprimir texto formatado no console?", explicacao="A função `printf()` (print formatted) faz parte...")
+    p33 = Pergunta.objects.create(assunto=assunto_c_sb, texto="Qual função da biblioteca stdio.h é usada para imprimir texto formatado no console?", explicacao="A função `printf()` (print formatted) faz parte...")
     PerguntaDificuldade.objects.create(pergunta=p18, dificuldade=facil)
     Resposta.objects.create(pergunta=p18, texto="print()", correta=False)
     Resposta.objects.create(pergunta=p18, texto="cout <<", correta=False)
     Resposta.objects.create(pergunta=p18, texto="printf()", correta=True)
     Resposta.objects.create(pergunta=p18, texto="log()", correta=False)
 
-    p19 = Pergunta.objects.create(assunto=assunto_c_sb, texto="Como você escreve um comentário de múltiplas linhas em C?", explicacao="Em C, um comentário de bloco...")
+    p34 = Pergunta.objects.create(assunto=assunto_c_sb, texto="Como você escreve um comentário de múltiplas linhas em C?", explicacao="Em C, um comentário de bloco...")
     PerguntaDificuldade.objects.create(pergunta=p19, dificuldade=facil)
     Resposta.objects.create(pergunta=p19, texto="// ... //", correta=False)
     Resposta.objects.create(pergunta=p19, texto="# ... #", correta=False)
     Resposta.objects.create(pergunta=p19, texto="/* ... */", correta=True)
     Resposta.objects.create(pergunta=p19, texto='""" ... """', correta=False)
 
-    p20 = Pergunta.objects.create(assunto=assunto_c_sb, texto="Qual diretiva de pré-processador é necessária para usar a função printf?", explicacao="A diretiva `#include <stdio.h>` instrui...")
+    p35 = Pergunta.objects.create(assunto=assunto_c_sb, texto="Qual diretiva de pré-processador é necessária para usar a função printf?", explicacao="A diretiva `#include <stdio.h>` instrui...")
     PerguntaDificuldade.objects.create(pergunta=p20, dificuldade=facil)
     Resposta.objects.create(pergunta=p20, texto="#import <stdio.h>", correta=False)
     Resposta.objects.create(pergunta=p20, texto="#require <stdio.h>", correta=False)
     Resposta.objects.create(pergunta=p20, texto='#include "stdio.h"', correta=False)
     Resposta.objects.create(pergunta=p20, texto="#include <stdio.h>", correta=True)
 
+    
     # --- PERGUNTAS DE NÍVEL MÉDIO ---
-    # Adicione aqui as perguntas de nível MÉDIO para 'Sintaxe Básica' de C
+    p36 = Pergunta.objects.create(assunto=assunto_c_sb, texto="Qual o resultado da expressão `(float) 5 / 2` em C?", explicacao="O 'type cast' `(float)` converte o inteiro 5 para um float. Quando um dos operandos da divisão é float, a operação inteira é promovida para uma divisão de ponto flutuante, resultando em 2.5.")
+    PerguntaDificuldade.objects.create(pergunta=p36, dificuldade=medio)
+    Resposta.objects.create(pergunta=p36, texto="2", correta=False)
+    Resposta.objects.create(pergunta=p36, texto="2.5", correta=True)
+    Resposta.objects.create(pergunta=p36, texto="2.0", correta=False)
+    Resposta.objects.create(pergunta=p36, texto="O código não compila.", correta=False)
     # ...
 
     # --- PERGUNTAS DE NÍVEL DIFÍCIL ---
