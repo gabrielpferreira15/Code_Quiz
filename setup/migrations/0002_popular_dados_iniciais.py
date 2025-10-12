@@ -193,35 +193,35 @@ def popular_dados(apps, schema_editor):
     assunto_py_c = Assunto.objects.create(linguagem=python, nome=assunto_py_c_nome, slug=slugify(f'{python.nome}-{assunto_py_c_nome}'))
 
     # --- PERGUNTAS DE NÍVEL FÁCIL ---
-    p11 = Pergunta.objects.create(assunto=assunto_py_c, texto='Qual palavra-chave é usada para a parte "senão se" em uma estrutura condicional em Python?', explicacao="Python utiliza a contração `elif`...")
+    p20 = Pergunta.objects.create(assunto=assunto_py_c, texto='Qual palavra-chave é usada para a parte "senão se" em uma estrutura condicional em Python?', explicacao="Python utiliza a contração `elif`...")
     PerguntaDificuldade.objects.create(pergunta=p11, dificuldade=facil)
     Resposta.objects.create(pergunta=p11, texto="else if", correta=False)
     Resposta.objects.create(pergunta=p11, texto="elif", correta=True)
     Resposta.objects.create(pergunta=p11, texto="elseif", correta=False)
     Resposta.objects.create(pergunta=p11, texto="elsif", correta=False)
    
-    p12 = Pergunta.objects.create(assunto=assunto_py_c, texto='Como se escreve a condição "se a não for igual a b" em Python?', explicacao="O operador de desigualdade em Python é `!=`...")
+    p21 = Pergunta.objects.create(assunto=assunto_py_c, texto='Como se escreve a condição "se a não for igual a b" em Python?', explicacao="O operador de desigualdade em Python é `!=`...")
     PerguntaDificuldade.objects.create(pergunta=p12, dificuldade=facil)
     Resposta.objects.create(pergunta=p12, texto="if a <> b:", correta=False)
     Resposta.objects.create(pergunta=p12, texto="if not(a == b):", correta=False)
     Resposta.objects.create(pergunta=p12, texto="if a != b:", correta=True)
     Resposta.objects.create(pergunta=p12, texto="if a is not b:", correta=False)
 
-    p13 = Pergunta.objects.create(assunto=assunto_py_c, texto='Qual é o operador lógico para "E" em Python?', explicacao="Python usa palavras em inglês para operadores...")
+    p22= Pergunta.objects.create(assunto=assunto_py_c, texto='Qual é o operador lógico para "E" em Python?', explicacao="Python usa palavras em inglês para operadores...")
     PerguntaDificuldade.objects.create(pergunta=p13, dificuldade=facil)
     Resposta.objects.create(pergunta=p13, texto="&&", correta=False)
     Resposta.objects.create(pergunta=p13, texto="and", correta=True)
     Resposta.objects.create(pergunta=p13, texto="&", correta=False)
     Resposta.objects.create(pergunta=p13, texto="AND", correta=False)
 
-    p14 = Pergunta.objects.create(assunto=assunto_py_c, texto="O que a seguinte expressão booleana retornaria: not (True and False)?", explicacao="A ordem de operação é...")
+    p23 = Pergunta.objects.create(assunto=assunto_py_c, texto="O que a seguinte expressão booleana retornaria: not (True and False)?", explicacao="A ordem de operação é...")
     PerguntaDificuldade.objects.create(pergunta=p14, dificuldade=facil)
     Resposta.objects.create(pergunta=p14, texto="True", correta=True)
     Resposta.objects.create(pergunta=p14, texto="False", correta=False)
     Resposta.objects.create(pergunta=p14, texto="None", correta=False)
     Resposta.objects.create(pergunta=p14, texto="Error", correta=False)
 
-    p15 = Pergunta.objects.create(assunto=assunto_py_c, texto='Qual é a sintaxe correta para um bloco if em Python que verifica se a variável nome é igual a "Ana"?', explicacao="A sintaxe de um `if` em Python exige...")
+    p24 = Pergunta.objects.create(assunto=assunto_py_c, texto='Qual é a sintaxe correta para um bloco if em Python que verifica se a variável nome é igual a "Ana"?', explicacao="A sintaxe de um `if` em Python exige...")
     PerguntaDificuldade.objects.create(pergunta=p15, dificuldade=facil)
     Resposta.objects.create(pergunta=p15, texto='if (nome == "Ana")', correta=False)
     Resposta.objects.create(pergunta=p15, texto='if nome = "Ana":', correta=False)
@@ -229,8 +229,26 @@ def popular_dados(apps, schema_editor):
     Resposta.objects.create(pergunta=p15, texto='if nome is "Ana" then', correta=False)
     
     # --- PERGUNTAS DE NÍVEL MÉDIO ---
-    # Adicione aqui as perguntas de nível MÉDIO para 'Condicionais' de Python
-    # ...
+    p26 = Pergunta.objects.create(assunto=assunto_py_c, texto='Qual será o valor de `resultado` após a execução do código: `x = 0; resultado = "A" if x else "B"`?', explicacao="Este é o operador ternário do Python. A condição avalia a 'veracidade' de `x`. Em Python, `0` é considerado `False`, portanto, o valor após o `else` é retornado.")
+    PerguntaDificuldade.objects.create(pergunta=p26, dificuldade=medio)
+    Resposta.objects.create(pergunta=p26, texto='"A"', correta=False)
+    Resposta.objects.create(pergunta=p26, texto='"B"', correta=True)
+    Resposta.objects.create(pergunta=p26, texto="True", correta=False)
+    Resposta.objects.create(pergunta=p26, texto="O código resultará em um erro.", correta=False)
+
+    p27 = Pergunta.objects.create(assunto=assunto_py_c, texto='O que a expressão `[] or 0 or "Olá"` retornará?', explicacao="O operador `or` retorna o primeiro valor 'truthy' (verdadeiro) que encontrar. Uma lista vazia (`[]`) e o número `0` são 'falsy'. A string não vazia `\"Olá\"` é 'truthy', então ela é retornada.")
+    PerguntaDificuldade.objects.create(pergunta=p27, dificuldade=medio)
+    Resposta.objects.create(pergunta=p27, texto="False", correta=False)
+    Resposta.objects.create(pergunta=p27, texto="[]", correta=False)
+    Resposta.objects.create(pergunta=p27, texto='"Olá"', correta=True)
+    Resposta.objects.create(pergunta=p27, texto="True", correta=False)
+
+    p28 = Pergunta.objects.create(assunto=assunto_py_c, texto="Qual o resultado da expressão `True or False and not True`?", explicacao="A precedência de operadores é `not`, depois `and`, depois `or`. A expressão é avaliada como `True or (False and (not True))` -> `True or (False and False)` -> `True or False`, que resulta em `True`.")
+    PerguntaDificuldade.objects.create(pergunta=p28, dificuldade=medio)
+    Resposta.objects.create(pergunta=p28, texto="True", correta=True)
+    Resposta.objects.create(pergunta=p28, texto="False", correta=False)
+    Resposta.objects.create(pergunta=p28, texto="None", correta=False)
+    Resposta.objects.create(pergunta=p28, texto="SyntaxError", correta=False)
 
     # --- PERGUNTAS DE NÍVEL DIFÍCIL ---
     # Adicione aqui as perguntas de nível DIFÍCIL para 'Condicionais' de Python
