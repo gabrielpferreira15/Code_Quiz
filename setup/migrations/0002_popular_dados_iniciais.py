@@ -180,11 +180,17 @@ def popular_dados(apps, schema_editor):
     Resposta.objects.create(pergunta=p19, texto="Retorna uma tupla contendo um contador (índice) e o valor de cada item da sequência.", correta=True)
     Resposta.objects.create(pergunta=p19, texto="Verifica se os itens da lista são numéricos.", correta=False)
     Resposta.objects.create(pergunta=p19, texto="Executa o laço um número fixo de vezes, independentemente do tamanho da lista.", correta=False)
+
+    p20 = Pergunta.objects.create(assunto=assunto_py_er, texto="O que acontece no laço `letras=['a','b','c']; while letras: print(letras.pop(0))`?", explicacao="A condição `while letras:` é verdadeira enquanto a lista não estiver vazia. `letras.pop(0)` remove e retorna o primeiro elemento ('a', depois 'b', depois 'c'), esvaziando a lista e encerrando o laço.")
+    PerguntaDificuldade.objects.create(pergunta=p20, dificuldade=medio)
+    Resposta.objects.create(pergunta=p20, texto="Entra em um loop infinito.", correta=False)
+    Resposta.objects.create(pergunta=p20, texto="Imprime 'a', 'b', e 'c', cada um em uma nova linha.", correta=True)
+    Resposta.objects.create(pergunta=p20, texto="Imprime 'c', 'b', e 'a', cada um em uma nova linha.", correta=False)
+    Resposta.objects.create(pergunta=p20, texto="Gera um IndexError.", correta=False)
     
     # --- PERGUNTAS DE NÍVEL DIFÍCIL ---
     # Adicione aqui as perguntas de nível DIFÍCIL para 'Estruturas de Repetição' de Python
     # ...
-
 
     # ====================================================================
     # === QUIZ PYTHON: CONDICIONAIS ===
@@ -193,40 +199,40 @@ def popular_dados(apps, schema_editor):
     assunto_py_c = Assunto.objects.create(linguagem=python, nome=assunto_py_c_nome, slug=slugify(f'{python.nome}-{assunto_py_c_nome}'))
 
     # --- PERGUNTAS DE NÍVEL FÁCIL ---
-    p20 = Pergunta.objects.create(assunto=assunto_py_c, texto='Qual palavra-chave é usada para a parte "senão se" em uma estrutura condicional em Python?', explicacao="Python utiliza a contração `elif`...")
-    PerguntaDificuldade.objects.create(pergunta=p11, dificuldade=facil)
-    Resposta.objects.create(pergunta=p11, texto="else if", correta=False)
-    Resposta.objects.create(pergunta=p11, texto="elif", correta=True)
-    Resposta.objects.create(pergunta=p11, texto="elseif", correta=False)
-    Resposta.objects.create(pergunta=p11, texto="elsif", correta=False)
-   
-    p21 = Pergunta.objects.create(assunto=assunto_py_c, texto='Como se escreve a condição "se a não for igual a b" em Python?', explicacao="O operador de desigualdade em Python é `!=`...")
-    PerguntaDificuldade.objects.create(pergunta=p12, dificuldade=facil)
-    Resposta.objects.create(pergunta=p12, texto="if a <> b:", correta=False)
-    Resposta.objects.create(pergunta=p12, texto="if not(a == b):", correta=False)
-    Resposta.objects.create(pergunta=p12, texto="if a != b:", correta=True)
-    Resposta.objects.create(pergunta=p12, texto="if a is not b:", correta=False)
+    p21 = Pergunta.objects.create(assunto=assunto_py_c, texto='Qual palavra-chave é usada para a parte "senão se" em uma estrutura condicional em Python?', explicacao="Python utiliza a contração `elif` para 'else if', tornando o código mais conciso.")
+    PerguntaDificuldade.objects.create(pergunta=p21, dificuldade=facil)
+    Resposta.objects.create(pergunta=p21, texto="else if", correta=False)
+    Resposta.objects.create(pergunta=p21, texto="elif", correta=True)
+    Resposta.objects.create(pergunta=p21, texto="elseif", correta=False)
+    Resposta.objects.create(pergunta=p21, texto="elsif", correta=False)
+    
+    p22 = Pergunta.objects.create(assunto=assunto_py_c, texto='Como se escreve a condição "se a não for igual a b" em Python?', explicacao="O operador de desigualdade em Python é `!=`. A expressão `a is not b` verifica se `a` e `b` são objetos diferentes na memória, o que é uma verificação mais estrita.")
+    PerguntaDificuldade.objects.create(pergunta=p22, dificuldade=facil)
+    Resposta.objects.create(pergunta=p22, texto="if a <> b:", correta=False)
+    Resposta.objects.create(pergunta=p22, texto="if not(a == b):", correta=False)
+    Resposta.objects.create(pergunta=p22, texto="if a != b:", correta=True)
+    Resposta.objects.create(pergunta=p22, texto="if a is not b:", correta=False)
 
-    p22= Pergunta.objects.create(assunto=assunto_py_c, texto='Qual é o operador lógico para "E" em Python?', explicacao="Python usa palavras em inglês para operadores...")
-    PerguntaDificuldade.objects.create(pergunta=p13, dificuldade=facil)
-    Resposta.objects.create(pergunta=p13, texto="&&", correta=False)
-    Resposta.objects.create(pergunta=p13, texto="and", correta=True)
-    Resposta.objects.create(pergunta=p13, texto="&", correta=False)
-    Resposta.objects.create(pergunta=p13, texto="AND", correta=False)
+    p23 = Pergunta.objects.create(assunto=assunto_py_c, texto='Qual é o operador lógico para "E" em Python?', explicacao="Python usa palavras em inglês (`and`, `or`, `not`) para operadores lógicos, em vez de símbolos como `&&` ou `||`.")
+    PerguntaDificuldade.objects.create(pergunta=p23, dificuldade=facil)
+    Resposta.objects.create(pergunta=p23, texto="&&", correta=False)
+    Resposta.objects.create(pergunta=p23, texto="and", correta=True)
+    Resposta.objects.create(pergunta=p23, texto="&", correta=False)
+    Resposta.objects.create(pergunta=p23, texto="AND", correta=False)
 
-    p23 = Pergunta.objects.create(assunto=assunto_py_c, texto="O que a seguinte expressão booleana retornaria: not (True and False)?", explicacao="A ordem de operação é...")
-    PerguntaDificuldade.objects.create(pergunta=p14, dificuldade=facil)
-    Resposta.objects.create(pergunta=p14, texto="True", correta=True)
-    Resposta.objects.create(pergunta=p14, texto="False", correta=False)
-    Resposta.objects.create(pergunta=p14, texto="None", correta=False)
-    Resposta.objects.create(pergunta=p14, texto="Error", correta=False)
+    p24 = Pergunta.objects.create(assunto=assunto_py_c, texto="O que a seguinte expressão booleana retornaria: not (True and False)?", explicacao="A ordem de operação é: primeiro o que está dentro dos parênteses (`True and False` resulta em `False`), depois o `not` (`not False` resulta em `True`).")
+    PerguntaDificuldade.objects.create(pergunta=p24, dificuldade=facil)
+    Resposta.objects.create(pergunta=p24, texto="True", correta=True)
+    Resposta.objects.create(pergunta=p24, texto="False", correta=False)
+    Resposta.objects.create(pergunta=p24, texto="None", correta=False)
+    Resposta.objects.create(pergunta=p24, texto="Error", correta=False)
 
-    p24 = Pergunta.objects.create(assunto=assunto_py_c, texto='Qual é a sintaxe correta para um bloco if em Python que verifica se a variável nome é igual a "Ana"?', explicacao="A sintaxe de um `if` em Python exige...")
-    PerguntaDificuldade.objects.create(pergunta=p15, dificuldade=facil)
-    Resposta.objects.create(pergunta=p15, texto='if (nome == "Ana")', correta=False)
-    Resposta.objects.create(pergunta=p15, texto='if nome = "Ana":', correta=False)
-    Resposta.objects.create(pergunta=p15, texto='if nome == "Ana":', correta=True)
-    Resposta.objects.create(pergunta=p15, texto='if nome is "Ana" then', correta=False)
+    p25 = Pergunta.objects.create(assunto=assunto_py_c, texto='Qual é a sintaxe correta para um bloco if em Python que verifica se a variável nome é igual a "Ana"?', explicacao="A sintaxe de um `if` em Python exige o operador de comparação `==`, e o bloco de código é iniciado por dois pontos (`:`).")
+    PerguntaDificuldade.objects.create(pergunta=p25, dificuldade=facil)
+    Resposta.objects.create(pergunta=p25, texto='if (nome == "Ana")', correta=False)
+    Resposta.objects.create(pergunta=p25, texto='if nome = "Ana":', correta=False)
+    Resposta.objects.create(pergunta=p25, texto='if nome == "Ana":', correta=True)
+    Resposta.objects.create(pergunta=p25, texto='if nome is "Ana" then', correta=False)
     
     # --- PERGUNTAS DE NÍVEL MÉDIO ---
     p26 = Pergunta.objects.create(assunto=assunto_py_c, texto='Qual será o valor de `resultado` após a execução do código: `x = 0; resultado = "A" if x else "B"`?', explicacao="Este é o operador ternário do Python. A condição avalia a 'veracidade' de `x`. Em Python, `0` é considerado `False`, portanto, o valor após o `else` é retornado.")
@@ -268,7 +274,6 @@ def popular_dados(apps, schema_editor):
     # Adicione aqui as perguntas de nível DIFÍCIL para 'Condicionais' de Python
     # ...
 
-
     # ====================================================================
     # === QUIZ C: SINTAXE BÁSICA ===
     # ====================================================================
@@ -276,42 +281,41 @@ def popular_dados(apps, schema_editor):
     assunto_c_sb = Assunto.objects.create(linguagem=c_lang, nome=assunto_c_sb_nome, slug=slugify(f'{c_lang.nome}-{assunto_c_sb_nome}'))
 
     # --- PERGUNTAS DE NÍVEL FÁCIL ---
-    p31 = Pergunta.objects.create(assunto=assunto_c_sb, texto="Como você declara uma variável inteira chamada quantidade com o valor 50 em C?", explicacao="Em C, uma linguagem de tipagem estática...")
-    PerguntaDificuldade.objects.create(pergunta=p16, dificuldade=facil)
-    Resposta.objects.create(pergunta=p16, texto="quantidade = 50;", correta=False)
-    Resposta.objects.create(pergunta=p16, texto="int quantidade = 50;", correta=True)
-    Resposta.objects.create(pergunta=p16, texto="integer quantidade = 50;", correta=False)
-    Resposta.objects.create(pergunta=p16, texto="var quantidade = 50;", correta=False)
+    p31 = Pergunta.objects.create(assunto=assunto_c_sb, texto="Como você declara uma variável inteira chamada quantidade com o valor 50 em C?", explicacao="Em C, uma linguagem de tipagem estática, você deve declarar o tipo da variável (`int`) antes de seu nome e, opcionalmente, inicializá-la.")
+    PerguntaDificuldade.objects.create(pergunta=p31, dificuldade=facil)
+    Resposta.objects.create(pergunta=p31, texto="quantidade = 50;", correta=False)
+    Resposta.objects.create(pergunta=p31, texto="int quantidade = 50;", correta=True)
+    Resposta.objects.create(pergunta=p31, texto="integer quantidade = 50;", correta=False)
+    Resposta.objects.create(pergunta=p31, texto="var quantidade = 50;", correta=False)
 
-    p32 = Pergunta.objects.create(assunto=assunto_c_sb, texto="Qual é o símbolo usado para indicar o fim de uma instrução em C?", explicacao="O ponto e vírgula (`;`) é um terminador...")
-    PerguntaDificuldade.objects.create(pergunta=p17, dificuldade=facil)
-    Resposta.objects.create(pergunta=p17, texto=". (ponto final)", correta=False)
-    Resposta.objects.create(pergunta=p17, texto=": (dois pontos)", correta=False)
-    Resposta.objects.create(pergunta=p17, texto="; (ponto e vírgula)", correta=True)
-    Resposta.objects.create(pergunta=p17, texto="O final da linha", correta=False)
+    p32 = Pergunta.objects.create(assunto=assunto_c_sb, texto="Qual é o símbolo usado para indicar o fim de uma instrução em C?", explicacao="O ponto e vírgula (`;`) é um terminador de instrução fundamental em C, sinalizando ao compilador que um comando foi concluído.")
+    PerguntaDificuldade.objects.create(pergunta=p32, dificuldade=facil)
+    Resposta.objects.create(pergunta=p32, texto=". (ponto final)", correta=False)
+    Resposta.objects.create(pergunta=p32, texto=": (dois pontos)", correta=False)
+    Resposta.objects.create(pergunta=p32, texto="; (ponto e vírgula)", correta=True)
+    Resposta.objects.create(pergunta=p32, texto="O final da linha", correta=False)
 
-    p33 = Pergunta.objects.create(assunto=assunto_c_sb, texto="Qual função da biblioteca stdio.h é usada para imprimir texto formatado no console?", explicacao="A função `printf()` (print formatted) faz parte...")
-    PerguntaDificuldade.objects.create(pergunta=p18, dificuldade=facil)
-    Resposta.objects.create(pergunta=p18, texto="print()", correta=False)
-    Resposta.objects.create(pergunta=p18, texto="cout <<", correta=False)
-    Resposta.objects.create(pergunta=p18, texto="printf()", correta=True)
-    Resposta.objects.create(pergunta=p18, texto="log()", correta=False)
+    p33 = Pergunta.objects.create(assunto=assunto_c_sb, texto="Qual função da biblioteca stdio.h é usada para imprimir texto formatado no console?", explicacao="A função `printf()` (print formatted) faz parte da biblioteca de entrada/saída padrão (standard input/output) e é a principal forma de exibir texto no console.")
+    PerguntaDificuldade.objects.create(pergunta=p33, dificuldade=facil)
+    Resposta.objects.create(pergunta=p33, texto="print()", correta=False)
+    Resposta.objects.create(pergunta=p33, texto="cout <<", correta=False)
+    Resposta.objects.create(pergunta=p33, texto="printf()", correta=True)
+    Resposta.objects.create(pergunta=p33, texto="log()", correta=False)
 
-    p34 = Pergunta.objects.create(assunto=assunto_c_sb, texto="Como você escreve um comentário de múltiplas linhas em C?", explicacao="Em C, um comentário de bloco...")
-    PerguntaDificuldade.objects.create(pergunta=p19, dificuldade=facil)
-    Resposta.objects.create(pergunta=p19, texto="// ... //", correta=False)
-    Resposta.objects.create(pergunta=p19, texto="# ... #", correta=False)
-    Resposta.objects.create(pergunta=p19, texto="/* ... */", correta=True)
-    Resposta.objects.create(pergunta=p19, texto='""" ... """', correta=False)
+    p34 = Pergunta.objects.create(assunto=assunto_c_sb, texto="Como você escreve um comentário de múltiplas linhas em C?", explicacao="Em C, um comentário de bloco começa com `/*` e termina com `*/`, e tudo que estiver entre esses delimitadores é ignorado pelo compilador.")
+    PerguntaDificuldade.objects.create(pergunta=p34, dificuldade=facil)
+    Resposta.objects.create(pergunta=p34, texto="// ... //", correta=False)
+    Resposta.objects.create(pergunta=p34, texto="# ... #", correta=False)
+    Resposta.objects.create(pergunta=p34, texto="/* ... */", correta=True)
+    Resposta.objects.create(pergunta=p34, texto='""" ... """', correta=False)
 
-    p35 = Pergunta.objects.create(assunto=assunto_c_sb, texto="Qual diretiva de pré-processador é necessária para usar a função printf?", explicacao="A diretiva `#include <stdio.h>` instrui...")
-    PerguntaDificuldade.objects.create(pergunta=p20, dificuldade=facil)
-    Resposta.objects.create(pergunta=p20, texto="#import <stdio.h>", correta=False)
-    Resposta.objects.create(pergunta=p20, texto="#require <stdio.h>", correta=False)
-    Resposta.objects.create(pergunta=p20, texto='#include "stdio.h"', correta=False)
-    Resposta.objects.create(pergunta=p20, texto="#include <stdio.h>", correta=True)
+    p35 = Pergunta.objects.create(assunto=assunto_c_sb, texto="Qual diretiva de pré-processador é necessária para usar a função printf?", explicacao="A diretiva `#include <stdio.h>` instrui o pré-processador a incluir o conteúdo do arquivo de cabeçalho da biblioteca padrão de entrada/saída, onde `printf` é declarada.")
+    PerguntaDificuldade.objects.create(pergunta=p35, dificuldade=facil)
+    Resposta.objects.create(pergunta=p35, texto="#import <stdio.h>", correta=False)
+    Resposta.objects.create(pergunta=p35, texto="#require <stdio.h>", correta=False)
+    Resposta.objects.create(pergunta=p35, texto='#include "stdio.h"', correta=False)
+    Resposta.objects.create(pergunta=p35, texto="#include <stdio.h>", correta=True)
 
-    
     # --- PERGUNTAS DE NÍVEL MÉDIO ---
     p36 = Pergunta.objects.create(assunto=assunto_c_sb, texto="Qual o resultado da expressão `(float) 5 / 2` em C?", explicacao="O 'type cast' `(float)` converte o inteiro 5 para um float. Quando um dos operandos da divisão é float, a operação inteira é promovida para uma divisão de ponto flutuante, resultando em 2.5.")
     PerguntaDificuldade.objects.create(pergunta=p36, dificuldade=medio)
@@ -347,7 +351,7 @@ def popular_dados(apps, schema_editor):
     Resposta.objects.create(pergunta=p40, texto="2", correta=True)
     Resposta.objects.create(pergunta=p40, texto="3", correta=False)
     Resposta.objects.create(pergunta=p40, texto="TERCA", correta=False)
-
+    
     # --- PERGUNTAS DE NÍVEL DIFÍCIL ---
     # Adicione aqui as perguntas de nível DIFÍCIL para 'Sintaxe Básica' de C
     # ...
