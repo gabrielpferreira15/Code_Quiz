@@ -159,6 +159,27 @@ def popular_dados(apps, schema_editor):
     Resposta.objects.create(pergunta=p16, texto="Nada será impresso.", correta=True)
     Resposta.objects.create(pergunta=p16, texto="0 1 2", correta=False)
     Resposta.objects.create(pergunta=p16, texto="O código resultará em um erro de sintaxe.", correta=False)
+
+    p17 = Pergunta.objects.create(assunto=assunto_py_er, texto="Qual lista será gerada por: `[i*2 for i in range(5) if i % 2 != 0]`?", explicacao="A list comprehension itera de 0 a 4, a condição `if` filtra apenas os números ímpares (1 e 3), e a expressão `i*2` é aplicada a eles, resultando em 2 e 6.")
+    PerguntaDificuldade.objects.create(pergunta=p17, dificuldade=medio)
+    Resposta.objects.create(pergunta=p17, texto="[0, 2, 4, 6, 8]", correta=False)
+    Resposta.objects.create(pergunta=p17, texto="[2, 6]", correta=True)
+    Resposta.objects.create(pergunta=p17, texto="[1, 3]", correta=False)
+    Resposta.objects.create(pergunta=p17, texto="[0, 1, 2, 3, 4]", correta=False)
+
+    p18 = Pergunta.objects.create(assunto=assunto_py_er, texto="Qual a saída do código `count=0; for i in range(2): for j in range(3): if j==1: continue; count+=1; print(count)`?", explicacao="O laço externo roda 2 vezes. O laço interno roda 3 vezes, mas pula a iteração quando j==1. Portanto, o `count` é incrementado quando (j=0, j=2) para i=0, e (j=0, j=2) para i=1. Total de 4 incrementos.")
+    PerguntaDificuldade.objects.create(pergunta=p18, dificuldade=medio)
+    Resposta.objects.create(pergunta=p18, texto="6", correta=False)
+    Resposta.objects.create(pergunta=p18, texto="5", correta=False)
+    Resposta.objects.create(pergunta=p18, texto="4", correta=True)
+    Resposta.objects.create(pergunta=p18, texto="3", correta=False)
+
+    p19 = Pergunta.objects.create(assunto=assunto_py_er, texto="O que a função `enumerate` faz em um laço `for`?", explicacao="`enumerate` é uma função que adiciona um contador a um iterável. Ela retorna tuplas contendo o índice e o valor de cada item, sendo a forma idiomática de obter ambos em um laço.")
+    PerguntaDificuldade.objects.create(pergunta=p19, dificuldade=medio)
+    Resposta.objects.create(pergunta=p19, texto="Enumera a quantidade de memória usada por cada item da lista.", correta=False)
+    Resposta.objects.create(pergunta=p19, texto="Retorna uma tupla contendo um contador (índice) e o valor de cada item da sequência.", correta=True)
+    Resposta.objects.create(pergunta=p19, texto="Verifica se os itens da lista são numéricos.", correta=False)
+    Resposta.objects.create(pergunta=p19, texto="Executa o laço um número fixo de vezes, independentemente do tamanho da lista.", correta=False)
     
     # --- PERGUNTAS DE NÍVEL DIFÍCIL ---
     # Adicione aqui as perguntas de nível DIFÍCIL para 'Estruturas de Repetição' de Python
