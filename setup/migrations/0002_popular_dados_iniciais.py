@@ -319,7 +319,34 @@ def popular_dados(apps, schema_editor):
     Resposta.objects.create(pergunta=p36, texto="2.5", correta=True)
     Resposta.objects.create(pergunta=p36, texto="2.0", correta=False)
     Resposta.objects.create(pergunta=p36, texto="O código não compila.", correta=False)
-    # ...
+
+    p37 = Pergunta.objects.create(assunto=assunto_c_sb, texto="Qual o valor final de `x` no código `int x = 5; int y = x++;`?", explicacao="O operador de pós-incremento (`x++`) primeiro retorna o valor original de `x` (5, que é atribuído a `y`) e DEPOIS incrementa `x`. Portanto, ao final, `y` vale 5 e `x` vale 6.")
+    PerguntaDificuldade.objects.create(pergunta=p37, dificuldade=medio)
+    Resposta.objects.create(pergunta=p37, texto="4", correta=False)
+    Resposta.objects.create(pergunta=p37, texto="5", correta=False)
+    Resposta.objects.create(pergunta=p37, texto="6", correta=True)
+    Resposta.objects.create(pergunta=p37, texto="`y` não pode ser inicializado dessa forma.", correta=False)
+
+    p38 = Pergunta.objects.create(assunto=assunto_c_sb, texto="O que a macro `#define QUADRADO(a) a * a` fará com a expressão `QUADRADO(2 + 3)`?", explicacao="O pré-processador faz uma substituição textual, expandindo a macro para `2 + 3 * 2 + 3`. Devido à precedência de operadores (multiplicação antes da adição), o cálculo é `2 + 6 + 3`, que resulta em 11.")
+    PerguntaDificuldade.objects.create(pergunta=p38, dificuldade=medio)
+    Resposta.objects.create(pergunta=p38, texto="A expressão resultará em 25.", correta=False)
+    Resposta.objects.create(pergunta=p38, texto="A expressão resultará em 11.", correta=True)
+    Resposta.objects.create(pergunta=p38, texto="A expressão resultará em 10.", correta=False)
+    Resposta.objects.create(pergunta=p38, texto="O código não compilará devido à macro.", correta=False)
+
+    p39 = Pergunta.objects.create(assunto=assunto_c_sb, texto="Se `ptr` é um ponteiro para um inteiro, o que a expressão `*ptr` acessa?", explicacao="O operador `*` (asterisco), quando usado em um ponteiro, é o operador de dereferência. Ele acessa o VALOR que está armazenado no endereço de memória para o qual o ponteiro aponta.")
+    PerguntaDificuldade.objects.create(pergunta=p39, dificuldade=medio)
+    Resposta.objects.create(pergunta=p39, texto="O endereço de memória do ponteiro `ptr`.", correta=False)
+    Resposta.objects.create(pergunta=p39, texto="O endereço de memória para o qual `ptr` aponta.", correta=False)
+    Resposta.objects.create(pergunta=p39, texto="O valor armazenado no endereço de memória para o qual `ptr` aponta.", correta=True)
+    Resposta.objects.create(pergunta=p39, texto="O tamanho do tipo de dado inteiro.", correta=False)
+
+    p40 = Pergunta.objects.create(assunto=assunto_c_sb, texto="Qual o valor da constante `TERCA` no `enum dia { DOMINGO, SEGUNDA, TERCA, QUARTA };`?", explicacao="Por padrão, os membros de uma enumeração (`enum`) em C recebem valores inteiros sequenciais começando em 0. Portanto, DOMINGO=0, SEGUNDA=1, e TERCA=2.")
+    PerguntaDificuldade.objects.create(pergunta=p40, dificuldade=medio)
+    Resposta.objects.create(pergunta=p40, texto="1", correta=False)
+    Resposta.objects.create(pergunta=p40, texto="2", correta=True)
+    Resposta.objects.create(pergunta=p40, texto="3", correta=False)
+    Resposta.objects.create(pergunta=p40, texto="TERCA", correta=False)
 
     # --- PERGUNTAS DE NÍVEL DIFÍCIL ---
     # Adicione aqui as perguntas de nível DIFÍCIL para 'Sintaxe Básica' de C
