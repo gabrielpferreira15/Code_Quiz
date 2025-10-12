@@ -34,35 +34,35 @@ def popular_dados(apps, schema_editor):
     assunto_py_sb = Assunto.objects.create(linguagem=python, nome=assunto_py_sb_nome, slug=slugify(f'{python.nome}-{assunto_py_sb_nome}'))
 
     # --- PERGUNTAS DE NÍVEL FÁCIL ---
-    p1 = Pergunta.objects.create(assunto=assunto_py_sb, texto="Como você declara uma variável chamada idade com o valor 25 em Python?", explicacao="Python utiliza tipagem dinâmica...")
+    p1 = Pergunta.objects.create(assunto=assunto_py_sb, texto="Como você declara uma variável chamada idade com o valor 25 em Python?", explicacao="Python utiliza tipagem dinâmica, então basta atribuir o valor à variável sem declarar seu tipo explicitamente.")
     PerguntaDificuldade.objects.create(pergunta=p1, dificuldade=facil)
     Resposta.objects.create(pergunta=p1, texto="int idade = 25", correta=False)
     Resposta.objects.create(pergunta=p1, texto="idade = 25", correta=True)
     Resposta.objects.create(pergunta=p1, texto="idade := 25", correta=False)
     Resposta.objects.create(pergunta=p1, texto="let idade = 25", correta=False)
 
-    p2 = Pergunta.objects.create(assunto=assunto_py_sb, texto="Qual é o símbolo usado para escrever um comentário de uma única linha em Python?", explicacao="Em Python, o caractere '#'... ")
+    p2 = Pergunta.objects.create(assunto=assunto_py_sb, texto="Qual é o símbolo usado para escrever um comentário de uma única linha em Python?", explicacao="Em Python, o caractere '#' (cerquilha) é usado para iniciar um comentário que vai até o final da linha.")
     PerguntaDificuldade.objects.create(pergunta=p2, dificuldade=facil)
     Resposta.objects.create(pergunta=p2, texto="//", correta=False)
     Resposta.objects.create(pergunta=p2, texto="/* ... */", correta=False)
     Resposta.objects.create(pergunta=p2, texto="#", correta=True)
     Resposta.objects.create(pergunta=p2, texto="``", correta=False)
 
-    p3 = Pergunta.objects.create(assunto=assunto_py_sb, texto="Qual função é usada para imprimir uma mensagem no console em Python?", explicacao="A função `print()` é uma das...")
+    p3 = Pergunta.objects.create(assunto=assunto_py_sb, texto="Qual função é usada para imprimir uma mensagem no console em Python?", explicacao="A função `print()` é uma das funções built-in mais comuns de Python, usada para exibir saídas no console.")
     PerguntaDificuldade.objects.create(pergunta=p3, dificuldade=facil)
     Resposta.objects.create(pergunta=p3, texto="console.log()", correta=False)
     Resposta.objects.create(pergunta=p3, texto="System.out.println()", correta=False)
     Resposta.objects.create(pergunta=p3, texto="echo()", correta=False)
     Resposta.objects.create(pergunta=p3, texto="print()", correta=True)
 
-    p4 = Pergunta.objects.create(assunto=assunto_py_sb, texto="Qual é o tipo de dado de resultado = 10 / 2 em Python 3?", explicacao="Em Python 3, o operador de divisão `/` sempre retorna um float...")
+    p4 = Pergunta.objects.create(assunto=assunto_py_sb, texto="Qual é o tipo de dado de resultado = 10 / 2 em Python 3?", explicacao="Em Python 3, o operador de divisão `/` sempre retorna um número de ponto flutuante (float), mesmo que a divisão seja exata.")
     PerguntaDificuldade.objects.create(pergunta=p4, dificuldade=facil)
     Resposta.objects.create(pergunta=p4, texto="int", correta=False)
     Resposta.objects.create(pergunta=p4, texto="float", correta=True)
     Resposta.objects.create(pergunta=p4, texto="string", correta=False)
     Resposta.objects.create(pergunta=p4, texto="double", correta=False)
 
-    p5 = Pergunta.objects.create(assunto=assunto_py_sb, texto='Como você converte uma string "100" para um número inteiro em Python?', explicacao="Python oferece funções de conversão...")
+    p5 = Pergunta.objects.create(assunto=assunto_py_sb, texto='Como você converte uma string "100" para um número inteiro em Python?', explicacao="Python oferece funções de conversão de tipo, como `int()`, `float()`, e `str()`, para converter entre diferentes tipos de dados.")
     PerguntaDificuldade.objects.create(pergunta=p5, dificuldade=facil)
     Resposta.objects.create(pergunta=p5, texto='(int)"100"', correta=False)
     Resposta.objects.create(pergunta=p5, texto='to_int("100")', correta=False)
@@ -70,12 +70,27 @@ def popular_dados(apps, schema_editor):
     Resposta.objects.create(pergunta=p5, texto='integer("100")', correta=False)
 
     # --- PERGUNTAS DE NÍVEL MÉDIO ---
-    # Adicione aqui as perguntas de nível MÉDIO para 'Sintaxe Básica' de Python
-    # Exemplo:
-    # p_medio_1 = Pergunta.objects.create(assunto=assunto_py_sb, texto="Qual a diferença entre lista e tupla?")
-    # PerguntaDificuldade.objects.create(pergunta=p_medio_1, dificuldade=medio)
-    # Resposta.objects.create(pergunta=p_medio_1, texto="Listas são mutáveis, tuplas são imutáveis.", correta=True)
-    # ...
+    p6 = Pergunta.objects.create(assunto=assunto_py_sb, texto="Qual será o valor da variável `c` após a execução do código `a, *b, c = [10, 20, 30, 40, 50]`?", explicacao="Esta sintaxe é chamada de 'desempacotamento estendido'. 'a' recebe o primeiro elemento (10), '*b' recebe todos os elementos do meio como uma lista ([20, 30, 40]), e 'c' recebe o último elemento (50).")
+    PerguntaDificuldade.objects.create(pergunta=p6, dificuldade=medio)
+    Resposta.objects.create(pergunta=p6, texto="30", correta=False)
+    Resposta.objects.create(pergunta=p6, texto="[20, 30, 40]", correta=False)
+    Resposta.objects.create(pergunta=p6, texto="50", correta=True)
+    Resposta.objects.create(pergunta=p6, texto="[40, 50]", correta=False)
+
+    p7 = Pergunta.objects.create(assunto=assunto_py_sb, texto="Qual é o resultado da impressão do seguinte f-string: `valor = 12; print(f'O resultado é {valor:04d}')`?", explicacao="A formatação `:04d` significa: 'd' para tratar como decimal, '4' para ter uma largura total de 4 caracteres, e '0' para preencher com zeros à esquerda se o número for menor que a largura.")
+    PerguntaDificuldade.objects.create(pergunta=p7, dificuldade=medio)
+    Resposta.objects.create(pergunta=p7, texto="O resultado é 12", correta=False)
+    Resposta.objects.create(pergunta=p7, texto="O resultado é 0012", correta=True)
+    Resposta.objects.create(pergunta=p7, texto="O resultado é 1200", correta=False)
+    Resposta.objects.create(pergunta=p7, texto="O resultado é {valor:04d}", correta=False)
+
+    p8 = Pergunta.objects.create(assunto=assunto_py_sb, texto="Considere o código: `lista_a = [1, 2]; lista_b = lista_a; lista_b.append(3)`. Qual será o conteúdo de `lista_a`?", explicacao="Listas são objetos mutáveis. `lista_b = lista_a` faz com que ambas as variáveis apontem para o mesmo objeto na memória. Portanto, uma alteração em `lista_b` também afeta `lista_a`.")
+    PerguntaDificuldade.objects.create(pergunta=p8, dificuldade=medio)
+    Resposta.objects.create(pergunta=p8, texto="[1, 2]", correta=False)
+    Resposta.objects.create(pergunta=p8, texto="[1, 2, 3]", correta=True)
+    Resposta.objects.create(pergunta=p8, texto="[3]", correta=False)
+    Resposta.objects.create(pergunta=p8, texto="O código resultará em um erro.", correta=False)
+
 
     # --- PERGUNTAS DE NÍVEL DIFÍCIL ---
     # Adicione aqui as perguntas de nível DIFÍCIL para 'Sintaxe Básica' de Python
