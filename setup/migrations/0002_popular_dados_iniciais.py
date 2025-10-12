@@ -62,12 +62,12 @@ def popular_dados(apps, schema_editor):
     Resposta.objects.create(pergunta=p4, texto="Ocorre um erro de indentação (IndentationError).", correta=True)
     Resposta.objects.create(pergunta=p4, texto="O código é tratado como um comentário.", correta=False)
 
-    p5 = Pergunta.objects.create(assunto=assunto_py_sb, texto='Como você converte uma string "100" para um número inteiro em Python?', explicacao="Python oferece funções de conversão de tipo, como `int()`, `float()`, e `str()`, para converter entre diferentes tipos de dados.")
+    p5 = Pergunta.objects.create(assunto=assunto_py_sb, texto="Qual das opções converte corretamente a string '50' em um número inteiro em Python?", explicacao="A função int() é usada para converter strings numéricas em inteiros.")
     PerguntaDificuldade.objects.create(pergunta=p5, dificuldade=facil)
-    Resposta.objects.create(pergunta=p5, texto='(int)"100"', correta=False)
-    Resposta.objects.create(pergunta=p5, texto='to_int("100")', correta=False)
-    Resposta.objects.create(pergunta=p5, texto='int("100")', correta=True)
-    Resposta.objects.create(pergunta=p5, texto='integer("100")', correta=False)
+    Resposta.objects.create(pergunta=p5, texto='convert("50")', correta=False)
+    Resposta.objects.create(pergunta=p5, texto='toInt("50")', correta=False)
+    Resposta.objects.create(pergunta=p5, texto='int("50")', correta=True)
+    Resposta.objects.create(pergunta=p5, texto='str("50")', correta=False)
 
     # --- PERGUNTAS DE NÍVEL MÉDIO ---
     p6 = Pergunta.objects.create(assunto=assunto_py_sb, texto="Qual será o valor da variável `c` após a execução do código `a, *b, c = [10, 20, 30, 40, 50]`?", explicacao="Esta sintaxe é chamada de 'desempacotamento estendido'. 'a' recebe o primeiro elemento (10), '*b' recebe todos os elementos do meio como uma lista ([20, 30, 40]), e 'c' recebe o último elemento (50).")
