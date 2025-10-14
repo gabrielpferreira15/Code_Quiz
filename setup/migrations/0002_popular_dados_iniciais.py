@@ -239,7 +239,7 @@ def popular_dados(apps, schema_editor):
     Resposta.objects.create(pergunta=p22, texto="10", correta=False)
     Resposta.objects.create(pergunta=p22, texto="13", correta=True)
     Resposta.objects.create(pergunta=p22, texto="12", correta=False)
-    
+
     p23 = Pergunta.objects.create(assunto=assunto_py_er, texto="Qual tipo de objeto o código `(x*2 for x in range(5))` cria?", explicacao="Os parênteses em torno de uma expressão de compreensão criam um *gerador* (generator expression), não uma tupla. Geradores são iteráveis que produzem valores sob demanda (lazy evaluation).")
     PerguntaDificuldade.objects.create(pergunta=p23, dificuldade=dificil)
     Resposta.objects.create(pergunta=p23, texto="Uma tupla (tuple).", correta=False)
@@ -344,6 +344,20 @@ def popular_dados(apps, schema_editor):
     # Adicione aqui as perguntas de nível DIFÍCIL para 'Condicionais' de Python
     # ...
 
+    p31 = Pergunta.objects.create(assunto=assunto_py_c, texto='Qual será a saída do código: `lista = [1, 2, 3]; if 1 in lista and 4 not in lista: print("A") else: print("B")`?', explicacao="A condição é `(1 in lista) and (4 not in lista)`. Ambas as sub-condições são `True` (`1` está e `4` não está). `True and True` resulta em `True`. A saída é 'A'.")
+    PerguntaDificuldade.objects.create(pergunta=p31, dificuldade=dificil)
+    Resposta.objects.create(pergunta=p31, texto="A", correta=True)
+    Resposta.objects.create(pergunta=p31, texto="B", correta=False)
+    Resposta.objects.create(pergunta=p31, texto="Erro de sintaxe", correta=False)
+    Resposta.objects.create(pergunta=p31, texto="Nada será impresso.", correta=False)
+
+    p32 = Pergunta.objects.create(assunto=assunto_py_c, texto='Qual é o resultado da expressão `("Olá" and []) or (0 and 1)`?', explicacao="A expressão avalia primeiro a primeira parte: `(\"Olá\" and [])`. O operador `and` retorna o primeiro valor 'falsy' se houver, senão o último valor. Como `\"Olá\"` é 'truthy', ele retorna o próximo valor, que é `[]` ('falsy'). A segunda parte `(0 and 1)` retorna o primeiro valor 'falsy', que é `0`. A expressão final é `[] or 0`. O operador `or` retorna o primeiro valor 'truthy', mas como ambos são 'falsy', ele retorna o último, que é `0`.")
+    PerguntaDificuldade.objects.create(pergunta=p32, dificuldade=dificil)
+    Resposta.objects.create(pergunta=p32, texto="[]", correta=False)
+    Resposta.objects.create(pergunta=p32, texto="0", correta=True)
+    Resposta.objects.create(pergunta=p32, texto="1", correta=False)
+    Resposta.objects.create(pergunta=p32, texto='"Olá"', correta=False)
+    
     # ====================================================================
     # === QUIZ C: SINTAXE BÁSICA ===
     # ====================================================================
