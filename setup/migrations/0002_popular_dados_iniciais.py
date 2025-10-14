@@ -357,7 +357,7 @@ def popular_dados(apps, schema_editor):
     Resposta.objects.create(pergunta=p32, texto="0", correta=True)
     Resposta.objects.create(pergunta=p32, texto="1", correta=False)
     Resposta.objects.create(pergunta=p32, texto='"Olá"', correta=False)
-    
+
     p33 = Pergunta.objects.create(assunto=assunto_py_c, texto='Se `lista = [1, 2, 3]`, o que será impresso por: `if len(lista) > 3 or lista[1] == 2: print("Sim") else: print("Não")`?', explicacao="A condição é avaliada em curto-circuito. `len(lista) > 3` é `False`. O operador `or` passa para a próxima condição: `lista[1] == 2` ($2 == 2$), que é `True`. Como a segunda parte é `True`, o resultado final é `True`, imprimindo 'Sim'.")
     PerguntaDificuldade.objects.create(pergunta=p33, dificuldade=dificil)
     Resposta.objects.create(pergunta=p33, texto="Sim", correta=True)
@@ -371,6 +371,13 @@ def popular_dados(apps, schema_editor):
     Resposta.objects.create(pergunta=p34, texto="5", correta=True)
     Resposta.objects.create(pergunta=p34, texto="15", correta=False)
     Resposta.objects.create(pergunta=p34, texto="O código resultará em um SyntaxError.", correta=False)
+
+    p35 = Pergunta.objects.create(assunto=assunto_py_c, texto="Qual é o resultado da impressão do seguinte código: `a = 1; b = 2; print(f'Resultado: {a=}, {b=}')` em Python 3.8+?", explicacao="A sintaxe de f-string `= ` (chamada de 'self-documenting expressions and debugging') é um recurso do Python 3.8 que exibe tanto o nome da variável quanto seu valor, útil para depuração.")
+    PerguntaDificuldade.objects.create(pergunta=p35, dificuldade=dificil)
+    Resposta.objects.create(pergunta=p35, texto="Resultado: 1, 2", correta=False)
+    Resposta.objects.create(pergunta=p35, texto="Resultado: a=1, b=2", correta=True)
+    Resposta.objects.create(pergunta=p35, texto="Resultado: a, b", correta=False)
+    Resposta.objects.create(pergunta=p35, texto="O código resultará em um SyntaxError.", correta=False)
 
 
     # ====================================================================
