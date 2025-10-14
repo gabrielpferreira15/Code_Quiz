@@ -476,6 +476,20 @@ def popular_dados(apps, schema_editor):
     Resposta.objects.create(pergunta=p42, texto="Erro de sintaxe (Syntax Error)", correta=False)
     Resposta.objects.create(pergunta=p42, texto="Comportamento indefinido (Undefined Behavior)", correta=False)
 
+    p43 = Pergunta.objects.create(assunto=assunto_c_sb, texto="O que a instrução `typedef int (*FuncPtr)(int, int);` faz?", explicacao="Esta instrução `typedef` cria um novo alias de tipo. `FuncPtr` torna-se um alias para um 'ponteiro para uma função que recebe dois inteiros como argumentos e retorna um inteiro'.")
+    PerguntaDificuldade.objects.create(pergunta=p43, dificuldade=dificil)
+    Resposta.objects.create(pergunta=p43, texto="Declara um ponteiro de função chamado `FuncPtr` que retorna um inteiro.", correta=False)
+    Resposta.objects.create(pergunta=p43, texto="Cria um alias de tipo chamado `FuncPtr` para um ponteiro para função que retorna `int` e recebe dois `int`.", correta=True)
+    Resposta.objects.create(pergunta=p43, texto="Declara uma função chamada `FuncPtr` que aceita dois ponteiros de inteiros.", correta=False)
+    Resposta.objects.create(pergunta=p43, texto="Cria um novo tipo de struct para ponteiros.", correta=False)
+
+    p44 = Pergunta.objects.create(assunto=assunto_c_sb, texto="Qual é o modificador de tipo que indica ao compilador que uma variável não será alterada após a sua inicialização?", explicacao="O modificador `const` (de 'constant') é usado para declarar que o valor de uma variável (ou o valor apontado por um ponteiro) é fixo e não deve ser alterado pelo código, permitindo otimizações e checagem de erros pelo compilador.")
+    PerguntaDificuldade.objects.create(pergunta=p44, dificuldade=dificil)
+    Resposta.objects.create(pergunta=p44, texto="static", correta=False)
+    Resposta.objects.create(pergunta=p44, texto="volatile", correta=False)
+    Resposta.objects.create(pergunta=p44, texto="const", correta=True)
+    Resposta.objects.create(pergunta=p44, texto="final", correta=False)
+
 
     # ====================================================================
     # === QUIZ C: ESTRUTURAS DE REPETIÇÃO ===
