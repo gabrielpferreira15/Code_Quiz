@@ -122,6 +122,20 @@ def popular_dados(apps, schema_editor):
     Resposta.objects.create(pergunta=p12, texto="10", correta=False)
     Resposta.objects.create(pergunta=p12, texto="False", correta=False)
 
+    p13 = Pergunta.objects.create(assunto=assunto_py_sb, texto="O que o seguinte código imprime: `a = 5; b = 5; print(a is b)` e `a = 500; b = 500; print(a is b)`?", explicacao="Python 'interna' (cacheia) inteiros pequenos (geralmente de -5 a 256) por razões de otimização de memória. Para `a = 5; b = 5`, ambas as variáveis apontam para o mesmo objeto, então `a is b` é `True`. Para `a = 500; b = 500`, eles são criados como objetos separados, então `a is b` é `False` (em CPython, o interpretador padrão).")
+    PerguntaDificuldade.objects.create(pergunta=p13, dificuldade=dificil)
+    Resposta.objects.create(pergunta=p13, texto="True e True", correta=False)
+    Resposta.objects.create(pergunta=p13, texto="False e False", correta=False)
+    Resposta.objects.create(pergunta=p13, texto="True e False", correta=True)
+    Resposta.objects.create(pergunta=p13, texto="False e True", correta=False)
+
+    p14 = Pergunta.objects.create(assunto=assunto_py_sb, texto="Considere o código: `x = 10; def func(): global x; x += 1; print(x); func()`. Qual será a saída?", explicacao="A palavra-chave `global x` dentro da função `func` indica que a variável `x` a ser modificada é a variável global e não uma variável local. O valor global de `x` é 10, que é incrementado para 11 e depois impresso.")
+    PerguntaDificuldade.objects.create(pergunta=p14, dificuldade=dificil)
+    Resposta.objects.create(pergunta=p14, texto="10", correta=False)
+    Resposta.objects.create(pergunta=p14, texto="11", correta=True)
+    Resposta.objects.create(pergunta=p14, texto="NameError", correta=False)
+    Resposta.objects.create(pergunta=p14, texto="UnboundLocalError", correta=False)
+
 
     # ====================================================================
     # === QUIZ PYTHON: ESTRUTURAS DE REPETIÇÃO ===
