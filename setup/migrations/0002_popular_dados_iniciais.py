@@ -239,6 +239,27 @@ def popular_dados(apps, schema_editor):
     Resposta.objects.create(pergunta=p22, texto="10", correta=False)
     Resposta.objects.create(pergunta=p22, texto="13", correta=True)
     Resposta.objects.create(pergunta=p22, texto="12", correta=False)
+    
+    p23 = Pergunta.objects.create(assunto=assunto_py_er, texto="Qual tipo de objeto o código `(x*2 for x in range(5))` cria?", explicacao="Os parênteses em torno de uma expressão de compreensão criam um *gerador* (generator expression), não uma tupla. Geradores são iteráveis que produzem valores sob demanda (lazy evaluation).")
+    PerguntaDificuldade.objects.create(pergunta=p23, dificuldade=dificil)
+    Resposta.objects.create(pergunta=p23, texto="Uma tupla (tuple).", correta=False)
+    Resposta.objects.create(pergunta=p23, texto="Um objeto gerador (generator object).", correta=True)
+    Resposta.objects.create(pergunta=p23, texto="Uma lista (list).", correta=False)
+    Resposta.objects.create(pergunta=p23, texto="Um conjunto (set).", correta=False)
+
+    p24 = Pergunta.objects.create(assunto=assunto_py_er, texto="O que será impresso pelo código: `x = 0; while x < 2: x += 1; print(x); else: print('Fim')`?", explicacao="O laço `while` executa para $x=0$ (imprime 1) e $x=1$ (imprime 2). A condição `x < 2` se torna falsa. Como o laço terminou normalmente (sem `break`), o bloco `else` é executado, imprimindo 'Fim'.")
+    PerguntaDificuldade.objects.create(pergunta=p24, dificuldade=dificil)
+    Resposta.objects.create(pergunta=p24, texto="1\n2", correta=False)
+    Resposta.objects.create(pergunta=p24, texto="1\n2\nFim", correta=True)
+    Resposta.objects.create(pergunta=p24, texto="1\n2\n3\nFim", correta=False)
+    Resposta.objects.create(pergunta=p24, texto="Loop infinito, pois x nunca é atualizado.", correta=False)
+
+    p25 = Pergunta.objects.create(assunto=assunto_py_er, texto="Qual o resultado da utilização do `zip` e do desempacotamento no código: `a = [1, 2]; b = ['x', 'y']; for num, letra in zip(a, b): print(f'{num}{letra}', end=' ')`?", explicacao="A função `zip` combina os elementos das sequências em tuplas: $(1, 'x')$ e $(2, 'y')$. O laço desempacota cada tupla nas variáveis `num` e `letra`, imprimindo a concatenação delas, com um espaço como separador.")
+    PerguntaDificuldade.objects.create(pergunta=p25, dificuldade=dificil)
+    Resposta.objects.create(pergunta=p25, texto="1, 2, x, y", correta=False)
+    Resposta.objects.create(pergunta=p25, texto="1x 2y ", correta=True)
+    Resposta.objects.create(pergunta=p25, texto="1x\n2y", correta=False)
+    Resposta.objects.create(pergunta=p25, texto="Um TypeError, pois não se pode iterar sobre o resultado de zip.", correta=False)
 
 
     # ====================================================================
