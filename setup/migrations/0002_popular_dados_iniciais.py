@@ -136,6 +136,13 @@ def popular_dados(apps, schema_editor):
     Resposta.objects.create(pergunta=p14, texto="NameError", correta=False)
     Resposta.objects.create(pergunta=p14, texto="UnboundLocalError", correta=False)
 
+    p15 = Pergunta.objects.create(assunto=assunto_py_sb, texto="Qual é o valor final de `y` após a execução do código: `x = 1; y = x; x = 2; print(y)`?", explicacao="Como `x` é um inteiro (tipo imutável), a linha `y = x` faz com que `y` receba uma cópia do valor (1). A linha `x = 2` faz com que a variável `x` aponte para um novo objeto (o inteiro 2), mas não afeta o valor do objeto para o qual `y` aponta (o inteiro 1).")
+    PerguntaDificuldade.objects.create(pergunta=p15, dificuldade=dificil)
+    Resposta.objects.create(pergunta=p15, texto="1", correta=True)
+    Resposta.objects.create(pergunta=p15, texto="2", correta=False)
+    Resposta.objects.create(pergunta=p15, texto="None", correta=False)
+    Resposta.objects.create(pergunta=p15, texto="TypeError", correta=False)
+
 
     # ====================================================================
     # === QUIZ PYTHON: ESTRUTURAS DE REPETIÇÃO ===
