@@ -226,6 +226,21 @@ def popular_dados(apps, schema_editor):
     # Adicione aqui as perguntas de nível DIFÍCIL para 'Estruturas de Repetição' de Python
     # ...
 
+    p21 = Pergunta.objects.create(assunto=assunto_py_er, texto="Qual será o valor final da lista `resultado` após o código: `lista = [1, 2, 3]; resultado = [i for i in lista if i%2==0] or [0]`?", explicacao="A list comprehension `[i for i in lista if i%2==0]` resulta em `[2]` (lista contendo apenas o número par). A expressão utiliza o operador `or` de curto-circuito. Como `[2]` é considerada 'True' em um contexto booleano (lista não vazia), ela é retornada, e a lista `[0]` não é avaliada/retornada.")
+    PerguntaDificuldade.objects.create(pergunta=p21, dificuldade=dificil)
+    Resposta.objects.create(pergunta=p21, texto="[0]", correta=False)
+    Resposta.objects.create(pergunta=p21, texto="[2]", correta=True)
+    Resposta.objects.create(pergunta=p21, texto="[1, 2, 3]", correta=False)
+    Resposta.objects.create(pergunta=p21, texto="[2, 0]", correta=False)
+
+    p22 = Pergunta.objects.create(assunto=assunto_py_er, texto="Qual é a saída do código: `x = 0; for i in range(3): x += i; else: x += 10; print(x)`?", explicacao="O laço `for` executa para i=0, 1, 2, incrementando `x` para 0, 1, 3. Como não houve `break`, a cláusula `else` é executada, adicionando 10 a `x`. O valor final é $3 + 10 = 13$.")
+    PerguntaDificuldade.objects.create(pergunta=p22, dificuldade=dificil)
+    Resposta.objects.create(pergunta=p22, texto="3", correta=False)
+    Resposta.objects.create(pergunta=p22, texto="10", correta=False)
+    Resposta.objects.create(pergunta=p22, texto="13", correta=True)
+    Resposta.objects.create(pergunta=p22, texto="12", correta=False)
+
+
     # ====================================================================
     # === QUIZ PYTHON: CONDICIONAIS ===
     # ====================================================================
