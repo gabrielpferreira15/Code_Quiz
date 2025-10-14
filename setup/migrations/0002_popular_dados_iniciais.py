@@ -462,6 +462,20 @@ def popular_dados(apps, schema_editor):
     # Adicione aqui as perguntas de nível DIFÍCIL para 'Sintaxe Básica' de C
     # ...
 
+    p41 = Pergunta.objects.create(assunto=assunto_c_sb, texto="Qual será o resultado de `sizeof(char)` versus `sizeof(char*)` em um sistema de 64 bits?", explicacao="`sizeof(char)` é sempre 1 byte por definição. `sizeof(char*)` (o tamanho de um ponteiro) depende da arquitetura. Em sistemas de 64 bits, os endereços são representados por 8 bytes (64 bits).")
+    PerguntaDificuldade.objects.create(pergunta=p41, dificuldade=dificil)
+    Resposta.objects.create(pergunta=p41, texto="1 e 4 (bytes)", correta=False)
+    Resposta.objects.create(pergunta=p41, texto="1 e 8 (bytes)", correta=True)
+    Resposta.objects.create(pergunta=p41, texto="Ambos são 1 (byte)", correta=False)
+    Resposta.objects.create(pergunta=p41, texto="1 e o valor é indefinido", correta=False)
+
+    p42 = Pergunta.objects.create(assunto=assunto_c_sb, texto="Considerando `int a = 1, b = 2;`, qual o resultado de `printf(\"%d\", a+++b);`?", explicacao="Devido à ambiguidade, o compilador C interpreta como `a++ + b`. O pós-incremento (a++) primeiro usa o valor de 'a' (1) na expressão e SÓ DEPOIS o incrementa. Então, $1 + 2 = 3$. Após a expressão, `a` se torna 2.")
+    PerguntaDificuldade.objects.create(pergunta=p42, dificuldade=dificil)
+    Resposta.objects.create(pergunta=p42, texto="3", correta=True)
+    Resposta.objects.create(pergunta=p42, texto="4", correta=False)
+    Resposta.objects.create(pergunta=p42, texto="Erro de sintaxe (Syntax Error)", correta=False)
+    Resposta.objects.create(pergunta=p42, texto="Comportamento indefinido (Undefined Behavior)", correta=False)
+
 
     # ====================================================================
     # === QUIZ C: ESTRUTURAS DE REPETIÇÃO ===
