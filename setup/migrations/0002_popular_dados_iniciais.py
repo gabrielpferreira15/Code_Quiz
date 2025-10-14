@@ -108,6 +108,19 @@ def popular_dados(apps, schema_editor):
     # --- PERGUNTAS DE NÍVEL DIFÍCIL ---
     # Adicione aqui as perguntas de nível DIFÍCIL para 'Sintaxe Básica' de Python
     # ...
+    p11 = Pergunta.objects.create(assunto=assunto_py_sb, texto="Qual será o valor de `len(s)` após a execução de `s = {'a': 1, 'b': 2}; s.update(c=3); del s['a']`?", explicacao="O dicionário `s` inicia com 2 elementos. `s.update(c=3)` adiciona um novo elemento, resultando em 3. `del s['a']` remove um elemento, resultando em 2. A função `len()` retorna o número de pares chave-valor.")
+    PerguntaDificuldade.objects.create(pergunta=p11, dificuldade=dificil)
+    Resposta.objects.create(pergunta=p11, texto="1", correta=False)
+    Resposta.objects.create(pergunta=p11, texto="2", correta=True)
+    Resposta.objects.create(pergunta=p11, texto="3", correta=False)
+    Resposta.objects.create(pergunta=p11, texto="4", correta=False)
+
+    p12 = Pergunta.objects.create(assunto=assunto_py_sb, texto="Qual é o resultado da avaliação da expressão booleana: `1 < 2 < 3 or 10 and not 0`?", explicacao="A expressão `1 < 2 < 3` é avaliada como `True`. A expressão `10 and not 0` é avaliada como `10 and True`, que retorna `10`. A expressão final é `True or 10`. Em um contexto booleano, `True` é retornado em operações `or` se for o primeiro operando verdadeiro.")
+    PerguntaDificuldade.objects.create(pergunta=p12, dificuldade=dificil)
+    Resposta.objects.create(pergunta=p12, texto="True", correta=True)
+    Resposta.objects.create(pergunta=p12, texto="1", correta=False)
+    Resposta.objects.create(pergunta=p12, texto="10", correta=False)
+    Resposta.objects.create(pergunta=p12, texto="False", correta=False)
 
 
     # ====================================================================
