@@ -358,6 +358,21 @@ def popular_dados(apps, schema_editor):
     Resposta.objects.create(pergunta=p32, texto="1", correta=False)
     Resposta.objects.create(pergunta=p32, texto='"Olá"', correta=False)
     
+    p33 = Pergunta.objects.create(assunto=assunto_py_c, texto='Se `lista = [1, 2, 3]`, o que será impresso por: `if len(lista) > 3 or lista[1] == 2: print("Sim") else: print("Não")`?', explicacao="A condição é avaliada em curto-circuito. `len(lista) > 3` é `False`. O operador `or` passa para a próxima condição: `lista[1] == 2` ($2 == 2$), que é `True`. Como a segunda parte é `True`, o resultado final é `True`, imprimindo 'Sim'.")
+    PerguntaDificuldade.objects.create(pergunta=p33, dificuldade=dificil)
+    Resposta.objects.create(pergunta=p33, texto="Sim", correta=True)
+    Resposta.objects.create(pergunta=p33, texto="Não", correta=False)
+    Resposta.objects.create(pergunta=p33, texto="IndexError", correta=False)
+    Resposta.objects.create(pergunta=p33, texto="KeyError", correta=False)
+
+    p34 = Pergunta.objects.create(assunto=assunto_py_c, texto='Qual será o valor de `z` no código: `x = 10; y = 5; z = x if x < 5 else y if y > 3 else x + y`?', explicacao="Esta é uma expressão condicional aninhada da direita para a esquerda. Primeiro: `x < 5` é `False`. O `else` é executado, que é a segunda expressão: `y if y > 3 else x + y`. Segundo: `y > 3` ($5 > 3$) é `True`. O resultado desta expressão é `y`, que é 5. Portanto, `z = 5`.")
+    PerguntaDificuldade.objects.create(pergunta=p34, dificuldade=dificil)
+    Resposta.objects.create(pergunta=p34, texto="10", correta=False)
+    Resposta.objects.create(pergunta=p34, texto="5", correta=True)
+    Resposta.objects.create(pergunta=p34, texto="15", correta=False)
+    Resposta.objects.create(pergunta=p34, texto="O código resultará em um SyntaxError.", correta=False)
+
+
     # ====================================================================
     # === QUIZ C: SINTAXE BÁSICA ===
     # ====================================================================
