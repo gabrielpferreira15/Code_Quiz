@@ -33,41 +33,41 @@ def popular_dados(apps, schema_editor):
     assunto_py_sb_nome = 'Sintaxe Básica'
     assunto_py_sb = Assunto.objects.create(linguagem=python, nome=assunto_py_sb_nome, slug=slugify(f'{python.nome}-{assunto_py_sb_nome}'))
 
-    # --- PERGUNTAS DE NÍVEL FÁCIL ---
-    p1 = Pergunta.objects.create(assunto=assunto_py_sb, texto="Qual das opções abaixo representa uma declaração válida de variável em Python?", explicacao="Em Python, não é necessário declarar o tipo da variável. Basta usar o operador '=' para atribuir um valor.")
+# --- PERGUNTAS DE NÍVEL FÁCIL ---
+    p1 = Pergunta.objects.create(assunto=assunto_py_sb, texto="Como você declara uma variável chamada idade com o valor 25 em Python?", explicacao="Python utiliza tipagem dinâmica, então basta atribuir o valor à variável sem declarar seu tipo explicitamente.")
     PerguntaDificuldade.objects.create(pergunta=p1, dificuldade=facil)
     Resposta.objects.create(pergunta=p1, texto="int idade = 25", correta=False)
     Resposta.objects.create(pergunta=p1, texto="idade = 25", correta=True)
-    Resposta.objects.create(pergunta=p1, texto="var idade = 25", correta=False)
+    Resposta.objects.create(pergunta=p1, texto="idade := 25", correta=False)
     Resposta.objects.create(pergunta=p1, texto="let idade = 25", correta=False)
 
-    p2 = Pergunta.objects.create(assunto=assunto_py_sb, texto="Como se escreve um comentário de uma única linha em Python?", explicacao="O caractere '#' é usado para iniciar um comentário em Python. Tudo após ele na mesma linha é ignorado pelo interpretador.")
+    p2 = Pergunta.objects.create(assunto=assunto_py_sb, texto="Qual é o símbolo usado para escrever um comentário de uma única linha em Python?", explicacao="Em Python, o caractere '#' (cerquilha) é usado para iniciar um comentário que vai até o final da linha.")
     PerguntaDificuldade.objects.create(pergunta=p2, dificuldade=facil)
     Resposta.objects.create(pergunta=p2, texto="//", correta=False)
     Resposta.objects.create(pergunta=p2, texto="/* ... */", correta=False)
     Resposta.objects.create(pergunta=p2, texto="#", correta=True)
     Resposta.objects.create(pergunta=p2, texto="``", correta=False)
 
-    p3 = Pergunta.objects.create(assunto=assunto_py_sb, texto="Qual função é usada para exibir texto na tela em Python?", explicacao="A função embutida print() é usada para mostrar mensagens e valores no console.")
+    p3 = Pergunta.objects.create(assunto=assunto_py_sb, texto="Qual função é usada para imprimir uma mensagem no console em Python?", explicacao="A função `print()` é uma das funções built-in mais comuns de Python, usada para exibir saídas no console.")
     PerguntaDificuldade.objects.create(pergunta=p3, dificuldade=facil)
     Resposta.objects.create(pergunta=p3, texto="console.log()", correta=False)
     Resposta.objects.create(pergunta=p3, texto="System.out.println()", correta=False)
     Resposta.objects.create(pergunta=p3, texto="echo()", correta=False)
     Resposta.objects.create(pergunta=p3, texto="print()", correta=True)
 
-    p4 = Pergunta.objects.create(assunto=assunto_py_sb, texto="O que acontece se você esquecer a indentação correta em um bloco de código Python?", explicacao="A indentação (espaços no início da linha) é obrigatória em Python para definir blocos de código. Sem ela, ocorre um erro de sintaxe.")
+    p4 = Pergunta.objects.create(assunto=assunto_py_sb, texto="Qual é o tipo de dado de resultado = 10 / 2 em Python 3?", explicacao="Em Python 3, o operador de divisão `/` sempre retorna um número de ponto flutuante (float), mesmo que a divisão seja exata.")
     PerguntaDificuldade.objects.create(pergunta=p4, dificuldade=facil)
-    Resposta.objects.create(pergunta=p4, texto="O Python ignora e executa normalmente.", correta=False)
-    Resposta.objects.create(pergunta=p4, texto="O Python ajusta automaticamente a indentação.", correta=False)
-    Resposta.objects.create(pergunta=p4, texto="Ocorre um erro de indentação (IndentationError).", correta=True)
-    Resposta.objects.create(pergunta=p4, texto="O código é tratado como um comentário.", correta=False)
+    Resposta.objects.create(pergunta=p4, texto="int", correta=False)
+    Resposta.objects.create(pergunta=p4, texto="float", correta=True)
+    Resposta.objects.create(pergunta=p4, texto="string", correta=False)
+    Resposta.objects.create(pergunta=p4, texto="double", correta=False)
 
-    p5 = Pergunta.objects.create(assunto=assunto_py_sb, texto="Qual das opções converte corretamente a string '50' em um número inteiro em Python?", explicacao="A função int() é usada para converter strings numéricas em inteiros.")
+    p5 = Pergunta.objects.create(assunto=assunto_py_sb, texto='Como você converte uma string "100" para um número inteiro em Python?', explicacao="Python oferece funções de conversão de tipo, como `int()`, `float()`, e `str()`, para converter entre diferentes tipos de dados.")
     PerguntaDificuldade.objects.create(pergunta=p5, dificuldade=facil)
-    Resposta.objects.create(pergunta=p5, texto='convert("50")', correta=False)
-    Resposta.objects.create(pergunta=p5, texto='toInt("50")', correta=False)
-    Resposta.objects.create(pergunta=p5, texto='int("50")', correta=True)
-    Resposta.objects.create(pergunta=p5, texto='str("50")', correta=False)
+    Resposta.objects.create(pergunta=p5, texto='(int)"100"', correta=False)
+    Resposta.objects.create(pergunta=p5, texto='to_int("100")', correta=False)
+    Resposta.objects.create(pergunta=p5, texto='int("100")', correta=True)
+    Resposta.objects.create(pergunta=p5, texto='integer("100")', correta=False)
 
     # --- PERGUNTAS DE NÍVEL MÉDIO ---
     p6 = Pergunta.objects.create(assunto=assunto_py_sb, texto="Qual será o valor da variável `c` após a execução do código `a, *b, c = [10, 20, 30, 40, 50]`?", explicacao="Esta sintaxe é chamada de 'desempacotamento estendido'. 'a' recebe o primeiro elemento (10), '*b' recebe todos os elementos do meio como uma lista ([20, 30, 40]), e 'c' recebe o último elemento (50).")
@@ -108,41 +108,6 @@ def popular_dados(apps, schema_editor):
     # --- PERGUNTAS DE NÍVEL DIFÍCIL ---
     # Adicione aqui as perguntas de nível DIFÍCIL para 'Sintaxe Básica' de Python
     # ...
-    p11 = Pergunta.objects.create(assunto=assunto_py_sb, texto="Qual será o valor de `len(s)` após a execução de `s = {'a': 1, 'b': 2}; s.update(c=3); del s['a']`?", explicacao="O dicionário `s` inicia com 2 elementos. `s.update(c=3)` adiciona um novo elemento, resultando em 3. `del s['a']` remove um elemento, resultando em 2. A função `len()` retorna o número de pares chave-valor.")
-    PerguntaDificuldade.objects.create(pergunta=p11, dificuldade=dificil)
-    Resposta.objects.create(pergunta=p11, texto="1", correta=False)
-    Resposta.objects.create(pergunta=p11, texto="2", correta=True)
-    Resposta.objects.create(pergunta=p11, texto="3", correta=False)
-    Resposta.objects.create(pergunta=p11, texto="4", correta=False)
-
-    p12 = Pergunta.objects.create(assunto=assunto_py_sb, texto="Qual é o resultado da avaliação da expressão booleana: `1 < 2 < 3 or 10 and not 0`?", explicacao="A expressão `1 < 2 < 3` é avaliada como `True`. A expressão `10 and not 0` é avaliada como `10 and True`, que retorna `10`. A expressão final é `True or 10`. Em um contexto booleano, `True` é retornado em operações `or` se for o primeiro operando verdadeiro.")
-    PerguntaDificuldade.objects.create(pergunta=p12, dificuldade=dificil)
-    Resposta.objects.create(pergunta=p12, texto="True", correta=True)
-    Resposta.objects.create(pergunta=p12, texto="1", correta=False)
-    Resposta.objects.create(pergunta=p12, texto="10", correta=False)
-    Resposta.objects.create(pergunta=p12, texto="False", correta=False)
-
-    p13 = Pergunta.objects.create(assunto=assunto_py_sb, texto="O que o seguinte código imprime: `a = 5; b = 5; print(a is b)` e `a = 500; b = 500; print(a is b)`?", explicacao="Python 'interna' (cacheia) inteiros pequenos (geralmente de -5 a 256) por razões de otimização de memória. Para `a = 5; b = 5`, ambas as variáveis apontam para o mesmo objeto, então `a is b` é `True`. Para `a = 500; b = 500`, eles são criados como objetos separados, então `a is b` é `False` (em CPython, o interpretador padrão).")
-    PerguntaDificuldade.objects.create(pergunta=p13, dificuldade=dificil)
-    Resposta.objects.create(pergunta=p13, texto="True e True", correta=False)
-    Resposta.objects.create(pergunta=p13, texto="False e False", correta=False)
-    Resposta.objects.create(pergunta=p13, texto="True e False", correta=True)
-    Resposta.objects.create(pergunta=p13, texto="False e True", correta=False)
-
-    p14 = Pergunta.objects.create(assunto=assunto_py_sb, texto="Considere o código: `x = 10; def func(): global x; x += 1; print(x); func()`. Qual será a saída?", explicacao="A palavra-chave `global x` dentro da função `func` indica que a variável `x` a ser modificada é a variável global e não uma variável local. O valor global de `x` é 10, que é incrementado para 11 e depois impresso.")
-    PerguntaDificuldade.objects.create(pergunta=p14, dificuldade=dificil)
-    Resposta.objects.create(pergunta=p14, texto="10", correta=False)
-    Resposta.objects.create(pergunta=p14, texto="11", correta=True)
-    Resposta.objects.create(pergunta=p14, texto="NameError", correta=False)
-    Resposta.objects.create(pergunta=p14, texto="UnboundLocalError", correta=False)
-
-    p15 = Pergunta.objects.create(assunto=assunto_py_sb, texto="Qual é o valor final de `y` após a execução do código: `x = 1; y = x; x = 2; print(y)`?", explicacao="Como `x` é um inteiro (tipo imutável), a linha `y = x` faz com que `y` receba uma cópia do valor (1). A linha `x = 2` faz com que a variável `x` aponte para um novo objeto (o inteiro 2), mas não afeta o valor do objeto para o qual `y` aponta (o inteiro 1).")
-    PerguntaDificuldade.objects.create(pergunta=p15, dificuldade=dificil)
-    Resposta.objects.create(pergunta=p15, texto="1", correta=True)
-    Resposta.objects.create(pergunta=p15, texto="2", correta=False)
-    Resposta.objects.create(pergunta=p15, texto="None", correta=False)
-    Resposta.objects.create(pergunta=p15, texto="TypeError", correta=False)
-
 
     # ====================================================================
     # === QUIZ PYTHON: ESTRUTURAS DE REPETIÇÃO ===
@@ -226,42 +191,6 @@ def popular_dados(apps, schema_editor):
     # Adicione aqui as perguntas de nível DIFÍCIL para 'Estruturas de Repetição' de Python
     # ...
 
-    p21 = Pergunta.objects.create(assunto=assunto_py_er, texto="Qual será o valor final da lista `resultado` após o código: `lista = [1, 2, 3]; resultado = [i for i in lista if i%2==0] or [0]`?", explicacao="A list comprehension `[i for i in lista if i%2==0]` resulta em `[2]` (lista contendo apenas o número par). A expressão utiliza o operador `or` de curto-circuito. Como `[2]` é considerada 'True' em um contexto booleano (lista não vazia), ela é retornada, e a lista `[0]` não é avaliada/retornada.")
-    PerguntaDificuldade.objects.create(pergunta=p21, dificuldade=dificil)
-    Resposta.objects.create(pergunta=p21, texto="[0]", correta=False)
-    Resposta.objects.create(pergunta=p21, texto="[2]", correta=True)
-    Resposta.objects.create(pergunta=p21, texto="[1, 2, 3]", correta=False)
-    Resposta.objects.create(pergunta=p21, texto="[2, 0]", correta=False)
-
-    p22 = Pergunta.objects.create(assunto=assunto_py_er, texto="Qual é a saída do código: `x = 0; for i in range(3): x += i; else: x += 10; print(x)`?", explicacao="O laço `for` executa para i=0, 1, 2, incrementando `x` para 0, 1, 3. Como não houve `break`, a cláusula `else` é executada, adicionando 10 a `x`. O valor final é $3 + 10 = 13$.")
-    PerguntaDificuldade.objects.create(pergunta=p22, dificuldade=dificil)
-    Resposta.objects.create(pergunta=p22, texto="3", correta=False)
-    Resposta.objects.create(pergunta=p22, texto="10", correta=False)
-    Resposta.objects.create(pergunta=p22, texto="13", correta=True)
-    Resposta.objects.create(pergunta=p22, texto="12", correta=False)
-
-    p23 = Pergunta.objects.create(assunto=assunto_py_er, texto="Qual tipo de objeto o código `(x*2 for x in range(5))` cria?", explicacao="Os parênteses em torno de uma expressão de compreensão criam um *gerador* (generator expression), não uma tupla. Geradores são iteráveis que produzem valores sob demanda (lazy evaluation).")
-    PerguntaDificuldade.objects.create(pergunta=p23, dificuldade=dificil)
-    Resposta.objects.create(pergunta=p23, texto="Uma tupla (tuple).", correta=False)
-    Resposta.objects.create(pergunta=p23, texto="Um objeto gerador (generator object).", correta=True)
-    Resposta.objects.create(pergunta=p23, texto="Uma lista (list).", correta=False)
-    Resposta.objects.create(pergunta=p23, texto="Um conjunto (set).", correta=False)
-
-    p24 = Pergunta.objects.create(assunto=assunto_py_er, texto="O que será impresso pelo código: `x = 0; while x < 2: x += 1; print(x); else: print('Fim')`?", explicacao="O laço `while` executa para $x=0$ (imprime 1) e $x=1$ (imprime 2). A condição `x < 2` se torna falsa. Como o laço terminou normalmente (sem `break`), o bloco `else` é executado, imprimindo 'Fim'.")
-    PerguntaDificuldade.objects.create(pergunta=p24, dificuldade=dificil)
-    Resposta.objects.create(pergunta=p24, texto="1\n2", correta=False)
-    Resposta.objects.create(pergunta=p24, texto="1\n2\nFim", correta=True)
-    Resposta.objects.create(pergunta=p24, texto="1\n2\n3\nFim", correta=False)
-    Resposta.objects.create(pergunta=p24, texto="Loop infinito, pois x nunca é atualizado.", correta=False)
-
-    p25 = Pergunta.objects.create(assunto=assunto_py_er, texto="Qual o resultado da utilização do `zip` e do desempacotamento no código: `a = [1, 2]; b = ['x', 'y']; for num, letra in zip(a, b): print(f'{num}{letra}', end=' ')`?", explicacao="A função `zip` combina os elementos das sequências em tuplas: $(1, 'x')$ e $(2, 'y')$. O laço desempacota cada tupla nas variáveis `num` e `letra`, imprimindo a concatenação delas, com um espaço como separador.")
-    PerguntaDificuldade.objects.create(pergunta=p25, dificuldade=dificil)
-    Resposta.objects.create(pergunta=p25, texto="1, 2, x, y", correta=False)
-    Resposta.objects.create(pergunta=p25, texto="1x 2y ", correta=True)
-    Resposta.objects.create(pergunta=p25, texto="1x\n2y", correta=False)
-    Resposta.objects.create(pergunta=p25, texto="Um TypeError, pois não se pode iterar sobre o resultado de zip.", correta=False)
-
-
     # ====================================================================
     # === QUIZ PYTHON: CONDICIONAIS ===
     # ====================================================================
@@ -344,49 +273,13 @@ def popular_dados(apps, schema_editor):
     # Adicione aqui as perguntas de nível DIFÍCIL para 'Condicionais' de Python
     # ...
 
-    p31 = Pergunta.objects.create(assunto=assunto_py_c, texto='Qual será a saída do código: `lista = [1, 2, 3]; if 1 in lista and 4 not in lista: print("A") else: print("B")`?', explicacao="A condição é `(1 in lista) and (4 not in lista)`. Ambas as sub-condições são `True` (`1` está e `4` não está). `True and True` resulta em `True`. A saída é 'A'.")
-    PerguntaDificuldade.objects.create(pergunta=p31, dificuldade=dificil)
-    Resposta.objects.create(pergunta=p31, texto="A", correta=True)
-    Resposta.objects.create(pergunta=p31, texto="B", correta=False)
-    Resposta.objects.create(pergunta=p31, texto="Erro de sintaxe", correta=False)
-    Resposta.objects.create(pergunta=p31, texto="Nada será impresso.", correta=False)
-
-    p32 = Pergunta.objects.create(assunto=assunto_py_c, texto='Qual é o resultado da expressão `("Olá" and []) or (0 and 1)`?', explicacao="A expressão avalia primeiro a primeira parte: `(\"Olá\" and [])`. O operador `and` retorna o primeiro valor 'falsy' se houver, senão o último valor. Como `\"Olá\"` é 'truthy', ele retorna o próximo valor, que é `[]` ('falsy'). A segunda parte `(0 and 1)` retorna o primeiro valor 'falsy', que é `0`. A expressão final é `[] or 0`. O operador `or` retorna o primeiro valor 'truthy', mas como ambos são 'falsy', ele retorna o último, que é `0`.")
-    PerguntaDificuldade.objects.create(pergunta=p32, dificuldade=dificil)
-    Resposta.objects.create(pergunta=p32, texto="[]", correta=False)
-    Resposta.objects.create(pergunta=p32, texto="0", correta=True)
-    Resposta.objects.create(pergunta=p32, texto="1", correta=False)
-    Resposta.objects.create(pergunta=p32, texto='"Olá"', correta=False)
-
-    p33 = Pergunta.objects.create(assunto=assunto_py_c, texto='Se `lista = [1, 2, 3]`, o que será impresso por: `if len(lista) > 3 or lista[1] == 2: print("Sim") else: print("Não")`?', explicacao="A condição é avaliada em curto-circuito. `len(lista) > 3` é `False`. O operador `or` passa para a próxima condição: `lista[1] == 2` ($2 == 2$), que é `True`. Como a segunda parte é `True`, o resultado final é `True`, imprimindo 'Sim'.")
-    PerguntaDificuldade.objects.create(pergunta=p33, dificuldade=dificil)
-    Resposta.objects.create(pergunta=p33, texto="Sim", correta=True)
-    Resposta.objects.create(pergunta=p33, texto="Não", correta=False)
-    Resposta.objects.create(pergunta=p33, texto="IndexError", correta=False)
-    Resposta.objects.create(pergunta=p33, texto="KeyError", correta=False)
-
-    p34 = Pergunta.objects.create(assunto=assunto_py_c, texto='Qual será o valor de `z` no código: `x = 10; y = 5; z = x if x < 5 else y if y > 3 else x + y`?', explicacao="Esta é uma expressão condicional aninhada da direita para a esquerda. Primeiro: `x < 5` é `False`. O `else` é executado, que é a segunda expressão: `y if y > 3 else x + y`. Segundo: `y > 3` ($5 > 3$) é `True`. O resultado desta expressão é `y`, que é 5. Portanto, `z = 5`.")
-    PerguntaDificuldade.objects.create(pergunta=p34, dificuldade=dificil)
-    Resposta.objects.create(pergunta=p34, texto="10", correta=False)
-    Resposta.objects.create(pergunta=p34, texto="5", correta=True)
-    Resposta.objects.create(pergunta=p34, texto="15", correta=False)
-    Resposta.objects.create(pergunta=p34, texto="O código resultará em um SyntaxError.", correta=False)
-
-    p35 = Pergunta.objects.create(assunto=assunto_py_c, texto="Qual é o resultado da impressão do seguinte código: `a = 1; b = 2; print(f'Resultado: {a=}, {b=}')` em Python 3.8+?", explicacao="A sintaxe de f-string `= ` (chamada de 'self-documenting expressions and debugging') é um recurso do Python 3.8 que exibe tanto o nome da variável quanto seu valor, útil para depuração.")
-    PerguntaDificuldade.objects.create(pergunta=p35, dificuldade=dificil)
-    Resposta.objects.create(pergunta=p35, texto="Resultado: 1, 2", correta=False)
-    Resposta.objects.create(pergunta=p35, texto="Resultado: a=1, b=2", correta=True)
-    Resposta.objects.create(pergunta=p35, texto="Resultado: a, b", correta=False)
-    Resposta.objects.create(pergunta=p35, texto="O código resultará em um SyntaxError.", correta=False)
-
-
     # ====================================================================
     # === QUIZ C: SINTAXE BÁSICA ===
     # ====================================================================
     assunto_c_sb_nome = 'Sintaxe Básica'
     assunto_c_sb = Assunto.objects.create(linguagem=c_lang, nome=assunto_c_sb_nome, slug=slugify(f'{c_lang.nome}-{assunto_c_sb_nome}'))
 
-    # --- PERGUNTAS DE NÍVEL FÁCIL ---
+# --- PERGUNTAS DE NÍVEL FÁCIL ---
     p31 = Pergunta.objects.create(assunto=assunto_c_sb, texto="Como você declara uma variável inteira chamada quantidade com o valor 50 em C?", explicacao="Em C, uma linguagem de tipagem estática, você deve declarar o tipo da variável (`int`) antes de seu nome e, opcionalmente, inicializá-la.")
     PerguntaDificuldade.objects.create(pergunta=p31, dificuldade=facil)
     Resposta.objects.create(pergunta=p31, texto="quantidade = 50;", correta=False)
@@ -462,80 +355,83 @@ def popular_dados(apps, schema_editor):
     # Adicione aqui as perguntas de nível DIFÍCIL para 'Sintaxe Básica' de C
     # ...
 
-    p41 = Pergunta.objects.create(assunto=assunto_c_sb, texto="Qual será o resultado de `sizeof(char)` versus `sizeof(char*)` em um sistema de 64 bits?", explicacao="`sizeof(char)` é sempre 1 byte por definição. `sizeof(char*)` (o tamanho de um ponteiro) depende da arquitetura. Em sistemas de 64 bits, os endereços são representados por 8 bytes (64 bits).")
-    PerguntaDificuldade.objects.create(pergunta=p41, dificuldade=dificil)
-    Resposta.objects.create(pergunta=p41, texto="1 e 4 (bytes)", correta=False)
-    Resposta.objects.create(pergunta=p41, texto="1 e 8 (bytes)", correta=True)
-    Resposta.objects.create(pergunta=p41, texto="Ambos são 1 (byte)", correta=False)
-    Resposta.objects.create(pergunta=p41, texto="1 e o valor é indefinido", correta=False)
-
-    p42 = Pergunta.objects.create(assunto=assunto_c_sb, texto="Considerando `int a = 1, b = 2;`, qual o resultado de `printf(\"%d\", a+++b);`?", explicacao="Devido à ambiguidade, o compilador C interpreta como `a++ + b`. O pós-incremento (a++) primeiro usa o valor de 'a' (1) na expressão e SÓ DEPOIS o incrementa. Então, $1 + 2 = 3$. Após a expressão, `a` se torna 2.")
-    PerguntaDificuldade.objects.create(pergunta=p42, dificuldade=dificil)
-    Resposta.objects.create(pergunta=p42, texto="3", correta=True)
-    Resposta.objects.create(pergunta=p42, texto="4", correta=False)
-    Resposta.objects.create(pergunta=p42, texto="Erro de sintaxe (Syntax Error)", correta=False)
-    Resposta.objects.create(pergunta=p42, texto="Comportamento indefinido (Undefined Behavior)", correta=False)
-
-    p43 = Pergunta.objects.create(assunto=assunto_c_sb, texto="O que a instrução `typedef int (*FuncPtr)(int, int);` faz?", explicacao="Esta instrução `typedef` cria um novo alias de tipo. `FuncPtr` torna-se um alias para um 'ponteiro para uma função que recebe dois inteiros como argumentos e retorna um inteiro'.")
-    PerguntaDificuldade.objects.create(pergunta=p43, dificuldade=dificil)
-    Resposta.objects.create(pergunta=p43, texto="Declara um ponteiro de função chamado `FuncPtr` que retorna um inteiro.", correta=False)
-    Resposta.objects.create(pergunta=p43, texto="Cria um alias de tipo chamado `FuncPtr` para um ponteiro para função que retorna `int` e recebe dois `int`.", correta=True)
-    Resposta.objects.create(pergunta=p43, texto="Declara uma função chamada `FuncPtr` que aceita dois ponteiros de inteiros.", correta=False)
-    Resposta.objects.create(pergunta=p43, texto="Cria um novo tipo de struct para ponteiros.", correta=False)
-
-    p44 = Pergunta.objects.create(assunto=assunto_c_sb, texto="Qual é o modificador de tipo que indica ao compilador que uma variável não será alterada após a sua inicialização?", explicacao="O modificador `const` (de 'constant') é usado para declarar que o valor de uma variável (ou o valor apontado por um ponteiro) é fixo e não deve ser alterado pelo código, permitindo otimizações e checagem de erros pelo compilador.")
-    PerguntaDificuldade.objects.create(pergunta=p44, dificuldade=dificil)
-    Resposta.objects.create(pergunta=p44, texto="static", correta=False)
-    Resposta.objects.create(pergunta=p44, texto="volatile", correta=False)
-    Resposta.objects.create(pergunta=p44, texto="const", correta=True)
-    Resposta.objects.create(pergunta=p44, texto="final", correta=False)
-
-
     # ====================================================================
     # === QUIZ C: ESTRUTURAS DE REPETIÇÃO ===
     # ====================================================================
     assunto_c_er_nome = 'Estruturas de Repetição'
     assunto_c_er = Assunto.objects.create(linguagem=c_lang, nome=assunto_c_er_nome, slug=slugify(f'{c_lang.nome}-{assunto_c_er_nome}'))
 
-    # --- PERGUNTAS DE NÍVEL FÁCIL ---
-    p21 = Pergunta.objects.create(assunto=assunto_c_er, texto="Qual é a sintaxe completa de um laço for em C que vai de 0 a 9?", explicacao="O laço for em C tem três partes...")
-    PerguntaDificuldade.objects.create(pergunta=p21, dificuldade=facil)
-    Resposta.objects.create(pergunta=p21, texto="for (int i=0; i < 10; i++)", correta=True)
-    Resposta.objects.create(pergunta=p21, texto="for (i < 10; i++)", correta=False)
-    Resposta.objects.create(pergunta=p21, texto="for (int i=0; i < 10)", correta=False)
-    Resposta.objects.create(pergunta=p21, texto="for (int i=0 to 9)", correta=False)
+# --- PERGUNTAS DE NÍVEL FÁCIL ---
+    p41 = Pergunta.objects.create(assunto=assunto_c_er, texto="Qual é a sintaxe completa de um laço for em C que vai de 0 a 9?", explicacao="O laço for em C tem três partes entre parênteses, separadas por ponto e vírgula: inicialização, condição e incremento/decremento.")
+    PerguntaDificuldade.objects.create(pergunta=p41, dificuldade=facil)
+    Resposta.objects.create(pergunta=p41, texto="for (int i=0; i < 10; i++)", correta=True)
+    Resposta.objects.create(pergunta=p41, texto="for (i < 10; i++)", correta=False)
+    Resposta.objects.create(pergunta=p41, texto="for (int i=0; i < 10)", correta=False)
+    Resposta.objects.create(pergunta=p41, texto="for (int i=0 to 9)", correta=False)
 
-    p22 = Pergunta.objects.create(assunto=assunto_c_er, texto="Qual laço em C garante que seu corpo seja executado pelo menos uma vez?", explicacao="O laço do-while é uma estrutura...")
-    PerguntaDificuldade.objects.create(pergunta=p22, dificuldade=facil)
-    Resposta.objects.create(pergunta=p22, texto="for", correta=False)
-    Resposta.objects.create(pergunta=p22, texto="while", correta=False)
-    Resposta.objects.create(pergunta=p22, texto="do-while", correta=True)
-    Resposta.objects.create(pergunta=p22, texto="repeat-until", correta=False)
-   
-    p23 = Pergunta.objects.create(assunto=assunto_c_er, texto="Qual é a sintaxe para um laço while que continua enquanto a variável ativo for verdadeira (considerando 1 como verdadeiro)?", explicacao="A sintaxe do laço while em C requer...")
-    PerguntaDificuldade.objects.create(pergunta=p23, dificuldade=facil)
-    Resposta.objects.create(pergunta=p23, texto="while [ativo == 1]", correta=False)
-    Resposta.objects.create(pergunta=p23, texto="while (ativo)", correta=True)
-    Resposta.objects.create(pergunta=p23, texto="while {ativo}", correta=False)
-    Resposta.objects.create(pergunta=p23, texto="while ativo is 1", correta=False)
+    p42 = Pergunta.objects.create(assunto=assunto_c_er, texto="Qual laço em C garante que seu corpo seja executado pelo menos uma vez?", explicacao="O laço `do-while` é uma estrutura de pós-teste; o corpo do laço é executado primeiro e a condição é verificada depois, garantindo ao menos uma execução.")
+    PerguntaDificuldade.objects.create(pergunta=p42, dificuldade=facil)
+    Resposta.objects.create(pergunta=p42, texto="for", correta=False)
+    Resposta.objects.create(pergunta=p42, texto="while", correta=False)
+    Resposta.objects.create(pergunta=p42, texto="do-while", correta=True)
+    Resposta.objects.create(pergunta=p42, texto="repeat-until", correta=False)
 
-    p24 = Pergunta.objects.create(assunto=assunto_c_er, texto="Dentro de um laço for, o que a terceira expressão (i++) geralmente representa?", explicacao="A terceira parte da declaração de um laço for...")
-    PerguntaDificuldade.objects.create(pergunta=p24, dificuldade=facil)
-    Resposta.objects.create(pergunta=p24, texto="A inicialização", correta=False)
-    Resposta.objects.create(pergunta=p24, texto="A condição de parada", correta=False)
-    Resposta.objects.create(pergunta=p24, texto="O incremento/decremento", correta=True)
-    Resposta.objects.create(pergunta=p24, texto="A declaração da variável", correta=False)
+    p43 = Pergunta.objects.create(assunto=assunto_c_er, texto="Qual é a sintaxe para um laço while que continua enquanto a variável ativo for verdadeira (considerando 1 como verdadeiro)?", explicacao="A sintaxe do laço `while` em C requer que a condição esteja entre parênteses. `while (ativo)` é equivalente a `while (ativo != 0)`.")
+    PerguntaDificuldade.objects.create(pergunta=p43, dificuldade=facil)
+    Resposta.objects.create(pergunta=p43, texto="while [ativo == 1]", correta=False)
+    Resposta.objects.create(pergunta=p43, texto="while (ativo)", correta=True)
+    Resposta.objects.create(pergunta=p43, texto="while {ativo}", correta=False)
+    Resposta.objects.create(pergunta=p43, texto="while ativo is 1", correta=False)
 
-    p25 = Pergunta.objects.create(assunto=assunto_c_er, texto="Como a palavra-chave break funciona dentro de um laço while em C?", explicacao="Assim como em Python, a instrução break em C...")
-    PerguntaDificuldade.objects.create(pergunta=p25, dificuldade=facil)
-    Resposta.objects.create(pergunta=p25, texto="Pula para a próxima iteração do laço.", correta=False)
-    Resposta.objects.create(pergunta=p25, texto="Encerra a função atual.", correta=False)
-    Resposta.objects.create(pergunta=p25, texto="Encerra o laço imediatamente.", correta=True)
-    Resposta.objects.create(pergunta=p25, texto="Pausa a execução do laço temporariamente.", correta=False)
-    
+    p44 = Pergunta.objects.create(assunto=assunto_c_er, texto="Dentro de um laço for, o que a terceira expressão (i++) geralmente representa?", explicacao="A terceira parte da declaração de um laço `for` é a expressão de passo, executada ao final de cada iteração, tipicamente para incrementar ou decrementar a variável de controle.")
+    PerguntaDificuldade.objects.create(pergunta=p44, dificuldade=facil)
+    Resposta.objects.create(pergunta=p44, texto="A inicialização", correta=False)
+    Resposta.objects.create(pergunta=p44, texto="A condição de parada", correta=False)
+    Resposta.objects.create(pergunta=p44, texto="O incremento/decremento", correta=True)
+    Resposta.objects.create(pergunta=p44, texto="A declaração da variável", correta=False)
+
+    p45 = Pergunta.objects.create(assunto=assunto_c_er, texto="Como a palavra-chave break funciona dentro de um laço while em C?", explicacao="A instrução `break` em C causa a terminação imediata do laço mais interno em que se encontra, transferindo o controle do programa para a instrução seguinte ao laço.")
+    PerguntaDificuldade.objects.create(pergunta=p45, dificuldade=facil)
+    Resposta.objects.create(pergunta=p45, texto="Pula para a próxima iteração do laço.", correta=False)
+    Resposta.objects.create(pergunta=p45, texto="Encerra a função atual.", correta=False)
+    Resposta.objects.create(pergunta=p45, texto="Encerra o laço imediatamente.", correta=True)
+    Resposta.objects.create(pergunta=p45, texto="Pausa a execução do laço temporariamente.", correta=False)
+
     # --- PERGUNTAS DE NÍVEL MÉDIO ---
-    # Adicione aqui as perguntas de nível MÉDIO para 'Estruturas de Repetição' de C
-    # ...
+    p46 = Pergunta.objects.create(assunto=assunto_c_er, texto="Quantas vezes a palavra \"Teste\" será impressa? `int i=5; do{ printf(\"Teste\\n\"); }while(i>10);`", explicacao="O laço `do-while` sempre executa seu corpo pelo menos uma vez, pois a condição só é verificada no final. 'Teste' é impresso, então `5 > 10` é avaliado como falso e o laço termina.")
+    PerguntaDificuldade.objects.create(pergunta=p46, dificuldade=medio)
+    Resposta.objects.create(pergunta=p46, texto="0 vezes", correta=False)
+    Resposta.objects.create(pergunta=p46, texto="1 vez", correta=True)
+    Resposta.objects.create(pergunta=p46, texto="5 vezes", correta=False)
+    Resposta.objects.create(pergunta=p46, texto="Infinitas vezes", correta=False)
+
+    p47 = Pergunta.objects.create(assunto=assunto_c_er, texto="Qual o valor final de `j`? `int i,j; for(i=0,j=10; i<5; i++,j--){ /*vazio*/ }`", explicacao="O laço executa 5 vezes (para i de 0 a 4). A cada iteração, `j` é decrementado. Inicia em 10, e após 5 decrementos (para i=0,1,2,3,4), seu valor final será 5.")
+    PerguntaDificuldade.objects.create(pergunta=p47, dificuldade=medio)
+    Resposta.objects.create(pergunta=p47, texto="10", correta=False)
+    Resposta.objects.create(pergunta=p47, texto="0", correta=False)
+    Resposta.objects.create(pergunta=p47, texto="5", correta=True)
+    Resposta.objects.create(pergunta=p47, texto="4", correta=False)
+
+    p48 = Pergunta.objects.create(assunto=assunto_c_er, texto="Qual é a forma idiomática em C para criar um laço infinito?", explicacao="Todas as opções são formas válidas e comuns de criar um laço infinito. `while(1)` usa uma condição que é sempre verdadeira. `for(;;)` omite todas as partes do `for`, resultando em um laço sem condição de parada.")
+    PerguntaDificuldade.objects.create(pergunta=p48, dificuldade=medio)
+    Resposta.objects.create(pergunta=p48, texto="while (1)", correta=False)
+    Resposta.objects.create(pergunta=p48, texto="for (;;)", correta=False)
+    Resposta.objects.create(pergunta=p48, texto="do {} while(true);", correta=False)
+    Resposta.objects.create(pergunta=p48, texto="Todas as alternativas estão corretas.", correta=True)
+
+    p49 = Pergunta.objects.create(assunto=assunto_c_er, texto="O que a instrução `break` faz dentro de laços aninhados?", explicacao="A instrução `break` sempre se aplica apenas ao escopo do laço mais próximo (o mais interno) em que está contida. Ela não afeta os laços externos.")
+    PerguntaDificuldade.objects.create(pergunta=p49, dificuldade=medio)
+    Resposta.objects.create(pergunta=p49, texto="Interrompe a execução de ambos os laços `for`.", correta=False)
+    Resposta.objects.create(pergunta=p49, texto="Interrompe a execução apenas do laço `for` mais interno (o de `j`).", correta=True)
+    Resposta.objects.create(pergunta=p49, texto="Interrompe a execução apenas do laço `for` mais externo (o de `i`).", correta=False)
+    Resposta.objects.create(pergunta=p49, texto="Pula a iteração atual de ambos os laços.", correta=False)
+
+    p50 = Pergunta.objects.create(assunto=assunto_c_er, texto="O que este código faz? `int arr[]={10,20,30}; int *ptr=arr; while(ptr<arr+3){ printf(\"%d \",*ptr); ptr++; }`", explicacao="Isso demonstra a iteração sobre um array usando aritmética de ponteiros. `ptr` começa no primeiro elemento, e a cada iteração, o valor (`*ptr`) é impresso e o ponteiro (`ptr++`) avança para o próximo elemento.")
+    PerguntaDificuldade.objects.create(pergunta=p50, dificuldade=medio)
+    Resposta.objects.create(pergunta=p50, texto="Imprime os endereços de memória dos elementos do array.", correta=False)
+    Resposta.objects.create(pergunta=p50, texto="Entra em um loop infinito.", correta=False)
+    Resposta.objects.create(pergunta=p50, texto="Imprime os valores `10 20 30 `.", correta=True)
+    Resposta.objects.create(pergunta=p50, texto="Gera um erro de compilação.", correta=False)
 
     # --- PERGUNTAS DE NÍVEL DIFÍCIL ---
     # Adicione aqui as perguntas de nível DIFÍCIL para 'Estruturas de Repetição' de C
@@ -549,44 +445,76 @@ def popular_dados(apps, schema_editor):
     assunto_c_c = Assunto.objects.create(linguagem=c_lang, nome=assunto_c_c_nome, slug=slugify(f'{c_lang.nome}-{assunto_c_c_nome}'))
 
     # --- PERGUNTAS DE NÍVEL FÁCIL ---
-    p26 = Pergunta.objects.create(assunto=assunto_c_c, texto='Qual é a sintaxe para a parte "senão se" em uma estrutura condicional em C?', explicacao="Em C, a estrutura para testar...")
-    PerguntaDificuldade.objects.create(pergunta=p26, dificuldade=facil)
-    Resposta.objects.create(pergunta=p26, texto="elif", correta=False)
-    Resposta.objects.create(pergunta=p26, texto="else if", correta=True)
-    Resposta.objects.create(pergunta=p26, texto="elseif", correta=False)
-    Resposta.objects.create(pergunta=p26, texto="elsif", correta=False)
+    p51 = Pergunta.objects.create(assunto=assunto_c_c, texto='Qual é a sintaxe para a parte "senão se" em uma estrutura condicional em C?', explicacao="Em C, a estrutura para testar múltiplas condições sequencialmente é `if`, seguida por uma ou mais cláusulas `else if`, e opcionalmente um `else` no final.")
+    PerguntaDificuldade.objects.create(pergunta=p51, dificuldade=facil)
+    Resposta.objects.create(pergunta=p51, texto="elif", correta=False)
+    Resposta.objects.create(pergunta=p51, texto="else if", correta=True)
+    Resposta.objects.create(pergunta=p51, texto="elseif", correta=False)
+    Resposta.objects.create(pergunta=p51, texto="elsif", correta=False)
 
-    p27 = Pergunta.objects.create(assunto=assunto_c_c, texto='Como se escreve a condição "se x é maior ou igual a y" em C?', explicacao="O operador relacional para 'maior ou igual a'...")
-    PerguntaDificuldade.objects.create(pergunta=p27, dificuldade=facil)
-    Resposta.objects.create(pergunta=p27, texto="if (x >= y)", correta=True)
-    Resposta.objects.create(pergunta=p27, texto="if x >= y then", correta=False)
-    Resposta.objects.create(pergunta=p27, texto="if [x >= y]", correta=False)
-    Resposta.objects.create(pergunta=p27, texto="if (x >|= y)", correta=False)
+    p52 = Pergunta.objects.create(assunto=assunto_c_c, texto='Como se escreve a condição "se x é maior ou igual a y" em C?', explicacao="O operador relacional para 'maior ou igual a' em C é `>=`. A condição deve estar entre parênteses na declaração `if`.")
+    PerguntaDificuldade.objects.create(pergunta=p52, dificuldade=facil)
+    Resposta.objects.create(pergunta=p52, texto="if (x >= y)", correta=True)
+    Resposta.objects.create(pergunta=p52, texto="if x >= y then", correta=False)
+    Resposta.objects.create(pergunta=p52, texto="if [x >= y]", correta=False)
+    Resposta.objects.create(pergunta=p52, texto="if (x >|= y)", correta=False)
 
-    p28 = Pergunta.objects.create(assunto=assunto_c_c, texto='Qual é o operador lógico para "OU" em C?', explicacao="O operador lógico 'OU' em C é representado...")
-    PerguntaDificuldade.objects.create(pergunta=p28, dificuldade=facil)
-    Resposta.objects.create(pergunta=p28, texto="or", correta=False)
-    Resposta.objects.create(pergunta=p28, texto="||", correta=True)
-    Resposta.objects.create(pergunta=p28, texto="|", correta=False)
-    Resposta.objects.create(pergunta=p28, texto="OR", correta=False)
+    p53 = Pergunta.objects.create(assunto=assunto_c_c, texto='Qual é o operador lógico para "OU" em C?', explicacao="O operador lógico 'OU' em C é representado por duas barras verticais (`||`). O operador `|` é o 'OU' bit-a-bit (bitwise).")
+    PerguntaDificuldade.objects.create(pergunta=p53, dificuldade=facil)
+    Resposta.objects.create(pergunta=p53, texto="or", correta=False)
+    Resposta.objects.create(pergunta=p53, texto="||", correta=True)
+    Resposta.objects.create(pergunta=p53, texto="|", correta=False)
+    Resposta.objects.create(pergunta=p53, texto="OR", correta=False)
 
-    p29 = Pergunta.objects.create(assunto=assunto_c_c, texto="Além de if-else, qual outra estrutura de seleção permite testar uma variável contra uma lista de valores?", explicacao="A estrutura switch permite...")
-    PerguntaDificuldade.objects.create(pergunta=p29, dificuldade=facil)
-    Resposta.objects.create(pergunta=p29, texto="select", correta=False)
-    Resposta.objects.create(pergunta=p29, texto="case", correta=False)
-    Resposta.objects.create(pergunta=p29, texto="match", correta=False)
-    Resposta.objects.create(pergunta=p29, texto="switch", correta=True)
+    p54 = Pergunta.objects.create(assunto=assunto_c_c, texto="Além de if-else, qual outra estrutura de seleção permite testar uma variável contra uma lista de valores?", explicacao="A estrutura `switch` permite que uma variável seja testada contra uma lista de valores (os `case`), oferecendo uma alternativa mais limpa a múltiplos `else if`.")
+    PerguntaDificuldade.objects.create(pergunta=p54, dificuldade=facil)
+    Resposta.objects.create(pergunta=p54, texto="select", correta=False)
+    Resposta.objects.create(pergunta=p54, texto="case", correta=False)
+    Resposta.objects.create(pergunta=p54, texto="match", correta=False)
+    Resposta.objects.create(pergunta=p54, texto="switch", correta=True)
 
-    p30 = Pergunta.objects.create(assunto=assunto_c_c, texto="Qual operador é usado para comparação de igualdade em C?", explicacao="Em C, o sinal de igual único (=) é para atribuição...")
-    PerguntaDificuldade.objects.create(pergunta=p30, dificuldade=facil)
-    Resposta.objects.create(pergunta=p30, texto="=", correta=False)
-    Resposta.objects.create(pergunta=p30, texto=":=", correta=False)
-    Resposta.objects.create(pergunta=p30, texto="eq", correta=False)
-    Resposta.objects.create(pergunta=p30, texto="==", correta=True)
-    
+    p55 = Pergunta.objects.create(assunto=assunto_c_c, texto="Qual operador é usado para comparação de igualdade em C?", explicacao="Em C, o sinal de igual único (`=`) é para atribuição de valor. Para comparar se dois valores são iguais, deve-se usar o sinal de igual duplo (`==`).")
+    PerguntaDificuldade.objects.create(pergunta=p55, dificuldade=facil)
+    Resposta.objects.create(pergunta=p55, texto="=", correta=False)
+    Resposta.objects.create(pergunta=p55, texto=":=", correta=False)
+    Resposta.objects.create(pergunta=p55, texto="eq", correta=False)
+    Resposta.objects.create(pergunta=p55, texto="==", correta=True)
+
     # --- PERGUNTAS DE NÍVEL MÉDIO ---
-    # Adicione aqui as perguntas de nível MÉDIO para 'Estruturas Condicionais' de C
-    # ...
+    p56 = Pergunta.objects.create(assunto=assunto_c_c, texto="O que será impresso pelo código `int x=0; if(x=5){ printf(\"Verdadeiro\"); } else { printf(\"Falso\"); }`?", explicacao="O erro comum `x=5` é uma ATRIBUIÇÃO, não uma comparação. O valor da expressão de atribuição é 5. Em C, qualquer valor diferente de zero é `true`, então o bloco `if` é executado.")
+    PerguntaDificuldade.objects.create(pergunta=p56, dificuldade=medio)
+    Resposta.objects.create(pergunta=p56, texto="Falso", correta=False)
+    Resposta.objects.create(pergunta=p56, texto="Verdadeiro", correta=True)
+    Resposta.objects.create(pergunta=p56, texto="Nada será impresso.", correta=False)
+    Resposta.objects.create(pergunta=p56, texto="O código não compilará devido a `x = 5`.", correta=False)
+
+    p57 = Pergunta.objects.create(assunto=assunto_c_c, texto="Qual será a saída do switch: `int op=2; switch(op){ case 1:printf(\"A\"); case 2:printf(\"B\"); case 3:printf(\"C\");break; default:printf(\"D\"); }`?", explicacao="O `switch` executa o `case 2`, imprimindo 'B'. Como não há `break` no `case 2`, a execução 'cai' (fall-through) para o `case 3`, imprimindo 'C'. Então, encontra o `break` e sai.")
+    PerguntaDificuldade.objects.create(pergunta=p57, dificuldade=medio)
+    Resposta.objects.create(pergunta=p57, texto="B", correta=False)
+    Resposta.objects.create(pergunta=p57, texto="C", correta=False)
+    Resposta.objects.create(pergunta=p57, texto="BC", correta=True)
+    Resposta.objects.create(pergunta=p57, texto="BCD", correta=False)
+
+    p58 = Pergunta.objects.create(assunto=assunto_c_c, texto="Qual o valor de `x` após: `int x = 10; if (x > 5 || ++x == 10) { /*...*/ }`?", explicacao="O operador OU (`||`) usa 'avaliação de curto-circuito'. Como a primeira parte (`x > 5`) é verdadeira, a segunda parte (`++x == 10`) nunca é avaliada. Portanto, `x` não é incrementado e permanece 10.")
+    PerguntaDificuldade.objects.create(pergunta=p58, dificuldade=medio)
+    Resposta.objects.create(pergunta=p58, texto="10", correta=True)
+    Resposta.objects.create(pergunta=p58, texto="11", correta=False)
+    Resposta.objects.create(pergunta=p58, texto="9", correta=False)
+    Resposta.objects.create(pergunta=p58, texto="O comportamento é indefinido.", correta=False)
+
+    p59 = Pergunta.objects.create(assunto=assunto_c_c, texto="Qual o valor final de `maior` em: `int a=15, b=20; int maior = (a > b) ? a : b;`?", explicacao="Este é o operador ternário. A condição `(a > b)` é `(15 > 20)`, que é falsa. Portanto, a expressão retorna o valor após os dois pontos (`:`), que é `b` (ou seja, 20).")
+    PerguntaDificuldade.objects.create(pergunta=p59, dificuldade=medio)
+    Resposta.objects.create(pergunta=p59, texto="15", correta=False)
+    Resposta.objects.create(pergunta=p59, texto="20", correta=True)
+    Resposta.objects.create(pergunta=p59, texto="0", correta=False)
+    Resposta.objects.create(pergunta=p59, texto="O código tem um erro de sintaxe.", correta=False)
+
+    p60 = Pergunta.objects.create(assunto=assunto_c_c, texto="O que a condição `if (num & 1)` verifica?", explicacao="`&` é o operador E bit-a-bit. `num & 1` resulta em `1` apenas se o último bit de `num` for 1 (característica de todos os números ímpares). Se for par (último bit 0), o resultado é 0 (falso).")
+    PerguntaDificuldade.objects.create(pergunta=p60, dificuldade=medio)
+    Resposta.objects.create(pergunta=p60, texto="Se `num` é igual a 1.", correta=False)
+    Resposta.objects.create(pergunta=p60, texto="Se `num` é um número par.", correta=False)
+    Resposta.objects.create(pergunta=p60, texto="Se `num` é um número ímpar.", correta=True)
+    Resposta.objects.create(pergunta=p60, texto="Se `num` é maior que 1.", correta=False)
 
     # --- PERGUNTAS DE NÍVEL DIFÍCIL ---
     # Adicione aqui as perguntas de nível DIFÍCIL para 'Estruturas Condicionais' de C
