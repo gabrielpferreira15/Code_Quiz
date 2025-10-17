@@ -270,8 +270,41 @@ def popular_dados(apps, schema_editor):
     Resposta.objects.create(pergunta=p30, texto="A variável `y` não será definida.", correta=False)
     
     # --- PERGUNTAS DE NÍVEL DIFÍCIL ---
-    # Adicione aqui as perguntas de nível DIFÍCIL para 'Condicionais' de Python
-    # ...
+
+    p31 = Pergunta.objects.create(assunto=assunto_py_c, texto="Qual será a saída do código a seguir? `a = 0; b = 5; result = (a and 'primeiro') or (b > 3 and 'segundo') or 'terceiro'; print(result)`", explicacao="O operador `or` retorna o primeiro valor verdadeiro que encontra. `(a and 'primeiro')` é avaliado como `0` (falso). A próxima condição, `(b > 3 and 'segundo')`, é `True and 'segundo'`, que resulta em `'segundo'`. Como `'segundo'` é um valor verdadeiro, o `or` para e o retorna, sem avaliar `'terceiro'`.")
+    PerguntaDificuldade.objects.create(pergunta=p31, dificuldade=dificil)
+    Resposta.objects.create(pergunta=p31, texto="'segundo'", correta=True)
+    Resposta.objects.create(pergunta=p31, texto="'primeiro'", correta=False)
+    Resposta.objects.create(pergunta=p31, texto="'terceiro'", correta=False)
+    Resposta.objects.create(pergunta=p31, texto="True", correta=False)
+
+    p32 = Pergunta.objects.create(assunto=assunto_py_c, texto="Qual valor será atribuído a `status` no código: `idade = 25; permissao = False; status = 'Aprovado' if idade > 18 and permissao else 'Reprovado por permissão' if idade > 18 else 'Reprovado por idade'`?", explicacao="A expressão é avaliada da esquerda para a direita. A primeira condição `idade > 18 and permissao` é `True and False`, resultando em `False`. O código então executa a parte após o `else`, que é outra expressão ternária: `'Reprovado por permissão' if idade > 18 else 'Reprovado por idade'`. Como `idade > 18` é verdadeiro, `status` recebe `'Reprovado por permissão'`.")
+    PerguntaDificuldade.objects.create(pergunta=p32, dificuldade=dificil)
+    Resposta.objects.create(pergunta=p32, texto="'Reprovado por permissão'", correta=True)
+    Resposta.objects.create(pergunta=p32, texto="'Aprovado'", correta=False)
+    Resposta.objects.create(pergunta=p32, texto="'Reprovado por idade'", correta=False)
+    Resposta.objects.create(pergunta=p32, texto="Ocorrerá um erro de sintaxe.", correta=False)
+    
+    p33 = Pergunta.objects.create(assunto=assunto_py_c, texto="O que será impresso pelo código a seguir? `dados = []; if dados: print('Cheio'); elif not dados: print('Vazio'); else: print('Indefinido')`", explicacao="Em Python, estruturas de dados vazias (como listas, tuplas, dicionários) são consideradas 'falsas' em um contexto booleano. A condição `if dados:` avalia para `False`, pois a lista `dados` está vazia. A execução passa para o `elif not dados:`. Como `dados` é falso, `not dados` é verdadeiro, e o programa imprime 'Vazio'.")
+    PerguntaDificuldade.objects.create(pergunta=p33, dificuldade=dificil)
+    Resposta.objects.create(pergunta=p33, texto="'Vazio'", correta=True)
+    Resposta.objects.create(pergunta=p33, texto="'Cheio'", correta=False)
+    Resposta.objects.create(pergunta=p33, texto="'Indefinido'", correta=False)
+    Resposta.objects.create(pergunta=p33, texto="Nada será impresso.", correta=False)
+
+    p34 = Pergunta.objects.create(assunto=assunto_py_c, texto="Qual será a saída do código? `numeros = [1, 2, 3]; if (n := len(numeros)) > 2: print(f'Lista longa com {n} elementos'); else: print(f'Lista curta')` (Considerando Python 3.8+)", explicacao="O operador Walrus `:=` atribui o valor de `len(numeros)` (que é 3) à variável `n` e, em seguida, a expressão `n > 2` é avaliada. Como 3 é maior que 2, a condição é verdadeira. Portanto, a saída será a f-string formatada com o valor de `n`.")
+    PerguntaDificuldade.objects.create(pergunta=p34, dificuldade=dificil)
+    Resposta.objects.create(pergunta=p34, texto="'Lista longa com 3 elementos'", correta=True)
+    Resposta.objects.create(pergunta=p34, texto="'Lista curta'", correta=False)
+    Resposta.objects.create(pergunta=p34, texto="Ocorrerá um erro, pois `n` não foi definido antes.", correta=False)
+    Resposta.objects.create(pergunta=p34, texto="True", correta=False)
+
+    p35 = Pergunta.objects.create(assunto=assunto_py_c, texto="O que o código `a = 1000; b = 1000; if a is b: print(1); elif a == b: print(2); else: print(3)` imprimirá na tela?", explicacao="O operador `==` compara a igualdade dos valores, enquanto o `is` compara se duas variáveis apontam para o mesmo objeto na memória. Para otimização, Python pré-aloca inteiros pequenos (geralmente de -5 a 256). Números maiores como 1000 são criados como objetos separados. Portanto, `a is b` será falso, mas `a == b` será verdadeiro, imprimindo `2`.")
+    PerguntaDificuldade.objects.create(pergunta=p35, dificuldade=dificil)
+    Resposta.objects.create(pergunta=p35, texto="2", correta=True)
+    Resposta.objects.create(pergunta=p35, texto="1", correta=False)
+    Resposta.objects.create(pergunta=p35, texto="3", correta=False)
+    Resposta.objects.create(pergunta=p35, texto="Ocorrerá um erro de comparação.", correta=False)
 
     # ====================================================================
     # === QUIZ C: SINTAXE BÁSICA ===
