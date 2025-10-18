@@ -677,14 +677,14 @@ def popular_dados(apps, schema_editor):
     Resposta.objects.create(pergunta=p85, texto="Se `num` é maior que 1.", correta=False)
     
     # --- PERGUNTAS DE NÍVEL DIFÍCIL ---
-    p61 = Pergunta.objects.create(assunto=assunto_c_c, texto="Qual o resultado da expressão: (5 < 3 && 2 < 0) || (9 & 1)?", explicacao="A primeira parte (5 < 3 && 2 < 0) é Falsa. A segunda parte (9 & 1) é uma operação E bit-a-bit (bitwise AND). 9 (1001) & 1 (0001) resulta em 1 (Verdadeiro). A expressão final é 0 || 1, que resulta em 1 (Verdadeiro).")
+    p86 = Pergunta.objects.create(assunto=assunto_c_c, texto="Qual o resultado da expressão: (5 < 3 && 2 < 0) || (9 & 1)?", explicacao="A primeira parte (5 < 3 && 2 < 0) é Falsa. A segunda parte (9 & 1) é uma operação E bit-a-bit (bitwise AND). 9 (1001) & 1 (0001) resulta em 1 (Verdadeiro). A expressão final é 0 || 1, que resulta em 1 (Verdadeiro).")
     PerguntaDificuldade.objects.create(pergunta=p61, dificuldade=dificil)
     Resposta.objects.create(pergunta=p61, texto="0", correta=False)
     Resposta.objects.create(pergunta=p61, texto="1", correta=True)
     Resposta.objects.create(pergunta=p61, texto="9", correta=False)
     Resposta.objects.create(pergunta=p61, texto="8", correta=False)
 
-    p62 = Pergunta.objects.create(assunto=assunto_c_c, texto="Qual o valor de x e y após o if? int x = 5, y = 10; if (x == 4 && ++y > 10) {}", explicacao="O operador && (E Lógico) usa 'curto-circuito'. A primeira condição (x == 4) é Falsa. Como Falso && qualquer_coisa é sempre Falso, a segunda parte (++y > 10) nunca é executada. y não é incrementado.")
+    p87 = Pergunta.objects.create(assunto=assunto_c_c, texto="Qual o valor de x e y após o if? int x = 5, y = 10; if (x == 4 && ++y > 10) {}", explicacao="O operador && (E Lógico) usa 'curto-circuito'. A primeira condição (x == 4) é Falsa. Como Falso && qualquer_coisa é sempre Falso, a segunda parte (++y > 10) nunca é executada. y não é incrementado.")
     PerguntaDificuldade.objects.create(pergunta=p62, dificuldade=dificil)
     Resposta.objects.create(pergunta=p62, texto="x=5, y=10", correta=True)
     Resposta.objects.create(pergunta=p62, texto="x=5, y=11", correta=False)
