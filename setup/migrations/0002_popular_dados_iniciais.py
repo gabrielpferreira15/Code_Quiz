@@ -583,6 +583,20 @@ def popular_dados(apps, schema_editor):
     Resposta.objects.create(pergunta=p73, texto="1 2 3 4 5 6 7 8 9 10", correta=False)
     Resposta.objects.create(pergunta=p73, texto="1 3 5 7 9", correta=True)
     Resposta.objects.create(pergunta=p73, texto="0 2 4 6 8", correta=False)
+
+    p74 = Pergunta.objects.create(assunto=assunto_c_er, texto="Qual será o valor de `a` e `b` após o laço `while`? `int a = 0, b = 5; while (a++, --b) {}`", explicacao="O operador vírgula (`,`) avalia `a++`, descarta o resultado, e então avalia e retorna `--b` para a condição. O laço roda enquanto `--b` for diferente de 0. O laço executa 5 vezes (b=4, 3, 2, 1, 0). Nesses 5 vezes, `a` é incrementado de 0 para 5.")
+    PerguntaDificuldade.objects.create(pergunta=p74, dificuldade=dificil)
+    Resposta.objects.create(pergunta=p74, texto="a=5, b=0", correta=True)
+    Resposta.objects.create(pergunta=p74, texto="a=6, b=0", correta=False)
+    Resposta.objects.create(pergunta=p74, texto="a=5, b=-1", correta=False)
+    Resposta.objects.create(pergunta=p74, texto="a=4, b=0", correta=False)
+
+    p75 = Pergunta.objects.create(assunto=assunto_c_er, texto="Para que serve a instrução `goto` em C, no contexto de laços?", explicacao="Embora `break` saia do laço mais interno, `goto` permite um salto incondicional para um 'label' (marcador) definido. Isso pode ser usado para sair de múltiplos laços aninhados de uma só vez, pulando diretamente para um ponto após o laço mais externo.")
+    PerguntaDificuldade.objects.create(pergunta=p75, dificuldade=dificil)
+    Resposta.objects.create(pergunta=p75, texto="É a única forma de implementar um laço `do-while`.", correta=False)
+    Resposta.objects.create(pergunta=p75, texto="Para pular para uma iteração específica, como `goto 5;`.", correta=False)
+    Resposta.objects.create(pergunta=p75, texto="Para sair de múltiplos laços aninhados de uma só vez, pulando para um *label* externo.", correta=True)
+    Resposta.objects.create(pergunta=p75, texto="É um sinônimo da instrução `continue` para pular uma iteração.", correta=False)
     
     # ====================================================================
     # === QUIZ C: ESTRUTURAS CONDICIONAIS === 
