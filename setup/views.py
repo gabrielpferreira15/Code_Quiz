@@ -3,6 +3,7 @@ from django.contrib import messages
 from .models import Linguagem, Assunto, Pergunta, Resposta, Dificuldade, PerguntaDificuldade
 from django.http import JsonResponse
 from django.contrib.auth.forms import UserCreationForm 
+from django.contrib.auth import logout
 
 def home_redirect(request):
     if request.user.is_authenticated:
@@ -133,3 +134,7 @@ def jogar_quiz(request, assunto_id):
             contexto['resposta_correta'] = pergunta_atual.alternativas.filter(correta=True).first()
     
     return render(request, 'setup/iniciar_quiz.html', contexto)
+
+def custom_logout(request):
+    logout(request)
+    return redirect('login')

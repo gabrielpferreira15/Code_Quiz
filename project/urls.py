@@ -22,6 +22,7 @@ from setup import views as setup_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/logout/', setup_views.custom_logout, name='logout'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/signup/', setup_views.signup, name='signup'),
     path('', setup_views.home_redirect, name='home_redirect'),
