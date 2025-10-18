@@ -662,7 +662,7 @@ def popular_dados(apps, schema_editor):
     Resposta.objects.create(pergunta=p83, texto="9", correta=False)
     Resposta.objects.create(pergunta=p83, texto="O comportamento é indefinido.", correta=False)
 
-    p48 = Pergunta.objects.create(assunto=assunto_c_c, texto="Qual o valor final de `maior` em: `int a=15, b=20; int maior = (a > b) ? a : b;`?", explicacao="Este é o operador ternário. A condição `(a > b)` é `(15 > 20)`, que é falsa. Portanto, a expressão retorna o valor após os dois pontos (`:`), que é `b` (ou seja, 20).")
+    p84 = Pergunta.objects.create(assunto=assunto_c_c, texto="Qual o valor final de `maior` em: `int a=15, b=20; int maior = (a > b) ? a : b;`?", explicacao="Este é o operador ternário. A condição `(a > b)` é `(15 > 20)`, que é falsa. Portanto, a expressão retorna o valor após os dois pontos (`:`), que é `b` (ou seja, 20).")
     PerguntaDificuldade.objects.create(pergunta=p48, dificuldade=medio)
     Resposta.objects.create(pergunta=p84, texto="15", correta=False)
     Resposta.objects.create(pergunta=p84, texto="20", correta=True)
@@ -677,8 +677,38 @@ def popular_dados(apps, schema_editor):
     Resposta.objects.create(pergunta=p85, texto="Se `num` é maior que 1.", correta=False)
     
     # --- PERGUNTAS DE NÍVEL DIFÍCIL ---
-    # Adicione aqui as perguntas de nível DIFÍCIL para 'Estruturas Condicionais' de C
-    # ...
+    p61 = Pergunta.objects.create(assunto=assunto_c_c, texto="Qual o resultado da expressão: (5 < 3 && 2 < 0) || (9 & 1)?", explicacao="A primeira parte (5 < 3 && 2 < 0) é Falsa. A segunda parte (9 & 1) é uma operação E bit-a-bit (bitwise AND). 9 (1001) & 1 (0001) resulta em 1 (Verdadeiro). A expressão final é 0 || 1, que resulta em 1 (Verdadeiro).")
+    PerguntaDificuldade.objects.create(pergunta=p61, dificuldade=dificil)
+    Resposta.objects.create(pergunta=p61, texto="0", correta=False)
+    Resposta.objects.create(pergunta=p61, texto="1", correta=True)
+    Resposta.objects.create(pergunta=p61, texto="9", correta=False)
+    Resposta.objects.create(pergunta=p61, texto="8", correta=False)
+
+    p62 = Pergunta.objects.create(assunto=assunto_c_c, texto="Qual o valor de x e y após o if? int x = 5, y = 10; if (x == 4 && ++y > 10) {}", explicacao="O operador && (E Lógico) usa 'curto-circuito'. A primeira condição (x == 4) é Falsa. Como Falso && qualquer_coisa é sempre Falso, a segunda parte (++y > 10) nunca é executada. y não é incrementado.")
+    PerguntaDificuldade.objects.create(pergunta=p62, dificuldade=dificil)
+    Resposta.objects.create(pergunta=p62, texto="x=5, y=10", correta=True)
+    Resposta.objects.create(pergunta=p62, texto="x=5, y=11", correta=False)
+    Resposta.objects.create(pergunta=p62, texto="x=4, y=11", correta=False)
+    Resposta.objects.create(pergunta=p62, texto="x=4, y=10", correta=False)
+    p63 = Pergunta.objects.create(assunto=assunto_c_c, texto="Qual será a saída? int v=1; switch(v) { case 1: v+=2; case 2: v*=2; case 3: v-=1; } printf(\"%d\", v);", explicacao="O switch entra no case 1. v se torna 3. Sem break, ele 'cai' (fall-through) para o case 2. v se torna 6 (32). Sem break, 'cai' para o case 3. v se torna 5 (6-1). O switch termina e 5 é impresso.")
+    PerguntaDificuldade.objects.create(pergunta=p63, dificuldade=dificil)
+    Resposta.objects.create(pergunta=p63, texto="3", correta=False)
+    Resposta.objects.create(pergunta=p63, texto="5", correta=True)
+    Resposta.objects.create(pergunta=p63, texto="6", correta=False)
+    Resposta.objects.create(pergunta=p63, texto="2", correta=False)
+
+    p64 = Pergunta.objects.create(assunto=assunto_c_c, texto="Qual o valor de a e b após esta operação? int a=10, b=20; int res = (a > b) ? a++ : b++;", explicacao="O operador ternário avalia (10 > 20), que é Falso. Apenas a expressão após os dois-pontos (b++) é executada. res recebe o valor de bantes* do incremento (20). b é então incrementado para 21. a permanece 10.")
+    PerguntaDificuldade.objects.create(pergunta=p64, dificuldade=dificil)
+    Resposta.objects.create(pergunta=p64, texto="a=11, b=20", correta=False)
+    Resposta.objects.create(pergunta=p64, texto="a=10, b=21", correta=True)
+    Resposta.objects.create(pergunta=p64, texto="a=11, b=21", correta=False)
+    Resposta.objects.create(pergunta=p64, texto="a=10, b=20", correta=False)
+    p65 = Pergunta.objects.create(assunto=assunto_c_c, texto="Qual será a saída do código? int x=1; if(x>0){printf(\"A\");} if(x==1){printf(\"B\");} else if(x<2){printf(\"C\");}", explicacao="Existem dois blocos if independentes. O primeiro if (x > 0) é Verdadeiro, imprimindo 'A'. O segundo bloco if-else if é avaliado. if (x == 1) é Verdadeiro, imprimindo 'B'. A cláusula else if deste segundo bloco é ignorada, pois o if foi satisfeito.")
+    PerguntaDificuldade.objects.create(pergunta=p65, dificuldade=dificil)
+    Resposta.objects.create(pergunta=p65, texto="A", correta=False)
+    Resposta.objects.create(pergunta=p65, texto="B", correta=False)
+    Resposta.objects.create(pergunta=p65, texto="AC", correta=False)
+    Resposta.objects.create(pergunta=p65, texto="AB", correta=True)
 class Migration(migrations.Migration):
 
 
