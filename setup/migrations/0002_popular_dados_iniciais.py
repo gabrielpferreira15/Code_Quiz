@@ -690,7 +690,7 @@ def popular_dados(apps, schema_editor):
     Resposta.objects.create(pergunta=p62, texto="x=5, y=11", correta=False)
     Resposta.objects.create(pergunta=p62, texto="x=4, y=11", correta=False)
     Resposta.objects.create(pergunta=p62, texto="x=4, y=10", correta=False)
-    p63 = Pergunta.objects.create(assunto=assunto_c_c, texto="Qual será a saída? int v=1; switch(v) { case 1: v+=2; case 2: v*=2; case 3: v-=1; } printf(\"%d\", v);", explicacao="O switch entra no case 1. v se torna 3. Sem break, ele 'cai' (fall-through) para o case 2. v se torna 6 (32). Sem break, 'cai' para o case 3. v se torna 5 (6-1). O switch termina e 5 é impresso.")
+    p88 = Pergunta.objects.create(assunto=assunto_c_c, texto="Qual será a saída? int v=1; switch(v) { case 1: v+=2; case 2: v*=2; case 3: v-=1; } printf(\"%d\", v);", explicacao="O switch entra no case 1. v se torna 3. Sem break, ele 'cai' (fall-through) para o case 2. v se torna 6 (32). Sem break, 'cai' para o case 3. v se torna 5 (6-1). O switch termina e 5 é impresso.")
     PerguntaDificuldade.objects.create(pergunta=p63, dificuldade=dificil)
     Resposta.objects.create(pergunta=p63, texto="3", correta=False)
     Resposta.objects.create(pergunta=p63, texto="5", correta=True)
