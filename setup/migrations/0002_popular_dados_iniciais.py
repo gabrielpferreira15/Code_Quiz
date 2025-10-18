@@ -563,10 +563,28 @@ def popular_dados(apps, schema_editor):
     Resposta.objects.create(pergunta=p50, texto="Gera um erro de compilação.", correta=False)
 
     # --- PERGUNTAS DE NÍVEL DIFÍCIL ---
-    # Adicione aqui as perguntas de nível DIFÍCIL para 'Estruturas de Repetição' de C
-    # ...
+    p71 = Pergunta.objects.create(assunto=assunto_c_er, texto="Qual será o valor final de `i` após a execução do laço: `int i = 0; for (; i++ < 5;) {}`?", explicacao="O pós-incremento `i++` é usado na condição. A expressão primeiro compara o valor *atual* de `i` com 5 e, *depois*, incrementa `i`. O laço para quando `i` é 5 (comparação `5 < 5` é Falsa), mas o incremento final ainda ocorre, tornando `i` igual a 6.")
+    PerguntaDificuldade.objects.create(pergunta=p71, dificuldade=dificil)
+    Resposta.objects.create(pergunta=p71, texto="4", correta=False)
+    Resposta.objects.create(pergunta=p71, texto="5", correta=False)
+    Resposta.objects.create(pergunta=p71, texto="6", correta=True)
+    Resposta.objects.create(pergunta=p71, texto="O laço é infinito.", correta=False)
 
+    p72 = Pergunta.objects.create(assunto=assunto_c_er, texto="O que o código a seguir imprimirá? `int i = 0; do { i++; if (i % 3 == 0) continue; printf(\"%d \", i); } while (i < 8);`", explicacao="O `i++` ocorre no início. Quando `i` é 3 ou 6, o `continue` pula o `printf`. O laço roda uma última vez quando `i` é 7, imprimindo '8' (pois `i++` o torna 8). A condição `8 < 8` falha, e o laço termina.")
+    PerguntaDificuldade.objects.create(pergunta=p72, dificuldade=dificil)
+    Resposta.objects.create(pergunta=p72, texto="1 2 4 5 7 8", correta=True)
+    Resposta.objects.create(pergunta=p72, texto="1 2 4 5 7", correta=False)
+    Resposta.objects.create(pergunta=p72, texto="1 2 3 4 5 6 7 8", correta=False)
+    Resposta.objects.create(pergunta=p72, texto="1 2", correta=False)
 
+    p73 = Pergunta.objects.create(assunto=assunto_c_er, texto="Qual será a saída do código? `for (int i = 0; i < 10; i++) { i++; printf(\"%d \", i); }`", explicacao="`i` é incrementado duas vezes por iteração: uma por `i++` no corpo e outra por `i++` na cláusula do `for`. (i=0 -> corpo i=1, print 1 -> cláusula i=2), (i=2 -> corpo i=3, print 3 -> cláusula i=4), ...")
+    PerguntaDificuldade.objects.create(pergunta=p73, dificuldade=dificil)
+    Resposta.objects.create(pergunta=p73, texto="0 1 2 3 4 5 6 7 8 9", correta=False)
+    Resposta.objects.create(pergunta=p73, texto="1 2 3 4 5 6 7 8 9 10", correta=False)
+    Resposta.objects.create(pergunta=p73, texto="1 3 5 7 9", correta=True)
+    Resposta.objects.create(pergunta=p73, texto="0 2 4 6 8", correta=False)
+
+    
     # ====================================================================
     # === QUIZ C: ESTRUTURAS CONDICIONAIS ===
     # ====================================================================
