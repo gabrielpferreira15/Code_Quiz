@@ -57,6 +57,5 @@ jobs:
     - name: 6. Executar as migrações no Azure
       uses: azure/cli@v1
       with:
-        azcliversion: latest
         inlineScript: |
-          az webapp run --name 'code-quiz' --resource-group 'code-quiz_group' --command "python manage.py flush --no-input && python manage.py migrate"
+          az webapp run --name 'code-quiz' --resource-group 'code-quiz_group' --command "python manage.py migrate"
