@@ -73,7 +73,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const linguagemId = this.value;
         if (!linguagemId) return;
 
-        // Fetch Assuntos
         fetch(`/quiz/api/assuntos/${linguagemId}/`)
             .then(response => response.json())
             .then(data => {
@@ -85,7 +84,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 assuntoSelect.disabled = false;
             });
 
-        // Fetch Dificuldades
         fetch(`/quiz/api/dificuldades/`)
             .then(response => response.json())
             .then(data => {

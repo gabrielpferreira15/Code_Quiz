@@ -713,12 +713,9 @@ def popular_dados(apps, schema_editor):
     Resposta.objects.create(pergunta=p90, texto="AB", correta=True)
 class Migration(migrations.Migration):
 
-
     dependencies = [
         ('setup', '0001_initial'),
     ]
-
-
     operations = [
         migrations.RunPython(popular_dados),
     ]

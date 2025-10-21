@@ -1,10 +1,6 @@
 from django.db import models
 from django.utils.text import slugify 
 
-# ====================================================================
-# === SEUS MODELOS ORIGINAIS (INTOCADOS) ===
-# ====================================================================
-
 class Linguagem(models.Model):
     nome = models.CharField(max_length=100)
     slug = models.SlugField(max_length=100, unique=True, blank=True) 
@@ -16,10 +12,8 @@ class Linguagem(models.Model):
 
     def __str__(self):
         return self.nome
-
     class Meta:
         verbose_name_plural = "Linguagens"
-
 class Assunto(models.Model):
     linguagem = models.ForeignKey(Linguagem, on_delete=models.CASCADE)
     nome = models.CharField(max_length=100)
@@ -35,7 +29,6 @@ class Assunto(models.Model):
 
     def __str__(self):
         return f"{self.linguagem.nome} - {self.nome}"
-
 class Pergunta(models.Model):
     texto = models.TextField()
     assunto = models.ForeignKey(Assunto, on_delete=models.CASCADE)
@@ -64,7 +57,6 @@ class Usuario(models.Model):
 
     def __str__(self):
         return self.nome
-
 class Resultado(models.Model):
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     assunto = models.ForeignKey('Assunto', on_delete=models.CASCADE, null=True, blank=True) 
@@ -75,11 +67,6 @@ class Resultado(models.Model):
 
     def __str__(self):
         return f"{self.usuario.nome} - {self.acertos}/{self.total_perguntas} acertos"
-
-# ====================================================================
-# === NOVOS MODELOS ADICIONADOS PARA GERENCIAR DIFICULDADE ===
-# ====================================================================
-
 class Dificuldade(models.Model):
     """
     Armazena os níveis de dificuldade de forma centralizada.

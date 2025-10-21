@@ -1,26 +1,35 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Login{% endblock %}
 
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'setup/auth.css' %}">
+{% endblock %}
+
 {% block content %}
-<div class="container">
+<div class="auth-container">
     <h2>Acesso ao Sistema</h2>
     
     <form method="post">
         {% csrf_token %}
+        <div class="form-group">
+            <label for="id_username">Nome de Usuário:</label>
+            {{ form.username }}
+        </div>
+        <div class="form-group">
+            <label for="id_password">Senha:</label>
+            {{ form.password }}
+        </div>
         
-        {{ form.as_p }}
-        
+        {% if form.errors %}
+            <p style="color: red; text-align: left;">Seu usuário ou senha estão incorretos.</p>
+        {% endif %}
+
         <button type="submit">Entrar</button>
     </form>
     
-    {% if form.errors %}
-        <p style="color: red;">Nome de usuário ou senha incorretos. Tente novamente.</p>
-    {% endif %}
-
-    <p>
-        <a href="{% url 'password_reset' %}">Esqueceu a senha?</a>
-    
-    </p>Não tem uma conta? <a href="{% url 'signup' %}">Cadastre-se</a></p>
+    <!--<p style="margin-top: 20px;"><a href="{% url 'password_reset' %}">Esqueceu a senha?</a></p>-->
+    <p>Não tem uma conta? <a href="{% url 'signup' %}">Cadastre-se</a></p>
 </div>
 {% endblock %}

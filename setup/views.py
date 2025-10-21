@@ -43,97 +43,96 @@ def get_assuntos(request, linguagem_id):
 
     return JsonResponse(assuntos_lista, safe=False)
 
-
 def iniciar_novo_quiz(request, assunto_id, dificuldade_id):
-    assunto = get_object_or_404(Assunto, id=assunto_id)
-    
-    lista_perguntas = list(
-        Pergunta.objects.filter(
-            assunto_id=assunto_id,
-            dificuldade_link__dificuldade_id=dificuldade_id
-        ).values_list('id', flat=True)
-    )
+    perguntas = Pergunta.objects.filter(
+        assunto_id=assunto_id,
+        dificuldade_link__dificuldade__id=dificuldade_id
+    ).order_by('id')
 
-    if not lista_perguntas:
-        messages.error(request, "Não foram encontradas perguntas para a seleção de assunto e dificuldade informada.")
-        return redirect('configurar_quiz')
-
-    request.session['lista_perguntas'] = lista_perguntas
-    request.session['placar'] = 0
-    request.session['perguntas_erradas_info'] = []
-    
-    return redirect('jogar_quiz', assunto_id=assunto_id)
-
-
-def jogar_quiz(request, assunto_id):
-    assunto = get_object_or_404(Assunto, id=assunto_id)
-    lista_perguntas_ids = request.session.get('lista_perguntas', [])
-    placar = request.session.get('placar', 0)
-    perguntas_erradas_ids = request.session.get('perguntas_erradas_ids', [])
+    lista_perguntas_ids = list(perguntas.values_list('id', flat=True))
 
     if not lista_perguntas_ids:
-        total_perguntas_concluidas = Pergunta.objects.filter(assunto=assunto).count()
-        acertou_mais_da_metade = placar > (total_perguntas_concluidas // 2)
-        perguntas_erradas_info = request.session.get('perguntas_erradas_info', [])
-        
-        revisao_data = []
-        for item in perguntas_erradas_info:
-            pergunta = Pergunta.objects.prefetch_related('alternativas').get(id=item['pergunta_id'])
-            resposta_selecionada = Resposta.objects.get(id=item['resposta_selecionada_id'])
-            resposta_correta = pergunta.alternativas.filter(correta=True).first()
+        messages.error(request, "Não há perguntas disponíveis para este quiz.")
+        return redirect('configurar_quiz')
 
+    request.session['quiz_todas_as_perguntas'] = lista_perguntas_ids.copy()
+    request.session['quiz_perguntas_restantes_ids'] = lista_perguntas_ids
+    request.session['quiz_total_perguntas'] = len(lista_perguntas_ids)
+    request.session['quiz_score'] = 0
+    request.session['quiz_revisao_data'] = []
+
+    return redirect('jogar_quiz', assunto_id=assunto_id)
+
+def jogar_quiz(request, assunto_id):
+    total_perguntas = request.session.get('quiz_total_perguntas', 0)
+    assunto = get_object_or_404(Assunto, id=assunto_id)
+
+    id_pergunta_respondida = request.session.get('quiz_id_pergunta_atual')
+
+    if request.method == 'POST' and id_pergunta_respondida:
+        pergunta_respondida = get_object_or_404(Pergunta, id=id_pergunta_respondida)
+        id_resposta_selecionada = request.POST.get('resposta')
+        resposta_selecionada = get_object_or_404(Resposta, id=id_resposta_selecionada)
+        resposta_correta = pergunta_respondida.alternativas.get(correta=True)
+
+        if resposta_selecionada.correta:
+            request.session['quiz_score'] = request.session.get('quiz_score', 0) + 1
+        else:
+            revisao_data = request.session.get('quiz_revisao_data', [])
             revisao_data.append({
-                'pergunta': pergunta,
-                'resposta_correta_texto': resposta_correta.texto if resposta_correta else "N/A",
-                'resposta_selecionada_texto': resposta_selecionada.texto if resposta_selecionada else "Não respondida"
+                'pergunta': pergunta_respondida.texto,
+                'resposta_selecionada_texto': resposta_selecionada.texto,
+                'resposta_correta_texto': resposta_correta.texto,
+                'pergunta_id': pergunta_respondida.id,
+                'explicacao': pergunta_respondida.explicacao,
             })
+            request.session['quiz_revisao_data'] = revisao_data
 
-        contexto_final = {
-            'score': placar,
-            'total_perguntas': total_perguntas_concluidas,
+        perguntas_restantes_ids_feedback = request.session.get('quiz_perguntas_restantes_ids', [])
+        context = {
             'assunto': assunto,
-            'acertou_mais_da_metade': acertou_mais_da_metade,
+            'pergunta': pergunta_respondida,
+            'pergunta_numero_atual': total_perguntas - len(perguntas_restantes_ids_feedback),
+            'total_perguntas_quiz': total_perguntas,
+            'show_feedback': True,
+            'resposta_selecionada': resposta_selecionada,
+            'resposta_correta': resposta_correta,
+        }
+
+        return render(request, 'setup/iniciar_quiz.html', context)
+
+    perguntas_restantes_ids = request.session.get('quiz_perguntas_restantes_ids', [])
+
+    if not perguntas_restantes_ids:
+        score = request.session.get('quiz_score', 0)
+        revisao_data = request.session.get('quiz_revisao_data', [])
+        
+        for key in list(request.session.keys()):
+            if key.startswith('quiz_'):
+                del request.session[key]
+
+        context = {
+            'score': score,
+            'total_perguntas': total_perguntas,
+            'assunto': assunto,
+            'acertou_mais_da_metade': score > total_perguntas / 2,
             'revisao_data': revisao_data,
         }
-        
-        return render(request, 'setup/resultado_quiz.html', contexto_final)
-    
-    id_pergunta_atual = lista_perguntas_ids[0]
-    pergunta_atual = get_object_or_404(Pergunta, id=id_pergunta_atual)
-    total_perguntas_quiz = Pergunta.objects.filter(assunto=assunto).count()
-    pergunta_numero_atual = total_perguntas_quiz - len(lista_perguntas_ids) + 1
-    
-    contexto = {
-        'assunto': assunto,
-        'pergunta': pergunta_atual,
-        'total_perguntas_quiz': total_perguntas_quiz,
-        'pergunta_numero_atual': pergunta_numero_atual,
-    }
-    
-    if request.method == 'POST':
-        id_resposta_selecionada = request.POST.get('resposta')
-        
-        if id_resposta_selecionada:
-            resposta_selecionada = get_object_or_404(Resposta, id=id_resposta_selecionada)
-            
-            if resposta_selecionada.correta:
-                request.session['placar'] = placar + 1
-            else:
-                perguntas_erradas_info = request.session.get('perguntas_erradas_info', [])
-                perguntas_erradas_info.append({
-                    'pergunta_id': pergunta_atual.id,
-                    'resposta_selecionada_id': resposta_selecionada.id
-                })
+        return render(request, 'setup/resultado_quiz.html', context)
 
-                request.session['perguntas_erradas_info'] = perguntas_erradas_info
-            
-            request.session['lista_perguntas'] = lista_perguntas_ids[1:]
-            
-            contexto['show_feedback'] = True
-            contexto['resposta_selecionada'] = resposta_selecionada
-            contexto['resposta_correta'] = pergunta_atual.alternativas.filter(correta=True).first()
-    
-    return render(request, 'setup/iniciar_quiz.html', contexto)
+    proxima_pergunta_id = perguntas_restantes_ids.pop(0)
+    request.session['quiz_perguntas_restantes_ids'] = perguntas_restantes_ids
+    request.session['quiz_id_pergunta_atual'] = proxima_pergunta_id
+    pergunta = get_object_or_404(Pergunta, id=proxima_pergunta_id)
+
+    context = {
+        'assunto': assunto,
+        'pergunta': pergunta,
+        'pergunta_numero_atual': total_perguntas - len(perguntas_restantes_ids),
+        'total_perguntas_quiz': total_perguntas,
+        'show_feedback': False,
+    }
+    return render(request, 'setup/iniciar_quiz.html', context)
 
 def custom_logout(request):
     logout(request)
