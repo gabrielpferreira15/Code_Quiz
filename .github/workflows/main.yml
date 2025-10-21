@@ -42,19 +42,22 @@ jobs:
         inlineScript: |
           az webapp stop --name 'code-quiz' --resource-group 'code-quiz_group'
 
-    - name: 4. Fazer o deploy dos arquivos para o Azure Web App
+    - name: 4. Aguardar 30 segundos para estabilização
+      run: sleep 30
+
+    - name: 5. Fazer o deploy dos arquivos para o Azure Web App
       uses: azure/webapps-deploy@v2
       with:
         app-name: 'code-quiz'
         package: '.'
 
-    - name: 5. Iniciar o Azure Web App
+    - name: 6. Iniciar o Azure Web App
       uses: azure/cli@v1
       with:
         inlineScript: |
           az webapp start --name 'code-quiz' --resource-group 'code-quiz_group'
 
-    - name: 6. Executar as migrações no Azure
+    - name: 7. Executar as migrações no Azure
       uses: azure/cli@v1
       with:
         inlineScript: |
