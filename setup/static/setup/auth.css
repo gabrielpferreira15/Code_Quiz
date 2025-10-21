@@ -1,4 +1,4 @@
-.config-container {
+.auth-container {
     background-color: #1a2c3e; 
     padding: 40px;
     border-radius: 12px;
@@ -8,7 +8,7 @@
     text-align: center;
 }
 
-h1 {
+h2 {
     color: #4CAF50; 
     margin-bottom: 30px;
     border-bottom: 2px solid #2e4a62;
@@ -27,19 +27,22 @@ label {
     color: #c0d0e0;
 }
 
-select {
+input[type="text"],
+input[type="password"],
+input[type="email"] {
     width: 100%;
     padding: 12px;
     border-radius: 6px;
     border: 1px solid #2e4a62;
     background-color: #2e4a62;
     color: #f0f8ff;
-    appearance: none; 
-    cursor: pointer;
     font-size: 1em;
+    box-sizing: border-box;
 }
 
-select:focus {
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus {
     border-color: #4CAF50;
     outline: none;
     box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.4);

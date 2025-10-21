@@ -22,7 +22,35 @@
         {% endif %}
 
         <br>
-        <a href="{% url 'configurar_quiz' %}">Tentar outro quiz</a>
+        {% if revisao_data %}
+        <details style="margin-top: 25px; border: 1px solid #ccc; padding: 10px; text-align: left;">
+            <summary style="cursor: pointer; font-weight: bold;">
+                Revisar meus erros ▼
+            </summary>
+            
+            <div style="margin-top: 15px;">
+                {% for item in revisao_data %}
+                    <div style="border-top: 1px solid #eee; padding-top: 10px; margin-top: 10px;">
+                        <p><strong>Pergunta:</strong> {{ item.pergunta.texto }}</p>
+                        
+                        <p style="color: red;">
+                            <strong>Sua Resposta:</strong> {{ item.resposta_selecionada_texto }}
+                        </p>
+
+                        <p style="color: green;">
+                            <strong>Resposta Correta:</strong> {{ item.resposta_correta_texto }}
+                        </p>
+
+                        {% if item.pergunta.explicacao %}
+                            <p><em><strong>Explicação:</strong> {{ item.pergunta.explicacao }}</em></p>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        </details>
+    {% endif %}
+        <br>
+    <a href="{% url 'configurar_quiz' %}">Tentar outro quiz</a>
     </div>
 </body>
 </html>
