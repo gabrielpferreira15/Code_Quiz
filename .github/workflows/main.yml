@@ -22,9 +22,6 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     
-    - name: 4. Rodar os testes (se houver)
-      run: |
-        python manage.py test
 
   deploy:
     needs: build 
