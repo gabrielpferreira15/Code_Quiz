@@ -70,9 +70,49 @@ Realizamos um screencast do site em funcionamento já nós servidores da Azure. 
 
 ## Bug/Issue tracker
 
-Nós criamos um bugtracker, onde podemos ver os problemas que ocorreram durante a processo da Entrega 2. 
+Nós criamos um bugtracker, onde podemos ver os problemas que ocorreram durante a processo da Entrega 2. 
 
 <img width="1431" height="741" alt="Image" src="https://github.com/user-attachments/assets/fafa509f-9dcd-4eba-bb37-9b5539940944" />
+
+
+</details>
+
+---
+
+<details>
+<summary>ENTREGA 3:</summary>
+
+## Relatório
+
+Criamos um documento para registrar a divisão e a realização das tarefas desta entrega. Para acessá-lo, [clique aqui](LINK_PARA_O_SEU_GOOGLE_DOCS)
+
+## Jira
+
+Nós atualizamos nosso Jira e marcamos as histórias implementadas nesta entrega. Segue abaixo as imagens do Backlog e do Quadro ao fim da Entrega 3:
+
+
+Backlog:
+
+
+<img width="1440" alt="Backlog Entrega 3" src="LINK_DA_IMAGEM_DO_BACKLOG_AQUI" />
+
+
+Quadro:
+
+
+<img width="1440" alt="Quadro Entrega 3" src="LINK_DA_IMAGEM_DO_QUADRO_AQUI" />
+
+
+## Screencast
+
+Realizamos um screencast demonstrando as novas funcionalidades implementadas nesta entrega. Para acessar o vídeo, [clique aqui](LINK_PARA_O_SEU_VIDEO_NO_YOUTUBE) (Histórias implementadas: PREENCHA_AS_HISTÓRIAS_AQUI, ex: 4, 6, 7).
+
+## Bug/Issue tracker
+
+Atualizamos nosso bugtracker com os problemas que ocorreram e foram resolvidos durante o processo da Entrega 3. 
+
+
+<img width="1431" alt="Bug Tracker Entrega 3" src="LINK_DA_IMAGEM_DO_BUG_TRACKER_AQUI" />
 
 
 </details>
