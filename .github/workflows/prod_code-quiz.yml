@@ -87,3 +87,14 @@ jobs:
           app-name: 'code-quiz'
           slot-name: 'Production'
           package: release.zip
+
+      - name: Set startup command
+        run: |
+          az webapp config set --name code-quiz --resource-group code-quiz_group --startup-file "bash startup.sh"
+
+      - name: Restart webapp to apply changes
+        run: |
+          az webapp restart --name code-quiz --resource-group code-quiz_group
+
+      - name: Logout from Azure
+        run: az logout
