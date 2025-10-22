@@ -84,7 +84,7 @@ Nós criamos um bugtracker, onde podemos ver os problemas que ocorreram durante 
 
 ## Relatório
 
-Criamos um documento para registrar a divisão e a realização das tarefas desta entrega. Para acessá-lo, [clique aqui](LINK_PARA_O_SEU_GOOGLE_DOCS)
+Criamos um documento para registrar a divisão e a realização das tarefas desta entrega. Para acessá-lo, [clique aqui](https://docs.google.com/document/d/1Bmd_qIy34Q8A9SkGD3S7pwBkR9i8a1L9I9klNP_WlF4/edit?usp=sharing)
 
 ## Jira
 
