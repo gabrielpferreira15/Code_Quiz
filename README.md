@@ -70,9 +70,22 @@ Realizamos um screencast do site em funcionamento já nós servidores da Azure. 
 
 ## Bug/Issue tracker
 
-Nós criamos um bugtracker, onde podemos ver os problemas que ocorreram durante a processo da Entrega 2. 
+Nós criamos um bugtracker, onde podemos ver os problemas que ocorreram durante a processo da Entrega 2. 
 
 <img width="1431" height="741" alt="Image" src="https://github.com/user-attachments/assets/fafa509f-9dcd-4eba-bb37-9b5539940944" />
 
 
 </details>
+
+---
+
+<details>
+<summary>ENTREGA 3:</summary>
+
+## Relatório
+
+Criamos um documento para registrar a divisão e a realização das tarefas desta entrega. Para acessá-lo, [clique aqui](LINK_PARA_O_SEU_GOOGLE_DOCS)
+
+## Jira
+
+Nós atualizamos nosso jira e...
