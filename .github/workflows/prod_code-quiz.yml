@@ -74,4 +74,3 @@ jobs:
           app-name: 'code-quiz'
           slot-name: 'Production'
           package: release.zip
->>>>>>> main
