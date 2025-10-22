@@ -62,5 +62,6 @@ jobs:
     - name: 7. Executar as migrações no Azure Web App (o principal)
       uses: azure/cli@v1
       with:
+        azcliversion: latest 
         inlineScript: |
-          az webapp run --name 'code-quiz' --resource-group 'code-quiz_group' --command "python manage.py migrate"
+          az webapp ssh --name 'code-quiz' --resource-group 'code-quiz_group' --command "python manage.py migrate"
