@@ -82,3 +82,132 @@ button:hover, .btn-prosseguir:hover {
 .feedback-erro {
     color: #f44336;                   
 }
+
+code {
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-family: 'Courier New', Consolas, monospace;
+    font-size: 0.95em;
+    color: #c7254e;
+}
+
+pre {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 15px;
+    overflow-x: auto;
+    margin: 15px 0;
+    font-family: 'Courier New', Consolas, monospace;
+}
+
+pre code {
+    background: none;
+    border: none;
+    padding: 0;
+    color: #333;
+    font-size: 0.9em;
+}
+
+strong {
+    font-weight: bold;
+    color: #ffd700;
+}
+
+em {
+    font-style: italic;
+    color: #add8e6;
+}
+
+fieldset legend h3 {
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+fieldset {
+    border: 2px solid #4a9eff;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+    background-color: rgba(74, 158, 255, 0.1);
+    overflow-x: auto; 
+    max-width: 100%; 
+}
+
+fieldset pre {
+    overflow-x: auto; 
+    white-space: pre-wrap; 
+    word-wrap: break-word; 
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 15px;
+    border-radius: 5px;
+    margin: 10px 0;
+    max-width: 100%;
+}
+
+fieldset code {
+    display: block;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    overflow-x: auto; 
+    white-space: pre-wrap; 
+    word-break: break-all; 
+}
+
+fieldset legend {
+    max-width: 100%;
+    word-wrap: break-word;
+}
+
+fieldset legend h3 {
+    margin: 0;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.quiz-container{
+    background: #142d46;              
+    padding: 30px;                    
+    border-radius: 12px;             
+    box-shadow: 0 4px 15px rgba(0,0,0,0.6); 
+    max-width: 800px; 
+    width: 95%; 
+    overflow-x: auto;
+}
+
+fieldset {
+    border: 2px solid #4a9eff;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+    background-color: rgba(74, 158, 255, 0.1);
+    overflow-x: auto; 
+    max-width: 100%; 
+    box-sizing: border-box;
+}
+
+fieldset pre {
+    overflow-x: auto; 
+    white-space: pre-wrap; 
+    word-wrap: break-word; 
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 15px;
+    border-radius: 5px;
+    margin: 10px 0;
+    max-width: 100%;
+    box-sizing: border-box; 
+}
+
+fieldset code {
+    display: block;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    overflow-x: auto; 
+    white-space: pre-wrap; 
+    word-break: break-all;
+    color: #f0f8ff; 
+}
