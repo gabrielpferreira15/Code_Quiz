@@ -27,15 +27,28 @@ jobs:
       
       - name: Install dependencies
         run: |
+          source venv/bin/activate
           pip install -r requirements.txt
-        
-      - name: Reset and migrate database
+
+      - name: Run migrations for tests
         run: |
-          python manage.py flush --no-input
+          source venv/bin/activate
           python manage.py migrate
 
+      - name: Run tests
+        run: |
+          source venv/bin/activate
+          pytest -v --tb=short
+        env:
+          DJANGO_SETTINGS_MODULE: project.settings
+
+      - name: Load fixture data
+        run: |
+          source venv/bin/activate
+          python manage.py loaddata setup/fixtures/quiz_data.json
+
       - name: Zip artifact for deployment
-        run: zip release.zip ./* -r -x "venv/*" -x ".git/*" -x ".vscode/*"
+        run: zip release.zip ./* -r -x "venv/*" -x ".git/*" -x ".vscode/*" -x "htmlcov/*" -x ".coverage"
 
       - name: Upload artifact for deployment
         uses: actions/upload-artifact@v4
@@ -74,3 +87,14 @@ jobs:
           app-name: 'code-quiz'
           slot-name: 'Production'
           package: release.zip
+
+      - name: Set startup command
+        run: |
+          az webapp config set --name code-quiz --resource-group code-quiz_group --startup-file "bash startup.sh"
+
+      - name: Restart webapp to apply changes
+        run: |
+          az webapp restart --name code-quiz --resource-group code-quiz_group
+
+      - name: Logout from Azure
+        run: az logout

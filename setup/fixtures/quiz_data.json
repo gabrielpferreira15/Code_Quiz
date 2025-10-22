@@ -1,0 +1,4863 @@
+[
+  {
+    "model": "setup.dificuldade",
+    "pk": 1,
+    "fields": {
+      "nome": "Fácil"
+    }
+  },
+  {
+    "model": "setup.dificuldade",
+    "pk": 2,
+    "fields": {
+      "nome": "Médio"
+    }
+  },
+  {
+    "model": "setup.dificuldade",
+    "pk": 3,
+    "fields": {
+      "nome": "Difícil"
+    }
+  },
+  {
+    "model": "setup.linguagem",
+    "pk": 1,
+    "fields": {
+      "nome": "Python",
+      "slug": "python"
+    }
+  },
+  {
+    "model": "setup.linguagem",
+    "pk": 2,
+    "fields": {
+      "nome": "C",
+      "slug": "c"
+    }
+  },
+  {
+    "model": "setup.assunto",
+    "pk": 1,
+    "fields": {
+      "linguagem": 1,
+      "nome": "Sintaxe Básica",
+      "slug": "python-sintaxe-basica"
+    }
+  },
+  {
+    "model": "setup.assunto",
+    "pk": 2,
+    "fields": {
+      "linguagem": 1,
+      "nome": "Estruturas de Repetição",
+      "slug": "python-estruturas-de-repeticao"
+    }
+  },
+  {
+    "model": "setup.assunto",
+    "pk": 3,
+    "fields": {
+      "linguagem": 1,
+      "nome": "Condicionais",
+      "slug": "python-condicionais"
+    }
+  },
+  {
+    "model": "setup.assunto",
+    "pk": 4,
+    "fields": {
+      "linguagem": 2,
+      "nome": "Sintaxe Básica",
+      "slug": "c-sintaxe-basica"
+    }
+  },
+  {
+    "model": "setup.assunto",
+    "pk": 5,
+    "fields": {
+      "linguagem": 2,
+      "nome": "Estruturas de Repetição",
+      "slug": "c-estruturas-de-repeticao"
+    }
+  },
+  {
+    "model": "setup.assunto",
+    "pk": 6,
+    "fields": {
+      "linguagem": 2,
+      "nome": "Estruturas Condicionais",
+      "slug": "c-estruturas-condicionais"
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 1,
+    "fields": {
+      "texto": "Como você declara uma variável chamada <code>idade</code> com o valor <strong>25</strong> em Python?",
+      "assunto": 1,
+      "explicacao": "Python utiliza <strong>tipagem dinâmica</strong>, então basta atribuir o valor à variável sem declarar seu tipo explicitamente."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 2,
+    "fields": {
+      "texto": "Qual é o símbolo usado para escrever um <strong>comentário de uma única linha</strong> em Python?",
+      "assunto": 1,
+      "explicacao": "Em Python, o caractere <code>#</code> (cerquilha) é usado para iniciar um comentário que vai até o final da linha."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 3,
+    "fields": {
+      "texto": "Qual função é usada para <strong>imprimir uma mensagem</strong> no console em Python?",
+      "assunto": 1,
+      "explicacao": "A função <code>print()</code> é uma das funções <em>built-in</em> mais comuns de Python, usada para exibir saídas no console."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 4,
+    "fields": {
+      "texto": "Qual é o tipo de dado de <code>resultado = 10 / 2</code> em Python 3?",
+      "assunto": 1,
+      "explicacao": "Em Python 3, o operador de divisão <code>/</code> sempre retorna um número de <strong>ponto flutuante (float)</strong>, mesmo que a divisão seja exata."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 5,
+    "fields": {
+      "texto": "Como você converte uma string <code>\"100\"</code> para um número inteiro em Python?",
+      "assunto": 1,
+      "explicacao": "Python oferece funções de conversão de tipo, como <code>int()</code>, <code>float()</code>, e <code>str()</code>, para converter entre diferentes tipos de dados."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 6,
+    "fields": {
+      "texto": "Qual será o valor da variável <code>c</code> após a execução do código:\n\n<pre><code>a, *b, c = [10, 20, 30, 40, 50]</code></pre>",
+      "assunto": 1,
+      "explicacao": "Esta sintaxe é chamada de <strong>desempacotamento estendido</strong>. <code>a</code> recebe o primeiro elemento (10), <code>*b</code> recebe todos os elementos do meio como uma lista ([20, 30, 40]), e <code>c</code> recebe o último elemento <strong>(50)</strong>."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 7,
+    "fields": {
+      "texto": "Qual é o resultado da impressão do seguinte f-string:\n\n<pre><code>valor = 12\nprint(f'O resultado é {valor:04d}')</code></pre>",
+      "assunto": 1,
+      "explicacao": "A formatação <code>:04d</code> significa: <code>d</code> para tratar como decimal, <code>4</code> para ter uma largura total de 4 caracteres, e <code>0</code> para preencher com zeros à esquerda se o número for menor que a largura."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 8,
+    "fields": {
+      "texto": "Considere o código:\n\n<pre><code>lista_a = [1, 2]\nlista_b = lista_a\nlista_b.append(3)</code></pre>\n\nQual será o conteúdo de <code>lista_a</code>?",
+      "assunto": 1,
+      "explicacao": "Listas são objetos <strong>mutáveis</strong>. <code>lista_b = lista_a</code> faz com que ambas as variáveis apontem para o mesmo objeto na memória. Portanto, uma alteração em <code>lista_b</code> também afeta <code>lista_a</code>."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 9,
+    "fields": {
+      "texto": "Qual é a maneira mais <em>pythônica</em> de inverter a string <code>s = \"python\"</code>?",
+      "assunto": 1,
+      "explicacao": "A sintaxe de fatiamento (slicing) <code>[::-1]</code> é a forma idiomática e mais eficiente de criar uma cópia invertida de uma sequência em Python. <code>s.reverse()</code> não existe para strings."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 10,
+    "fields": {
+      "texto": "O que a expressão <code>(1, 2, 3) + (4, 5)</code> produzirá?",
+      "assunto": 1,
+      "explicacao": "Embora as tuplas sejam imutáveis, o operador <code>+</code> pode ser usado para concatená-las. Isso não modifica as tuplas originais, mas cria uma nova tupla contendo os elementos de ambas."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 11,
+    "fields": {
+      "texto": "Qual será o valor de <code>len(s)</code> após a execução de:\n\n<pre><code>s = {'a': 1, 'b': 2}\ns.update(c=3)\ndel s['a']</code></pre>",
+      "assunto": 1,
+      "explicacao": "O dicionário <code>s</code> inicia com 2 elementos. <code>s.update(c=3)</code> adiciona um novo elemento, resultando em 3. <code>del s['a']</code> remove um elemento, resultando em 2. A função <code>len()</code> retorna o número de pares chave-valor."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 12,
+    "fields": {
+      "texto": "Qual é o resultado da avaliação da expressão booleana:\n\n<pre><code>1 < 2 < 3 or 10 and not 0</code></pre>",
+      "assunto": 1,
+      "explicacao": "A expressão <code>1 < 2 < 3</code> é avaliada como <code>True</code>. A expressão <code>10 and not 0</code> é avaliada como <code>10 and True</code>, que retorna <code>10</code>. A expressão final é <code>True or 10</code>. Em um contexto booleano, <code>True</code> é retornado em operações <code>or</code> se for o primeiro operando verdadeiro."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 13,
+    "fields": {
+      "texto": "O que o seguinte código imprime:\n\n<pre><code>a = 5\nb = 5\nprint(a is b)</code></pre>\n\ne\n\n<pre><code>a = 500\nb = 500\nprint(a is b)</code></pre>",
+      "assunto": 1,
+      "explicacao": "Python <strong>interna</strong> (cacheia) inteiros pequenos (geralmente de -5 a 256) por razões de otimização de memória. Para <code>a = 5; b = 5</code>, ambas as variáveis apontam para o mesmo objeto, então <code>a is b</code> é <code>True</code>. Para <code>a = 500; b = 500</code>, eles são criados como objetos separados, então <code>a is b</code> é <code>False</code> (em CPython, o interpretador padrão)."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 14,
+    "fields": {
+      "texto": "Considere o código:\n\n<pre><code>x = 10\ndef func():\n    global x\n    x += 1\n    print(x)\nfunc()</code></pre>\n\nQual será a saída?",
+      "assunto": 1,
+      "explicacao": "A palavra-chave <code>global x</code> dentro da função <code>func</code> indica que a variável <code>x</code> a ser modificada é a variável global e não uma variável local. O valor global de <code>x</code> é 10, que é incrementado para 11 e depois impresso."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 15,
+    "fields": {
+      "texto": "Qual é o valor final de <code>y</code> após a execução do código:\n\n<pre><code>x = 1\ny = x\nx = 2\nprint(y)</code></pre>",
+      "assunto": 1,
+      "explicacao": "Como <code>x</code> é um inteiro (tipo imutável), a linha <code>y = x</code> faz com que <code>y</code> receba uma cópia do valor (1). A linha <code>x = 2</code> faz com que a variável <code>x</code> aponte para um novo objeto (o inteiro 2), mas não afeta o valor do objeto para o qual <code>y</code> aponta (o inteiro 1)."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 16,
+    "fields": {
+      "texto": "Qual estrutura de repetição é mais adequada para <strong>iterar sobre os itens</strong> de uma lista?",
+      "assunto": 2,
+      "explicacao": "O laço <code>for</code> em Python é projetado para iterar diretamente sobre os elementos de uma sequência (como uma lista, tupla ou string)."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 17,
+    "fields": {
+      "texto": "Como você cria um laço que executa <strong>5 vezes</strong> usando a função <code>range()</code>?",
+      "assunto": 2,
+      "explicacao": "A função <code>range(5)</code> gera uma sequência de números de 0 a 4 (cinco números no total), que é ideal para ser usada em um laço <code>for</code> para repetir uma ação 5 vezes."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 18,
+    "fields": {
+      "texto": "Qual palavra-chave é usada para <strong>parar completamente</strong> a execução de um laço?",
+      "assunto": 2,
+      "explicacao": "A instrução <code>break</code> interrompe a execução do laço mais interno (seja <code>for</code> ou <code>while</code>) e o programa continua na próxima linha após o laço."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 19,
+    "fields": {
+      "texto": "Qual palavra-chave <strong>pula para a próxima iteração</strong> de um laço sem terminar o laço por completo?",
+      "assunto": 2,
+      "explicacao": "A instrução <code>continue</code> interrompe a iteração atual e faz com que o laço pule imediatamente para o início da próxima iteração."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 20,
+    "fields": {
+      "texto": "Qual é a sintaxe para um laço <code>while</code> que continua enquanto a variável <code>contador</code> for menor que 10?",
+      "assunto": 2,
+      "explicacao": "A sintaxe do <code>while</code> em Python começa com a palavra-chave <code>while</code>, seguida pela condição, e termina com dois pontos (<code>:</code>) para iniciar o bloco de código."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 21,
+    "fields": {
+      "texto": "O que será impresso pelo código:\n\n<pre><code>for i in range(5):\n    if i == 3:\n        break\nelse:\n    print('Fim do laço')</code></pre>",
+      "assunto": 2,
+      "explicacao": "A cláusula <code>else</code> de um laço <code>for</code> só é executada se o laço terminar naturalmente (sem ser interrompido por um <code>break</code>). Como o <code>break</code> é acionado quando <code>i</code> é 3, o laço é interrompido e a cláusula <code>else</code> é ignorada. Nada é impresso na tela."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 22,
+    "fields": {
+      "texto": "Qual lista será gerada por:\n\n<pre><code>[i*2 for i in range(5) if i % 2 != 0]</code></pre>",
+      "assunto": 2,
+      "explicacao": "Esta é uma <strong>list comprehension</strong>. Ela itera sobre os números de 0 a 4 (<code>range(5)</code>), a condição <code>if i % 2 != 0</code> filtra apenas os números ímpares (1 e 3), e a expressão <code>i*2</code> é aplicada a cada um desses números filtrados, resultando na lista <code>[2, 6]</code>."
+    }
+  },
+    {
+    "model": "setup.pergunta",
+    "pk": 23,
+    "fields": {
+      "texto": "Qual a saída do código:\n\n<pre><code>count = 0\nfor i in range(2):\n    for j in range(3):\n        if j == 1:\n            continue\n        count += 1\nprint(count)</code></pre>",
+      "assunto": 2,
+      "explicacao": "O laço externo roda <strong>2 vezes</strong> (i=0, i=1). O laço interno roda <strong>3 vezes</strong> para cada <code>i</code> (j=0, 1, 2). A instrução <code>continue</code> pula a iteração quando <code>j==1</code>. Portanto, <code>count</code> é incrementado quando (i=0, j=0), (i=0, j=2), (i=1, j=0) e (i=1, j=2). O total de incrementos é <strong>4</strong>."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 24,
+    "fields": {
+      "texto": "O que a função <code>enumerate()</code> faz em um laço <code>for</code>?",
+      "assunto": 2,
+      "explicacao": "A função <code>enumerate()</code> é usada para obter tanto o <strong>índice</strong> quanto o <strong>valor</strong> de um item em um iterável. Ela retorna um objeto <code>enumerate</code> que produz tuplas no formato <code>(índice, valor)</code>, tornando o código mais limpo e legível do que manter um contador manual."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 25,
+    "fields": {
+      "texto": "O que acontece no laço:\n\n<pre><code>letras = ['a', 'b', 'c']\nwhile letras:\n    print(letras.pop(0))</code></pre>",
+      "assunto": 2,
+      "explicacao": "A condição <code>while letras:</code> verifica se a lista é 'verdadeira'. Uma lista é considerada verdadeira se <strong>não estiver vazia</strong>. A cada iteração, <code>letras.pop(0)</code> remove e retorna o primeiro elemento da lista, que é impresso. O laço continua até que a lista fique vazia, momento em que a condição se torna falsa e o laço termina."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 26,
+    "fields": {
+      "texto": "Qual será o valor final da lista <code>resultado</code> após o código:\n\n<pre><code>lista = [1, 2, 3]\nresultado = [i for i in lista if i % 2 == 0] or [0]</code></pre>",
+      "assunto": 2,
+      "explicacao": "A list comprehension <code>[i for i in lista if i % 2 == 0]</code> resulta em <code>[2]</code>. A expressão utiliza o operador <code>or</code> de curto-circuito. Como a lista <code>[2]</code> não é vazia, ela é considerada 'verdadeira' em um contexto booleano e é retornada imediatamente. A segunda parte da expressão, <code>[0]</code>, nunca é avaliada."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 27,
+    "fields": {
+      "texto": "Qual é a saída do código:\n\n<pre><code>x = 0\nfor i in range(3):\n    x += i\nelse:\n    x += 10\nprint(x)</code></pre>",
+      "assunto": 2,
+      "explicacao": "O laço <code>for</code> itera para i=0, i=1 e i=2. A variável <code>x</code> é incrementada, resultando em <code>x = 0 + 0 + 1 + 2</code>, que é 3. Como o laço termina sua execução <strong>normalmente</strong> (sem ser interrompido por um <code>break</code>), a cláusula <code>else</code> é executada, adicionando 10 a <code>x</code>. O valor final impresso é <code>3 + 10 = 13</code>."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 28,
+    "fields": {
+      "texto": "Qual tipo de objeto o código <code>(x*2 for x in range(5))</code> cria?",
+      "assunto": 2,
+      "explicacao": "A sintaxe que usa <strong>parênteses</strong> em torno de uma expressão de compreensão, como <code>(expr for item in iteravel)</code>, cria um <strong>objeto gerador (generator)</strong>. Geradores são iteradores que produzem os itens sob demanda (<em>lazy evaluation</em>), o que é eficiente em termos de memória."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 29,
+    "fields": {
+      "texto": "O que será impresso pelo código:\n\n<pre><code>x = 0\nwhile x < 2:\n    x += 1\n    print(x)\nelse:\n    print('Fim')</code></pre>",
+      "assunto": 2,
+      "explicacao": "O laço <code>while</code> executa duas vezes. Na primeira, <code>x</code> se torna 1 e é impresso. Na segunda, <code>x</code> se torna 2 e é impresso. A condição <code>x < 2</code> então se torna falsa. Como o laço terminou sem um <code>break</code>, o bloco <code>else</code> associado a ele é executado, imprimindo 'Fim'."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 30,
+    "fields": {
+      "texto": "Qual o resultado da utilização do <code>zip()</code> e do desempacotamento no código:\n\n<pre><code>a = [1, 2]\nb = ['x', 'y']\nfor num, letra in zip(a, b):\n    print(f'{num}{letra}', end=' ')</code></pre>",
+      "assunto": 2,
+      "explicacao": "A função <code>zip(a, b)</code> cria um iterador que <strong>agrega elementos</strong> das duas listas, produzindo as tuplas <code>(1, 'x')</code> e <code>(2, 'y')</code>. Em cada iteração do laço <code>for</code>, ocorre o <em>desempacotamento da tupla</em> (tuple unpacking) nas variáveis <code>num</code> e <code>letra</code>. A f-string formata e imprime o resultado, e <code>end=' '</code> garante que a saída seja na mesma linha, separada por um espaço."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 31,
+    "fields": {
+      "texto": "Qual palavra-chave é usada para a parte <strong>\"senão se\"</strong> em uma estrutura condicional em Python?",
+      "assunto": 3,
+      "explicacao": "Python utiliza a contração <code>elif</code> para 'else if', tornando o código mais conciso."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 32,
+    "fields": {
+      "texto": "Como se escreve a condição <strong>\"se a não for igual a b\"</strong> em Python?",
+      "assunto": 3,
+      "explicacao": "O operador de desigualdade em Python é <code>!=</code>. A expressão <code>a is not b</code> verifica se <code>a</code> e <code>b</code> são objetos diferentes na memória, o que é uma verificação mais estrita."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 33,
+    "fields": {
+      "texto": "Qual é o operador lógico para <strong>\"E\"</strong> em Python?",
+      "assunto": 3,
+      "explicacao": "Python usa palavras em inglês (<code>and</code>, <code>or</code>, <code>not</code>) para operadores lógicos, em vez de símbolos como <code>&&</code> ou <code>||</code>."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 34,
+    "fields": {
+      "texto": "O que a seguinte expressão booleana retornaria:\n\n<pre><code>not (True and False)</code></pre>",
+      "assunto": 3,
+      "explicacao": "A ordem de operação é: primeiro o que está dentro dos parênteses (<code>True and False</code> resulta em <code>False</code>), depois o <code>not</code> (<code>not False</code> resulta em <code>True</code>)."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 35,
+    "fields": {
+      "texto": "Qual é a sintaxe correta para um bloco <code>if</code> em Python que verifica se a variável <code>nome</code> é igual a <strong>\"Ana\"</strong>?",
+      "assunto": 3,
+      "explicacao": "A sintaxe de um <code>if</code> em Python exige o operador de comparação <code>==</code>, e o bloco de código é iniciado por dois pontos (<code>:</code>)."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 36,
+    "fields": {
+      "texto": "Qual será o valor de <code>resultado</code> após a execução do código:\n\n<pre><code>x = 0\nresultado = \"A\" if x else \"B\"</code></pre>",
+      "assunto": 3,
+      "explicacao": "Este é o <strong>operador ternário</strong> do Python. A condição avalia a 'veracidade' de <code>x</code>. Em Python, <code>0</code> é considerado <code>False</code>, portanto, o valor após o <code>else</code> é retornado."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 37,
+    "fields": {
+      "texto": "O que a expressão <code>[] or 0 or \"Olá\"</code> retornará?",
+      "assunto": 3,
+      "explicacao": "O operador <code>or</code> retorna o primeiro valor <strong>'truthy'</strong> (verdadeiro) que encontrar. Uma lista vazia (<code>[]</code>) e o número <code>0</code> são 'falsy'. A string não vazia <code>\"Olá\"</code> é 'truthy', então ela é retornada."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 38,
+    "fields": {
+      "texto": "Qual o resultado da expressão:\n\n<pre><code>True or False and not True</code></pre>",
+      "assunto": 3,
+      "explicacao": "A <strong>precedência de operadores</strong> é <code>not</code>, depois <code>and</code>, depois <code>or</code>. A expressão é avaliada como <code>True or (False and (not True))</code> → <code>True or (False and False)</code> → <code>True or False</code>, que resulta em <code>True</code>."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 39,
+    "fields": {
+      "texto": "Considere:\n\n<pre><code>a = [1]\nb = [1]</code></pre>\n\nQual o resultado de <code>a == b</code> e <code>a is b</code>, respectivamente?",
+      "assunto": 3,
+      "explicacao": "O operador <code>==</code> compara o <strong>VALOR</strong> dos objetos (ambas as listas contêm <code>[1]</code>, então é <code>True</code>). O operador <code>is</code> compara a <strong>IDENTIDADE</strong> (se são o mesmo objeto na memória, o que não são, então é <code>False</code>)."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 40,
+    "fields": {
+      "texto": "Qual será o valor de <code>y</code> no código:\n\n<pre><code>x = 5\nif 3 < x < 4:\n    y = 1\nelif 4 < x < 6:\n    y = 2\nelse:\n    y = 3</code></pre>",
+      "assunto": 3,
+      "explicacao": "Python permite <strong>comparações encadeadas</strong>. A expressão <code>3 < x < 4</code> é avaliada como <code>(3 < 5) and (5 < 4)</code>, que é <code>True and False</code>, resultando em <code>False</code>. A próxima condição, <code>4 < x < 6</code>, é <code>(4 < 5) and (5 < 6)</code>, que é <code>True and True</code>, resultando em <code>True</code>. Portanto, <code>y</code> recebe o valor <strong>2</strong>."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 41,
+    "fields": {
+      "texto": "Qual será a saída do código a seguir?\n\n<pre><code>a = 0\nb = 5\nresult = (a and 'primeiro') or (b > 3 and 'segundo') or 'terceiro'\nprint(result)</code></pre>",
+      "assunto": 3,
+      "explicacao": "O operador <code>or</code> retorna o primeiro valor verdadeiro que encontra. <code>(a and 'primeiro')</code> é avaliado como <code>0</code> (falso). A próxima condição, <code>(b > 3 and 'segundo')</code>, é <code>True and 'segundo'</code>, que resulta em <code>'segundo'</code>. Como <code>'segundo'</code> é um valor verdadeiro, o <code>or</code> para e o retorna, sem avaliar <code>'terceiro'</code>."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 42,
+    "fields": {
+      "texto": "Qual valor será atribuído a <code>status</code> no código:\n\n<pre><code>idade = 25\npermissao = False\nstatus = 'Aprovado' if idade > 18 and permissao else 'Reprovado por permissão' if idade > 18 else 'Reprovado por idade'</code></pre>",
+      "assunto": 3,
+      "explicacao": "A expressão é avaliada da esquerda para a direita. A primeira condição <code>idade > 18 and permissao</code> é <code>True and False</code>, resultando em <code>False</code>. O código então executa a parte após o <code>else</code>, que é outra expressão ternária: <code>'Reprovado por permissão' if idade > 18 else 'Reprovado por idade'</code>. Como <code>idade > 18</code> é verdadeiro, <code>status</code> recebe <strong>'Reprovado por permissão'</strong>."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 43,
+    "fields": {
+      "texto": "O que será impresso pelo código a seguir?\n\n<pre><code>dados = []\nif dados:\n    print('Cheio')\nelif not dados:\n    print('Vazio')\nelse:\n    print('Indefinido')</code></pre>",
+      "assunto": 3,
+      "explicacao": "Em Python, estruturas de dados vazias (como listas, tuplas, dicionários) são consideradas <strong>'falsas'</strong> em um contexto booleano. A condição <code>if dados:</code> avalia para <code>False</code>, pois a lista <code>dados</code> está vazia. A execução passa para o <code>elif not dados:</code>. Como <code>dados</code> é falso, <code>not dados</code> é verdadeiro, e o programa imprime <strong>'Vazio'</strong>."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 44,
+    "fields": {
+      "texto": "Qual será a saída do código? (Considerando Python 3.8+)\n\n<pre><code>numeros = [1, 2, 3]\nif (n := len(numeros)) > 2:\n    print(f'Lista longa com {n} elementos')\nelse:\n    print(f'Lista curta')</code></pre>",
+      "assunto": 3,
+      "explicacao": "O <strong>operador Walrus</strong> <code>:=</code> atribui o valor de <code>len(numeros)</code> (que é 3) à variável <code>n</code> e, em seguida, a expressão <code>n > 2</code> é avaliada. Como 3 é maior que 2, a condição é verdadeira. Portanto, a saída será a f-string formatada com o valor de <code>n</code>."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 45,
+    "fields": {
+      "texto": "O que o código imprimirá na tela?\n\n<pre><code>a = 1000\nb = 1000\nif a is b:\n    print(1)\nelif a == b:\n    print(2)\nelse:\n    print(3)</code></pre>",
+      "assunto": 3,
+      "explicacao": "O operador <code>==</code> compara a igualdade dos <strong>valores</strong>, enquanto o <code>is</code> compara se duas variáveis apontam para o <strong>mesmo objeto na memória</strong>. Para otimização, Python pré-aloca inteiros pequenos (geralmente de -5 a 256). Números maiores como 1000 são criados como objetos separados. Portanto, <code>a is b</code> será falso, mas <code>a == b</code> será verdadeiro, imprimindo <strong>2</strong>."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 46,
+    "fields": {
+      "texto": "Como você declara uma variável inteira chamada <code>quantidade</code> com o valor <strong>50</strong> em C?",
+      "assunto": 4,
+      "explicacao": "Em C, uma linguagem de <strong>tipagem estática</strong>, você deve declarar o tipo da variável (<code>int</code>) antes de seu nome e, opcionalmente, inicializá-la."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 47,
+    "fields": {
+      "texto": "Qual é o símbolo usado para indicar o <strong>fim de uma instrução</strong> em C?",
+      "assunto": 4,
+      "explicacao": "O ponto e vírgula (<code>;</code>) é um terminador de instrução fundamental em C, sinalizando ao compilador que um comando foi concluído."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 48,
+    "fields": {
+      "texto": "Qual função da biblioteca <code>stdio.h</code> é usada para <strong>imprimir texto formatado</strong> no console?",
+      "assunto": 4,
+      "explicacao": "A função <code>printf()</code> (print formatted) faz parte da biblioteca de entrada/saída padrão (standard input/output) e é a principal forma de exibir texto no console."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 49,
+    "fields": {
+      "texto": "Como você escreve um <strong>comentário de múltiplas linhas</strong> em C?",
+      "assunto": 4,
+      "explicacao": "Em C, um comentário de bloco começa com <code>/*</code> e termina com <code>*/</code>, e tudo que estiver entre esses delimitadores é ignorado pelo compilador."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 50,
+    "fields": {
+      "texto": "Qual diretiva de pré-processador é necessária para usar a função <code>printf</code>?",
+      "assunto": 4,
+      "explicacao": "A diretiva <code>#include <stdio.h></code> instrui o pré-processador a incluir o conteúdo do arquivo de cabeçalho da biblioteca padrão de entrada/saída, onde <code>printf</code> é declarada."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 51,
+    "fields": {
+      "texto": "Qual o resultado da expressão <code>(float) 5 / 2</code> em C?",
+      "assunto": 4,
+      "explicacao": "O <em>type cast</em> <code>(float)</code> converte o inteiro 5 para um float. Quando um dos operandos da divisão é float, a operação inteira é promovida para uma divisão de ponto flutuante, resultando em <strong>2.5</strong>."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 52,
+    "fields": {
+      "texto": "Qual o valor final de <code>x</code> no código:\n\n<pre><code>int x = 5;\nint y = x++;</code></pre>",
+      "assunto": 4,
+      "explicacao": "O operador de <strong>pós-incremento</strong> (<code>x++</code>) primeiro retorna o valor original de <code>x</code> (5, que é atribuído a <code>y</code>) e DEPOIS incrementa <code>x</code>. Portanto, ao final, <code>y</code> vale 5 e <code>x</code> vale <strong>6</strong>."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 53,
+    "fields": {
+      "texto": "O que a macro <code>#define QUADRADO(a) a * a</code> fará com a expressão <code>QUADRADO(2 + 3)</code>?",
+      "assunto": 4,
+      "explicacao": "O pré-processador faz uma <strong>substituição textual</strong>, expandindo a macro para <code>2 + 3 * 2 + 3</code>. Devido à precedência de operadores (multiplicação antes da adição), o cálculo é <code>2 + 6 + 3</code>, que resulta em <strong>11</strong>."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 54,
+    "fields": {
+      "texto": "Se <code>ptr</code> é um ponteiro para um inteiro, o que a expressão <code>*ptr</code> acessa?",
+      "assunto": 4,
+      "explicacao": "O operador <code>*</code> (asterisco), quando usado em um ponteiro, é o <strong>operador de dereferência</strong>. Ele acessa o VALOR que está armazenado no endereço de memória para o qual o ponteiro aponta."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 55,
+    "fields": {
+      "texto": "Qual o valor da constante <code>TERCA</code> no:\n\n<pre><code>enum dia { DOMINGO, SEGUNDA, TERCA, QUARTA };</code></pre>",
+      "assunto": 4,
+      "explicacao": "Por padrão, os membros de uma enumeração (<code>enum</code>) em C recebem valores inteiros sequenciais começando em <strong>0</strong>. Portanto, DOMINGO=0, SEGUNDA=1, e TERCA=<strong>2</strong>."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 56,
+    "fields": {
+      "texto": "Qual será o resultado de <code>sizeof(char)</code> versus <code>sizeof(char*)</code> em um sistema de <strong>64 bits</strong>?",
+      "assunto": 4,
+      "explicacao": "<code>sizeof(char)</code> é sempre <strong>1 byte</strong> por definição. <code>sizeof(char*)</code> (o tamanho de um ponteiro) depende da arquitetura. Em sistemas de 64 bits, os endereços são representados por <strong>8 bytes</strong> (64 bits)."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 57,
+    "fields": {
+      "texto": "Considerando <code>int a = 1, b = 2;</code>, qual o resultado de:\n\n<pre><code>printf(\"%d\", a+++b);</code></pre>",
+      "assunto": 4,
+      "explicacao": "Devido à ambiguidade, o compilador C interpreta como <code>a++ + b</code>. O pós-incremento (a++) primeiro usa o valor de 'a' (1) na expressão e SÓ DEPOIS o incrementa. Então, <code>1 + 2 = 3</code>. Após a expressão, <code>a</code> se torna 2."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 58,
+    "fields": {
+      "texto": "O que a instrução <code>typedef int (*FuncPtr)(int, int);</code> faz?",
+      "assunto": 4,
+      "explicacao": "Esta instrução <code>typedef</code> cria um novo <strong>alias de tipo</strong>. <code>FuncPtr</code> torna-se um alias para um 'ponteiro para uma função que recebe dois inteiros como argumentos e retorna um inteiro'."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 59,
+    "fields": {
+      "texto": "Qual é o modificador de tipo que indica ao compilador que uma variável <strong>não será alterada</strong> após a sua inicialização?",
+      "assunto": 4,
+      "explicacao": "O modificador <code>const</code> (de 'constant') é usado para declarar que o valor de uma variável (ou o valor apontado por um ponteiro) é fixo e não deve ser alterado pelo código, permitindo otimizações e checagem de erros pelo compilador."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 60,
+    "fields": {
+      "texto": "Qual será a saída do programa a seguir, que chama a mesma função três vezes?\n\n<pre><code>void contador() {\n    static int c = 0;\n    c++;\n    printf(\"%d \", c);\n}\nint main() {\n    contador();\n    contador();\n    contador();\n}</code></pre>",
+      "assunto": 4,
+      "explicacao": "Uma variável local declarada com <code>static</code> é inicializada apenas uma vez, na primeira vez que a função é chamada. Ela <strong>retém seu valor</strong> entre as chamadas subsequentes. Portanto, <code>c</code> se torna 1, depois 2, e finalmente <strong>3</strong>."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 61,
+    "fields": {
+      "texto": "Qual é a sintaxe completa de um laço <code>for</code> em C que vai de 0 a 9?",
+      "assunto": 5,
+      "explicacao": "O laço <code>for</code> em C tem três partes entre parênteses, separadas por ponto e vírgula: <strong>inicialização</strong>, <strong>condição</strong> e <strong>incremento/decremento</strong>."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 62,
+    "fields": {
+      "texto": "Qual laço em C garante que seu corpo seja executado <strong>pelo menos uma vez</strong>?",
+      "assunto": 5,
+      "explicacao": "O laço <code>do-while</code> é uma estrutura de <strong>pós-teste</strong>; o corpo do laço é executado primeiro e a condição é verificada depois, garantindo ao menos uma execução."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 63,
+    "fields": {
+      "texto": "Qual é a sintaxe para um laço <code>while</code> que continua enquanto a variável <code>ativo</code> for verdadeira (considerando <strong>1 como verdadeiro</strong>)?",
+      "assunto": 5,
+      "explicacao": "A sintaxe do laço <code>while</code> em C requer que a condição esteja entre parênteses. <code>while (ativo)</code> é equivalente a <code>while (ativo != 0)</code>."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 64,
+    "fields": {
+      "texto": "Dentro de um laço <code>for</code>, o que a <strong>terceira expressão</strong> (<code>i++</code>) geralmente representa?",
+      "assunto": 5,
+      "explicacao": "A terceira parte da declaração de um laço <code>for</code> é a <strong>expressão de passo</strong>, executada ao final de cada iteração, tipicamente para incrementar ou decrementar a variável de controle."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 65,
+    "fields": {
+      "texto": "Como a palavra-chave <code>break</code> funciona dentro de um laço <code>while</code> em C?",
+      "assunto": 5,
+      "explicacao": "A instrução <code>break</code> em C causa a <strong>terminação imediata</strong> do laço mais interno em que se encontra, transferindo o controle do programa para a instrução seguinte ao laço."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 66,
+    "fields": {
+      "texto": "Quantas vezes a palavra \"Teste\" será impressa?\n\n<pre><code>int i=5;\ndo{\n    printf(\"Teste\\n\");\n}while(i>10);</code></pre>",
+      "assunto": 5,
+      "explicacao": "O laço <code>do-while</code> sempre executa seu corpo <strong>pelo menos uma vez</strong>, pois a condição só é verificada no final. 'Teste' é impresso, então <code>5 > 10</code> é avaliado como falso e o laço termina."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 67,
+    "fields": {
+      "texto": "Qual o valor final de <code>j</code>?\n\n<pre><code>int i,j;\nfor(i=0,j=10; i<5; i++,j--){\n    /*vazio*/\n}</code></pre>",
+      "assunto": 5,
+      "explicacao": "O laço executa <strong>5 vezes</strong> (para i de 0 a 4). A cada iteração, <code>j</code> é decrementado. Inicia em 10, e após 5 decrementos (para i=0,1,2,3,4), seu valor final será <strong>5</strong>."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 68,
+    "fields": {
+      "texto": "Qual é a forma idiomática em C para criar um <strong>laço infinito</strong>?",
+      "assunto": 5,
+      "explicacao": "Todas as opções são formas válidas e comuns de criar um laço infinito. <code>while(1)</code> usa uma condição que é sempre verdadeira. <code>for(;;)</code> omite todas as partes do <code>for</code>, resultando em um laço sem condição de parada."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 69,
+    "fields": {
+      "texto": "O que a instrução <code>break</code> faz dentro de <strong>laços aninhados</strong>?",
+      "assunto": 5,
+      "explicacao": "A instrução <code>break</code> sempre se aplica apenas ao escopo do laço <strong>mais próximo (o mais interno)</strong> em que está contida. Ela não afeta os laços externos."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 70,
+    "fields": {
+      "texto": "O que este código faz?\n\n<pre><code>int arr[]={10,20,30};\nint *ptr=arr;\nwhile(ptr<arr+3){\n    printf(\"%d \",*ptr);\n    ptr++;\n}</code></pre>",
+      "assunto": 5,
+      "explicacao": "Isso demonstra a iteração sobre um array usando <strong>aritmética de ponteiros</strong>. <code>ptr</code> começa no primeiro elemento, e a cada iteração, o valor (<code>*ptr</code>) é impresso e o ponteiro (<code>ptr++</code>) avança para o próximo elemento."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 71,
+    "fields": {
+      "texto": "Qual será o valor final de <code>i</code> após a execução do laço:\n\n<pre><code>int i = 0;\nfor (; i++ < 5;) {}</code></pre>",
+      "assunto": 5,
+      "explicacao": "O pós-incremento <code>i++</code> é usado na condição. A expressão primeiro compara o valor <em>atual</em> de <code>i</code> com 5 e, <em>depois</em>, incrementa <code>i</code>. O laço para quando <code>i</code> é 5 (comparação <code>5 < 5</code> é Falsa), mas o incremento final ainda ocorre, tornando <code>i</code> igual a <strong>6</strong>."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 72,
+    "fields": {
+      "texto": "O que o código a seguir imprimirá?\n\n<pre><code>int i = 0;\ndo {\n    i++;\n    if (i % 3 == 0)\n        continue;\n    printf(\"%d \", i);\n} while (i < 8);</code></pre>",
+      "assunto": 5,
+      "explicacao": "O <code>i++</code> ocorre no início. Quando <code>i</code> é 3 ou 6, o <code>continue</code> pula o <code>printf</code>. O laço roda uma última vez quando <code>i</code> é 7, imprimindo '8' (pois <code>i++</code> o torna 8). A condição <code>8 < 8</code> falha, e o laço termina. Saída: <strong>1 2 4 5 7 8</strong>."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 73,
+    "fields": {
+      "texto": "Qual será a saída do código?\n\n<pre><code>for (int i = 0; i < 10; i++) {\n    i++;\n    printf(\"%d \", i);\n}</code></pre>",
+      "assunto": 5,
+      "explicacao": "<code>i</code> é incrementado <strong>duas vezes</strong> por iteração: uma por <code>i++</code> no corpo e outra por <code>i++</code> na cláusula do <code>for</code>. (i=0 → corpo i=1, print 1 → cláusula i=2), (i=2 → corpo i=3, print 3 → cláusula i=4), ... Resultado: <strong>1 3 5 7 9</strong>."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 74,
+    "fields": {
+      "texto": "Qual será o valor de <code>a</code> e <code>b</code> após o laço <code>while</code>?\n\n<pre><code>int a = 0, b = 5;\nwhile (a++, --b) {}</code></pre>",
+      "assunto": 5,
+      "explicacao": "O <strong>operador vírgula</strong> (<code>,</code>) avalia <code>a++</code>, descarta o resultado, e então avalia e retorna <code>--b</code> para a condição. O laço roda enquanto <code>--b</code> for diferente de 0. O laço executa 5 vezes (b=4, 3, 2, 1, 0). Nessas 5 vezes, <code>a</code> é incrementado de 0 para <strong>5</strong>. Final: <strong>a=5, b=0</strong>."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 75,
+    "fields": {
+      "texto": "Para que serve a instrução <code>goto</code> em C, no contexto de laços?",
+      "assunto": 5,
+      "explicacao": "Embora <code>break</code> saia do laço mais interno, <code>goto</code> permite um <strong>salto incondicional</strong> para um 'label' (marcador) definido. Isso pode ser usado para sair de múltiplos laços aninhados de uma só vez, pulando diretamente para um ponto após o laço mais externo."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 76,
+    "fields": {
+      "texto": "Qual é a sintaxe para a parte <strong>\"senão se\"</strong> em uma estrutura condicional em C?",
+      "assunto": 6,
+      "explicacao": "Em C, a estrutura para testar múltiplas condições sequencialmente é <code>if</code>, seguida por uma ou mais cláusulas <code>else if</code>, e opcionalmente um <code>else</code> no final."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 77,
+    "fields": {
+      "texto": "Como se escreve a condição <strong>\"se x é maior ou igual a y\"</strong> em C?",
+      "assunto": 6,
+      "explicacao": "O operador relacional para 'maior ou igual a' em C é <code>>=</code>. A condição deve estar entre parênteses na declaração <code>if</code>."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 78,
+    "fields": {
+      "texto": "Qual é o operador lógico para <strong>\"OU\"</strong> em C?",
+      "assunto": 6,
+      "explicacao": "O operador lógico 'OU' em C é representado por <strong>duas barras verticais</strong> (<code>||</code>). O operador <code>|</code> é o 'OU' bit-a-bit (bitwise)."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 79,
+    "fields": {
+      "texto": "Além de <code>if-else</code>, qual outra estrutura de seleção permite testar uma variável contra uma <strong>lista de valores</strong>?",
+      "assunto": 6,
+      "explicacao": "A estrutura <code>switch</code> permite que uma variável seja testada contra uma lista de valores (os <code>case</code>), oferecendo uma alternativa mais limpa a múltiplos <code>else if</code>."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 80,
+    "fields": {
+      "texto": "Qual operador é usado para <strong>comparação de igualdade</strong> em C?",
+      "assunto": 6,
+      "explicacao": "Em C, o sinal de igual único (<code>=</code>) é para <strong>atribuição</strong> de valor. Para comparar se dois valores são iguais, deve-se usar o <strong>sinal de igual duplo</strong> (<code>==</code>)."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 81,
+    "fields": {
+      "texto": "O que será impresso pelo código?\n\n<pre><code>int x=0;\nif(x=5){\n    printf(\"Verdadeiro\");\n} else {\n    printf(\"Falso\");\n}</code></pre>",
+      "assunto": 6,
+      "explicacao": "O erro comum <code>x=5</code> é uma <strong>ATRIBUIÇÃO</strong>, não uma comparação. O valor da expressão de atribuição é 5. Em C, qualquer valor diferente de zero é <code>true</code>, então o bloco <code>if</code> é executado, imprimindo <strong>\"Verdadeiro\"</strong>."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 82,
+    "fields": {
+      "texto": "Qual será a saída do <code>switch</code>:\n\n<pre><code>int op=2;\nswitch(op){\n    case 1:printf(\"A\");\n    case 2:printf(\"B\");\n    case 3:printf(\"C\");break;\n    default:printf(\"D\");\n}</code></pre>",
+      "assunto": 6,
+      "explicacao": "O <code>switch</code> executa o <code>case 2</code>, imprimindo 'B'. Como não há <code>break</code> no <code>case 2</code>, a execução <strong>'cai' (fall-through)</strong> para o <code>case 3</code>, imprimindo 'C'. Então, encontra o <code>break</code> e sai. Resultado: <strong>BC</strong>."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 83,
+    "fields": {
+      "texto": "Qual o valor de <code>x</code> após:\n\n<pre><code>int x = 10;\nif (x > 5 || ++x == 10) {\n    /*...*/\n}</code></pre>",
+      "assunto": 6,
+      "explicacao": "O operador OU (<code>||</code>) usa <strong>'avaliação de curto-circuito'</strong>. Como a primeira parte (<code>x > 5</code>) é verdadeira, a segunda parte (<code>++x == 10</code>) nunca é avaliada. Portanto, <code>x</code> não é incrementado e permanece <strong>10</strong>."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 84,
+    "fields": {
+      "texto": "Qual o valor final de <code>maior</code> em:\n\n<pre><code>int a=15, b=20;\nint maior = (a > b) ? a : b;</code></pre>",
+      "assunto": 6,
+      "explicacao": "Este é o <strong>operador ternário</strong>. A condição <code>(a > b)</code> é <code>(15 > 20)</code>, que é falsa. Portanto, a expressão retorna o valor após os dois pontos (<code>:</code>), que é <code>b</code> (ou seja, <strong>20</strong>)."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 85,
+    "fields": {
+      "texto": "O que a condição <code>if (num & 1)</code> verifica?",
+      "assunto": 6,
+      "explicacao": "<code>&</code> é o operador <strong>E bit-a-bit</strong>. <code>num & 1</code> resulta em <code>1</code> apenas se o último bit de <code>num</code> for 1 (característica de todos os <strong>números ímpares</strong>). Se for par (último bit 0), o resultado é 0 (falso)."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 86,
+    "fields": {
+      "texto": "Qual o resultado da expressão:\n\n<pre><code>(5 < 3 && 2 < 0) || (9 & 1)</code></pre>",
+      "assunto": 6,
+      "explicacao": "A primeira parte <code>(5 < 3 && 2 < 0)</code> é Falsa. A segunda parte <code>(9 & 1)</code> é uma operação <strong>E bit-a-bit</strong> (bitwise AND). 9 (1001) & 1 (0001) resulta em 1 (Verdadeiro). A expressão final é <code>0 || 1</code>, que resulta em <strong>1 (Verdadeiro)</strong>."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 87,
+    "fields": {
+      "texto": "Qual o valor de <code>x</code> e <code>y</code> após o <code>if</code>?\n\n<pre><code>int x = 5, y = 10;\nif (x == 4 && ++y > 10) {}</code></pre>",
+      "assunto": 6,
+      "explicacao": "O operador <code>&&</code> (E Lógico) usa <strong>'curto-circuito'</strong>. A primeira condição <code>(x == 4)</code> é Falsa. Como <code>Falso && qualquer_coisa</code> é sempre Falso, a segunda parte <code>(++y > 10)</code> nunca é executada. <code>y</code> não é incrementado. Resultado: <strong>x=5, y=10</strong>."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 88,
+    "fields": {
+      "texto": "Qual será a saída?\n\n<pre><code>int v=1;\nswitch(v) {\n    case 1: v+=2;\n    case 2: v*=2;\n    case 3: v-=1;\n}\nprintf(\"%d\", v);</code></pre>",
+      "assunto": 6,
+      "explicacao": "O <code>switch</code> entra no <code>case 1</code>. <code>v</code> se torna 3. Sem <code>break</code>, ele <strong>'cai' (fall-through)</strong> para o <code>case 2</code>. <code>v</code> se torna 6 (3*2). Sem <code>break</code>, 'cai' para o <code>case 3</code>. <code>v</code> se torna 5 (6-1). O <code>switch</code> termina e <strong>5</strong> é impresso."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 89,
+    "fields": {
+      "texto": "Qual o valor de <code>a</code> e <code>b</code> após esta operação?\n\n<pre><code>int a=10, b=20;\nint res = (a > b) ? a++ : b++;</code></pre>",
+      "assunto": 6,
+      "explicacao": "O operador ternário avalia <code>(10 > 20)</code>, que é Falso. Apenas a expressão após os dois-pontos (<code>b++</code>) é executada. <code>res</code> recebe o valor de <code>b</code> <em>antes</em> do incremento (20). <code>b</code> é então incrementado para 21. <code>a</code> permanece 10. Resultado: <strong>a=10, b=21</strong>."
+    }
+  },
+  {
+    "model": "setup.pergunta",
+    "pk": 90,
+    "fields": {
+      "texto": "Qual será a saída do código?\n\n<pre><code>int x=1;\nif(x>0){printf(\"A\");}\nif(x==1){printf(\"B\");}\nelse if(x<2){printf(\"C\");}</code></pre>",
+      "assunto": 6,
+      "explicacao": "Existem <strong>dois blocos if independentes</strong>. O primeiro <code>if (x > 0)</code> é Verdadeiro, imprimindo 'A'. O segundo bloco <code>if-else if</code> é avaliado. <code>if (x == 1)</code> é Verdadeiro, imprimindo 'B'. A cláusula <code>else if</code> deste segundo bloco é ignorada, pois o <code>if</code> foi satisfeito. Resultado: <strong>AB</strong>."
+    }
+  },
+    {
+    "model": "setup.resposta",
+    "pk": 1,
+    "fields": {
+      "pergunta": 1,
+      "texto": "<code>int idade = 25</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 2,
+    "fields": {
+      "pergunta": 1,
+      "texto": "<code>idade = 25</code>",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 3,
+    "fields": {
+      "pergunta": 1,
+      "texto": "<code>idade := 25</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 4,
+    "fields": {
+      "pergunta": 1,
+      "texto": "<code>let idade = 25</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 5,
+    "fields": {
+      "pergunta": 2,
+      "texto": "<code>//</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 6,
+    "fields": {
+      "pergunta": 2,
+      "texto": "<code>/* ... */</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 7,
+    "fields": {
+      "pergunta": 2,
+      "texto": "<code>#</code>",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 8,
+    "fields": {
+      "pergunta": 2,
+      "texto": "<code>``</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 9,
+    "fields": {
+      "pergunta": 3,
+      "texto": "<code>console.log()</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 10,
+    "fields": {
+      "pergunta": 3,
+      "texto": "<code>System.out.println()</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 11,
+    "fields": {
+      "pergunta": 3,
+      "texto": "<code>echo()</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 12,
+    "fields": {
+      "pergunta": 3,
+      "texto": "<code>print()</code>",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 13,
+    "fields": {
+      "pergunta": 4,
+      "texto": "<code>int</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 14,
+    "fields": {
+      "pergunta": 4,
+      "texto": "<code>float</code>",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 15,
+    "fields": {
+      "pergunta": 4,
+      "texto": "<code>string</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 16,
+    "fields": {
+      "pergunta": 4,
+      "texto": "<code>double</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 17,
+    "fields": {
+      "pergunta": 5,
+      "texto": "<code>(int)\"100\"</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 18,
+    "fields": {
+      "pergunta": 5,
+      "texto": "<code>to_int(\"100\")</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 19,
+    "fields": {
+      "pergunta": 5,
+      "texto": "<code>int(\"100\")</code>",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 20,
+    "fields": {
+      "pergunta": 5,
+      "texto": "<code>integer(\"100\")</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 21,
+    "fields": {
+      "pergunta": 6,
+      "texto": "30",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 22,
+    "fields": {
+      "pergunta": 6,
+      "texto": "<code>[20, 30, 40]</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 23,
+    "fields": {
+      "pergunta": 6,
+      "texto": "50",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 24,
+    "fields": {
+      "pergunta": 6,
+      "texto": "<code>[40, 50]</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 25,
+    "fields": {
+      "pergunta": 7,
+      "texto": "O resultado é 12",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 26,
+    "fields": {
+      "pergunta": 7,
+      "texto": "O resultado é 0012",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 27,
+    "fields": {
+      "pergunta": 7,
+      "texto": "O resultado é 1200",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 28,
+    "fields": {
+      "pergunta": 7,
+      "texto": "<code>O resultado é {valor:04d}</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 29,
+    "fields": {
+      "pergunta": 8,
+      "texto": "<code>[1, 2]</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 30,
+    "fields": {
+      "pergunta": 8,
+      "texto": "<code>[1, 2, 3]</code>",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 31,
+    "fields": {
+      "pergunta": 8,
+      "texto": "<code>[3]</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 32,
+    "fields": {
+      "pergunta": 8,
+      "texto": "O código resultará em um erro.",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 33,
+    "fields": {
+      "pergunta": 9,
+      "texto": "<code>s.reverse()</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 34,
+    "fields": {
+      "pergunta": 9,
+      "texto": "<code>reversed(s)</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 35,
+    "fields": {
+      "pergunta": 9,
+      "texto": "<code>s[::-1]</code>",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 36,
+    "fields": {
+      "pergunta": 9,
+      "texto": "<code>for c in s: s = c + s</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 37,
+    "fields": {
+      "pergunta": 10,
+      "texto": "<code>(1, 2, 3, 4, 5)</code>",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 38,
+    "fields": {
+      "pergunta": 10,
+      "texto": "<code>(5, 7, 3)</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 39,
+    "fields": {
+      "pergunta": 10,
+      "texto": "Um TypeError, pois tuplas são imutáveis.",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 40,
+    "fields": {
+      "pergunta": 10,
+      "texto": "<code>(1, 2, 3, [4, 5])</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 41,
+    "fields": {
+      "pergunta": 11,
+      "texto": "1",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 42,
+    "fields": {
+      "pergunta": 11,
+      "texto": "2",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 43,
+    "fields": {
+      "pergunta": 11,
+      "texto": "3",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 44,
+    "fields": {
+      "pergunta": 11,
+      "texto": "4",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 45,
+    "fields": {
+      "pergunta": 12,
+      "texto": "<code>True</code>",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 46,
+    "fields": {
+      "pergunta": 12,
+      "texto": "1",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 47,
+    "fields": {
+      "pergunta": 12,
+      "texto": "10",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 48,
+    "fields": {
+      "pergunta": 12,
+      "texto": "<code>False</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 49,
+    "fields": {
+      "pergunta": 13,
+      "texto": "<code>True</code> e <code>True</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 50,
+    "fields": {
+      "pergunta": 13,
+      "texto": "<code>False</code> e <code>False</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 51,
+    "fields": {
+      "pergunta": 13,
+      "texto": "<code>True</code> e <code>False</code>",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 52,
+    "fields": {
+      "pergunta": 13,
+      "texto": "<code>False</code> e <code>True</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 53,
+    "fields": {
+      "pergunta": 14,
+      "texto": "10",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 54,
+    "fields": {
+      "pergunta": 14,
+      "texto": "11",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 55,
+    "fields": {
+      "pergunta": 14,
+      "texto": "<code>NameError</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 56,
+    "fields": {
+      "pergunta": 14,
+      "texto": "<code>UnboundLocalError</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 57,
+    "fields": {
+      "pergunta": 15,
+      "texto": "1",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 58,
+    "fields": {
+      "pergunta": 15,
+      "texto": "2",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 59,
+    "fields": {
+      "pergunta": 15,
+      "texto": "<code>None</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 60,
+    "fields": {
+      "pergunta": 15,
+      "texto": "<code>TypeError</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 61,
+    "fields": {
+      "pergunta": 16,
+      "texto": "O laço <code>while</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 62,
+    "fields": {
+      "pergunta": 16,
+      "texto": "O laço <code>do-while</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 63,
+    "fields": {
+      "pergunta": 16,
+      "texto": "O laço <code>for</code>",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 64,
+    "fields": {
+      "pergunta": 16,
+      "texto": "A recursão",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 65,
+    "fields": {
+      "pergunta": 17,
+      "texto": "<code>for i in range(1, 5):</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 66,
+    "fields": {
+      "pergunta": 17,
+      "texto": "<code>for i in range(5):</code>",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 67,
+    "fields": {
+      "pergunta": 17,
+      "texto": "<code>for i in range(0, 6):</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 68,
+    "fields": {
+      "pergunta": 17,
+      "texto": "<code>for i in range(5-1):</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 69,
+    "fields": {
+      "pergunta": 18,
+      "texto": "<code>stop</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 70,
+    "fields": {
+      "pergunta": 18,
+      "texto": "<code>exit</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 71,
+    "fields": {
+      "pergunta": 18,
+      "texto": "<code>break</code>",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 72,
+    "fields": {
+      "pergunta": 18,
+      "texto": "<code>return</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 73,
+    "fields": {
+      "pergunta": 19,
+      "texto": "<code>skip</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 74,
+    "fields": {
+      "pergunta": 19,
+      "texto": "<code>next</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 75,
+    "fields": {
+      "pergunta": 19,
+      "texto": "<code>pass</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 76,
+    "fields": {
+      "pergunta": 19,
+      "texto": "<code>continue</code>",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 77,
+    "fields": {
+      "pergunta": 20,
+      "texto": "<code>while (contador < 10)</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 78,
+    "fields": {
+      "pergunta": 20,
+      "texto": "<code>while contador < 10:</code>",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 79,
+    "fields": {
+      "pergunta": 20,
+      "texto": "<code>while: contador < 10</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 80,
+    "fields": {
+      "pergunta": 20,
+      "texto": "<code>loop while contador < 10:</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 81,
+    "fields": {
+      "pergunta": 21,
+      "texto": "Fim do laço",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 82,
+    "fields": {
+      "pergunta": 21,
+      "texto": "Nada será impresso.",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 83,
+    "fields": {
+      "pergunta": 21,
+      "texto": "0 1 2",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 84,
+    "fields": {
+      "pergunta": 21,
+      "texto": "O código resultará em um erro de sintaxe.",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 85,
+    "fields": {
+      "pergunta": 22,
+      "texto": "<code>[0, 2, 4, 6, 8]</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 86,
+    "fields": {
+      "pergunta": 22,
+      "texto": "<code>[2, 6]</code>",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 87,
+    "fields": {
+      "pergunta": 22,
+      "texto": "<code>[1, 3]</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 88,
+    "fields": {
+      "pergunta": 22,
+      "texto": "<code>[0, 1, 2, 3, 4]</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 89,
+    "fields": {
+      "pergunta": 23,
+      "texto": "6",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 90,
+    "fields": {
+      "pergunta": 23,
+      "texto": "5",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 91,
+    "fields": {
+      "pergunta": 23,
+      "texto": "4",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 92,
+    "fields": {
+      "pergunta": 23,
+      "texto": "3",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 93,
+    "fields": {
+      "pergunta": 24,
+      "texto": "Enumera a quantidade de memória usada por cada item da lista.",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 94,
+    "fields": {
+      "pergunta": 24,
+      "texto": "Retorna uma tupla contendo um contador (índice) e o valor de cada item da sequência.",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 95,
+    "fields": {
+      "pergunta": 24,
+      "texto": "Verifica se os itens da lista são numéricos.",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 96,
+    "fields": {
+      "pergunta": 24,
+      "texto": "Executa o laço um número fixo de vezes, independentemente do tamanho da lista.",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 97,
+    "fields": {
+      "pergunta": 25,
+      "texto": "Entra em um loop infinito.",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 98,
+    "fields": {
+      "pergunta": 25,
+      "texto": "Imprime 'a', 'b', e 'c', cada um em uma nova linha.",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 99,
+    "fields": {
+      "pergunta": 25,
+      "texto": "Imprime 'c', 'b', e 'a', cada um em uma nova linha.",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 100,
+    "fields": {
+      "pergunta": 25,
+      "texto": "Gera um <code>IndexError</code>.",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 101,
+    "fields": {
+      "pergunta": 26,
+      "texto": "<code>[0]</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 102,
+    "fields": {
+      "pergunta": 26,
+      "texto": "<code>[2]</code>",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 103,
+    "fields": {
+      "pergunta": 26,
+      "texto": "<code>[1, 2, 3]</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 104,
+    "fields": {
+      "pergunta": 26,
+      "texto": "<code>[2, 0]</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 105,
+    "fields": {
+      "pergunta": 27,
+      "texto": "3",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 106,
+    "fields": {
+      "pergunta": 27,
+      "texto": "10",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 107,
+    "fields": {
+      "pergunta": 27,
+      "texto": "13",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 108,
+    "fields": {
+      "pergunta": 27,
+      "texto": "12",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 109,
+    "fields": {
+      "pergunta": 28,
+      "texto": "Uma tupla (tuple).",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 110,
+    "fields": {
+      "pergunta": 28,
+      "texto": "Um objeto gerador (generator object).",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 111,
+    "fields": {
+      "pergunta": 28,
+      "texto": "Uma lista (list).",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 112,
+    "fields": {
+      "pergunta": 28,
+      "texto": "Um conjunto (set).",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 113,
+    "fields": {
+      "pergunta": 29,
+      "texto": "1<br>2",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 114,
+    "fields": {
+      "pergunta": 29,
+      "texto": "1<br>2<br>Fim",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 115,
+    "fields": {
+      "pergunta": 29,
+      "texto": "1<br>2<br>3<br>Fim",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 116,
+    "fields": {
+      "pergunta": 29,
+      "texto": "Loop infinito, pois <code>x</code> nunca é atualizado.",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 117,
+    "fields": {
+      "pergunta": 30,
+      "texto": "1, 2, x, y",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 118,
+    "fields": {
+      "pergunta": 30,
+      "texto": "1x 2y ",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 119,
+    "fields": {
+      "pergunta": 30,
+      "texto": "1x<br>2y",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 120,
+    "fields": {
+      "pergunta": 30,
+      "texto": "Um <code>TypeError</code>, pois não se pode iterar sobre o resultado de <code>zip</code>.",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 121,
+    "fields": {
+      "pergunta": 31,
+      "texto": "<code>else if</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 122,
+    "fields": {
+      "pergunta": 31,
+      "texto": "<code>elif</code>",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 123,
+    "fields": {
+      "pergunta": 31,
+      "texto": "<code>elseif</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 124,
+    "fields": {
+      "pergunta": 31,
+      "texto": "<code>elsif</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 125,
+    "fields": {
+      "pergunta": 32,
+      "texto": "<code>if a <> b:</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 126,
+    "fields": {
+      "pergunta": 32,
+      "texto": "<code>if not(a == b):</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 127,
+    "fields": {
+      "pergunta": 32,
+      "texto": "<code>if a != b:</code>",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 128,
+    "fields": {
+      "pergunta": 32,
+      "texto": "<code>if a is not b:</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 129,
+    "fields": {
+      "pergunta": 33,
+      "texto": "<code>&&</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 130,
+    "fields": {
+      "pergunta": 33,
+      "texto": "<code>and</code>",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 131,
+    "fields": {
+      "pergunta": 33,
+      "texto": "<code>&</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 132,
+    "fields": {
+      "pergunta": 33,
+      "texto": "<code>AND</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 133,
+    "fields": {
+      "pergunta": 34,
+      "texto": "<code>True</code>",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 134,
+    "fields": {
+      "pergunta": 34,
+      "texto": "<code>False</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 135,
+    "fields": {
+      "pergunta": 34,
+      "texto": "<code>None</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 136,
+    "fields": {
+      "pergunta": 34,
+      "texto": "Error",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 137,
+    "fields": {
+      "pergunta": 35,
+      "texto": "<code>if (nome == \"Ana\")</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 138,
+    "fields": {
+      "pergunta": 35,
+      "texto": "<code>if nome = \"Ana\":</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 139,
+    "fields": {
+      "pergunta": 35,
+      "texto": "<code>if nome == \"Ana\":</code>",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 140,
+    "fields": {
+      "pergunta": 35,
+      "texto": "<code>if nome is \"Ana\" then</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 141,
+    "fields": {
+      "pergunta": 36,
+      "texto": "\"A\"",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 142,
+    "fields": {
+      "pergunta": 36,
+      "texto": "\"B\"",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 143,
+    "fields": {
+      "pergunta": 36,
+      "texto": "<code>True</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 144,
+    "fields": {
+      "pergunta": 36,
+      "texto": "O código resultará em um erro.",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 145,
+    "fields": {
+      "pergunta": 37,
+      "texto": "<code>False</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 146,
+    "fields": {
+      "pergunta": 37,
+      "texto": "<code>[]</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 147,
+    "fields": {
+      "pergunta": 37,
+      "texto": "\"Olá\"",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 148,
+    "fields": {
+      "pergunta": 37,
+      "texto": "<code>True</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 149,
+    "fields": {
+      "pergunta": 38,
+      "texto": "<code>True</code>",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 150,
+    "fields": {
+      "pergunta": 38,
+      "texto": "<code>False</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 151,
+    "fields": {
+      "pergunta": 38,
+      "texto": "<code>None</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 152,
+    "fields": {
+      "pergunta": 38,
+      "texto": "<code>SyntaxError</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 153,
+    "fields": {
+      "pergunta": 39,
+      "texto": "<code>True</code>, <code>True</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 154,
+    "fields": {
+      "pergunta": 39,
+      "texto": "<code>False</code>, <code>False</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 155,
+    "fields": {
+      "pergunta": 39,
+      "texto": "<code>True</code>, <code>False</code>",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 156,
+    "fields": {
+      "pergunta": 39,
+      "texto": "<code>False</code>, <code>True</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 157,
+    "fields": {
+      "pergunta": 40,
+      "texto": "1",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 158,
+    "fields": {
+      "pergunta": 40,
+      "texto": "2",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 159,
+    "fields": {
+      "pergunta": 40,
+      "texto": "3",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 160,
+    "fields": {
+      "pergunta": 40,
+      "texto": "O código resultará em um erro.",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 161,
+    "fields": {
+      "pergunta": 41,
+      "texto": "'segundo'",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 162,
+    "fields": {
+      "pergunta": 41,
+      "texto": "'primeiro'",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 163,
+    "fields": {
+      "pergunta": 41,
+      "texto": "'terceiro'",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 164,
+    "fields": {
+      "pergunta": 41,
+      "texto": "<code>True</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 165,
+    "fields": {
+      "pergunta": 42,
+      "texto": "'Reprovado por permissão'",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 166,
+    "fields": {
+      "pergunta": 42,
+      "texto": "'Aprovado'",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 167,
+    "fields": {
+      "pergunta": 42,
+      "texto": "'Reprovado por idade'",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 168,
+    "fields": {
+      "pergunta": 42,
+      "texto": "Ocorrerá um erro de sintaxe.",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 169,
+    "fields": {
+      "pergunta": 43,
+      "texto": "'Vazio'",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 170,
+    "fields": {
+      "pergunta": 43,
+      "texto": "'Cheio'",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 171,
+    "fields": {
+      "pergunta": 43,
+      "texto": "'Indefinido'",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 172,
+    "fields": {
+      "pergunta": 43,
+      "texto": "Nada será impresso.",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 173,
+    "fields": {
+      "pergunta": 44,
+      "texto": "'Lista longa com 3 elementos'",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 174,
+    "fields": {
+      "pergunta": 44,
+      "texto": "'Lista curta'",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 175,
+    "fields": {
+      "pergunta": 44,
+      "texto": "Ocorrerá um erro, pois <code>n</code> não foi definido antes.",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 176,
+    "fields": {
+      "pergunta": 44,
+      "texto": "<code>True</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 177,
+    "fields": {
+      "pergunta": 45,
+      "texto": "2",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 178,
+    "fields": {
+      "pergunta": 45,
+      "texto": "1",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 179,
+    "fields": {
+      "pergunta": 45,
+      "texto": "3",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 180,
+    "fields": {
+      "pergunta": 45,
+      "texto": "Ocorrerá um erro de comparação.",
+      "correta": false
+    }
+  },
+    {
+    "model": "setup.resposta",
+    "pk": 181,
+    "fields": {
+      "pergunta": 46,
+      "texto": "<code>quantidade = 50;</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 182,
+    "fields": {
+      "pergunta": 46,
+      "texto": "<code>int quantidade = 50;</code>",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 183,
+    "fields": {
+      "pergunta": 46,
+      "texto": "<code>integer quantidade = 50;</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 184,
+    "fields": {
+      "pergunta": 46,
+      "texto": "<code>var quantidade = 50;</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 185,
+    "fields": {
+      "pergunta": 47,
+      "texto": "<code>.</code> (ponto final)",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 186,
+    "fields": {
+      "pergunta": 47,
+      "texto": "<code>:</code> (dois pontos)",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 187,
+    "fields": {
+      "pergunta": 47,
+      "texto": "<code>;</code> (ponto e vírgula)",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 188,
+    "fields": {
+      "pergunta": 47,
+      "texto": "O final da linha",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 189,
+    "fields": {
+      "pergunta": 48,
+      "texto": "<code>print()</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 190,
+    "fields": {
+      "pergunta": 48,
+      "texto": "<code>cout <<</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 191,
+    "fields": {
+      "pergunta": 48,
+      "texto": "<code>printf()</code>",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 192,
+    "fields": {
+      "pergunta": 48,
+      "texto": "<code>log()</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 193,
+    "fields": {
+      "pergunta": 49,
+      "texto": "<code>// ... //</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 194,
+    "fields": {
+      "pergunta": 49,
+      "texto": "<code># ... #</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 195,
+    "fields": {
+      "pergunta": 49,
+      "texto": "<code>/* ... */</code>",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 196,
+    "fields": {
+      "pergunta": 49,
+      "texto": "<code>\"\"\" ... \"\"\"</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 197,
+    "fields": {
+      "pergunta": 50,
+      "texto": "<code>#import <stdio.h></code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 198,
+    "fields": {
+      "pergunta": 50,
+      "texto": "<code>#require <stdio.h></code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 199,
+    "fields": {
+      "pergunta": 50,
+      "texto": "<code>#include \"stdio.h\"</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 200,
+    "fields": {
+      "pergunta": 50,
+      "texto": "<code>#include <stdio.h></code>",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 201,
+    "fields": {
+      "pergunta": 51,
+      "texto": "2",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 202,
+    "fields": {
+      "pergunta": 51,
+      "texto": "2.5",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 203,
+    "fields": {
+      "pergunta": 51,
+      "texto": "2.0",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 204,
+    "fields": {
+      "pergunta": 51,
+      "texto": "O código não compila.",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 205,
+    "fields": {
+      "pergunta": 52,
+      "texto": "4",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 206,
+    "fields": {
+      "pergunta": 52,
+      "texto": "5",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 207,
+    "fields": {
+      "pergunta": 52,
+      "texto": "6",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 208,
+    "fields": {
+      "pergunta": 52,
+      "texto": "<code>y</code> não pode ser inicializado dessa forma.",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 209,
+    "fields": {
+      "pergunta": 53,
+      "texto": "A expressão resultará em 25.",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 210,
+    "fields": {
+      "pergunta": 53,
+      "texto": "A expressão resultará em 11.",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 211,
+    "fields": {
+      "pergunta": 53,
+      "texto": "A expressão resultará em 10.",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 212,
+    "fields": {
+      "pergunta": 53,
+      "texto": "O código não compilará devido à macro.",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 213,
+    "fields": {
+      "pergunta": 54,
+      "texto": "O endereço de memória do ponteiro <code>ptr</code>.",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 214,
+    "fields": {
+      "pergunta": 54,
+      "texto": "O endereço de memória para o qual <code>ptr</code> aponta.",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 215,
+    "fields": {
+      "pergunta": 54,
+      "texto": "O valor armazenado no endereço de memória para o qual <code>ptr</code> aponta.",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 216,
+    "fields": {
+      "pergunta": 54,
+      "texto": "O tamanho do tipo de dado inteiro.",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 217,
+    "fields": {
+      "pergunta": 55,
+      "texto": "1",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 218,
+    "fields": {
+      "pergunta": 55,
+      "texto": "2",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 219,
+    "fields": {
+      "pergunta": 55,
+      "texto": "3",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 220,
+    "fields": {
+      "pergunta": 55,
+      "texto": "TERCA",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 221,
+    "fields": {
+      "pergunta": 56,
+      "texto": "1 e 4 (bytes)",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 222,
+    "fields": {
+      "pergunta": 56,
+      "texto": "1 e 8 (bytes)",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 223,
+    "fields": {
+      "pergunta": 56,
+      "texto": "Ambos são 1 (byte)",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 224,
+    "fields": {
+      "pergunta": 56,
+      "texto": "1 e o valor é indefinido",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 225,
+    "fields": {
+      "pergunta": 57,
+      "texto": "3",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 226,
+    "fields": {
+      "pergunta": 57,
+      "texto": "4",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 227,
+    "fields": {
+      "pergunta": 57,
+      "texto": "Erro de sintaxe (Syntax Error)",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 228,
+    "fields": {
+      "pergunta": 57,
+      "texto": "Comportamento indefinido (Undefined Behavior)",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 229,
+    "fields": {
+      "pergunta": 58,
+      "texto": "Declara um ponteiro de função chamado <code>FuncPtr</code> que retorna um inteiro.",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 230,
+    "fields": {
+      "pergunta": 58,
+      "texto": "Cria um alias de tipo chamado <code>FuncPtr</code> para um ponteiro para função que retorna <code>int</code> e recebe dois <code>int</code>.",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 231,
+    "fields": {
+      "pergunta": 58,
+      "texto": "Declara uma função chamada <code>FuncPtr</code> que aceita dois ponteiros de inteiros.",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 232,
+    "fields": {
+      "pergunta": 58,
+      "texto": "Cria um novo tipo de struct para ponteiros.",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 233,
+    "fields": {
+      "pergunta": 59,
+      "texto": "<code>static</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 234,
+    "fields": {
+      "pergunta": 59,
+      "texto": "<code>volatile</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 235,
+    "fields": {
+      "pergunta": 59,
+      "texto": "<code>const</code>",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 236,
+    "fields": {
+      "pergunta": 59,
+      "texto": "<code>final</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 237,
+    "fields": {
+      "pergunta": 60,
+      "texto": "1 1 1",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 238,
+    "fields": {
+      "pergunta": 60,
+      "texto": "0 1 2",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 239,
+    "fields": {
+      "pergunta": 60,
+      "texto": "1 2 3",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 240,
+    "fields": {
+      "pergunta": 60,
+      "texto": "Ocorrerá um erro de compilação.",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 241,
+    "fields": {
+      "pergunta": 61,
+      "texto": "<code>for (int i=0; i < 10; i++)</code>",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 242,
+    "fields": {
+      "pergunta": 61,
+      "texto": "<code>for (i < 10; i++)</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 243,
+    "fields": {
+      "pergunta": 61,
+      "texto": "<code>for (int i=0; i < 10)</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 244,
+    "fields": {
+      "pergunta": 61,
+      "texto": "<code>for (int i=0 to 9)</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 245,
+    "fields": {
+      "pergunta": 62,
+      "texto": "<code>for</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 246,
+    "fields": {
+      "pergunta": 62,
+      "texto": "<code>while</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 247,
+    "fields": {
+      "pergunta": 62,
+      "texto": "<code>do-while</code>",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 248,
+    "fields": {
+      "pergunta": 62,
+      "texto": "<code>repeat-until</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 249,
+    "fields": {
+      "pergunta": 63,
+      "texto": "<code>while [ativo == 1]</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 250,
+    "fields": {
+      "pergunta": 63,
+      "texto": "<code>while (ativo)</code>",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 251,
+    "fields": {
+      "pergunta": 63,
+      "texto": "<code>while {ativo}</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 252,
+    "fields": {
+      "pergunta": 63,
+      "texto": "<code>while ativo is 1</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 253,
+    "fields": {
+      "pergunta": 64,
+      "texto": "A inicialização",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 254,
+    "fields": {
+      "pergunta": 64,
+      "texto": "A condição de parada",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 255,
+    "fields": {
+      "pergunta": 64,
+      "texto": "O incremento/decremento",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 256,
+    "fields": {
+      "pergunta": 64,
+      "texto": "A declaração da variável",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 257,
+    "fields": {
+      "pergunta": 65,
+      "texto": "Pula para a próxima iteração do laço.",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 258,
+    "fields": {
+      "pergunta": 65,
+      "texto": "Encerra a função atual.",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 259,
+    "fields": {
+      "pergunta": 65,
+      "texto": "Encerra o laço imediatamente.",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 260,
+    "fields": {
+      "pergunta": 65,
+      "texto": "Pausa a execução do laço temporariamente.",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 261,
+    "fields": {
+      "pergunta": 66,
+      "texto": "0 vezes",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 262,
+    "fields": {
+      "pergunta": 66,
+      "texto": "1 vez",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 263,
+    "fields": {
+      "pergunta": 66,
+      "texto": "5 vezes",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 264,
+    "fields": {
+      "pergunta": 66,
+      "texto": "Infinitas vezes",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 265,
+    "fields": {
+      "pergunta": 67,
+      "texto": "10",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 266,
+    "fields": {
+      "pergunta": 67,
+      "texto": "0",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 267,
+    "fields": {
+      "pergunta": 67,
+      "texto": "5",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 268,
+    "fields": {
+      "pergunta": 67,
+      "texto": "4",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 269,
+    "fields": {
+      "pergunta": 68,
+      "texto": "<code>while (1)</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 270,
+    "fields": {
+      "pergunta": 68,
+      "texto": "<code>for (;;)</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 271,
+    "fields": {
+      "pergunta": 68,
+      "texto": "<code>do {} while(true);</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 272,
+    "fields": {
+      "pergunta": 68,
+      "texto": "Todas as alternativas estão corretas.",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 273,
+    "fields": {
+      "pergunta": 69,
+      "texto": "Interrompe a execução de ambos os laços <code>for</code>.",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 274,
+    "fields": {
+      "pergunta": 69,
+      "texto": "Interrompe a execução apenas do laço <code>for</code> mais interno (o de <code>j</code>).",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 275,
+    "fields": {
+      "pergunta": 69,
+      "texto": "Interrompe a execução apenas do laço <code>for</code> mais externo (o de <code>i</code>).",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 276,
+    "fields": {
+      "pergunta": 69,
+      "texto": "Pula a iteração atual de ambos os laços.",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 277,
+    "fields": {
+      "pergunta": 70,
+      "texto": "Imprime os endereços de memória dos elementos do array.",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 278,
+    "fields": {
+      "pergunta": 70,
+      "texto": "Entra em um loop infinito.",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 279,
+    "fields": {
+      "pergunta": 70,
+      "texto": "Imprime os valores <code>10 20 30 </code>.",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 280,
+    "fields": {
+      "pergunta": 70,
+      "texto": "Gera um erro de compilação.",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 281,
+    "fields": {
+      "pergunta": 71,
+      "texto": "4",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 282,
+    "fields": {
+      "pergunta": 71,
+      "texto": "5",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 283,
+    "fields": {
+      "pergunta": 71,
+      "texto": "6",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 284,
+    "fields": {
+      "pergunta": 71,
+      "texto": "O laço é infinito.",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 285,
+    "fields": {
+      "pergunta": 72,
+      "texto": "1 2 4 5 7 8",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 286,
+    "fields": {
+      "pergunta": 72,
+      "texto": "1 2 4 5 7",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 287,
+    "fields": {
+      "pergunta": 72,
+      "texto": "1 2 3 4 5 6 7 8",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 288,
+    "fields": {
+      "pergunta": 72,
+      "texto": "1 2",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 289,
+    "fields": {
+      "pergunta": 73,
+      "texto": "0 1 2 3 4 5 6 7 8 9",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 290,
+    "fields": {
+      "pergunta": 73,
+      "texto": "1 2 3 4 5 6 7 8 9 10",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 291,
+    "fields": {
+      "pergunta": 73,
+      "texto": "1 3 5 7 9",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 292,
+    "fields": {
+      "pergunta": 73,
+      "texto": "0 2 4 6 8",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 293,
+    "fields": {
+      "pergunta": 74,
+      "texto": "a=5, b=0",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 294,
+    "fields": {
+      "pergunta": 74,
+      "texto": "a=6, b=0",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 295,
+    "fields": {
+      "pergunta": 74,
+      "texto": "a=5, b=-1",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 296,
+    "fields": {
+      "pergunta": 74,
+      "texto": "a=4, b=0",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 297,
+    "fields": {
+      "pergunta": 75,
+      "texto": "É a única forma de implementar um laço <code>do-while</code>.",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 298,
+    "fields": {
+      "pergunta": 75,
+      "texto": "Para pular para uma iteração específica, como <code>goto 5;</code>.",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 299,
+    "fields": {
+      "pergunta": 75,
+      "texto": "Para sair de múltiplos laços aninhados de uma só vez, pulando para um <em>label</em> externo.",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 300,
+    "fields": {
+      "pergunta": 75,
+      "texto": "É um sinônimo da instrução <code>continue</code> para pular uma iteração.",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 301,
+    "fields": {
+      "pergunta": 76,
+      "texto": "<code>elif</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 302,
+    "fields": {
+      "pergunta": 76,
+      "texto": "<code>else if</code>",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 303,
+    "fields": {
+      "pergunta": 76,
+      "texto": "<code>elseif</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 304,
+    "fields": {
+      "pergunta": 76,
+      "texto": "<code>elsif</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 305,
+    "fields": {
+      "pergunta": 77,
+      "texto": "<code>if (x >= y)</code>",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 306,
+    "fields": {
+      "pergunta": 77,
+      "texto": "<code>if x >= y then</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 307,
+    "fields": {
+      "pergunta": 77,
+      "texto": "<code>if [x >= y]</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 308,
+    "fields": {
+      "pergunta": 77,
+      "texto": "<code>if (x >|= y)</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 309,
+    "fields": {
+      "pergunta": 78,
+      "texto": "<code>or</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 310,
+    "fields": {
+      "pergunta": 78,
+      "texto": "<code>||</code>",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 311,
+    "fields": {
+      "pergunta": 78,
+      "texto": "<code>|</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 312,
+    "fields": {
+      "pergunta": 78,
+      "texto": "<code>OR</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 313,
+    "fields": {
+      "pergunta": 79,
+      "texto": "<code>select</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 314,
+    "fields": {
+      "pergunta": 79,
+      "texto": "<code>case</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 315,
+    "fields": {
+      "pergunta": 79,
+      "texto": "<code>match</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 316,
+    "fields": {
+      "pergunta": 79,
+      "texto": "<code>switch</code>",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 317,
+    "fields": {
+      "pergunta": 80,
+      "texto": "<code>=</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 318,
+    "fields": {
+      "pergunta": 80,
+      "texto": "<code>:=</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 319,
+    "fields": {
+      "pergunta": 80,
+      "texto": "<code>eq</code>",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 320,
+    "fields": {
+      "pergunta": 80,
+      "texto": "<code>==</code>",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 321,
+    "fields": {
+      "pergunta": 81,
+      "texto": "Falso",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 322,
+    "fields": {
+      "pergunta": 81,
+      "texto": "Verdadeiro",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 323,
+    "fields": {
+      "pergunta": 81,
+      "texto": "Nada será impresso.",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 324,
+    "fields": {
+      "pergunta": 81,
+      "texto": "O código não compilará devido a <code>x = 5</code>.",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 325,
+    "fields": {
+      "pergunta": 82,
+      "texto": "B",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 326,
+    "fields": {
+      "pergunta": 82,
+      "texto": "C",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 327,
+    "fields": {
+      "pergunta": 82,
+      "texto": "BC",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 328,
+    "fields": {
+      "pergunta": 82,
+      "texto": "BCD",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 329,
+    "fields": {
+      "pergunta": 83,
+      "texto": "10",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 330,
+    "fields": {
+      "pergunta": 83,
+      "texto": "11",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 331,
+    "fields": {
+      "pergunta": 83,
+      "texto": "9",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 332,
+    "fields": {
+      "pergunta": 83,
+      "texto": "O comportamento é indefinido.",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 333,
+    "fields": {
+      "pergunta": 84,
+      "texto": "15",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 334,
+    "fields": {
+      "pergunta": 84,
+      "texto": "20",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 335,
+    "fields": {
+      "pergunta": 84,
+      "texto": "0",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 336,
+    "fields": {
+      "pergunta": 84,
+      "texto": "O código tem um erro de sintaxe.",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 337,
+    "fields": {
+      "pergunta": 85,
+      "texto": "Se <code>num</code> é igual a 1.",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 338,
+    "fields": {
+      "pergunta": 85,
+      "texto": "Se <code>num</code> é um número par.",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 339,
+    "fields": {
+      "pergunta": 85,
+      "texto": "Se <code>num</code> é um número ímpar.",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 340,
+    "fields": {
+      "pergunta": 85,
+      "texto": "Se <code>num</code> é maior que 1.",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 341,
+    "fields": {
+      "pergunta": 86,
+      "texto": "0",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 342,
+    "fields": {
+      "pergunta": 86,
+      "texto": "1",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 343,
+    "fields": {
+      "pergunta": 86,
+      "texto": "9",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 344,
+    "fields": {
+      "pergunta": 86,
+      "texto": "8",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 345,
+    "fields": {
+      "pergunta": 87,
+      "texto": "x=5, y=10",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 346,
+    "fields": {
+      "pergunta": 87,
+      "texto": "x=5, y=11",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 347,
+    "fields": {
+      "pergunta": 87,
+      "texto": "x=4, y=11",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 348,
+    "fields": {
+      "pergunta": 87,
+      "texto": "x=4, y=10",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 349,
+    "fields": {
+      "pergunta": 88,
+      "texto": "3",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 350,
+    "fields": {
+      "pergunta": 88,
+      "texto": "5",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 351,
+    "fields": {
+      "pergunta": 88,
+      "texto": "6",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 352,
+    "fields": {
+      "pergunta": 88,
+      "texto": "2",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 353,
+    "fields": {
+      "pergunta": 89,
+      "texto": "a=11, b=20",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 354,
+    "fields": {
+      "pergunta": 89,
+      "texto": "a=10, b=21",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 355,
+    "fields": {
+      "pergunta": 89,
+      "texto": "a=11, b=21",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 356,
+    "fields": {
+      "pergunta": 89,
+      "texto": "a=10, b=20",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 357,
+    "fields": {
+      "pergunta": 90,
+      "texto": "A",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 358,
+    "fields": {
+      "pergunta": 90,
+      "texto": "B",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 359,
+    "fields": {
+      "pergunta": 90,
+      "texto": "AC",
+      "correta": false
+    }
+  },
+  {
+    "model": "setup.resposta",
+    "pk": 360,
+    "fields": {
+      "pergunta": 90,
+      "texto": "AB",
+      "correta": true
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 1,
+    "fields": {
+      "pergunta": 1,
+      "dificuldade": 1
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 2,
+    "fields": {
+      "pergunta": 2,
+      "dificuldade": 1
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 3,
+    "fields": {
+      "pergunta": 3,
+      "dificuldade": 1
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 4,
+    "fields": {
+      "pergunta": 4,
+      "dificuldade": 1
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 5,
+    "fields": {
+      "pergunta": 5,
+      "dificuldade": 1
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 6,
+    "fields": {
+      "pergunta": 6,
+      "dificuldade": 2
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 7,
+    "fields": {
+      "pergunta": 7,
+      "dificuldade": 2
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 8,
+    "fields": {
+      "pergunta": 8,
+      "dificuldade": 2
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 9,
+    "fields": {
+      "pergunta": 9,
+      "dificuldade": 2
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 10,
+    "fields": {
+      "pergunta": 10,
+      "dificuldade": 2
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 11,
+    "fields": {
+      "pergunta": 11,
+      "dificuldade": 3
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 12,
+    "fields": {
+      "pergunta": 12,
+      "dificuldade": 3
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 13,
+    "fields": {
+      "pergunta": 13,
+      "dificuldade": 3
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 14,
+    "fields": {
+      "pergunta": 14,
+      "dificuldade": 3
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 15,
+    "fields": {
+      "pergunta": 15,
+      "dificuldade": 3
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 16,
+    "fields": {
+      "pergunta": 16,
+      "dificuldade": 1
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 17,
+    "fields": {
+      "pergunta": 17,
+      "dificuldade": 1
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 18,
+    "fields": {
+      "pergunta": 18,
+      "dificuldade": 1
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 19,
+    "fields": {
+      "pergunta": 19,
+      "dificuldade": 1
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 20,
+    "fields": {
+      "pergunta": 20,
+      "dificuldade": 1
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 21,
+    "fields": {
+      "pergunta": 21,
+      "dificuldade": 2
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 22,
+    "fields": {
+      "pergunta": 22,
+      "dificuldade": 2
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 23,
+    "fields": {
+      "pergunta": 23,
+      "dificuldade": 2
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 24,
+    "fields": {
+      "pergunta": 24,
+      "dificuldade": 2
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 25,
+    "fields": {
+      "pergunta": 25,
+      "dificuldade": 2
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 26,
+    "fields": {
+      "pergunta": 26,
+      "dificuldade": 3
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 27,
+    "fields": {
+      "pergunta": 27,
+      "dificuldade": 3
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 28,
+    "fields": {
+      "pergunta": 28,
+      "dificuldade": 3
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 29,
+    "fields": {
+      "pergunta": 29,
+      "dificuldade": 3
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 30,
+    "fields": {
+      "pergunta": 30,
+      "dificuldade": 3
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 31,
+    "fields": {
+      "pergunta": 31,
+      "dificuldade": 1
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 32,
+    "fields": {
+      "pergunta": 32,
+      "dificuldade": 1
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 33,
+    "fields": {
+      "pergunta": 33,
+      "dificuldade": 1
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 34,
+    "fields": {
+      "pergunta": 34,
+      "dificuldade": 1
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 35,
+    "fields": {
+      "pergunta": 35,
+      "dificuldade": 1
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 36,
+    "fields": {
+      "pergunta": 36,
+      "dificuldade": 2
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 37,
+    "fields": {
+      "pergunta": 37,
+      "dificuldade": 2
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 38,
+    "fields": {
+      "pergunta": 38,
+      "dificuldade": 2
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 39,
+    "fields": {
+      "pergunta": 39,
+      "dificuldade": 2
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 40,
+    "fields": {
+      "pergunta": 40,
+      "dificuldade": 2
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 41,
+    "fields": {
+      "pergunta": 41,
+      "dificuldade": 3
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 42,
+    "fields": {
+      "pergunta": 42,
+      "dificuldade": 3
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 43,
+    "fields": {
+      "pergunta": 43,
+      "dificuldade": 3
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 44,
+    "fields": {
+      "pergunta": 44,
+      "dificuldade": 3
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 45,
+    "fields": {
+      "pergunta": 45,
+      "dificuldade": 3
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 46,
+    "fields": {
+      "pergunta": 46,
+      "dificuldade": 1
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 47,
+    "fields": {
+      "pergunta": 47,
+      "dificuldade": 1
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 48,
+    "fields": {
+      "pergunta": 48,
+      "dificuldade": 1
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 49,
+    "fields": {
+      "pergunta": 49,
+      "dificuldade": 1
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 50,
+    "fields": {
+      "pergunta": 50,
+      "dificuldade": 1
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 51,
+    "fields": {
+      "pergunta": 51,
+      "dificuldade": 2
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 52,
+    "fields": {
+      "pergunta": 52,
+      "dificuldade": 2
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 53,
+    "fields": {
+      "pergunta": 53,
+      "dificuldade": 2
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 54,
+    "fields": {
+      "pergunta": 54,
+      "dificuldade": 2
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 55,
+    "fields": {
+      "pergunta": 55,
+      "dificuldade": 2
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 56,
+    "fields": {
+      "pergunta": 56,
+      "dificuldade": 3
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 57,
+    "fields": {
+      "pergunta": 57,
+      "dificuldade": 3
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 58,
+    "fields": {
+      "pergunta": 58,
+      "dificuldade": 3
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 59,
+    "fields": {
+      "pergunta": 59,
+      "dificuldade": 3
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 60,
+    "fields": {
+      "pergunta": 60,
+      "dificuldade": 3
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 61,
+    "fields": {
+      "pergunta": 61,
+      "dificuldade": 1
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 62,
+    "fields": {
+      "pergunta": 62,
+      "dificuldade": 1
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 63,
+    "fields": {
+      "pergunta": 63,
+      "dificuldade": 1
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 64,
+    "fields": {
+      "pergunta": 64,
+      "dificuldade": 1
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 65,
+    "fields": {
+      "pergunta": 65,
+      "dificuldade": 1
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 66,
+    "fields": {
+      "pergunta": 66,
+      "dificuldade": 2
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 67,
+    "fields": {
+      "pergunta": 67,
+      "dificuldade": 2
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 68,
+    "fields": {
+      "pergunta": 68,
+      "dificuldade": 2
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 69,
+    "fields": {
+      "pergunta": 69,
+      "dificuldade": 2
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 70,
+    "fields": {
+      "pergunta": 70,
+      "dificuldade": 2
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 71,
+    "fields": {
+      "pergunta": 71,
+      "dificuldade": 3
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 72,
+    "fields": {
+      "pergunta": 72,
+      "dificuldade": 3
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 73,
+    "fields": {
+      "pergunta": 73,
+      "dificuldade": 3
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 74,
+    "fields": {
+      "pergunta": 74,
+      "dificuldade": 3
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 75,
+    "fields": {
+      "pergunta": 75,
+      "dificuldade": 3
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 76,
+    "fields": {
+      "pergunta": 76,
+      "dificuldade": 1
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 77,
+    "fields": {
+      "pergunta": 77,
+      "dificuldade": 1
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 78,
+    "fields": {
+      "pergunta": 78,
+      "dificuldade": 1
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 79,
+    "fields": {
+      "pergunta": 79,
+      "dificuldade": 1
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 80,
+    "fields": {
+      "pergunta": 80,
+      "dificuldade": 1
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 81,
+    "fields": {
+      "pergunta": 81,
+      "dificuldade": 2
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 82,
+    "fields": {
+      "pergunta": 82,
+      "dificuldade": 2
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 83,
+    "fields": {
+      "pergunta": 83,
+      "dificuldade": 2
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 84,
+    "fields": {
+      "pergunta": 84,
+      "dificuldade": 2
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 85,
+    "fields": {
+      "pergunta": 85,
+      "dificuldade": 2
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 86,
+    "fields": {
+      "pergunta": 86,
+      "dificuldade": 3
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 87,
+    "fields": {
+      "pergunta": 87,
+      "dificuldade": 3
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 88,
+    "fields": {
+      "pergunta": 88,
+      "dificuldade": 3
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 89,
+    "fields": {
+      "pergunta": 89,
+      "dificuldade": 3
+    }
+  },
+  {
+    "model": "setup.perguntadificuldade",
+    "pk": 90,
+    "fields": {
+      "pergunta": 90,
+      "dificuldade": 3
+    }
+  }
+]
