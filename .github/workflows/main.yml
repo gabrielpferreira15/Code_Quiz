@@ -76,3 +76,4 @@ jobs:
         with:
           inlineScript: |
             az webapp start --name 'code-quiz' --resource-group 'code-quiz_group'
+            
