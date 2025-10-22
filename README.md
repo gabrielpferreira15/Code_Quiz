@@ -94,13 +94,13 @@ Nós atualizamos nosso Jira e marcamos as histórias implementadas nesta entrega
 Backlog:
 
 
-<img width="1440" alt="Backlog Entrega 3" src="LINK_DA_IMAGEM_DO_BACKLOG_AQUI" />
+<img width="1440" alt="Backlog Entrega 3" src="https://github.com/gabrielpferreira15/Code_Quiz/blob/af5eeb187d1d1007692d050116c17f75046d52b1/foto%20do%20backlog%203.png" />
 
 
 Quadro:
 
 
-<img width="1440" alt="Quadro Entrega 3" src="LINK_DA_IMAGEM_DO_QUADRO_AQUI" />
+<img width="1440" alt="Quadro Entrega 3" src="https://github.com/gabrielpferreira15/Code_Quiz/blob/af5eeb187d1d1007692d050116c17f75046d52b1/foto%20do%20painel%203.png" />
 
 
 ## Screencast
