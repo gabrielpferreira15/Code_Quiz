@@ -30,6 +30,11 @@ jobs:
           source venv/bin/activate
           pip install -r requirements.txt
 
+      - name: Ensure startup.sh is included
+        run: |
+          ls -la startup.sh
+          chmod +x startup.sh
+
       - name: Run migrations for tests
         run: |
           source venv/bin/activate
