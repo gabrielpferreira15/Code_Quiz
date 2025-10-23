@@ -42,12 +42,8 @@ jobs:
         env:
           DJANGO_SETTINGS_MODULE: project.settings
 
-      - name: Make startup script executable
-        run: |
-          chmod +x startup.sh || true
-
       - name: Zip artifact for deployment
-        run: zip release.zip ./* -r -x "venv/*" -x ".git/*" -x ".vscode/*" -x "htmlcov/*" -x ".coverage"
+        run: zip release.zip ./* -r -x "venv/*" -x ".git/*" -x ".vscode/*" -x "htmlcov/*" -x ".coverage" -x "*.pyc" -x "__pycache__/*"
 
       - name: Upload artifact for deployment
         uses: actions/upload-artifact@v4
@@ -87,9 +83,15 @@ jobs:
       - name: Wait for deployment to stabilize
         run: sleep 45
 
-      - name: Set startup command
+      - name: Configure startup and run migrations
         run: |
-          az webapp config set --name code-quiz --resource-group code-quiz_group --startup-file "bash startup.sh"
+          # Remove startup command anterior
+          az webapp config set --name code-quiz --resource-group code-quiz_group --startup-file ""
+          
+          # Configura comandos de inicialização via App Settings
+          az webapp config appsettings set --name code-quiz --resource-group code-quiz_group --settings \
+            SCM_DO_BUILD_DURING_DEPLOYMENT=true \
+            POST_BUILD_COMMAND="python manage.py migrate && python manage.py load_initial_data && python manage.py collectstatic --noinput"
 
       - name: Restart webapp to apply changes
         run: |
