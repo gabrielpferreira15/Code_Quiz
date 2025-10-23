@@ -3,23 +3,24 @@ set -e
 
 export DJANGO_SETTINGS_MODULE=project.settings
 
-# Usa pasta atual se não estiver no Azure
-if [ -d "/home/site/wwwroot" ]; then
-    APP_ROOT="/home/site/wwwroot"
+# Detecta o diretório correto (Azure usa variável de ambiente)
+if [ -n "$APPSVC_VIRTUAL_ENV" ]; then
+    # Azure App Service
+    APP_ROOT=$(dirname "$APPSVC_VIRTUAL_ENV")
     PYTHON_CMD="python"
 else
+    # Local (Mac)
     APP_ROOT="$(pwd)"
-    PYTHON_CMD="python3"  # Mac usa python3
+    PYTHON_CMD="python3"
+    # Ativa ambiente virtual se estiver local
+    if [ -d ".venv" ]; then
+        source .venv/bin/activate
+    fi
 fi
 
 MARKER="$APP_ROOT/.fixtures_loaded"
 
 cd "$APP_ROOT"
-
-# Ativa ambiente virtual se estiver local (Mac)
-if [ -d ".venv" ]; then
-    source .venv/bin/activate
-fi
 
 # Executa migrações e carrega fixtures apenas uma vez
 if [ ! -f "$MARKER" ]; then
