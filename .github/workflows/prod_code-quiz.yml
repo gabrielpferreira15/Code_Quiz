@@ -42,11 +42,6 @@ jobs:
         env:
           DJANGO_SETTINGS_MODULE: project.settings
 
-      - name: Load fixture data
-        run: |
-          source venv/bin/activate
-          python manage.py loaddata setup/fixtures/quiz_data.json
-
       - name: Make startup script executable
         run: |
           chmod +x startup.sh || true
