@@ -93,6 +93,7 @@ jobs:
         with:
           app-name: 'code-quiz'
           slot-name: 'Production'
+          package: release.zip
 
       - name: Wait for deployment to stabilize
         run: sleep 45
