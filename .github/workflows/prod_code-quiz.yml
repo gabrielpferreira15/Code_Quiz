@@ -77,9 +77,6 @@ jobs:
         with:
           name: python-app
 
-      - name: Unzip artifact
-        run: unzip release.zip
-
       - name: Login to Azure
         uses: azure/login@v2
         with:
@@ -91,7 +88,9 @@ jobs:
         with:
           app-name: 'code-quiz'
           slot-name: 'Production'
-          package: release.zip
+
+      - name: Wait for deployment to stabilize
+        run: sleep 45
 
       - name: Set startup command
         run: |
