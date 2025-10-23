@@ -19,8 +19,6 @@ if NOT_PROD:
     # SECURITY WARNING: keep the secret key used in production secret!
     SECRET_KEY = 'django-insecure-k6+rdt-6^%^_6cxq%7=x=p9wj7rpoj_an3kn$5x(if7(uv^q2v'
     ALLOWED_HOSTS = [
-    'code-quiz.azurewebsites.net',
-    '169.254.129.3',  
     'localhost',
     '127.0.0.1',
     ]
@@ -34,7 +32,7 @@ else:
     SECRET_KEY = os.getenv('SECRET_KEY')
     DEBUG = os.getenv('DEBUG', '0').lower() in ['true', 't', '1']
     ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(' ')
-    ALLOWED_HOSTS.extend(['169.254.129.3', '169.254.129.4', '169.254.129.5'])
+    ALLOWED_HOSTS.extend(['code-quiz.azurewebsites.net','169.254.129.3', '169.254.129.4', '169.254.129.5'])
     CSRF_TRUSTED_ORIGINS = os.getenv('CSRF_TRUSTED_ORIGINS').split(' ')
 
     SECURE_SSL_REDIRECT = \
