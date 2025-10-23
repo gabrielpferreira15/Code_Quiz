@@ -112,7 +112,7 @@ jobs:
       - name: Check deployment logs
         run: |
           echo "Checking deployment logs..."
-          az webapp log tail --name code-quiz --resource-group code-quiz_group --timeout 30
+          timeout 30s az webapp log tail --name code-quiz --resource-group code-quiz_group || true
         continue-on-error: true
 
       - name: Logout from Azure
