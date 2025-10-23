@@ -52,6 +52,11 @@ jobs:
           source venv/bin/activate
           python manage.py loaddata setup/fixtures/quiz_data.json
 
+      - name: Ensure startup scripts exist and are executable
+        run: |
+          ls -la startup.sh startup_reset.sh
+          chmod +x startup.sh startup_reset.sh
+
       - name: Zip artifact for deployment
         run: zip release.zip ./* -r -x "venv/*" -x ".git/*" -x ".vscode/*" -x "htmlcov/*" -x ".coverage"
 
@@ -100,6 +105,15 @@ jobs:
       - name: Restart webapp to apply changes
         run: |
           az webapp restart --name code-quiz --resource-group code-quiz_group
+
+      - name: Wait for webapp to be ready
+        run: sleep 30
+
+      - name: Check deployment logs
+        run: |
+          echo "Checking deployment logs..."
+          az webapp log tail --name code-quiz --resource-group code-quiz_group --timeout 30
+        continue-on-error: true
 
       - name: Logout from Azure
         run: az logout
