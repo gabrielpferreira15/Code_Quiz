@@ -103,9 +103,9 @@ Quadro:
 <img width="1440" alt="Quadro Entrega 3" src="https://github.com/gabrielpferreira15/Code_Quiz/blob/af5eeb187d1d1007692d050116c17f75046d52b1/foto%20do%20painel%203.png" />
 
 
-## Screencast
+## Screencasts
 
-Realizamos um screencast demonstrando as novas funcionalidades implementadas nesta entrega. Para acessar o vídeo, [clique aqui](LINK_PARA_O_SEU_VIDEO_NO_YOUTUBE) (Histórias implementadas: PREENCHA_AS_HISTÓRIAS_AQUI, ex: 4, 6, 7).
+Realizamos um teste End-To-End nessa entrega para mostrar o fluxo da aplicação, para acessá-lo [clique aqui](https://www.youtube.com/watch?v=sFssyUT0iM8)
 
 ## Bug/Issue tracker
 
