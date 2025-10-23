@@ -32,6 +32,12 @@ jobs:
           source antenv/bin/activate
           pip install -r requirements.txt
       
+      - name: Run migrations and tests
+        run: |
+          source antenv/bin/activate
+          python manage.py migrate
+          pytest
+      
       - name: Cleaning testing files
         run: |
           rm .env
@@ -77,4 +83,3 @@ jobs:
         with:
           app-name: 'code-quiz'
           slot-name: 'Production'
-          
