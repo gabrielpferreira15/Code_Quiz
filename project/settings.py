@@ -34,6 +34,7 @@ else:
     SECRET_KEY = os.getenv('SECRET_KEY')
     DEBUG = os.getenv('DEBUG', '0').lower() in ['true', 't', '1']
     ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(' ')
+    ALLOWED_HOSTS.extend(['169.254.129.3', '169.254.129.4', '169.254.129.5'])
     CSRF_TRUSTED_ORIGINS = os.getenv('CSRF_TRUSTED_ORIGINS').split(' ')
 
     SECURE_SSL_REDIRECT = \
