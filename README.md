@@ -116,7 +116,6 @@ Por fim, gravamos um vídeo mostrando nosso site rodando e apresentando as novas
 Atualizamos nosso bugtracker com os problemas que ocorreram e foram resolvidos durante o processo da Entrega 3. 
 
 
-<img width="1431" alt="Bug Tracker Entrega 3" src="LINK_DA_IMAGEM_DO_BUG_TRACKER_AQUI" />
-
+<img width="1440" height="695" alt="Image" src="https://github.com/user-attachments/assets/9f305989-650e-4ebf-aa8b-2ca36d4be1f5" />
 
 </details>
