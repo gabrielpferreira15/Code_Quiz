@@ -72,7 +72,7 @@ Realizamos um screencast do site em funcionamento já nós servidores da Azure. 
 
 Nós criamos um bugtracker, onde podemos ver os problemas que ocorreram durante a processo da Entrega 2. 
 
-<img width="1431" height="741" alt="Image" src="https://github.com/user-attachments/assets/fafa509f-9dcd-4eba-bb37-9b5539940944" />
+<img width="1440" height="695" alt="Image" src="https://github.com/user-attachments/assets/31e1663c-55d5-48f0-b4b0-a41c7a649115" />
 
 
 </details>
@@ -84,7 +84,7 @@ Nós criamos um bugtracker, onde podemos ver os problemas que ocorreram durante 
 
 ## Relatório
 
-Criamos um documento para registrar a divisão e a realização das tarefas desta entrega. Para acessá-lo, [clique aqui](https://docs.google.com/document/d/1Bmd_qIy34Q8A9SkGD3S7pwBkR9i8a1L9I9klNP_WlF4/edit?usp=sharing)
+Atualizamos o documento de registro da divisão e a realização das tarefas das entregas. Para acessá-lo, [clique aqui]([https://docs.google.com/document/d/1Bmd_qIy34Q8A9SkGD3S7pwBkR9i8a1L9I9klNP_WlF4/edit?usp=sharing](https://docs.google.com/document/d/1kqsCHQ-e9Ho9ilVLpZDfgsCuCJPcbY5WjvUd7AGKhz8/edit?tab=t.0))
 
 ## Jira
 
@@ -94,18 +94,22 @@ Nós atualizamos nosso Jira e marcamos as histórias implementadas nesta entrega
 Backlog:
 
 
-<img width="1440" alt="Backlog Entrega 3" src="https://github.com/gabrielpferreira15/Code_Quiz/blob/af5eeb187d1d1007692d050116c17f75046d52b1/foto%20do%20backlog%203.png" />
+<img width="1440" height="699" alt="Image" src="https://github.com/user-attachments/assets/29853c7c-0f4f-43f2-9ecd-66eb13389916" />
 
 
 Quadro:
 
 
-<img width="1440" alt="Quadro Entrega 3" src="https://github.com/gabrielpferreira15/Code_Quiz/blob/af5eeb187d1d1007692d050116c17f75046d52b1/foto%20do%20painel%203.png" />
+<img width="1440" height="702" alt="Image" src="https://github.com/user-attachments/assets/6174a70f-c863-4c83-b104-9e227268a531" />
 
 
 ## Screencasts
 
 Realizamos um teste End-To-End nessa entrega para mostrar o fluxo da aplicação, para acessá-lo [clique aqui](https://www.youtube.com/watch?v=sFssyUT0iM8)
+
+Gravamos também um vídeo mostrando o processo de build e deploy automático com o CI/CD, para acessá-lo [clique aqui](https://www.youtube.com/watch?v=Grty1cKuSCw) 
+
+Por fim, gravamos um vídeo mostrando nosso site rodando e apresentando as novas funcionalidades implemnetadas, para acessá-lo [clique aqui]([https://www.youtube.com/watch?v=Grty1cKuSCw](https://youtu.be/_81RyFBqOhM)) (Histórias implementadas: 1 e 5).
 
 ## Bug/Issue tracker
 
