@@ -84,7 +84,8 @@ Nós criamos um bugtracker, onde podemos ver os problemas que ocorreram durante 
 
 ## Relatório
 
-Atualizamos o documento de registro da divisão e a realização das tarefas das entregas. Para acessá-lo, [clique aqui]([https://docs.google.com/document/d/1Bmd_qIy34Q8A9SkGD3S7pwBkR9i8a1L9I9klNP_WlF4/edit?usp=sharing](https://docs.google.com/document/d/1kqsCHQ-e9Ho9ilVLpZDfgsCuCJPcbY5WjvUd7AGKhz8/edit?tab=t.0))
+Atualizamos o documento de registro da divisão e a realização das tarefas das entregas. Para acessá-lo, [clique aqui](https://docs.google.com/document/d/1kqsCHQ-e9Ho9ilVLpZDfgsCuCJPcbY5WjvUd7AGKhz8/edit?tab=t.0)
+
 
 ## Jira
 
