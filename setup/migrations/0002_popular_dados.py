@@ -744,7 +744,41 @@ Este quiz testará sua compreensão dessas regras essenciais. Preste atenção a
     ContextoAssunto.objects.create(
         assunto=assunto_py_sb,
         dificuldade=medio,
-        contexto="""(Substitua este texto pela sua explicação de nível Médio)"""
+        contexto="""(Neste nível, vamos aprender a fazer o nosso código tomar decisões e repetir tarefas, focando em três elementos essenciais:
+
+1. Condicionais (if, elif, else):
+Permitem que o seu programa execute diferentes blocos de código com base em condições. Lembre-se que o Python usa a indentação (espaços/tabs) para definir o que está dentro do if ou else.
+
+Exemplo de Código:
+
+Python
+
+idade = 17
+if idade >= 18: print("Você é maior de idade e pode entrar.") elif idade >= 16: print("Você precisa de um responsável.") else: print("Entrada não permitida.")
+
+2. Loops de Repetição (for):
+Usado para iterar (percorrer) sequências de itens (como listas, strings ou ranges) e executar um bloco de código para cada um.
+
+Exemplo de Código:
+
+Python
+
+# O range(5) gera números de 0 a 4
+for i in range(5):
+    print(f"Contagem: {i}")
+frutas = ["maçã", "banana", "cereja"] for fruta in frutas: print(f"Eu gosto de {fruta}")
+
+3. Loops de Repetição Condicional (while):
+Executa um bloco de código repetidamente enquanto uma condição for verdadeira. É crucial garantir que a condição se torne falsa em algum momento para evitar um loop infinito.
+
+Exemplo de Código:
+
+Python
+
+contador = 0
+while contador < 3: print(f"Loop {contador}") contador += 1 # Incrementa o contador
+
+print("Fim do loop while."))"""
     )
     ContextoAssunto.objects.create(
         assunto=assunto_py_sb,
@@ -777,7 +811,25 @@ Este quiz testará sua habilidade em identificar e usar essas duas estruturas de
     ContextoAssunto.objects.create(
         assunto=assunto_py_er,
         dificuldade=medio,
-        contexto="""(Substitua este texto pela sua explicação de nível Médio)"""
+        contexto="""(Neste nível, focaremos nas nuances e nos atalhos poderosos dos laços em Python:
+
+A Cláusula else nos Laços for e while: Essa é uma funcionalidade única do Python! O bloco else de um laço só é executado se o laço terminar naturalmente, ou seja, se a condição do while se tornar falsa ou se o for iterar sobre todos os itens. Se o laço for interrompido por um break, o else é ignorado.
+
+List Comprehensions (Compreensões de Lista): Uma forma elegante e concisa de criar listas. Elas seguem o formato: [expressão for item in iterável if condição]. Isso permite filtrar e transformar dados em uma única linha legível.
+
+Estrutura: [O QUE você quer guardar for ONDE você quer procurar if SE TIVER UMA CONDIÇÃO]
+
+Controle de Fluxo com break e continue:
+
+break: Interrompe imediatamente o laço (e, consequentemente, ignora o else).
+
+continue: Pula a iteração atual e passa para a próxima.
+
+Funções Auxiliares: enumerate e Condição while:
+
+enumerate(): Transforma um iterável em uma sequência de tuplas (índice, valor), facilitando a obtenção da posição e do item simultaneamente.
+
+Condição while com Objetos: Assim como nas condicionais, o while continua enquanto o objeto for avaliado como Truthy (ex: uma lista não vazia).)"""
     )
     ContextoAssunto.objects.create(
         assunto=assunto_py_er,
@@ -812,7 +864,23 @@ Este quiz avaliará seu entendimento sobre como construir blocos `if/elif/else` 
     ContextoAssunto.objects.create(
         assunto=assunto_py_c,
         dificuldade=medio,
-        contexto="""(Substitua este texto pela sua explicação de nível Médio)"""
+        contexto="""(Neste nível, vamos mergulhar em três conceitos cruciais:
+
+A Verdade por Trás dos Valores (Truthy/Falsy): Em Python, nem tudo é True ou False explícito. Alguns valores são considerados "falsos" (Falsy), como 0, None, strings vazias (""), listas vazias ([]) e tuplas vazias. Qualquer coisa que não seja Falsy é considerada "verdadeira" (Truthy).
+
+Exemplo: Em if 0: print("Verdade"), nada é impresso porque 0 é Falsy.
+
+Operadores Lógicos (and, or, not): Estes operadores são usados para combinar condições. O and só retorna True se ambas as condições forem verdadeiras. O or retorna True se pelo menos uma for verdadeira. O not inverte o resultado.
+
+Precedência: Lembre-se que not é avaliado primeiro, depois and, e por último or. Use parênteses para forçar uma ordem diferente!
+
+Comparação de Valor vs. Identidade (== vs. is):
+
+O == (igualdade de valor) pergunta: "Os objetos têm o mesmo conteúdo?"
+
+O is (identidade) pergunta: "Os objetos são o mesmo objeto na memória?"
+
+Este quiz testará sua capacidade de prever o fluxo de execução baseado nessas regras de avaliação de verdade e precedência.)"""
     )
     ContextoAssunto.objects.create(
         assunto=assunto_py_c,
