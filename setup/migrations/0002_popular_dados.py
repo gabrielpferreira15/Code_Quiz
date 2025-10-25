@@ -909,8 +909,38 @@ Este quiz vai testar sua compreensão sobre qual laço usar em diferentes situa�
     ContextoAssunto.objects.create(
         assunto=assunto_c_c,
         dificuldade=facil,
-        contexto="""Contexto para C - Estruturas Condicionais - Fácil.
-        (Substitua este texto pela sua explicação sobre 'if', 'else if', 'else', 'switch', e '==' vs '=')"""
+        contexto="""Vamos aprender a tomar decisões em C! Estruturas condicionais permitem que seu programa execute diferentes blocos de código dependendo se uma condição é verdadeira ou falsa.
+
+Neste nível, veremos as estruturas principais:
+
+1.  **`if`, `else if`, `else`:** Permitem executar código se uma condição for verdadeira (`if`), testar outras condições se a primeira for falsa (`else if`), ou executar um bloco padrão se nenhuma condição anterior for atendida (`else`). A condição sempre vai entre parênteses `()`.
+    `if (nota >= 7) {`
+    `  printf("Aprovado!\\n");`
+    `} else if (nota >= 5) {`
+    `  printf("Recuperação.\\n");`
+    `} else {`
+    `  printf("Reprovado.\\n");`
+    `}`
+
+2.  **Operadores de Comparação:** Para criar condições, usamos operadores como `==` (igual a), `!=` (diferente de), `>` (maior que), `<` (menor que), `>=` (maior ou igual a), `<=` (menor ou igual a).
+    `if (idade == 18) { ... }`
+    `if (saldo != 0) { ... }`
+
+3.  **Cuidado com `=` vs `==`:** Um erro muito comum! `=` é para **atribuir** um valor (`x = 5;`), enquanto `==` é para **comparar** se dois valores são iguais (`if (x == 5) { ... }`). Usar `=` dentro de um `if` geralmente não causa erro de compilação, mas leva a um comportamento inesperado!
+
+4.  **`switch`:** Útil quando você quer testar uma variável contra vários valores específicos (casos). Cada `case` testa um valor, e o `break;` é essencial para sair do `switch` após encontrar um caso correspondente. O `default:` é opcional e executado se nenhum `case` for verdadeiro.
+    `switch (opcao) {`
+    `  case 1:`
+    `    printf("Você escolheu 1.\\n");`
+    `    break;`
+    `  case 2:`
+    `    printf("Você escolheu 2.\\n");`
+    `    break;`
+    `  default:`
+    `    printf("Opção inválida.\\n");`
+    `}`
+
+Este quiz testará sua habilidade de usar essas estruturas para controlar o fluxo do seu programa."""
     )
     ContextoAssunto.objects.create(
         assunto=assunto_c_c,
