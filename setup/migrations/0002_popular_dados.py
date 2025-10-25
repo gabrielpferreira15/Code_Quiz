@@ -824,13 +824,32 @@ Este quiz avaliará seu entendimento sobre como construir blocos `if/elif/else` 
     ContextoAssunto.objects.create(
         assunto=assunto_c_sb,
         dificuldade=facil,
-        contexto="""Contexto para C - Sintaxe Básica - Fácil.
-        (Substitua este texto pela sua explicação sobre #include, printf, tipos estáticos como 'int', e o ponto-e-vírgula)"""
+        contexto="""Bem-vindo ao fundamental da linguagem C! A sintaxe em C é a base para escrever programas que o compilador possa transformar em código executável. C é conhecida por ser mais próxima do hardware e exige atenção aos detalhes.
+
+Neste nível fácil, vamos focar em quatro elementos essenciais:
+
+1.  **Declaração de Variáveis (Tipagem Estática):** Diferente de Python, em C você **precisa** declarar o tipo de uma variável *antes* de usá-la. O tipo `int` é usado para números inteiros.
+    `int idade;`
+    `idade = 25;`
+    `int quantidade = 50; // Declaração e inicialização juntas`
+
+2.  **A Diretiva `#include`:** Para usar funções que não fazem parte do núcleo básico da linguagem, como a função de impressão, precisamos "incluir" bibliotecas. A biblioteca `stdio.h` (Standard Input/Output Header) é fundamental para operações de entrada e saída.
+    `#include <stdio.h>`
+
+3.  **A Função `printf()`:** Esta é a principal função para exibir texto e valores no console. Ela vem da biblioteca `stdio.h`.
+    `printf("Olá, mundo!\\n"); // \\n indica uma nova linha`
+    `printf("Sua idade é: %d\\n", idade); // %d é um marcador para um inteiro`
+
+4.  **O Ponto e Vírgula (`;`):** Em C, cada instrução (comando completo) **deve** terminar com um ponto e vírgula. É como o ponto final de uma frase, indicando ao compilador onde um comando termina.
+    `int x = 10;`
+    `printf("Valor: %d\\n", x);`
+
+Este quiz verificará se você compreendeu estas regras básicas de escrita em C. Atenção aos detalhes como tipos e o ponto e vírgula!"""
     )
     ContextoAssunto.objects.create(
         assunto=assunto_c_sb,
         dificuldade=medio,
-        contexto="""Contexto para C - Sintaxe Básica - Mádio.
+        contexto="""Contexto para C - Sintaxe Básica - Médio.
         (Substitua este texto pela sua explicação sobre type casting (float), pós-incremento (x++), ponteiros (*) e enums)"""
     )
     ContextoAssunto.objects.create(
