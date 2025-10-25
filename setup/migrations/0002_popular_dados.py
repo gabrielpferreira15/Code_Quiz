@@ -722,60 +722,102 @@ def popular_dados(apps, schema_editor):
     ContextoAssunto.objects.create(
         assunto=assunto_py_sb,
         dificuldade=facil,
-        contexto="""Este é o seu texto de explicação para Python - Sintaxe Básica - Nível Fácil.
-        Fale sobre variáveis, print(), comentários, e como Python usa tipagem dinâmica. É uma ótima introdução!"""
+        contexto="""Bem-vindo ao básico de Python! A 'sintaxe' é como a gramática de uma linguagem de programação: são as regras que definem como escrever código que o computador entenda.
+
+Neste nível, focaremos em três pilares fundamentais:
+
+1.  **Variáveis:** Pense nelas como 'caixas' etiquetadas para guardar informações. Em Python, criar uma é simples. Você não precisa declarar o tipo, apenas dar um nome e um valor.
+    `idade = 25`
+    `nome = "Gabriel"`
+
+2.  **Comentários:** São notas que você deixa no código para si mesmo ou para outros programadores. O Python ignora qualquer coisa que venha depois do símbolo `#` (cerquilha) em uma linha.
+    `# Isto é um comentário, o programa vai ignorar.`
+    `preco = 19.99  # Isso também é um comentário.`
+
+3.  **Funções Básicas:** Para exibir informações no console, usamos a função `print()`. Para converter um tipo de dado em outro, usamos funções como `int()` (para inteiro) ou `str()` (para string).
+    `print("Olá, mundo!")`
+    `numero_em_texto = "100"`
+    `numero_real = int(numero_em_texto)`
+
+Este quiz testará sua compreensão dessas regras essenciais. Preste atenção aos detalhes!"""
     )
     ContextoAssunto.objects.create(
         assunto=assunto_py_sb,
         dificuldade=medio,
-        contexto="""Este é o seu texto de explicação para Python - Sintaxe Básica - Nível Médio.
-        Aqui você pode abordar desempacotamento estendido, f-strings, e a diferença entre listas mutáveis e tuplas imutáveis."""
+        contexto="""(Substitua este texto pela sua explicação de nível Médio)"""
     )
     ContextoAssunto.objects.create(
         assunto=assunto_py_sb,
         dificuldade=dificil,
-        contexto="""Este é o seu texto de explicação para Python - Sintaxe Básica - Nível Difícil.
-        Vamos mergulhar em tópicos avançados como o 'interning' de inteiros (is vs ==), escopo global vs. local, e o operador walrus (:=)."""
+        contexto="""(Substitua este texto pela sua explicação de nível Difícil)"""
     )
 
     # --- Contextos Python: Estruturas de Repetição (assunto_py_er) ---
     ContextoAssunto.objects.create(
         assunto=assunto_py_er,
         dificuldade=facil,
-        contexto="""Contexto para Python - Estruturas de Repetição - Fácil.
-        (Substitua este texto pela sua explicação sobre 'for i in range()' e 'while' básico)"""
+        contexto="""Estruturas de repetição, ou 'loops', são um dos conceitos mais poderosos da programação. Elas permitem executar o mesmo bloco de código várias vezes sem ter que escrevê-lo repetidamente.
+
+Em Python, os dois loops mais básicos são o `for` e o `while`.
+
+1.  **O Laço `for` (Repetição Definida):** Usamos o `for` quando sabemos *quantas vezes* queremos repetir algo. Ele é frequentemente usado com a função `range()`, que gera uma sequência de números.
+    `# range(5) gera os números 0, 1, 2, 3, 4.`
+    `# O loop executará 5 vezes.`
+    `for i in range(5):`
+    `    print(f"Executando pela {i+1}ª vez")`
+
+2.  **O Laço `while` (Repetição Condicional):** Usamos o `while` quando queremos repetir *enquanto* uma condição for verdadeira. Não sabemos o número exato de vezes, apenas a condição de parada.
+    `contador = 0`
+    `while contador < 10:`
+    `    print("O contador ainda é menor que 10.")`
+    `    contador = contador + 1  # Importante: atualizar a condição!`
+
+Este quiz testará sua habilidade em identificar e usar essas duas estruturas de loop. Lembre-se: `for` para contagens definidas, `while` para condições."""
     )
     ContextoAssunto.objects.create(
         assunto=assunto_py_er,
         dificuldade=medio,
-        contexto="""Contexto para Python - Estruturas de Repetição - Médio.
-        (Substitua este texto pela sua explicação sobre 'break', 'continue', list comprehensions e 'enumerate')"""
+        contexto="""(Substitua este texto pela sua explicação de nível Médio)"""
     )
     ContextoAssunto.objects.create(
         assunto=assunto_py_er,
         dificuldade=dificil,
-        contexto="""Contexto para Python - Estruturas de Repetição - Difícil.
-        (Substitua este texto pela sua explicação sobre a cláusula 'else' em loops, generator expressions e 'zip')"""
+        contexto="""(Substitua este texto pela sua explicação de nível Difícil)"""
     )
 
     # --- Contextos Python: Condicionais (assunto_py_c) ---
     ContextoAssunto.objects.create(
         assunto=assunto_py_c,
         dificuldade=facil,
-        contexto="""Contexto para Python - Condicionais - Fácil.
-        (Substitua este texto pela sua explicação sobre 'if', 'elif', 'else', e os operadores 'and', 'or', 'not')"""
+        contexto="""Programas tomam decisões usando 'condicionais'. Eles permitem que seu código siga caminhos diferentes dependendo se uma condição é verdadeira (`True`) ou falsa (`False`).
+
+A estrutura básica para isso em Python é o `if`, `elif` e `else`.
+
+1.  **`if` (Se):** Executa um bloco de código *se* a condição for verdadeira.
+2.  **`else` (Senão):** Executa um bloco de código *se* a condição do `if` for falsa.
+3.  **`elif` (Senão Se):** Permite verificar *outra* condição se o `if` anterior for falso. Você pode ter vários `elif`.
+
+    `idade = 20`
+    `if idade < 18:`
+    `    print("Menor de idade.")`
+    `elif idade == 18:`
+    `    print("Tem 18 anos.")`
+    `else:`
+    `    print("Maior de idade.")`
+
+Para criar condições, usamos operadores de comparação (como `==` para igual, `!=` para diferente, `>` para maior) e operadores lógicos (como `and`, `or` e `not`).
+
+Este quiz avaliará seu entendimento sobre como construir blocos `if/elif/else` para controlar o fluxo do seu programa."""
     )
     ContextoAssunto.objects.create(
         assunto=assunto_py_c,
         dificuldade=medio,
-        contexto="""Contexto para Python - Condicionais - Mádio.
-        (Substitua este texto pela sua explicação sobre o operador ternário, e valores 'truthy' vs 'falsy')"""
+        contexto="""(Substitua este texto pela sua explicação de nível Médio)"""
     )
     ContextoAssunto.objects.create(
         assunto=assunto_py_c,
         dificuldade=dificil,
-        contexto="""Contexto para Python - Condicionais - Difícil.
-        (Substitua este texto pela sua explicação sobre curto-circuito (short-circuiting) em 'and'/'or' e o operador walrus em 'if')"""
+        contexto="""(Substitua este texto pela sua explicação de nível Difícil)"""
     )
 
     # --- Contextos C: Sintaxe Básica (assunto_c_sb) ---
