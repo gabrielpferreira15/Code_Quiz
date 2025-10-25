@@ -9,10 +9,12 @@ def popular_dados(apps, schema_editor):
     Resposta = apps.get_model('setup', 'Resposta')
     Dificuldade = apps.get_model('setup', 'Dificuldade')
     PerguntaDificuldade = apps.get_model('setup', 'PerguntaDificuldade')
+    ContextoAssunto = apps.get_model('setup', 'ContextoAssunto')
 
     # Limpando os dados na ordem correta para evitar erros de referência
     Resposta.objects.all().delete()
     PerguntaDificuldade.objects.all().delete()
+    ContextoAssunto.objects.all().delete()
     Pergunta.objects.all().delete()
     Assunto.objects.all().delete()
     Linguagem.objects.all().delete()
@@ -711,6 +713,131 @@ def popular_dados(apps, schema_editor):
     Resposta.objects.create(pergunta=p90, texto="B", correta=False)
     Resposta.objects.create(pergunta=p90, texto="AC", correta=False)
     Resposta.objects.create(pergunta=p90, texto="AB", correta=True)
+    
+    # ====================================================================
+    # === CONTEXTOS DOS QUIZZES ===
+    # ====================================================================
+
+    # --- Contextos Python: Sintaxe Básica (assunto_py_sb) ---
+    ContextoAssunto.objects.create(
+        assunto=assunto_py_sb,
+        dificuldade=facil,
+        contexto="""Este é o seu texto de explicação para Python - Sintaxe Básica - Nível Fácil.
+        Fale sobre variáveis, print(), comentários, e como Python usa tipagem dinâmica. É uma ótima introdução!"""
+    )
+    ContextoAssunto.objects.create(
+        assunto=assunto_py_sb,
+        dificuldade=medio,
+        contexto="""Este é o seu texto de explicação para Python - Sintaxe Básica - Nível Médio.
+        Aqui você pode abordar desempacotamento estendido, f-strings, e a diferença entre listas mutáveis e tuplas imutáveis."""
+    )
+    ContextoAssunto.objects.create(
+        assunto=assunto_py_sb,
+        dificuldade=dificil,
+        contexto="""Este é o seu texto de explicação para Python - Sintaxe Básica - Nível Difícil.
+        Vamos mergulhar em tópicos avançados como o 'interning' de inteiros (is vs ==), escopo global vs. local, e o operador walrus (:=)."""
+    )
+
+    # --- Contextos Python: Estruturas de Repetição (assunto_py_er) ---
+    ContextoAssunto.objects.create(
+        assunto=assunto_py_er,
+        dificuldade=facil,
+        contexto="""Contexto para Python - Estruturas de Repetição - Fácil.
+        (Substitua este texto pela sua explicação sobre 'for i in range()' e 'while' básico)"""
+    )
+    ContextoAssunto.objects.create(
+        assunto=assunto_py_er,
+        dificuldade=medio,
+        contexto="""Contexto para Python - Estruturas de Repetição - Médio.
+        (Substitua este texto pela sua explicação sobre 'break', 'continue', list comprehensions e 'enumerate')"""
+    )
+    ContextoAssunto.objects.create(
+        assunto=assunto_py_er,
+        dificuldade=dificil,
+        contexto="""Contexto para Python - Estruturas de Repetição - Difícil.
+        (Substitua este texto pela sua explicação sobre a cláusula 'else' em loops, generator expressions e 'zip')"""
+    )
+
+    # --- Contextos Python: Condicionais (assunto_py_c) ---
+    ContextoAssunto.objects.create(
+        assunto=assunto_py_c,
+        dificuldade=facil,
+        contexto="""Contexto para Python - Condicionais - Fácil.
+        (Substitua este texto pela sua explicação sobre 'if', 'elif', 'else', e os operadores 'and', 'or', 'not')"""
+    )
+    ContextoAssunto.objects.create(
+        assunto=assunto_py_c,
+        dificuldade=medio,
+        contexto="""Contexto para Python - Condicionais - Mádio.
+        (Substitua este texto pela sua explicação sobre o operador ternário, e valores 'truthy' vs 'falsy')"""
+    )
+    ContextoAssunto.objects.create(
+        assunto=assunto_py_c,
+        dificuldade=dificil,
+        contexto="""Contexto para Python - Condicionais - Difícil.
+        (Substitua este texto pela sua explicação sobre curto-circuito (short-circuiting) em 'and'/'or' e o operador walrus em 'if')"""
+    )
+
+    # --- Contextos C: Sintaxe Básica (assunto_c_sb) ---
+    ContextoAssunto.objects.create(
+        assunto=assunto_c_sb,
+        dificuldade=facil,
+        contexto="""Contexto para C - Sintaxe Básica - Fácil.
+        (Substitua este texto pela sua explicação sobre #include, printf, tipos estáticos como 'int', e o ponto-e-vírgula)"""
+    )
+    ContextoAssunto.objects.create(
+        assunto=assunto_c_sb,
+        dificuldade=medio,
+        contexto="""Contexto para C - Sintaxe Básica - Mádio.
+        (Substitua este texto pela sua explicação sobre type casting (float), pós-incremento (x++), ponteiros (*) e enums)"""
+    )
+    ContextoAssunto.objects.create(
+        assunto=assunto_c_sb,
+        dificuldade=dificil,
+        contexto="""Contexto para C - Sintaxe Básica - Difícil.
+        (Substitua este texto pela sua explicação sobre 'sizeof' vs ponteiros, 'typedef' de ponteiros de função, e a keyword 'static')"""
+    )
+
+    # --- Contextos C: Estruturas de Repetição (assunto_c_er) ---
+    ContextoAssunto.objects.create(
+        assunto=assunto_c_er,
+        dificuldade=facil,
+        contexto="""Contexto para C - Estruturas de Repetição - Fácil.
+        (Substitua este texto pela sua explicação sobre 'for (int i=0;...)', 'while' e 'do-while')"""
+    )
+    ContextoAssunto.objects.create(
+        assunto=assunto_c_er,
+        dificuldade=medio,
+        contexto="""Contexto para C - Estruturas de Repetição - Mádio.
+        (Substitua este texto pela sua explicação sobre 'break' vs 'continue', laços infinitos 'for(;;)', e iteração com ponteiros)"""
+    )
+    ContextoAssunto.objects.create(
+        assunto=assunto_c_er,
+        dificuldade=dificil,
+        contexto="""Contexto para C - Estruturas de Repetição - Difícil.
+        (Substitua este texto pela sua explicação sobre pós-incremento na condição do 'for', o operador vírgula, e 'goto' para sair de loops aninhados)"""
+    )
+
+    # --- Contextos C: Estruturas Condicionais (assunto_c_c) ---
+    ContextoAssunto.objects.create(
+        assunto=assunto_c_c,
+        dificuldade=facil,
+        contexto="""Contexto para C - Estruturas Condicionais - Fácil.
+        (Substitua este texto pela sua explicação sobre 'if', 'else if', 'else', 'switch', e '==' vs '=')"""
+    )
+    ContextoAssunto.objects.create(
+        assunto=assunto_c_c,
+        dificuldade=medio,
+        contexto="""Contexto para C - Estruturas Condicionais - Mádio.
+        (Substitua este texto pela sua explicação sobre 'fall-through' em 'switch', curto-circuito em '||', operador ternário, e bitwise 'num & 1')"""
+    )
+    ContextoAssunto.objects.create(
+        assunto=assunto_c_c,
+        dificuldade=dificil,
+        contexto="""Contexto para C - Estruturas Condicionais - Difícil.
+        (Substitua este texto pela sua explicação sobre a combinação de operadores lógicos e bitwise, e a precedência de operadores em 'if')"""
+    )
+
 class Migration(migrations.Migration):
 
     dependencies = [

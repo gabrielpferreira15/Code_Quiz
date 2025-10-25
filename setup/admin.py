@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Linguagem, Assunto, Pergunta, Resposta, Dificuldade, PerguntaDificuldade 
+from .models import Linguagem, Assunto, Pergunta, Resposta, Dificuldade, PerguntaDificuldade, ContextoAssunto
 class RespostaInline(admin.TabularInline):
     model = Resposta
     extra = 4 
@@ -12,3 +12,4 @@ admin.site.register(Assunto)
 admin.site.register(Pergunta, PerguntaAdmin)
 admin.site.register(Dificuldade)
 admin.site.register(PerguntaDificuldade)
+admin.site.register(ContextoAssunto)

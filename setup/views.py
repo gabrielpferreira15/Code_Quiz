@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
-from .models import Linguagem, Assunto, Pergunta, Resposta, Dificuldade, PerguntaDificuldade
+from .models import Linguagem, Assunto, Pergunta, Resposta, Dificuldade, ContextoAssunto
 from django.http import JsonResponse
 from django.contrib.auth.forms import UserCreationForm 
 from django.contrib.auth import logout
@@ -137,3 +137,20 @@ def jogar_quiz(request, assunto_id):
 def custom_logout(request):
     logout(request)
     return redirect('login')
+
+def pagina_contexto(request, assunto_id, dificuldade_id):
+    assunto = get_object_or_404(Assunto, id=assunto_id)
+    dificuldade = get_object_or_404(Dificuldade, id=dificuldade_id)
+    
+    contexto_especifico = None
+    try:
+        contexto_especifico = ContextoAssunto.objects.get(assunto=assunto, dificuldade=dificuldade)
+    except ContextoAssunto.DoesNotExist:
+        pass
+
+    context = {
+        'assunto': assunto,
+        'dificuldade': dificuldade,
+        'contexto_especifico': contexto_especifico,
+    }
+    return render(request, 'setup/pagina_contexto.html', context)

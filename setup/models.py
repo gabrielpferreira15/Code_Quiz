@@ -18,7 +18,7 @@ class Linguagem(models.Model):
 class Assunto(models.Model):
     linguagem = models.ForeignKey(Linguagem, on_delete=models.CASCADE)
     nome = models.CharField(max_length=100)
-    slug = models.SlugField(max_length=100, blank=True) 
+    slug = models.SlugField(max_length=100, blank=True)
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -99,3 +99,16 @@ class PerguntaDificuldade(models.Model):
 
     class Meta:
         verbose_name_plural = "Dificuldades das Perguntas"
+
+class ContextoAssunto(models.Model):
+    assunto = models.ForeignKey(Assunto, on_delete=models.CASCADE, related_name='contextos')
+    dificuldade = models.ForeignKey(Dificuldade, on_delete=models.CASCADE, related_name='contextos')
+    contexto = models.TextField(help_text="O texto de explicação que aparecerá antes do quiz.")
+
+    class Meta:
+        unique_together = ('assunto', 'dificuldade')
+        verbose_name = "Contexto de Quiz"
+        verbose_name_plural = "Contextos de Quizzes"
+
+    def __str__(self):
+        return f"Contexto: {self.assunto.nome} ({self.dificuldade.nome})"
