@@ -863,8 +863,34 @@ Este quiz verificará se você compreendeu estas regras básicas de escrita em C
     ContextoAssunto.objects.create(
         assunto=assunto_c_er,
         dificuldade=facil,
-        contexto="""Contexto para C - Estruturas de Repetição - Fácil.
-        (Substitua este texto pela sua explicação sobre 'for (int i=0;...)', 'while' e 'do-while')"""
+        contexto="""Repetir tarefas é fundamental na programação! As estruturas de repetição (ou laços) em C nos permitem executar um bloco de código várias vezes, seja um número definido de vezes ou enquanto uma condição for verdadeira.
+
+Vamos conhecer os três tipos básicos de laços em C:
+
+1.  **O Laço `for`:** Ideal quando você sabe *quantas vezes* quer repetir algo. A forma mais comum usa um contador: `for (inicialização; condição; incremento)`.
+    * `inicialização`: Executada uma vez no início (ex: `int i = 0`).
+    * `condição`: Verificada *antes* de cada repetição (ex: `i < 10`). O laço continua enquanto for verdadeira.
+    * `incremento`: Executado *após* cada repetição (ex: `i++`).
+    `// Imprime números de 0 a 9`
+    `for (int i = 0; i < 10; i++) {`
+    `  printf("%d ", i);`
+    `}`
+
+2.  **O Laço `while`:** Perfeito quando você quer repetir um bloco *enquanto* uma condição for verdadeira, mas não sabe exatamente quantas vezes isso vai acontecer. A condição é testada *antes* de cada execução do bloco.
+    `int contador = 0;`
+    `while (contador < 5) {`
+    `  printf("Contador: %d\\n", contador);`
+    `  contador++; // Importante: atualizar a variável da condição!`
+    `}`
+
+3.  **O Laço `do-while`:** Similar ao `while`, mas com uma diferença crucial: a condição é testada *depois* da execução do bloco. Isso garante que o código dentro do laço execute **pelo menos uma vez**, mesmo que a condição seja inicialmente falsa.
+    `int opcao;`
+    `do {`
+    `  printf("Digite 0 para sair: ");`
+    `  scanf("%d", &opcao); // Lê um número do usuário`
+    `} while (opcao != 0);`
+
+Este quiz vai testar sua compreensão sobre qual laço usar em diferentes situações e como controlar sua execução. Preste atenção em como e quando as condições são verificadas!"""
     )
     ContextoAssunto.objects.create(
         assunto=assunto_c_er,
