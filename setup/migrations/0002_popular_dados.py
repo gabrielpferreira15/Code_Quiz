@@ -1066,8 +1066,40 @@ Este quiz testará sua habilidade de usar essas estruturas para controlar o flux
     ContextoAssunto.objects.create(
         assunto=assunto_c_c,
         dificuldade=medio,
-        contexto="""Contexto para C - Estruturas Condicionais - Mádio.
-        (Substitua este texto pela sua explicação sobre 'fall-through' em 'switch', curto-circuito em '||', operador ternário, e bitwise 'num & 1')"""
+        contexto="""No nível médio de condicionais, exploramos comportamentos mais sutis e eficientes do que um simples `if-else`. Aqui, a lógica de C permite truques de otimização e exige atenção a efeitos colaterais.
+
+Vamos focar em quatro técnicas avançadas:
+
+1.  **"Fall-through" no `switch`:** Diferente de outras linguagens, o `switch` em C continua executando os `case` abaixo dele até encontrar um `break`. Omitir o `break` intencionalmente é chamado de "fall-through" (deixar cair) e pode ser útil para agrupar casos.
+    `switch (letra) {`
+    `  case 'a':`
+    `  case 'e': // Sem break, 'a' "cai" para 'e'`
+    `    printf("Vogal\\n");`
+    `    break;`
+    `  case 'b':`
+    `    printf("Consoante\\n");`
+    `    break;`
+    `}`
+
+2.  **Curto-Circuito (Short-Circuit):** Os operadores lógicos `&&` (E) e `||` (OU) são "preguiçosos".
+    * Em `(A && B)`, se `A` for falso, `B` *nunca* é executado.
+    * Em `(A || B)`, se `A` for verdadeiro, `B` *nunca* é executado.
+    Isto é crucial se `B` for uma operação com efeitos colaterais, como um incremento (`++y`).
+    `int x = 5, y = 10;`
+    `if (x == 0 && ++y > 10) { ... } // ++y nunca acontece, pois x == 0 é falso.`
+    `if (x == 5 || ++y > 10) { ... } // ++y nunca acontece, pois x == 5 é verdadeiro.`
+
+3.  **Operador Ternário:** É uma forma compacta de escrever um `if-else` em uma única linha, ideal para atribuições. A sintaxe é: `(condição) ? valor_se_verdadeiro : valor_se_falso`.
+    `int a = 10, b = 20;`
+    `int maior = (a > b) ? a : b; // 'maior' recebe 20.`
+
+4.  **Verificação Bitwise (`&`):** Para verificar se um número é ímpar, uma técnica muito rápida em C é usar o operador E-bitwise (`&`). A expressão `(num & 1)` isola apenas o último bit do número. Se for 1, o número é ímpar; se for 0, é par.
+    `int num = 7; // Binário: ...0111`
+    `if (num & 1) { // 0111 & 0001 = 0001 (Verdadeiro)`
+    `  printf("Ímpar\\n");`
+    `}`
+
+Este quiz testará sua habilidade de prever o resultado de condicionais mais complexos e eficientes."""
     )
     ContextoAssunto.objects.create(
         assunto=assunto_c_c,
