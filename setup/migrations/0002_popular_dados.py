@@ -988,8 +988,36 @@ Este quiz vai testar sua compreensão sobre qual laço usar em diferentes situa�
     ContextoAssunto.objects.create(
         assunto=assunto_c_er,
         dificuldade=medio,
-        contexto="""Contexto para C - Estruturas de Repetição - Mádio.
-        (Substitua este texto pela sua explicação sobre 'break' vs 'continue', laços infinitos 'for(;;)', e iteração com ponteiros)"""
+        contexto="""No nível médio de laços, vamos além de simplesmente repetir. O foco agora é em *controlar* o fluxo de execução dentro das repetições e explorar formas mais avançadas de iterar.
+
+Dominar estes conceitos é essencial para escrever laços eficientes:
+
+1.  **`break` vs. `continue`:** É crucial diferenciar estas duas palavras-chave.
+    * `break;`: Interrompe (quebra) o laço *imediatamente* e o programa continua sua execução na primeira linha *após* o laço.
+    * `continue;`: Interrompe *apenas a iteração atual* e pula para o início da próxima iteração, continuando dentro do laço.
+    `for (int i = 0; i < 10; i++) {`
+    `  if (i == 3) continue; // Pula a impressão do 3`
+    `  if (i == 8) break;    // Para o laço quando i for 8`
+    `  printf("%d ", i);       // Saída: 0 1 2 4 5 6 7`
+    `}`
+
+2.  **Laços Infinitos Idiomáticos:** Às vezes, queremos que um laço rode "para sempre" até que uma condição interna seja satisfeita (usando `break`). A forma `while(1)` é comum, mas em C, a sintaxe idiomática e mais clássica para um laço infinito é `for(;;)`, omitindo todas as três partes.
+    `for (;;) {`
+    `  // código que roda indefinidamente...`
+    `  if (alguma_condicao) {`
+    `    break; // Sai do laço infinito`
+    `  }`
+    `}`
+
+3.  **Iteração com Ponteiros:** Em C, é muito comum e eficiente iterar sobre arrays (listas) usando aritmética de ponteiros, em vez de índices. Incrementar um ponteiro (`ptr++`) faz ele "pular" para o próximo elemento do array, seja ele um `int`, `char`, ou `float`.
+    `int numeros[] = {10, 20, 30};`
+    `int *ptr = numeros; // Aponta para o primeiro elemento (10)`
+    `while (ptr < numeros + 3) { // numeros + 3 é o endereço *depois* do último elemento`
+    `  printf("%d ", *ptr); // Imprime o valor apontado`
+    `  ptr++; // Avança o ponteiro para o próximo inteiro`
+    `}`
+
+Este quiz vai focar em como o fluxo de controle *muda* dentro de um laço."""
     )
     ContextoAssunto.objects.create(
         assunto=assunto_c_er,
