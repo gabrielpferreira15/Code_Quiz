@@ -50,7 +50,9 @@
         </details>
     {% endif %}
         <br>
-    <a href="{% url 'configurar_quiz' %}">Tentar outro quiz</a>
+    <a href="{% url 'configurar_quiz' %}" class="btn btn-primary">Tentar outro quiz</a>
+    
+    <a href="{% url 'ranking_quiz' assunto.id dificuldade.id %}" class="btn btn-outline-primary" style="margin-left: 10px;">Ver Ranking</a>
     </div>
 </body>
 </html>
