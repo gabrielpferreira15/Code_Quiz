@@ -917,8 +917,33 @@ Este quiz verificará se você compreendeu estas regras básicas de escrita em C
     ContextoAssunto.objects.create(
         assunto=assunto_c_sb,
         dificuldade=medio,
-        contexto="""Contexto para C - Sintaxe Básica - Médio.
-        (Substitua este texto pela sua explicação sobre type casting (float), pós-incremento (x++), ponteiros (*) e enums)"""
+        contexto="""Vamos aprofundar na sintaxe de C. No nível médio, saímos da simples declaração de variáveis para entender como C gerencia a memória, realiza operações mais complexas e lida com tipos de dados de forma mais rigorosa.
+
+Aqui, focaremos em quatro conceitos-chave:
+
+1.  **Type Casting (Conversão Explícita):** Em C, a operação `5 / 2` resulta em `2`, pois é uma divisão inteira. Para obter um resultado de ponto flutuante (com casas decimais), precisamos converter *explicitamente* um dos valores, usando o 'cast'.
+    `int a = 5, b = 2;`
+    `float resultado = (float)a / b;  // resultado será 2.5`
+
+2.  **Operadores de Incremento (Pós vs. Pré):** A ordem do `++` importa muito.
+    * `x++` (pós-incremento): Usa o valor *atual* de `x` na expressão e *depois* incrementa `x`.
+    * `++x` (pré-incremento): *Primeiro* incrementa `x` e *depois* usa o novo valor na expressão.
+    `int x = 10;`
+    `int y = x++; // y recebe 10, e DEPOIS x se torna 11.`
+    `int z = ++x; // x (que era 11) se torna 12, e DEPOIS z recebe 12.`
+
+3.  **Ponteiros (Básico):** Ponteiros são o coração de C. Eles não armazenam um valor (como 10), mas sim o *endereço de memória* de outra variável.
+    * Usamos `&` (operador 'endereço de') para obter o endereço de uma variável.
+    * Usamos `*` (operador de 'dereferência') para acessar o valor guardado naquele endereço.
+    `int idade = 25;`
+    `int *ptrIdade = &idade; // ptrIdade agora "aponta para" a variável idade.`
+    `printf("%d", *ptrIdade); // Imprime o valor 25.`
+
+4.  **Enumerações (`enum`):** São uma forma de criar um conjunto de constantes inteiras nomeadas, tornando o código muito mais legível. Por padrão, o primeiro item é `0`, o segundo é `1`, e assim por diante.
+    `enum Dia { SEGUNDA, TERCA, QUARTA }; // SEGUNDA = 0, TERCA = 1, QUARTA = 2`
+    `enum Status { ERRO = -1, OK = 1 }; // Você também pode definir valores.`
+
+Este quiz testará sua compreensão desses conceitos que exigem mais atenção à ordem das operações e ao gerenciamento de memória."""
     )
     ContextoAssunto.objects.create(
         assunto=assunto_c_sb,
