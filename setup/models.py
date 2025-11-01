@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.text import slugify 
+from django.contrib.auth.models import User 
 
 class Linguagem(models.Model):
     nome = models.CharField(max_length=100)
@@ -112,3 +113,19 @@ class ContextoAssunto(models.Model):
 
     def __str__(self):
         return f"Contexto: {self.assunto.nome} ({self.dificuldade.nome})"
+
+class Resultado(models.Model):
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE, related_name='resultados')
+    assunto = models.ForeignKey(Assunto, on_delete=models.CASCADE, related_name='resultados')
+    dificuldade = models.ForeignKey(Dificuldade, on_delete=models.SET_NULL, null=True, related_name='resultados')
+    acertos = models.IntegerField()
+    total_perguntas = models.IntegerField()
+    tempo_gasto = models.DurationField(null=True, blank=True, help_text="Tempo total para completar o quiz.")
+    data = models.DateTimeField(auto_now_add=True)
+    class Meta:
+        ordering = ['-acertos', 'tempo_gasto'] 
+        unique_together = ('usuario', 'assunto', 'dificuldade')
+
+    def __str__(self):
+        tempo_str = str(self.tempo_gasto).split('.')[0] if self.tempo_gasto else "N/A"
+        return f"{self.usuario.username} - {self.assunto.nome} ({self.acertos}/{self.total_perguntas}) em {tempo_str}"

@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
-from .models import Linguagem, Assunto, Pergunta, Resposta, Dificuldade, ContextoAssunto
+from .models import Linguagem, Assunto, Pergunta, Resposta, Dificuldade, PerguntaDificuldade, ContextoAssunto, Resultado
 from django.http import JsonResponse
 from django.contrib.auth.forms import UserCreationForm 
 from django.contrib.auth import logout
+from django.utils import timezone
 
 def home_redirect(request):
     if request.user.is_authenticated:
@@ -44,23 +45,23 @@ def get_assuntos(request, linguagem_id):
     return JsonResponse(assuntos_lista, safe=False)
 
 def iniciar_novo_quiz(request, assunto_id, dificuldade_id):
-    perguntas = Pergunta.objects.filter(
-        assunto_id=assunto_id,
-        dificuldade_link__dificuldade__id=dificuldade_id
-    ).order_by('id')
+    assunto = get_object_or_404(Assunto, id=assunto_id)
+    dificuldade = get_object_or_404(Dificuldade, id=dificuldade_id)
+    perguntas_ids = list(PerguntaDificuldade.objects.filter(
+        pergunta__assunto=assunto, 
+        dificuldade=dificuldade
+    ).order_by('pergunta__id')
+    .values_list('pergunta__id', flat=True))
+    
+    perguntas_ids = perguntas_ids[:5] 
 
-    lista_perguntas_ids = list(perguntas.values_list('id', flat=True))
-
-    if not lista_perguntas_ids:
-        messages.error(request, "Não há perguntas disponíveis para este quiz.")
-        return redirect('configurar_quiz')
-
-    request.session['quiz_todas_as_perguntas'] = lista_perguntas_ids.copy()
-    request.session['quiz_perguntas_restantes_ids'] = lista_perguntas_ids
-    request.session['quiz_total_perguntas'] = len(lista_perguntas_ids)
+    request.session['quiz_perguntas_restantes_ids'] = perguntas_ids
+    request.session['quiz_total_perguntas'] = len(perguntas_ids)
     request.session['quiz_score'] = 0
     request.session['quiz_revisao_data'] = []
-
+    request.session['quiz_dificuldade_id'] = dificuldade_id
+    request.session['quiz_start_time'] = timezone.now().isoformat()
+    
     return redirect('jogar_quiz', assunto_id=assunto_id)
 
 def jogar_quiz(request, assunto_id):
@@ -103,18 +104,51 @@ def jogar_quiz(request, assunto_id):
 
     perguntas_restantes_ids = request.session.get('quiz_perguntas_restantes_ids', [])
 
-    if not perguntas_restantes_ids:
+    if not perguntas_restantes_ids: 
         score = request.session.get('quiz_score', 0)
         revisao_data = request.session.get('quiz_revisao_data', [])
+        total_perguntas = request.session.get('quiz_total_perguntas', 0)
+        dificuldade_id = request.session.get('quiz_dificuldade_id')
         
+        start_time_str = request.session.get('quiz_start_time')
+        tempo_gasto = None
+        dificuldade = None
+        
+        if dificuldade_id:
+            dificuldade = Dificuldade.objects.get(id=dificuldade_id)
+
+        if start_time_str:
+            try:
+                start_time = timezone.datetime.fromisoformat(start_time_str)
+                end_time = timezone.now()
+                tempo_gasto = end_time - start_time
+            except (ValueError, TypeError):
+                pass 
+        
+        if request.user.is_authenticated:
+            defaults_para_atualizar = {
+                'acertos': score,
+                'total_perguntas': total_perguntas,
+                'tempo_gasto': tempo_gasto,
+                'data': timezone.now()
+            }
+
+            Resultado.objects.update_or_create(
+                usuario=request.user,
+                assunto=assunto,
+                dificuldade=dificuldade,
+                defaults=defaults_para_atualizar
+            )
+
         for key in list(request.session.keys()):
             if key.startswith('quiz_'):
                 del request.session[key]
-
+        
         context = {
             'score': score,
             'total_perguntas': total_perguntas,
-            'assunto': assunto,
+            'assunto': assunto, 
+            'dificuldade': dificuldade,
             'acertou_mais_da_metade': score > total_perguntas / 2,
             'revisao_data': revisao_data,
         }
@@ -154,3 +188,16 @@ def pagina_contexto(request, assunto_id, dificuldade_id):
         'contexto_especifico': contexto_especifico,
     }
     return render(request, 'setup/pagina_contexto.html', context)
+
+def ranking_quiz(request, assunto_id, dificuldade_id):
+    assunto = get_object_or_404(Assunto, id=assunto_id)
+    dificuldade = get_object_or_404(Dificuldade, id=dificuldade_id)
+
+    resultados = Resultado.objects.filter(assunto=assunto, dificuldade=dificuldade)
+
+    context = {
+        'assunto': assunto,
+        'dificuldade': dificuldade,
+        'resultados': resultados
+    }
+    return render(request, 'setup/ranking.html', context)
