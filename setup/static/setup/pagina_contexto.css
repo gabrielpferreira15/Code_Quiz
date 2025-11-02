@@ -1,0 +1,102 @@
+/* * Estilos para a página de contexto do quiz
+ * Adaptado para o tema escuro fornecido.
+ */
+
+/* 1. Adaptação do Container Principal (Card) */
+.card {
+    /* Usamos o mesmo fundo do .quiz-container para consistência */
+    background-color: #142d46; 
+    border: 1px solid rgba(74, 158, 255, 0.3); /* Borda sutil azul claro */
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8); /* Sombra mais intensa para destacar */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.9);
+}
+
+.card-body {
+    color: #f0f8ff; /* Cor do texto padrão (light blue) */
+}
+
+/* 2. Estilos da Tipografia */
+
+/* Título Principal */
+.card-title {
+    color: #1e90ff; /* Azul vibrante para o título */
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+/* Subtítulo (Linguagem e Dificuldade) */
+.card-subtitle.text-muted {
+    /* Ajusta a cor para ser visível, mas sutil */
+    color: rgba(240, 248, 255, 0.7) !important; 
+    font-style: italic;
+    font-size: 1.1rem;
+}
+
+/* Linha Divisória */
+hr {
+    border-top: 1px solid rgba(74, 158, 255, 0.5); /* Borda azul clara semi-transparente */
+}
+
+/* Bloco de Texto do Contexto */
+.contexto-texto {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #f0f8ff;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.2); /* Fundo sutil para o texto longo */
+    border-radius: 6px;
+}
+
+/* 3. Adaptação dos Botões (Usando as cores do tema) */
+
+/* Botão Principal: COMEÇAR O QUIZ! */
+.btn-primary {
+    background-color: #1e90ff; /* Azul primário */
+    border-color: #1e90ff;
+    transition: background-color 0.3s, transform 0.1s;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.btn-primary:hover {
+    background-color: #4a9eff; /* Azul mais claro no hover */
+    border-color: #4a9eff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(30, 144, 255, 0.5);
+}
+
+/* Botão Secundário: Voltar */
+.btn-outline-secondary {
+    color: #f0f8ff; /* Texto branco */
+    border-color: #f0f8ff; /* Borda branca */
+    transition: background-color 0.3s, color 0.3s;
+    font-weight: 500;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #f0f8ff; /* Inverte as cores no hover */
+    color: #142d46; /* Texto escuro no hover */
+    border-color: #f0f8ff;
+}
+
+/* Responsividade Básica: garantir margens em telas menores */
+@media (max-width: 768px) {
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .card-body {
+        padding: 1.5rem !important;
+    }
+    .btn-lg {
+        width: 100%;
+        margin-top: 10px;
+        margin-left: 0 !important; /* Remove o margin-left em mobile para ocupar 100% */
+    }
+}
