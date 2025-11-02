@@ -4,31 +4,133 @@
 {% block title %}Contexto: {{ assunto.nome }}{% endblock %}
 
 {% block content %}
+
+<style>
+/* Estilos embutidos para forçar a aplicação dos botões e do tema escuro, ignorando problemas de carregamento externo do CSS. */
+
+/* 1. Adaptação do Container Principal (Card) */
+.card {
+    background-color: #142d46;
+    border: 1px solid rgba(74, 158, 255, 0.3);
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-body {
+    color: #f0f8ff;
+}
+
+/* 2. Estilos da Tipografia */
+.card-title {
+    color: #1e90ff;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.card-subtitle.text-muted {
+    color: rgba(240, 248, 255, 0.7) !important;
+    font-style: italic;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+hr {
+    border-top: 1px solid rgba(74, 158, 255, 0.5);
+}
+
+.contexto-texto {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #f0f8ff;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    margin-bottom: 30px;
+    display: block;
+}
+
+/* 3. Estilo Base forçado para Botões (garante que links pareçam botões) */
+.btn-lg {
+    font-size: 1.25rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-weight: bold;
+    text-decoration: none !important; /* Remove o sublinhado azul/roxo */
+    display: inline-block;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Botão Principal: COMEÇAR O QUIZ! (Balão Verde) */
+.btn-primary.btn-lg {
+    background-color: #4CAF50 !important;
+    border: 1px solid #4CAF50 !important;
+    color: #fff !important;
+    letter-spacing: 0.5px;
+}
+
+.btn-primary.btn-lg:hover {
+    background-color: #43A047 !important;
+    border-color: #43A047 !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Botão Secundário: Voltar (Outline para complementar o verde) */
+.btn-outline-secondary.btn-lg {
+    background-color: transparent !important;
+    color: #f0f8ff !important;
+    border: 1px solid #f0f8ff !important;
+    margin-left: 15px;
+}
+
+.btn-outline-secondary.btn-lg:hover {
+    background-color: rgba(240, 248, 255, 0.1) !important;
+    color: #f0f8ff !important;
+    border-color: #f0f8ff !important;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .btn-lg {
+        width: 100%;
+        margin-top: 10px;
+        margin-left: 0 !important;
+    }
+}
+</style>
+
 <div class="container" style="margin-top: 40px; margin-bottom: 40px;">
-    <div class="card shadow-sm">
-        <div class="card-body" style="padding: 2.5rem;">
-            
-            <h1 class="card-title display-5">{{ assunto.nome }}</h1>
-            <h4 class="card-subtitle mb-3 text-muted" style="font-weight: 400;">
-                {{ assunto.linguagem.nome }} | Dificuldade: {{ dificuldade.nome }}
-            </h4>
-            <hr style="margin-top: 1.5rem; margin-bottom: 1.5rem;">
-            
-            <div class="contexto-texto" style="margin-top: 20px; margin-bottom: 30px; font-size: 1.1rem; line-height: 1.6;">
-                
-                {{ contexto_especifico.contexto|linebreaks|default:"Ainda não há um texto de contexto para esta combinação de assunto e dificuldade." }}
+    <div class="card shadow-sm">
+        <div class="card-body" style="padding: 2.5rem;">
+            
+            <h1 class="card-title display-5">{{ assunto.nome }}</h1>
+            <h4 class="card-subtitle mb-3 text-muted" style="font-weight: 400;">
+                {{ assunto.linguagem.nome }} | Dificuldade: {{ dificuldade.nome }}
+            </h4>
+            <hr style="margin-top: 1.5rem; margin-bottom: 1.5rem;">
+            
+            <div class="contexto-texto" style="margin-top: 20px; margin-bottom: 30px; font-size: 1.1rem; line-height: 1.6;">
+                
+                {{ contexto_especifico.contexto|linebreaks|default:"Ainda não há um texto de contexto para esta combinação de assunto e dificuldade." }}
 
-            </div>
+            </div>
 
-            <a href="{% url 'iniciar_novo_quiz' assunto.id dificuldade.id %}" class="btn btn-primary btn-lg" style="font-size: 1.25rem; padding: 0.75rem 1.5rem;">
-                COMEÇAR O QUIZ!
-            </a>
-            
-            <a href="{% url 'configurar_quiz' %}" class="btn btn-outline-secondary btn-lg" style="font-size: 1.25rem; padding: 0.75rem 1.5rem; margin-left: 10px;">
-                Voltar
-            </a>
+            <a href="{% url 'iniciar_novo_quiz' assunto.id dificuldade.id %}" class="btn btn-primary btn-lg">
+                COMEÇAR O QUIZ!
+            </a>
+            
+            <a href="{% url 'configurar_quiz' %}" class="btn btn-outline-secondary btn-lg">
+                Voltar
+            </a>
 
-        </div>
-    </div>
+        </div>
+    </div>
 </div>
 {% endblock %}
