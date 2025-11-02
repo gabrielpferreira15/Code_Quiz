@@ -783,7 +783,17 @@ print("Fim do loop while."))"""
     ContextoAssunto.objects.create(
         assunto=assunto_py_sb,
         dificuldade=dificil,
-        contexto="""(Substitua este texto pela sua explicação de nível Difícil)"""
+        contexto="""(Bem-vindo ao nível Difícil de Python! Aqui, exploramos os detalhes que distinguem um bom programador de um excelente, focando em otimização de memória, mutabilidade e operadores complexos.
+
+Neste bloco, focaremos em três áreas cruciais:
+
+Mutabilidade e Dicionários: Dicionários (dict) são coleções desordenadas e mutáveis (podem ser alteradas). Entender métodos como update() e como len() conta pares de chave-valor é essencial para rastrear o estado do seu objeto.
+
+Imutabilidade e Referência de Objetos: Tipos imutáveis (como números inteiros, strings e tuplas) não mudam de valor; se você os "altera", Python cria um novo objeto. Entender isso é crucial para prever o que acontece em atribuições simples (y = x).
+
+Otimização e Identidade (is): Python otimiza o uso de memória armazenando em cache (interning) objetos imutáveis usados com frequência, como inteiros pequenos. O operador is testa se duas variáveis apontam para o mesmo objeto na memória, revelando essas otimizações.
+
+Este quiz testará sua familiaridade com as regras de alocação de memória e o comportamento de operadores avançados de Python.)"""
     )
 
     # --- Contextos Python: Estruturas de Repetição (assunto_py_er) ---
@@ -834,7 +844,19 @@ Condição while com Objetos: Assim como nas condicionais, o while continua enqu
     ContextoAssunto.objects.create(
         assunto=assunto_py_er,
         dificuldade=dificil,
-        contexto="""(Substitua este texto pela sua explicação de nível Difícil)"""
+        contexto="""(A repetição é fundamental, mas a maneira correta de fazê-la em Python envolve eficiência e idiomatismos.
+
+Neste bloco, você será desafiado com:
+
+Cláusula else nos Laços: A peculiaridade do else associado a laços for e while é testada aqui. Lembre-se: ele só é executado se o laço completar sua execução sem ser interrompido por um break.
+
+Geradores (Generators): A sintaxe de compreensão envolta em parênteses () cria um objeto gerador. Geradores são iteradores lazy (preguiçosos), o que significa que eles calculam e produzem valores apenas quando solicitados, economizando memória para sequências muito longas.
+
+List Comprehensions e Curto-Circuito: A combinação de uma List Comprehension com o operador or pode ser usada como um fallback (plano B). A lista resultante (se não estiver vazia) será retornada pelo or por ser um valor Truthy.
+
+A Função zip() e Desempacotamento: A função zip é o método canônico em Python para iterar sobre múltiplos iteráveis simultaneamente. O desempacotamento de tuplas (tuple unpacking) no laço for permite atribuir os resultados do zip diretamente a variáveis.
+
+Este quiz exigirá um domínio completo sobre a execução do fluxo e as melhores práticas de Python para iteração.)"""
     )
 
     # --- Contextos Python: Condicionais (assunto_py_c) ---
@@ -885,7 +907,23 @@ Este quiz testará sua capacidade de prever o fluxo de execução baseado nessas
     ContextoAssunto.objects.create(
         assunto=assunto_py_c,
         dificuldade=dificil,
-        contexto="""(Substitua este texto pela sua explicação de nível Difícil)"""
+        contexto="""(Neste nível avançado de condicionais, não basta saber o que é True ou False; é preciso entender como o Python avalia expressões longas.
+
+Neste bloco, exploraremos:
+
+Curto-Circuito (and e or): Em Python, esses operadores não retornam necessariamente True ou False.
+
+O operador and retorna o primeiro valor falso que encontra; se não encontrar nenhum, retorna o último valor.
+
+O operador or retorna o primeiro valor verdadeiro que encontra.
+
+Isso é chamado de curto-circuito, pois a avaliação para assim que o resultado é determinado.
+
+Operador Walrus (Atribuição e Expressão :=): Introduzido no Python 3.8, o operador Walrus permite atribuir um valor a uma variável dentro de uma expressão (como em um if ou while). Ele torna o código mais conciso, permitindo que você capture o resultado de uma função e o teste na mesma linha.
+
+Operadores Ternários Aninhados: A sintaxe compacta valor_se_verdadeiro if condicao else valor_se_falso pode ser aninhada para criar um equivalente conciso de if/elif/else, exigindo atenção à ordem de avaliação.
+
+Este quiz testará sua capacidade de rastrear a precedência de operadores e o comportamento de curto-circuito em expressões complexas.)"""
     )
 
     # --- Contextos C: Sintaxe Básica (assunto_c_sb) ---
