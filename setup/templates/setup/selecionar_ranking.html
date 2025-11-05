@@ -1,16 +1,13 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Configurar Quiz{% endblock %}
-
-{% block extra_css %}
+{% block title %}Selecionar Ranking{% endblock %} {% block extra_css %}
     <link rel="stylesheet" href="{% static 'setup/configurar_quiz.css' %}">
 {% endblock %}
 
-
 {% block content %}
 <div class="config-container">
-    <h1>Configure seu Quiz</h1>
+    <h1>Selecione Qual Ranking Quer Ver</h1>
     
     {% if messages %}
         <ul class="messages">
@@ -45,14 +42,8 @@
             </select>
         </div>
         
-        <button type="submit" id="gerar-quiz-btn" disabled>INICIAR QUIZ</button>
+        <button type="submit" id="gerar-quiz-btn" disabled>VER RANKING</button>
     </form>
-    <div class="ranking-link" style="text-align: center;">
-        <p>Procurando pelos placares?</p>
-        <a href="{% url 'selecionar_ranking' %}" class="btn btn-outline-secondary">
-            Ver Rankings
-        </a>
-    </div>
 </div>
 
 <script>
@@ -107,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const dificuldadeId = dificuldadeSelect.value;
 
         if (assuntoId && dificuldadeId) {
-            const url = `/quiz/contexto/${assuntoId}/${dificuldadeId}/`;
+            const url = `/quiz/ranking/${assuntoId}/${dificuldadeId}/`;
             quizForm.setAttribute('action', url);
             gerarQuizBtn.disabled = false;
         } else {
