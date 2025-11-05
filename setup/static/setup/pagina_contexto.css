@@ -1,0 +1,100 @@
+/* * Estilos para a página de contexto do quiz
+ * Adaptado para o tema escuro e forçado a se parecer com o botão "INICIAR QUIZ".
+ */
+
+/* 1. Adaptação do Container Principal (Card) */
+.card {
+    background-color: #142d46;
+    border: 1px solid rgba(74, 158, 255, 0.3);
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-body {
+    color: #f0f8ff;
+}
+
+/* 2. Estilos da Tipografia */
+.card-title {
+    color: #1e90ff;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.card-subtitle.text-muted {
+    color: rgba(240, 248, 255, 0.7) !important;
+    font-style: italic;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+hr {
+    border-top: 1px solid rgba(74, 158, 255, 0.5);
+}
+
+.contexto-texto {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #f0f8ff;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    margin-bottom: 30px;
+    display: block;
+}
+
+/* 3. Estilo Base forçado para Botões (garante que links pareçam botões) */
+.btn-lg {
+    font-size: 1.25rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-weight: bold;
+    text-decoration: none !important; /* Remove o sublinhado azul/roxo */
+    display: inline-block;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Botão Principal: COMEÇAR O QUIZ! (Balão Verde) */
+.btn-primary.btn-lg {
+    background-color: #4CAF50 !important;
+    border: 1px solid #4CAF50 !important;
+    color: #fff !important;
+    letter-spacing: 0.5px;
+}
+
+.btn-primary.btn-lg:hover {
+    background-color: #43A047 !important;
+    border-color: #43A047 !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Botão Secundário: Voltar (Outline para complementar o verde) */
+.btn-outline-secondary.btn-lg {
+    background-color: transparent !important;
+    color: #f0f8ff !important;
+    border: 1px solid #f0f8ff !important;
+    margin-left: 15px;
+}
+
+.btn-outline-secondary.btn-lg:hover {
+    background-color: rgba(240, 248, 255, 0.1) !important;
+    color: #f0f8ff !important;
+    border-color: #f0f8ff !important;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .btn-lg {
+        width: 100%;
+        margin-top: 10px;
+        margin-left: 0 !important;
+    }
+}

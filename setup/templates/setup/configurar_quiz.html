@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const dificuldadeId = dificuldadeSelect.value;
 
         if (assuntoId && dificuldadeId) {
-            const url = `/quiz/iniciar/${assuntoId}/${dificuldadeId}/`;
+            const url = `/quiz/contexto/${assuntoId}/${dificuldadeId}/`;
             quizForm.setAttribute('action', url);
             gerarQuizBtn.disabled = false;
         } else {
