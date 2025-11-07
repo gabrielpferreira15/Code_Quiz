@@ -1184,8 +1184,25 @@ Este quiz testará sua habilidade de prever o resultado de condicionais mais com
     ContextoAssunto.objects.create(
         assunto=assunto_c_c,
         dificuldade=dificil,
-        contexto="""Contexto para C - Estruturas Condicionais - Difícil.
-        (Substitua este texto pela sua explicação sobre a combinação de operadores lógicos e bitwise, e a precedência de operadores em 'if')"""
+        contexto="""No nível difícil, as condicionais testam seu conhecimento sobre "comportamentos ocultos" do compilador e a mistura de operadores. O que você *acha* que o código faz pode não ser o que o compilador *realmente* faz.
+
+Vamos analisar três armadilhas comuns:
+
+1.  **Precedência de Operadores:** A ordem em que C avalia operadores é fundamental. Operadores lógicos (`&&`, `||`) **NÃO** têm a mesma precedência que operadores bitwise (`&`, `|`).
+    * `&&` tem precedência *maior* que `||`.
+    * `&` tem precedência *maior* que `|`.
+    * *Armadilha:* `if (flags & MASCARA_A || flags & MASCARA_B)` não faz o que parece. `||` tem a precedência *mais baixa*, então o código é avaliado corretamente. A armadilha real é `if (x == 1 & y == 2)`. O operador `==` tem precedência *maior* que `&`, então isso é avaliado como `if (x == (1 & y) == 2)`, o que está errado.
+
+2.  **Combinando Lógico e Bitwise:** Operadores lógicos (`&&`, `||`) tratam qualquer valor diferente de zero como `true` (1). Operadores bitwise (`&`, `|`) manipulam bits individuais.
+    * `5 && 2` (Lógico): "Verdadeiro E Verdadeiro" -> `1` (True).
+    * `5 & 2` (Bitwise): `101 & 010` -> `000` (zero).
+    * Uma expressão como `if ((A && B) || (C & D))` exige que você saiba qual operador usar para qual tipo de lógica (booleana vs. manipulação de bits).
+
+3.  **Curto-Circuito e Efeitos Colaterais:** Como vimos no nível médio, `&&` e `||` são "preguiçosos". No nível difícil, usamos isso para criar código perigoso (ou muito inteligente).
+    * `if (x == 4 && ++y > 10)`: `++y` nunca é executado se `x` não for 4. O valor de `y` *depende* do valor de `x`.
+    * `if ((ptr != NULL) && (ptr->valor == 10))`: Este é um uso *correto* e defensivo. Se `ptr` for `NULL`, o curto-circuito impede que o programa tente acessar `ptr->valor`, o que causaria um crash.
+
+Este quiz testará sua capacidade de ler o código como o compilador, prevendo a ordem exata de avaliação e os efeitos colaterais ocultos."""
     )
 
 class Migration(migrations.Migration):
