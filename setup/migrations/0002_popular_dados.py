@@ -1079,8 +1079,31 @@ Este quiz vai focar em como o fluxo de controle *muda* dentro de um laço."""
     ContextoAssunto.objects.create(
         assunto=assunto_c_er,
         dificuldade=dificil,
-        contexto="""Contexto para C - Estruturas de Repetição - Difícil.
-        (Substitua este texto pela sua explicação sobre pós-incremento na condição do 'for', o operador vírgula, e 'goto' para sair de loops aninhados)"""
+        contexto="""Neste nível, os laços deixam de ser simples repetições e se tornam testes de lógica e ordem de execução. Um único caractere (`++` ou `,`) pode mudar todo o resultado do laço.
+
+Vamos focar em três mecânicas avançadas de controle de fluxo:
+
+1.  **Pós-incremento (`i++`) na Condição:** A ordem exata da execução no `for` é crucial. Em `for (int i = 0; i++ < 5;) { ... }`, a cada iteração, acontece o seguinte:
+    1.  O valor *atual* de `i` é comparado com 5.
+    2.  O valor de `i` é *então* incrementado.
+    3.  Se a comparação (passo 1) foi verdadeira, o corpo do laço executa.
+    Quando `i` é `5`, a condição `5 < 5` é Falsa. O laço para, mas o `i++` ainda é executado uma última vez, fazendo com que o valor final de `i` *após* o laço seja `6`.
+
+2.  **O Operador Vírgula (`,`):** O operador vírgula é um operador de sequência. Em `A, B`, o compilador executa `A`, descarta seu resultado, e então executa `B` e retorna o resultado de `B`.
+    * No laço `while (a++, --b)`, a cada iteração, `a++` é executado, e *depois* `--b` é executado. O valor *retornado por `--b`* é usado como a condição do `while`. O laço continuará enquanto `b` (após ser decrementado) não for zero.
+
+3.  **`goto` para Sair de Laços Aninhados:** A instrução `break` só consegue sair do laço mais interno. Se você está em um laço dentro de um laço dentro de outro laço e precisa sair de *todos* eles de uma vez (ex: por um erro), você não pode usar `break`. `goto` permite um salto incondicional para um "label" (etiqueta) definido fora de todos os laços.
+    `for(...) {`
+    `  for(...) {`
+    `    if (erro_critico) {`
+    `      goto FIM_DE_TUDO;`
+    `    }`
+    `  }`
+    `}`
+    `FIM_DE_TUDO:`
+    `// O código continua aqui após o erro`
+
+Este quiz testará sua atenção aos "efeitos colaterais" e à ordem precisa de execução dentro das próprias declarações de laço."""
     )
 
     # --- Contextos C: Estruturas Condicionais (assunto_c_c) ---
