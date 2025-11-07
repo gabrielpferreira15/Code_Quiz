@@ -986,8 +986,27 @@ Este quiz testará sua compreensão desses conceitos que exigem mais atenção �
     ContextoAssunto.objects.create(
         assunto=assunto_c_sb,
         dificuldade=dificil,
-        contexto="""Contexto para C - Sintaxe Básica - Difícil.
-        (Substitua este texto pela sua explicação sobre 'sizeof' vs ponteiros, 'typedef' de ponteiros de função, e a keyword 'static')"""
+        contexto="""Bem-vindo ao nível difícil de Sintaxe C. Aqui, não basta saber *o que* um comando faz, mas *por que* ele funciona e *como* o compilador o interpreta. O foco é em gerenciamento de memória, escopo e otimização.
+
+Vamos explorar quatro conceitos avançados:
+
+1.  **A palavra-chave `static`:** Esta palavra tem dois usos principais que mudam o "tempo de vida" ou a "visibilidade" de uma variável:
+    * **Dentro de uma função:** `static int contador = 0;` A variável é inicializada *apenas uma vez* (na primeira chamada da função) e **retém seu valor** entre chamadas subsequentes.
+    * **No escopo global (fora de funções):** `static int g_segredo = 42;` A variável se torna "privada" para aquele arquivo (`.c`). Ela não pode ser acessada por outros arquivos que usem `extern`, um conceito chamado "internal linkage".
+
+2.  **A palavra-chave `volatile`:** Este é um comando direto para o compilador. `volatile int sensor;` diz ao compilador: "Não otimize esta variável! Seu valor pode ser alterado por algo fora deste fluxo de código (como hardware, um timer, ou outro processo)". Isso força o compilador a ler o valor da memória a cada vez, em vez de usar uma cópia antiga em um registrador.
+
+3.  **`sizeof` vs. Ponteiros (A "Decaída" do Array):** Este é um erro clássico. `sizeof` é um operador de *tempo de compilação*.
+    * `int arr[10]; sizeof(arr);` // Retorna `40` (10 * 4 bytes por int)
+    * Quando você passa um array para uma função (`void func(int arr[])`), o array "decai" para um ponteiro (`int *arr`).
+    * Dentro de `func()`, `sizeof(arr)` **não** retornará 40. Ele retornará o tamanho do *ponteiro* (ex: 4 ou 8 bytes), pois a função perdeu a informação do tamanho original do array.
+
+4.  **`typedef` com Ponteiros de Função:** `typedef` é usado para criar apelidos para tipos complexos. Ponteiros de função são complexos de ler, mas `typedef` os torna legíveis.
+    * *Sem typedef:* `void (*ptr_funcao)(int, int);` (Declara um ponteiro para uma função que retorna `void` e aceita dois `int`).
+    * *Com typedef:* `typedef void (*MeuTipoFuncao)(int, int);` (Cria o apelido `MeuTipoFuncao`).
+    * *Uso:* `MeuTipoFuncao minha_funcao = &algumaFuncao;`
+
+Este quiz testará sua compreensão profunda de como C gerencia memória e escopo."""
     )
 
     # --- Contextos C: Estruturas de Repetição (assunto_c_er) ---
