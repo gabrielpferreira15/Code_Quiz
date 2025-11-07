@@ -3,133 +3,44 @@
 
 {% block title %}Ranking: {{ assunto.nome }}{% endblock %}
 
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'setup/ranking.css' %}">
+{% endblock %}
+
 {% block content %}
 
-<style>
-.container.ranking-page {
-    background-color: #ffffff;
-    padding: 2.5rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-}
+<div class="container ranking-container" style="margin-top: 40px; margin-bottom: 40px;">
 
-.ranking-page h1.display-5 {
-    font-weight: 700;
-    color: #2c3e50;
-}
+<h1 class="display-5">Ranking: {{ assunto.nome }} ({{ dificuldade.nome }})</h1>
+<h4 class="text-muted" style="font-weight: 400;">{{ assunto.linguagem.nome }}</h4>
+<hr>
 
-.ranking-page h4.text-muted {
-    margin-bottom: 1.5rem;
-}
-
-.ranking-page hr {
-    margin-bottom: 2rem;
-}
-
-.table {
-    vertical-align: middle;
-}
-
-.table .thead-dark th {
-    background-color: #343a40;
-    border-color: #454d55;
-    text-transform: uppercase;
-    font-size: 0.85rem;
-    letter-spacing: 0.5px;
-    padding: 1rem;
-}
-
-.table tbody th,
-.table tbody td {
-    padding: 1rem 0.9rem;
-}
-
-.table th:first-child,
-.table td:first-child {
-    text-align: center;
-    font-weight: 700;
-    width: 8%;
-}
-
-.table th:nth-child(3),
-.table td:nth-child(3) {
-    text-align: center;
-}
-
-.table th:nth-child(4),
-.table td:nth-child(4) {
-    text-align: center;
-    font-family: 'Courier New', Courier, monospace;
-}
-
-.table th:nth-child(5),
-.table td:nth-child(5) {
-    text-align: right;
-}
-
-.table-info,
-.table-info:hover {
-    background-color: #cce5ff !important;
-    color: #004085;
-    font-weight: 600;
-}
-
-.table-info td:nth-child(2) {
-    font-weight: 700;
-}
-
-.table tbody td[colspan="5"] {
-    text-align: center;
-    font-style: italic;
-    color: #6c757d;
-    padding: 2.5rem;
-}
-
-.btn-secondary {
-    font-weight: 600;
-    padding: 0.6rem 1.2rem;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.btn-secondary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-</style>
-
-<div class="container ranking-page" style="margin-top: 40px; margin-bottom: 40px;">
-    
-    <h1 class="display-5">Ranking: {{ assunto.nome }} ({{ dificuldade.nome }})</h1>
-    <h4 class="text-muted" style="font-weight: 400;">{{ assunto.linguagem.nome }}</h4>
-    <hr>
-    
-    <table class="table table-striped table-hover mt-4">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Usuário</th>
-                <th scope="col">Acertos</th>
-                <th scope="col">Tempo Gasto</th>
-                <th scope="col">Data</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for resultado in resultados %}
-                <tr {% if resultado.usuario == request.user %}class="table-info"{% endif %}>
-                    <th scope="row">{{ forloop.counter }}</th>
-                    <td>{{ resultado.usuario.username }}</td>
-                    <td>{{ resultado.acertos }} / {{ resultado.total_perguntas }}</td>
-                    <td>{{ resultado.tempo_gasto|slice:":8"|default:"N/A" }}</td>
-                    <td>{{ resultado.data|date:"d/m/Y H:i" }}</td>
-                </tr>
-            {% empty %}
-      _         <tr>
-                    <td colspan="5" class="text-center">Nenhum resultado registrado para este quiz ainda.</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    
-    <a href="{% url 'configurar_quiz' %}" class="btn btn-secondary mt-3">Voltar</a>
+  <table class="table table-striped table-hover mt-4">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Usuário</th>
+        <th scope="col">Acertos</th>
+<th scope="col">Tempo Gasto</th>
+      <th scope="col">Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for resultado in resultados %}
+        <tr {% if resultado.usuario == request.user %}class="table-info"{% endif %}>
+          <th scope="row">{{ forloop.counter }}</th>
+          <td>{{ resultado.usuario.username }}</td>
+          <td>{{ resultado.acertos }} / {{ resultado.total_perguntas }}</td>
+          <td>{{ resultado.tempo_gasto|slice:":8"|default:"N/A" }}</td>
+          <td>{{ resultado.data|date:"d/m/Y H:i" }}</td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="5" class="text-center">Nenhum resultado registrado para este quiz ainda.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <a href="{% url 'configurar_quiz' %}" class="btn btn-secondary mt-3">Voltar ao menu</a>
 </div>
 {% endblock %}
