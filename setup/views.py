@@ -201,3 +201,10 @@ def ranking_quiz(request, assunto_id, dificuldade_id):
         'resultados': resultados
     }
     return render(request, 'setup/ranking.html', context)
+
+def selecionar_ranking(request):
+    linguagens = Linguagem.objects.all()
+    context = {
+        'linguagens': linguagens
+    }
+    return render(request, 'setup/selecionar_ranking.html', context)

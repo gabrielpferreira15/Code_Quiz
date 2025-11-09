@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Selecionar Ranking{% endblock %} {% block extra_css %}
+    <link rel="stylesheet" href="{% static 'setup/configurar_quiz.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="config-container">
+    <h1>Selecione Qual Ranking Quer Ver</h1>
+    
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <form id="quiz-config-form" method="GET">
+        <div class="form-group">
+            <label for="linguagem-select">Selecione a Linguagem:</label>
+            <select name="linguagem" id="linguagem-select">
+                <option value="">-- Escolha uma linguagem --</option>
+                {% for linguagem in linguagens %}
+                    <option value="{{ linguagem.id }}">{{ linguagem.nome }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="assunto-select">Selecione o Assunto:</label>
+            <select name="assunto" id="assunto-select" disabled>
+                <option value="">-- Primeiro, escolha uma linguagem --</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="dificuldade-select">Selecione a Dificuldade:</label>
+            <select name="dificuldade" id="dificuldade-select" disabled>
+                <option value="">-- Primeiro, escolha uma linguagem --</option>
+            </select>
+        </div>
+        
+        <button type="submit" id="gerar-quiz-btn" disabled>VER RANKING</button>
+    </form>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const linguagemSelect = document.getElementById('linguagem-select');
+    const assuntoSelect = document.getElementById('assunto-select');
+    const dificuldadeSelect = document.getElementById('dificuldade-select');
+    const gerarQuizBtn = document.getElementById('gerar-quiz-btn');
+    const quizForm = document.getElementById('quiz-config-form');
+
+    function resetFields(isLanguageChange = false) {
+        if (isLanguageChange) {
+            assuntoSelect.innerHTML = '<option value="">-- Escolha uma linguagem --</option>';
+            dificuldadeSelect.innerHTML = '<option value="">-- Escolha uma linguagem --</option>';
+            assuntoSelect.disabled = true;
+            dificuldadeSelect.disabled = true;
+        }
+        gerarQuizBtn.disabled = true;
+        quizForm.removeAttribute('action');
+    }
+
+    linguagemSelect.addEventListener('change', function() {
+        resetFields(true);
+        const linguagemId = this.value;
+        if (!linguagemId) return;
+
+        fetch(`/quiz/api/assuntos/${linguagemId}/`)
+            .then(response => response.json())
+            .then(data => {
+                assuntoSelect.innerHTML = '<option value="">-- Escolha um assunto --</option>';
+                data.forEach(assunto => {
+                    const option = new Option(assunto.nome, assunto.id);
+                    assuntoSelect.add(option);
+                });
+                assuntoSelect.disabled = false;
+            });
+
+        fetch(`/quiz/api/dificuldades/`)
+            .then(response => response.json())
+            .then(data => {
+                dificuldadeSelect.innerHTML = '<option value="">-- Escolha uma dificuldade --</option>';
+                data.forEach(dificuldade => {
+                    const option = new Option(dificuldade.nome, dificuldade.id);
+                    dificuldadeSelect.add(option);
+                });
+                dificuldadeSelect.disabled = false;
+            });
+    });
+
+    function checkSelections() {
+        const assuntoId = assuntoSelect.value;
+        const dificuldadeId = dificuldadeSelect.value;
+
+        if (assuntoId && dificuldadeId) {
+            const url = `/quiz/ranking/${assuntoId}/${dificuldadeId}/`;
+            quizForm.setAttribute('action', url);
+            gerarQuizBtn.disabled = false;
+        } else {
+            resetFields(false);
+        }
+    }
+
+    assuntoSelect.addEventListener('change', checkSelections);
+    dificuldadeSelect.addEventListener('change', checkSelections);
+
+    quizForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const actionUrl = this.getAttribute('action');
+        if (actionUrl && !gerarQuizBtn.disabled) {
+            window.location.href = actionUrl;
+        }
+    });
+});
+</script>
+{% endblock %}

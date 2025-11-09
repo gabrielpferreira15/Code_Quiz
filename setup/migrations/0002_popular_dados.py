@@ -986,8 +986,27 @@ Este quiz testará sua compreensão desses conceitos que exigem mais atenção �
     ContextoAssunto.objects.create(
         assunto=assunto_c_sb,
         dificuldade=dificil,
-        contexto="""Contexto para C - Sintaxe Básica - Difícil.
-        (Substitua este texto pela sua explicação sobre 'sizeof' vs ponteiros, 'typedef' de ponteiros de função, e a keyword 'static')"""
+        contexto="""Bem-vindo ao nível difícil de Sintaxe C. Aqui, não basta saber *o que* um comando faz, mas *por que* ele funciona e *como* o compilador o interpreta. O foco é em gerenciamento de memória, escopo e otimização.
+
+Vamos explorar quatro conceitos avançados:
+
+1.  **A palavra-chave `static`:** Esta palavra tem dois usos principais que mudam o "tempo de vida" ou a "visibilidade" de uma variável:
+    * **Dentro de uma função:** `static int contador = 0;` A variável é inicializada *apenas uma vez* (na primeira chamada da função) e **retém seu valor** entre chamadas subsequentes.
+    * **No escopo global (fora de funções):** `static int g_segredo = 42;` A variável se torna "privada" para aquele arquivo (`.c`). Ela não pode ser acessada por outros arquivos que usem `extern`, um conceito chamado "internal linkage".
+
+2.  **A palavra-chave `volatile`:** Este é um comando direto para o compilador. `volatile int sensor;` diz ao compilador: "Não otimize esta variável! Seu valor pode ser alterado por algo fora deste fluxo de código (como hardware, um timer, ou outro processo)". Isso força o compilador a ler o valor da memória a cada vez, em vez de usar uma cópia antiga em um registrador.
+
+3.  **`sizeof` vs. Ponteiros (A "Decaída" do Array):** Este é um erro clássico. `sizeof` é um operador de *tempo de compilação*.
+    * `int arr[10]; sizeof(arr);` // Retorna `40` (10 * 4 bytes por int)
+    * Quando você passa um array para uma função (`void func(int arr[])`), o array "decai" para um ponteiro (`int *arr`).
+    * Dentro de `func()`, `sizeof(arr)` **não** retornará 40. Ele retornará o tamanho do *ponteiro* (ex: 4 ou 8 bytes), pois a função perdeu a informação do tamanho original do array.
+
+4.  **`typedef` com Ponteiros de Função:** `typedef` é usado para criar apelidos para tipos complexos. Ponteiros de função são complexos de ler, mas `typedef` os torna legíveis.
+    * *Sem typedef:* `void (*ptr_funcao)(int, int);` (Declara um ponteiro para uma função que retorna `void` e aceita dois `int`).
+    * *Com typedef:* `typedef void (*MeuTipoFuncao)(int, int);` (Cria o apelido `MeuTipoFuncao`).
+    * *Uso:* `MeuTipoFuncao minha_funcao = &algumaFuncao;`
+
+Este quiz testará sua compreensão profunda de como C gerencia memória e escopo."""
     )
 
     # --- Contextos C: Estruturas de Repetição (assunto_c_er) ---
@@ -1060,8 +1079,31 @@ Este quiz vai focar em como o fluxo de controle *muda* dentro de um laço."""
     ContextoAssunto.objects.create(
         assunto=assunto_c_er,
         dificuldade=dificil,
-        contexto="""Contexto para C - Estruturas de Repetição - Difícil.
-        (Substitua este texto pela sua explicação sobre pós-incremento na condição do 'for', o operador vírgula, e 'goto' para sair de loops aninhados)"""
+        contexto="""Neste nível, os laços deixam de ser simples repetições e se tornam testes de lógica e ordem de execução. Um único caractere (`++` ou `,`) pode mudar todo o resultado do laço.
+
+Vamos focar em três mecânicas avançadas de controle de fluxo:
+
+1.  **Pós-incremento (`i++`) na Condição:** A ordem exata da execução no `for` é crucial. Em `for (int i = 0; i++ < 5;) { ... }`, a cada iteração, acontece o seguinte:
+    1.  O valor *atual* de `i` é comparado com 5.
+    2.  O valor de `i` é *então* incrementado.
+    3.  Se a comparação (passo 1) foi verdadeira, o corpo do laço executa.
+    Quando `i` é `5`, a condição `5 < 5` é Falsa. O laço para, mas o `i++` ainda é executado uma última vez, fazendo com que o valor final de `i` *após* o laço seja `6`.
+
+2.  **O Operador Vírgula (`,`):** O operador vírgula é um operador de sequência. Em `A, B`, o compilador executa `A`, descarta seu resultado, e então executa `B` e retorna o resultado de `B`.
+    * No laço `while (a++, --b)`, a cada iteração, `a++` é executado, e *depois* `--b` é executado. O valor *retornado por `--b`* é usado como a condição do `while`. O laço continuará enquanto `b` (após ser decrementado) não for zero.
+
+3.  **`goto` para Sair de Laços Aninhados:** A instrução `break` só consegue sair do laço mais interno. Se você está em um laço dentro de um laço dentro de outro laço e precisa sair de *todos* eles de uma vez (ex: por um erro), você não pode usar `break`. `goto` permite um salto incondicional para um "label" (etiqueta) definido fora de todos os laços.
+    `for(...) {`
+    `  for(...) {`
+    `    if (erro_critico) {`
+    `      goto FIM_DE_TUDO;`
+    `    }`
+    `  }`
+    `}`
+    `FIM_DE_TUDO:`
+    `// O código continua aqui após o erro`
+
+Este quiz testará sua atenção aos "efeitos colaterais" e à ordem precisa de execução dentro das próprias declarações de laço."""
     )
 
     # --- Contextos C: Estruturas Condicionais (assunto_c_c) ---
@@ -1142,8 +1184,25 @@ Este quiz testará sua habilidade de prever o resultado de condicionais mais com
     ContextoAssunto.objects.create(
         assunto=assunto_c_c,
         dificuldade=dificil,
-        contexto="""Contexto para C - Estruturas Condicionais - Difícil.
-        (Substitua este texto pela sua explicação sobre a combinação de operadores lógicos e bitwise, e a precedência de operadores em 'if')"""
+        contexto="""No nível difícil, as condicionais testam seu conhecimento sobre "comportamentos ocultos" do compilador e a mistura de operadores. O que você *acha* que o código faz pode não ser o que o compilador *realmente* faz.
+
+Vamos analisar três armadilhas comuns:
+
+1.  **Precedência de Operadores:** A ordem em que C avalia operadores é fundamental. Operadores lógicos (`&&`, `||`) **NÃO** têm a mesma precedência que operadores bitwise (`&`, `|`).
+    * `&&` tem precedência *maior* que `||`.
+    * `&` tem precedência *maior* que `|`.
+    * *Armadilha:* `if (flags & MASCARA_A || flags & MASCARA_B)` não faz o que parece. `||` tem a precedência *mais baixa*, então o código é avaliado corretamente. A armadilha real é `if (x == 1 & y == 2)`. O operador `==` tem precedência *maior* que `&`, então isso é avaliado como `if (x == (1 & y) == 2)`, o que está errado.
+
+2.  **Combinando Lógico e Bitwise:** Operadores lógicos (`&&`, `||`) tratam qualquer valor diferente de zero como `true` (1). Operadores bitwise (`&`, `|`) manipulam bits individuais.
+    * `5 && 2` (Lógico): "Verdadeiro E Verdadeiro" -> `1` (True).
+    * `5 & 2` (Bitwise): `101 & 010` -> `000` (zero).
+    * Uma expressão como `if ((A && B) || (C & D))` exige que você saiba qual operador usar para qual tipo de lógica (booleana vs. manipulação de bits).
+
+3.  **Curto-Circuito e Efeitos Colaterais:** Como vimos no nível médio, `&&` e `||` são "preguiçosos". No nível difícil, usamos isso para criar código perigoso (ou muito inteligente).
+    * `if (x == 4 && ++y > 10)`: `++y` nunca é executado se `x` não for 4. O valor de `y` *depende* do valor de `x`.
+    * `if ((ptr != NULL) && (ptr->valor == 10))`: Este é um uso *correto* e defensivo. Se `ptr` for `NULL`, o curto-circuito impede que o programa tente acessar `ptr->valor`, o que causaria um crash.
+
+Este quiz testará sua capacidade de ler o código como o compilador, prevendo a ordem exata de avaliação e os efeitos colaterais ocultos."""
     )
 
 class Migration(migrations.Migration):
