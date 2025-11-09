@@ -1017,7 +1017,7 @@ Este quiz testará sua compreensão profunda de como C gerencia memória e escop
 
 Vamos conhecer os três tipos básicos de laços em C:
 
-1.  **O Laço `for`:** Ideal quando você sabe *quantas vezes* quer repetir algo. A forma mais comum usa um contador: `for (inicialização; condição; incremento)`.
+1.  **O Laço `for`: Ideal quando você sabe *quantas vezes* quer repetir algo. A forma mais comum usa um contador: `for (inicialização; condição; incremento)`.
     * `inicialização`: Executada uma vez no início (ex: `int i = 0`).
     * `condição`: Verificada *antes* de cada repetição (ex: `i < 10`). O laço continua enquanto for verdadeira.
     * `incremento`: Executado *após* cada repetição (ex: `i++`).
