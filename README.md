@@ -92,13 +92,13 @@ Atualizamos o documento de registro da divisão e a realização das tarefas das
 Nós atualizamos nosso Jira e marcamos as histórias implementadas nesta entrega. Segue abaixo as imagens do Backlog e do Quadro ao fim da Entrega 3:
 
 
-Backlog:
+print do Backlog:
 
 
 <img width="1440" height="699" alt="Image" src="https://github.com/user-attachments/assets/29853c7c-0f4f-43f2-9ecd-66eb13389916" />
 
 
-Quadro:
+print do Quadro:
 
 
 <img width="1440" height="702" alt="Image" src="https://github.com/user-attachments/assets/6174a70f-c863-4c83-b104-9e227268a531" />
