@@ -2,7 +2,7 @@
 
 ## Descrição
 
-O Code Quiz é site de quizzes de programação com intuito pedagócigo para que as pessoas possam melhorar suas habilidades através de questionários sobre diversas linguagens e de dificuldades variadas para se adequar ao usuário.
+O Code Quiz é um site de quizzes de programação com intuito pedagócigo para que as pessoas possam melhorar suas habilidades através de questionários sobre diversas linguagens e de dificuldades variadas para se adequar ao usuário.
 
 ---
 
@@ -46,7 +46,7 @@ Criamos um documento para registrar a divisão e a realização das tarefas. Par
 
 ## Jira
 
-Nós atualizamos nosso Jira e marcamos as histórias implementadas nessa entrega. Segue abaixo as imagens do Backlog e do Quadro ao fim da Entrega 2:
+Nós atualizamos nosso Jira e marcamos as histórias implementadas nessa entrega. Seguem abaixo as imagens do Backlog e do Quadro ao fim da Entrega 2:
 
 Backlog:
 
