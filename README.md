@@ -85,6 +85,8 @@ Nós atualizamos nosso Jira e marcamos as histórias implementadas nesta entrega
 
 Backlog:
 
+print do Backlog:
+
 <img width="1440" height="699" alt="Image" src="https://github.com/user-attachments/assets/29853c7c-0f4f-43f2-9ecd-66eb13389916" />
 
 Quadro:

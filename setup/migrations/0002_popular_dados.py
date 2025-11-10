@@ -64,7 +64,7 @@ def popular_dados(apps, schema_editor):
     Resposta.objects.create(pergunta=p4, texto="string", correta=False)
     Resposta.objects.create(pergunta=p4, texto="double", correta=False)
 
-    p5 = Pergunta.objects.create(assunto=assunto_py_sb, texto='Como você converte uma string "100" para um número inteiro em Python?', explicacao="Python oferece funções de conversão de tipo, como `int()`, `float()`, e `str()`, para converter entre diferentes tipos de dados.")
+    p5 = Pergunta.objects.create(assunto=assunto_py_sb, texto='Como você converte uma string "100" para um número inteiro em Python?', explicacao="Python oferece funções de conversão de tipo, como int(), float(), e str(), para converter entre diferentes tipos de dados.")
     PerguntaDificuldade.objects.create(pergunta=p5, dificuldade=facil)
     Resposta.objects.create(pergunta=p5, texto='(int)"100"', correta=False)
     Resposta.objects.create(pergunta=p5, texto='to_int("100")', correta=False)
@@ -72,14 +72,14 @@ def popular_dados(apps, schema_editor):
     Resposta.objects.create(pergunta=p5, texto='integer("100")', correta=False)
 
     # --- PERGUNTAS DE NÍVEL MÉDIO ---
-    p6 = Pergunta.objects.create(assunto=assunto_py_sb, texto="Qual será o valor da variável `c` após a execução do código `a, *b, c = [10, 20, 30, 40, 50]`?", explicacao="Esta sintaxe é chamada de 'desempacotamento estendido'. 'a' recebe o primeiro elemento (10), '*b' recebe todos os elementos do meio como uma lista ([20, 30, 40]), e 'c' recebe o último elemento (50).")
+    p6 = Pergunta.objects.create(assunto=assunto_py_sb, texto="Qual será o valor da variável `c` após a execução do código: a, *b, c = [10, 20, 30, 40, 50]?", explicacao="Esta sintaxe é chamada de 'desempacotamento estendido'. 'a' recebe o primeiro elemento (10), '*b' recebe todos os elementos do meio como uma lista ([20, 30, 40]), e 'c' recebe o último elemento (50).")
     PerguntaDificuldade.objects.create(pergunta=p6, dificuldade=medio)
     Resposta.objects.create(pergunta=p6, texto="30", correta=False)
     Resposta.objects.create(pergunta=p6, texto="[20, 30, 40]", correta=False)
     Resposta.objects.create(pergunta=p6, texto="50", correta=True)
     Resposta.objects.create(pergunta=p6, texto="[40, 50]", correta=False)
 
-    p7 = Pergunta.objects.create(assunto=assunto_py_sb, texto="Qual é o resultado da impressão do seguinte f-string: `valor = 12; print(f'O resultado é {valor:04d}')`?", explicacao="A formatação `:04d` significa: 'd' para tratar como decimal, '4' para ter uma largura total de 4 caracteres, e '0' para preencher com zeros à esquerda se o número for menor que a largura.")
+    p7 = Pergunta.objects.create(assunto=assunto_py_sb, texto="Qual é o resultado da impressão do seguinte f-string: valor = 12; print(f'O resultado é {valor:04d}')?", explicacao="A formatação `:04d` significa: 'd' para tratar como decimal, '4' para ter uma largura total de 4 caracteres, e '0' para preencher com zeros à esquerda se o número for menor que a largura.")
     PerguntaDificuldade.objects.create(pergunta=p7, dificuldade=medio)
     Resposta.objects.create(pergunta=p7, texto="O resultado é 12", correta=False)
     Resposta.objects.create(pergunta=p7, texto="O resultado é 0012", correta=True)
@@ -714,7 +714,7 @@ def popular_dados(apps, schema_editor):
     Resposta.objects.create(pergunta=p90, texto="AC", correta=False)
     Resposta.objects.create(pergunta=p90, texto="AB", correta=True)
     
-    # ====================================================================
+   # ====================================================================
     # === CONTEXTOS DOS QUIZZES ===
     # ====================================================================
 
@@ -744,46 +744,34 @@ Este quiz testará sua compreensão dessas regras essenciais. Preste atenção a
     ContextoAssunto.objects.create(
         assunto=assunto_py_sb,
         dificuldade=medio,
-        contexto="""(Neste nível, vamos aprender a fazer o nosso código tomar decisões e repetir tarefas, focando em três elementos essenciais:
+        contexto="""Vamos aprofundar na sintaxe de Python! No nível médio, não basta apenas criar variáveis, precisamos manipulá-las e entender como o Python as compara.
 
-1. Condicionais (if, elif, else):
-Permitem que o seu programa execute diferentes blocos de código com base em condições. Lembre-se que o Python usa a indentação (espaços/tabs) para definir o que está dentro do if ou else.
+Vamos focar em três conceitos muito usados:
 
-Exemplo de Código:
+1.  **Formatação de Strings (f-Strings):** A forma mais moderna e legível de incluir variáveis dentro de um texto. Usa-se um `f` antes das aspas.
+    `nome = "Ana"`
+    `print(f"Olá, {nome}! Você tem {idade} anos.")`
 
-Python
+2.  **Métodos de String:** Strings são objetos que vêm com "funções" embutidas chamadas métodos. Os mais comuns são usados para limpar e padronizar dados.
+    `texto = "   Olá Mundo   "`
+    `texto.strip()  # Remove espaços em branco do início e fim`
+    `texto.upper()  # Converte tudo para MAIÚSCULO`
+    `texto.lower()  # Converte tudo para minúsculo`
 
-idade = 17
-if idade >= 18: print("Você é maior de idade e pode entrar.") elif idade >= 16: print("Você precisa de um responsável.") else: print("Entrada não permitida.")
+3.  **Identidade (`is`) vs. Valor (`==`):** Esta é uma diferença crucial.
+    * `==` (Valor): Pergunta "Estes dois objetos têm o *mesmo conteúdo*?"
+    * `is` (Identidade): Pergunta "Estas duas variáveis apontam para o *mesmo exato local* na memória?"
+    `a = [1, 2]`
+    `b = [1, 2]`
+    `a == b  # Retorna True (o conteúdo é igual)`
+    `a is b  # Retorna False (são dois objetos diferentes na memória)`
 
-2. Loops de Repetição (for):
-Usado para iterar (percorrer) sequências de itens (como listas, strings ou ranges) e executar um bloco de código para cada um.
-
-Exemplo de Código:
-
-Python
-
-# O range(5) gera números de 0 a 4
-for i in range(5):
-    print(f"Contagem: {i}")
-frutas = ["maçã", "banana", "cereja"] for fruta in frutas: print(f"Eu gosto de {fruta}")
-
-3. Loops de Repetição Condicional (while):
-Executa um bloco de código repetidamente enquanto uma condição for verdadeira. É crucial garantir que a condição se torne falsa em algum momento para evitar um loop infinito.
-
-Exemplo de Código:
-
-Python
-
-contador = 0
-while contador < 3: print(f"Loop {contador}") contador += 1 # Incrementa o contador
-
-print("Fim do loop while."))"""
+Este quiz testará sua habilidade em manipular dados e prever o comportamento dos operadores de comparação."""
     )
     ContextoAssunto.objects.create(
         assunto=assunto_py_sb,
         dificuldade=dificil,
-        contexto="""(Bem-vindo ao nível Difícil de Python! Aqui, exploramos os detalhes que distinguem um bom programador de um excelente, focando em otimização de memória, mutabilidade e operadores complexos.
+        contexto="""Bem-vindo ao nível Difícil de Python! Aqui, exploramos os detalhes que distinguem um bom programador de um excelente, focando em otimização de memória, mutabilidade e operadores complexos.
 
 Neste bloco, focaremos em três áreas cruciais:
 
@@ -793,7 +781,7 @@ Imutabilidade e Referência de Objetos: Tipos imutáveis (como números inteiros
 
 Otimização e Identidade (is): Python otimiza o uso de memória armazenando em cache (interning) objetos imutáveis usados com frequência, como inteiros pequenos. O operador is testa se duas variáveis apontam para o mesmo objeto na memória, revelando essas otimizações.
 
-Este quiz testará sua familiaridade com as regras de alocação de memória e o comportamento de operadores avançados de Python.)"""
+Este quiz testará sua familiaridade com as regras de alocação de memória e o comportamento de operadores avançados de Python."""
     )
 
     # --- Contextos Python: Estruturas de Repetição (assunto_py_er) ---
@@ -808,20 +796,20 @@ Em Python, os dois loops mais básicos são o `for` e o `while`.
     `# range(5) gera os números 0, 1, 2, 3, 4.`
     `# O loop executará 5 vezes.`
     `for i in range(5):`
-    `    print(f"Executando pela {i+1}ª vez")`
+    `   print(f"Executando pela {i+1}ª vez")`
 
 2.  **O Laço `while` (Repetição Condicional):** Usamos o `while` quando queremos repetir *enquanto* uma condição for verdadeira. Não sabemos o número exato de vezes, apenas a condição de parada.
     `contador = 0`
     `while contador < 10:`
-    `    print("O contador ainda é menor que 10.")`
-    `    contador = contador + 1  # Importante: atualizar a condição!`
+    `   print("O contador ainda é menor que 10.")`
+    `   contador = contador + 1  # Importante: atualizar a condição!`
 
 Este quiz testará sua habilidade em identificar e usar essas duas estruturas de loop. Lembre-se: `for` para contagens definidas, `while` para condições."""
     )
     ContextoAssunto.objects.create(
         assunto=assunto_py_er,
         dificuldade=medio,
-        contexto="""(Neste nível, focaremos nas nuances e nos atalhos poderosos dos laços em Python:
+        contexto="""Neste nível, focaremos nas nuances e nos atalhos poderosos dos laços em Python:
 
 A Cláusula else nos Laços for e while: Essa é uma funcionalidade única do Python! O bloco else de um laço só é executado se o laço terminar naturalmente, ou seja, se a condição do while se tornar falsa ou se o for iterar sobre todos os itens. Se o laço for interrompido por um break, o else é ignorado.
 
@@ -839,12 +827,12 @@ Funções Auxiliares: enumerate e Condição while:
 
 enumerate(): Transforma um iterável em uma sequência de tuplas (índice, valor), facilitando a obtenção da posição e do item simultaneamente.
 
-Condição while com Objetos: Assim como nas condicionais, o while continua enquanto o objeto for avaliado como Truthy (ex: uma lista não vazia).)"""
+Condição while com Objetos: Assim como nas condicionais, o while continua enquanto o objeto for avaliado como Truthy (ex: uma lista não vazia)."""
     )
     ContextoAssunto.objects.create(
         assunto=assunto_py_er,
         dificuldade=dificil,
-        contexto="""(A repetição é fundamental, mas a maneira correta de fazê-la em Python envolve eficiência e idiomatismos.
+        contexto="""A repetição é fundamental, mas a maneira correta de fazê-la em Python envolve eficiência e idiomatismos.
 
 Neste bloco, você será desafiado com:
 
@@ -856,7 +844,7 @@ List Comprehensions e Curto-Circuito: A combinação de uma List Comprehension c
 
 A Função zip() e Desempacotamento: A função zip é o método canônico em Python para iterar sobre múltiplos iteráveis simultaneamente. O desempacotamento de tuplas (tuple unpacking) no laço for permite atribuir os resultados do zip diretamente a variáveis.
 
-Este quiz exigirá um domínio completo sobre a execução do fluxo e as melhores práticas de Python para iteração.)"""
+Este quiz exigirá um domínio completo sobre a execução do fluxo e as melhores práticas de Python para iteração."""
     )
 
     # --- Contextos Python: Condicionais (assunto_py_c) ---
@@ -873,11 +861,11 @@ A estrutura básica para isso em Python é o `if`, `elif` e `else`.
 
     `idade = 20`
     `if idade < 18:`
-    `    print("Menor de idade.")`
+    `   print("Menor de idade.")`
     `elif idade == 18:`
-    `    print("Tem 18 anos.")`
+    `   print("Tem 18 anos.")`
     `else:`
-    `    print("Maior de idade.")`
+    `   print("Maior de idade.")`
 
 Para criar condições, usamos operadores de comparação (como `==` para igual, `!=` para diferente, `>` para maior) e operadores lógicos (como `and`, `or` e `not`).
 
@@ -886,7 +874,7 @@ Este quiz avaliará seu entendimento sobre como construir blocos `if/elif/else` 
     ContextoAssunto.objects.create(
         assunto=assunto_py_c,
         dificuldade=medio,
-        contexto="""(Neste nível, vamos mergulhar em três conceitos cruciais:
+        contexto="""Neste nível, vamos mergulhar em três conceitos cruciais:
 
 A Verdade por Trás dos Valores (Truthy/Falsy): Em Python, nem tudo é True ou False explícito. Alguns valores são considerados "falsos" (Falsy), como 0, None, strings vazias (""), listas vazias ([]) e tuplas vazias. Qualquer coisa que não seja Falsy é considerada "verdadeira" (Truthy).
 
@@ -902,12 +890,12 @@ O == (igualdade de valor) pergunta: "Os objetos têm o mesmo conteúdo?"
 
 O is (identidade) pergunta: "Os objetos são o mesmo objeto na memória?"
 
-Este quiz testará sua capacidade de prever o fluxo de execução baseado nessas regras de avaliação de verdade e precedência.)"""
+Este quiz testará sua capacidade de prever o fluxo de execução baseado nessas regras de avaliação de verdade e precedência."""
     )
     ContextoAssunto.objects.create(
         assunto=assunto_py_c,
         dificuldade=dificil,
-        contexto="""(Neste nível avançado de condicionais, não basta saber o que é True ou False; é preciso entender como o Python avalia expressões longas.
+        contexto="""Neste nível avançado de condicionais, não basta saber o que é True ou False; é preciso entender como o Python avalia expressões longas.
 
 Neste bloco, exploraremos:
 
@@ -923,7 +911,7 @@ Operador Walrus (Atribuição e Expressão :=): Introduzido no Python 3.8, o ope
 
 Operadores Ternários Aninhados: A sintaxe compacta valor_se_verdadeiro if condicao else valor_se_falso pode ser aninhada para criar um equivalente conciso de if/elif/else, exigindo atenção à ordem de avaliação.
 
-Este quiz testará sua capacidade de rastrear a precedência de operadores e o comportamento de curto-circuito em expressões complexas.)"""
+Este quiz testará sua capacidade de rastrear a precedência de operadores e o comportamento de curto-circuito em expressões complexas."""
     )
 
     # --- Contextos C: Sintaxe Básica (assunto_c_sb) ---
@@ -1017,27 +1005,27 @@ Este quiz testará sua compreensão profunda de como C gerencia memória e escop
 
 Vamos conhecer os três tipos básicos de laços em C:
 
-1.  **O Laço `for`:** Ideal quando você sabe *quantas vezes* quer repetir algo. A forma mais comum usa um contador: `for (inicialização; condição; incremento)`.
+1.  **O Laço `for`: Ideal quando você sabe *quantas vezes* quer repetir algo. A forma mais comum usa um contador: `for (inicialização; condição; incremento)`.
     * `inicialização`: Executada uma vez no início (ex: `int i = 0`).
     * `condição`: Verificada *antes* de cada repetição (ex: `i < 10`). O laço continua enquanto for verdadeira.
     * `incremento`: Executado *após* cada repetição (ex: `i++`).
     `// Imprime números de 0 a 9`
     `for (int i = 0; i < 10; i++) {`
-    `  printf("%d ", i);`
+    `   printf("%d ", i);`
     `}`
 
 2.  **O Laço `while`:** Perfeito quando você quer repetir um bloco *enquanto* uma condição for verdadeira, mas não sabe exatamente quantas vezes isso vai acontecer. A condição é testada *antes* de cada execução do bloco.
     `int contador = 0;`
     `while (contador < 5) {`
-    `  printf("Contador: %d\\n", contador);`
-    `  contador++; // Importante: atualizar a variável da condição!`
+    `   printf("Contador: %d\\n", contador);`
+    `   contador++; // Importante: atualizar a variável da condição!`
     `}`
 
 3.  **O Laço `do-while`:** Similar ao `while`, mas com uma diferença crucial: a condição é testada *depois* da execução do bloco. Isso garante que o código dentro do laço execute **pelo menos uma vez**, mesmo que a condição seja inicialmente falsa.
     `int opcao;`
     `do {`
-    `  printf("Digite 0 para sair: ");`
-    `  scanf("%d", &opcao); // Lê um número do usuário`
+    `   printf("Digite 0 para sair: ");`
+    `   scanf("%d", &opcao); // Lê um número do usuário`
     `} while (opcao != 0);`
 
 Este quiz vai testar sua compreensão sobre qual laço usar em diferentes situações e como controlar sua execução. Preste atenção em como e quando as condições são verificadas!"""
@@ -1053,25 +1041,25 @@ Dominar estes conceitos é essencial para escrever laços eficientes:
     * `break;`: Interrompe (quebra) o laço *imediatamente* e o programa continua sua execução na primeira linha *após* o laço.
     * `continue;`: Interrompe *apenas a iteração atual* e pula para o início da próxima iteração, continuando dentro do laço.
     `for (int i = 0; i < 10; i++) {`
-    `  if (i == 3) continue; // Pula a impressão do 3`
-    `  if (i == 8) break;    // Para o laço quando i for 8`
-    `  printf("%d ", i);       // Saída: 0 1 2 4 5 6 7`
+    `   if (i == 3) continue; // Pula a impressão do 3`
+    `   if (i == 8) break;    // Para o laço quando i for 8`
+    `   printf("%d ", i);       // Saída: 0 1 2 4 5 6 7`
     `}`
 
 2.  **Laços Infinitos Idiomáticos:** Às vezes, queremos que um laço rode "para sempre" até que uma condição interna seja satisfeita (usando `break`). A forma `while(1)` é comum, mas em C, a sintaxe idiomática e mais clássica para um laço infinito é `for(;;)`, omitindo todas as três partes.
     `for (;;) {`
-    `  // código que roda indefinidamente...`
-    `  if (alguma_condicao) {`
-    `    break; // Sai do laço infinito`
-    `  }`
+    `   // código que roda indefinidamente...`
+    `   if (alguma_condicao) {`
+    `       break; // Sai do laço infinito`
+    `   }`
     `}`
 
 3.  **Iteração com Ponteiros:** Em C, é muito comum e eficiente iterar sobre arrays (listas) usando aritmética de ponteiros, em vez de índices. Incrementar um ponteiro (`ptr++`) faz ele "pular" para o próximo elemento do array, seja ele um `int`, `char`, ou `float`.
     `int numeros[] = {10, 20, 30};`
     `int *ptr = numeros; // Aponta para o primeiro elemento (10)`
     `while (ptr < numeros + 3) { // numeros + 3 é o endereço *depois* do último elemento`
-    `  printf("%d ", *ptr); // Imprime o valor apontado`
-    `  ptr++; // Avança o ponteiro para o próximo inteiro`
+    `   printf("%d ", *ptr); // Imprime o valor apontado`
+    `   ptr++; // Avança o ponteiro para o próximo inteiro`
     `}`
 
 Este quiz vai focar em como o fluxo de controle *muda* dentro de um laço."""
@@ -1094,11 +1082,11 @@ Vamos focar em três mecânicas avançadas de controle de fluxo:
 
 3.  **`goto` para Sair de Laços Aninhados:** A instrução `break` só consegue sair do laço mais interno. Se você está em um laço dentro de um laço dentro de outro laço e precisa sair de *todos* eles de uma vez (ex: por um erro), você não pode usar `break`. `goto` permite um salto incondicional para um "label" (etiqueta) definido fora de todos os laços.
     `for(...) {`
-    `  for(...) {`
-    `    if (erro_critico) {`
-    `      goto FIM_DE_TUDO;`
-    `    }`
-    `  }`
+    `   for(...) {`
+    `       if (erro_critico) {`
+    `           goto FIM_DE_TUDO;`
+    `       }`
+    `   }`
     `}`
     `FIM_DE_TUDO:`
     `// O código continua aqui após o erro`
@@ -1116,11 +1104,11 @@ Neste nível, veremos as estruturas principais:
 
 1.  **`if`, `else if`, `else`:** Permitem executar código se uma condição for verdadeira (`if`), testar outras condições se a primeira for falsa (`else if`), ou executar um bloco padrão se nenhuma condição anterior for atendida (`else`). A condição sempre vai entre parênteses `()`.
     `if (nota >= 7) {`
-    `  printf("Aprovado!\\n");`
+    `   printf("Aprovado!\\n");`
     `} else if (nota >= 5) {`
-    `  printf("Recuperação.\\n");`
+    `   printf("Recuperação.\\n");`
     `} else {`
-    `  printf("Reprovado.\\n");`
+    `   printf("Reprovado.\\n");`
     `}`
 
 2.  **Operadores de Comparação:** Para criar condições, usamos operadores como `==` (igual a), `!=` (diferente de), `>` (maior que), `<` (menor que), `>=` (maior ou igual a), `<=` (menor ou igual a).
@@ -1131,14 +1119,14 @@ Neste nível, veremos as estruturas principais:
 
 4.  **`switch`:** Útil quando você quer testar uma variável contra vários valores específicos (casos). Cada `case` testa um valor, e o `break;` é essencial para sair do `switch` após encontrar um caso correspondente. O `default:` é opcional e executado se nenhum `case` for verdadeiro.
     `switch (opcao) {`
-    `  case 1:`
-    `    printf("Você escolheu 1.\\n");`
-    `    break;`
-    `  case 2:`
-    `    printf("Você escolheu 2.\\n");`
-    `    break;`
-    `  default:`
-    `    printf("Opção inválida.\\n");`
+    `   case 1:`
+    `       printf("Você escolheu 1.\\n");`
+    `       break;`
+    `   case 2:`
+    `       printf("Você escolheu 2.\\n");`
+    `       break;`
+    `   default:`
+    `       printf("Opção inválida.\\n");`
     `}`
 
 Este quiz testará sua habilidade de usar essas estruturas para controlar o fluxo do seu programa."""
@@ -1152,13 +1140,13 @@ Vamos focar em quatro técnicas avançadas:
 
 1.  **"Fall-through" no `switch`:** Diferente de outras linguagens, o `switch` em C continua executando os `case` abaixo dele até encontrar um `break`. Omitir o `break` intencionalmente é chamado de "fall-through" (deixar cair) e pode ser útil para agrupar casos.
     `switch (letra) {`
-    `  case 'a':`
-    `  case 'e': // Sem break, 'a' "cai" para 'e'`
-    `    printf("Vogal\\n");`
-    `    break;`
-    `  case 'b':`
-    `    printf("Consoante\\n");`
-    `    break;`
+    `   case 'a':`
+    `   case 'e': // Sem break, 'a' "cai" para 'e'`
+    `       printf("Vogal\\n");`
+    `       break;`
+    `   case 'b':`
+    `       printf("Consoante\\n");`
+    `       break;`
     `}`
 
 2.  **Curto-Circuito (Short-Circuit):** Os operadores lógicos `&&` (E) e `||` (OU) são "preguiçosos".
@@ -1176,7 +1164,7 @@ Vamos focar em quatro técnicas avançadas:
 4.  **Verificação Bitwise (`&`):** Para verificar se um número é ímpar, uma técnica muito rápida em C é usar o operador E-bitwise (`&`). A expressão `(num & 1)` isola apenas o último bit do número. Se for 1, o número é ímpar; se for 0, é par.
     `int num = 7; // Binário: ...0111`
     `if (num & 1) { // 0111 & 0001 = 0001 (Verdadeiro)`
-    `  printf("Ímpar\\n");`
+    `   printf("Ímpar\\n");`
     `}`
 
 Este quiz testará sua habilidade de prever o resultado de condicionais mais complexos e eficientes."""
@@ -1191,12 +1179,12 @@ Vamos analisar três armadilhas comuns:
 1.  **Precedência de Operadores:** A ordem em que C avalia operadores é fundamental. Operadores lógicos (`&&`, `||`) **NÃO** têm a mesma precedência que operadores bitwise (`&`, `|`).
     * `&&` tem precedência *maior* que `||`.
     * `&` tem precedência *maior* que `|`.
-    * *Armadilha:* `if (flags & MASCARA_A || flags & MASCARA_B)` não faz o que parece. `||` tem a precedência *mais baixa*, então o código é avaliado corretamente. A armadilha real é `if (x == 1 & y == 2)`. O operador `==` tem precedência *maior* que `&`, então isso é avaliado como `if (x == (1 & y) == 2)`, o que está errado.
+    * *Armadilha:* `if (flags & MASCARA_A || flags & MABCARA_B)` não faz o que parece. `||` tem a precedência *mais baixa*, então o código é avaliado corretamente. A armadilha real é `if (x == 1 & y == 2)`. O operador `==` tem precedência *maior* que `&`, então isso é avaliado como `if (x == (1 & y) == 2)`, o que está errado.
 
 2.  **Combinando Lógico e Bitwise:** Operadores lógicos (`&&`, `||`) tratam qualquer valor diferente de zero como `true` (1). Operadores bitwise (`&`, `|`) manipulam bits individuais.
     * `5 && 2` (Lógico): "Verdadeiro E Verdadeiro" -> `1` (True).
     * `5 & 2` (Bitwise): `101 & 010` -> `000` (zero).
-    * Uma expressão como `if ((A && B) || (C & D))` exige que você saiba qual operador usar para qual tipo de lógica (booleana vs. manipulação de bits).
+    * Uma expressão como `if ((A && B) || (C & D))` exige que you saiba qual operador usar para qual tipo de lógica (booleana vs. manipulação de bits).
 
 3.  **Curto-Circuito e Efeitos Colaterais:** Como vimos no nível médio, `&&` e `||` são "preguiçosos". No nível difícil, usamos isso para criar código perigoso (ou muito inteligente).
     * `if (x == 4 && ++y > 10)`: `++y` nunca é executado se `x` não for 4. O valor de `y` *depende* do valor de `x`.

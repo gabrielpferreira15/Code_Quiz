@@ -24,7 +24,7 @@
         padding: 10px 40px; 
         background-color: #1a2c3e;
         box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-        display: flex;                  /* Ativa o Flexbox para alinhar os itens internos */
+        display: flex;                   /* Ativa o Flexbox para alinhar os itens internos */
         justify-content: space-between; /* Empurra os filhos (header-left e nav) para os cantos opostos */
         align-items: center;            /* Alinha os filhos verticalmente no centro */
         box-sizing: border-box;
@@ -166,7 +166,10 @@
                 <span>Olá, {{ user.username }}!</span>
                 <a href="{% url 'logout' %}">Sair</a>
             {% else %}
+                {# Lógica alterada: Mostra 'Login' apenas se a página atual NÃO for a página de login #}
+                {% if request.resolver_match.url_name != 'login' %}
                 <a href="{% url 'login' %}">Login</a>
+                {% endif %}
             {% endif %}
         </nav>
     </header>
