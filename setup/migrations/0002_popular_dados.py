@@ -86,21 +86,21 @@ def popular_dados(apps, schema_editor):
     Resposta.objects.create(pergunta=p7, texto="O resultado é 1200", correta=False)
     Resposta.objects.create(pergunta=p7, texto="O resultado é {valor:04d}", correta=False)
 
-    p8 = Pergunta.objects.create(assunto=assunto_py_sb, texto="Considere o código: `lista_a = [1, 2]; lista_b = lista_a; lista_b.append(3)`. Qual será o conteúdo de `lista_a`?", explicacao="Listas são objetos mutáveis. `lista_b = lista_a` faz com que ambas as variáveis apontem para o mesmo objeto na memória. Portanto, uma alteração em `lista_b` também afeta `lista_a`.")
+    p8 = Pergunta.objects.create(assunto=assunto_py_sb, texto="Considere o código: lista_a = [1, 2]; lista_b = lista_a; lista_b.append(3). Qual será o conteúdo de lista_a?", explicacao="Listas são objetos mutáveis. lista_b = lista_a faz com que ambas as variáveis apontem para o mesmo objeto na memória. Portanto, uma alteração em `lista_b` também afeta `lista_a`.")
     PerguntaDificuldade.objects.create(pergunta=p8, dificuldade=medio)
     Resposta.objects.create(pergunta=p8, texto="[1, 2]", correta=False)
     Resposta.objects.create(pergunta=p8, texto="[1, 2, 3]", correta=True)
     Resposta.objects.create(pergunta=p8, texto="[3]", correta=False)
     Resposta.objects.create(pergunta=p8, texto="O código resultará em um erro.", correta=False)
 
-    p9 = Pergunta.objects.create(assunto=assunto_py_sb, texto='Qual é a maneira mais "pythônica" de inverter a string `s = "python"`?', explicacao="A sintaxe de fatiamento (slicing) `[::-1]` é a forma idiomática e mais eficiente de criar uma cópia invertida de uma sequência em Python. `s.reverse()` não existe para strings.")
+    p9 = Pergunta.objects.create(assunto=assunto_py_sb, texto='Qual é a maneira mais "pythônica" de inverter a string: s = "python"?', explicacao="A sintaxe de fatiamento (slicing) = [::-1], é a forma idiomática e mais eficiente de criar uma cópia invertida de uma sequência em Python. O comando `s.reverse()` não existe para strings.")
     PerguntaDificuldade.objects.create(pergunta=p9, dificuldade=medio)
     Resposta.objects.create(pergunta=p9, texto="s.reverse()", correta=False)
     Resposta.objects.create(pergunta=p9, texto="reversed(s)", correta=False)
     Resposta.objects.create(pergunta=p9, texto="s[::-1]", correta=True)
     Resposta.objects.create(pergunta=p9, texto="for c in s: s = c + s", correta=False)
 
-    p10 = Pergunta.objects.create(assunto=assunto_py_sb, texto="O que a expressão `(1, 2, 3) + (4, 5)` produzirá?", explicacao="Embora as tuplas sejam imutáveis, o operador `+` pode ser usado para concatená-las. Isso não modifica as tuplas originais, mas cria uma nova tupla contendo os elementos de ambas.")
+    p10 = Pergunta.objects.create(assunto=assunto_py_sb, texto='O que a expressão "(1, 2, 3) + (4, 5)" produzirá?', explicacao="Embora as tuplas sejam imutáveis, o operador `+` pode ser usado para concatená-las. Isso não modifica as tuplas originais, mas cria uma nova tupla contendo os elementos de ambas.")
     PerguntaDificuldade.objects.create(pergunta=p10, dificuldade=medio)
     Resposta.objects.create(pergunta=p10, texto="(1, 2, 3, 4, 5)", correta=True)
     Resposta.objects.create(pergunta=p10, texto="(5, 7, 3)", correta=False)
@@ -108,7 +108,7 @@ def popular_dados(apps, schema_editor):
     Resposta.objects.create(pergunta=p10, texto="(1, 2, 3, [4, 5])", correta=False)
 
     # --- PERGUNTAS DE NÍVEL DIFÍCIL ---
-    p11 = Pergunta.objects.create(assunto=assunto_py_sb, texto="Qual será o valor de `len(s)` após a execução de `s = {'a': 1, 'b': 2}; s.update(c=3); del s['a']`?", explicacao="O dicionário `s` inicia com 2 elementos. `s.update(c=3)` adiciona um novo elemento, resultando em 3. `del s['a']` remove um elemento, resultando em 2. A função `len()` retorna o número de pares chave-valor.")
+    p11 = Pergunta.objects.create(assunto=assunto_py_sb, texto="Qual será o valor de len(s) após a execução de s = {'a': 1, 'b': 2}; s.update(c=3); del s['a']?", explicacao="O dicionário `s` inicia com 2 elementos. `s.update(c=3)` adiciona um novo elemento, resultando em 3. `del s['a']` remove um elemento, resultando em 2. A função `len()` retorna o número de pares chave-valor.")
     PerguntaDificuldade.objects.create(pergunta=p11, dificuldade=dificil)
     Resposta.objects.create(pergunta=p11, texto="1", correta=False)
     Resposta.objects.create(pergunta=p11, texto="2", correta=True)
