@@ -771,7 +771,7 @@ Este quiz testará sua habilidade em manipular dados e prever o comportamento do
     ContextoAssunto.objects.create(
         assunto=assunto_py_sb,
         dificuldade=dificil,
-        contexto="""(Bem-vindo ao nível Difícil de Python! Aqui, exploramos os detalhes que distinguem um bom programador de um excelente, focando em otimização de memória, mutabilidade e operadores complexos.
+        contexto="""Bem-vindo ao nível Difícil de Python! Aqui, exploramos os detalhes que distinguem um bom programador de um excelente, focando em otimização de memória, mutabilidade e operadores complexos.
 
 Neste bloco, focaremos em três áreas cruciais:
 
@@ -781,7 +781,7 @@ Imutabilidade e Referência de Objetos: Tipos imutáveis (como números inteiros
 
 Otimização e Identidade (is): Python otimiza o uso de memória armazenando em cache (interning) objetos imutáveis usados com frequência, como inteiros pequenos. O operador is testa se duas variáveis apontam para o mesmo objeto na memória, revelando essas otimizações.
 
-Este quiz testará sua familiaridade com as regras de alocação de memória e o comportamento de operadores avançados de Python.)"""
+Este quiz testará sua familiaridade com as regras de alocação de memória e o comportamento de operadores avançados de Python."""
     )
 
     # --- Contextos Python: Estruturas de Repetição (assunto_py_er) ---
@@ -809,7 +809,7 @@ Este quiz testará sua habilidade em identificar e usar essas duas estruturas de
     ContextoAssunto.objects.create(
         assunto=assunto_py_er,
         dificuldade=medio,
-        contexto="""(Neste nível, focaremos nas nuances e nos atalhos poderosos dos laços em Python:
+        contexto="""Neste nível, focaremos nas nuances e nos atalhos poderosos dos laços em Python:
 
 A Cláusula else nos Laços for e while: Essa é uma funcionalidade única do Python! O bloco else de um laço só é executado se o laço terminar naturalmente, ou seja, se a condição do while se tornar falsa ou se o for iterar sobre todos os itens. Se o laço for interrompido por um break, o else é ignorado.
 
@@ -827,12 +827,12 @@ Funções Auxiliares: enumerate e Condição while:
 
 enumerate(): Transforma um iterável em uma sequência de tuplas (índice, valor), facilitando a obtenção da posição e do item simultaneamente.
 
-Condição while com Objetos: Assim como nas condicionais, o while continua enquanto o objeto for avaliado como Truthy (ex: uma lista não vazia).)"""
+Condição while com Objetos: Assim como nas condicionais, o while continua enquanto o objeto for avaliado como Truthy (ex: uma lista não vazia)."""
     )
     ContextoAssunto.objects.create(
         assunto=assunto_py_er,
         dificuldade=dificil,
-        contexto="""(A repetição é fundamental, mas a maneira correta de fazê-la em Python envolve eficiência e idiomatismos.
+        contexto="""A repetição é fundamental, mas a maneira correta de fazê-la em Python envolve eficiência e idiomatismos.
 
 Neste bloco, você será desafiado com:
 
@@ -844,7 +844,7 @@ List Comprehensions e Curto-Circuito: A combinação de uma List Comprehension c
 
 A Função zip() e Desempacotamento: A função zip é o método canônico em Python para iterar sobre múltiplos iteráveis simultaneamente. O desempacotamento de tuplas (tuple unpacking) no laço for permite atribuir os resultados do zip diretamente a variáveis.
 
-Este quiz exigirá um domínio completo sobre a execução do fluxo e as melhores práticas de Python para iteração.)"""
+Este quiz exigirá um domínio completo sobre a execução do fluxo e as melhores práticas de Python para iteração."""
     )
 
     # --- Contextos Python: Condicionais (assunto_py_c) ---
@@ -874,7 +874,7 @@ Este quiz avaliará seu entendimento sobre como construir blocos `if/elif/else` 
     ContextoAssunto.objects.create(
         assunto=assunto_py_c,
         dificuldade=medio,
-        contexto="""(Neste nível, vamos mergulhar em três conceitos cruciais:
+        contexto="""Neste nível, vamos mergulhar em três conceitos cruciais:
 
 A Verdade por Trás dos Valores (Truthy/Falsy): Em Python, nem tudo é True ou False explícito. Alguns valores são considerados "falsos" (Falsy), como 0, None, strings vazias (""), listas vazias ([]) e tuplas vazias. Qualquer coisa que não seja Falsy é considerada "verdadeira" (Truthy).
 
@@ -890,12 +890,12 @@ O == (igualdade de valor) pergunta: "Os objetos têm o mesmo conteúdo?"
 
 O is (identidade) pergunta: "Os objetos são o mesmo objeto na memória?"
 
-Este quiz testará sua capacidade de prever o fluxo de execução baseado nessas regras de avaliação de verdade e precedência.)"""
+Este quiz testará sua capacidade de prever o fluxo de execução baseado nessas regras de avaliação de verdade e precedência."""
     )
     ContextoAssunto.objects.create(
         assunto=assunto_py_c,
         dificuldade=dificil,
-        contexto="""(Neste nível avançado de condicionais, não basta saber o que é True ou False; é preciso entender como o Python avalia expressões longas.
+        contexto="""Neste nível avançado de condicionais, não basta saber o que é True ou False; é preciso entender como o Python avalia expressões longas.
 
 Neste bloco, exploraremos:
 
@@ -911,7 +911,7 @@ Operador Walrus (Atribuição e Expressão :=): Introduzido no Python 3.8, o ope
 
 Operadores Ternários Aninhados: A sintaxe compacta valor_se_verdadeiro if condicao else valor_se_falso pode ser aninhada para criar um equivalente conciso de if/elif/else, exigindo atenção à ordem de avaliação.
 
-Este quiz testará sua capacidade de rastrear a precedência de operadores e o comportamento de curto-circuito em expressões complexas.)"""
+Este quiz testará sua capacidade de rastrear a precedência de operadores e o comportamento de curto-circuito em expressões complexas."""
     )
 
     # --- Contextos C: Sintaxe Básica (assunto_c_sb) ---
@@ -1184,7 +1184,7 @@ Vamos analisar três armadilhas comuns:
 2.  **Combinando Lógico e Bitwise:** Operadores lógicos (`&&`, `||`) tratam qualquer valor diferente de zero como `true` (1). Operadores bitwise (`&`, `|`) manipulam bits individuais.
     * `5 && 2` (Lógico): "Verdadeiro E Verdadeiro" -> `1` (True).
     * `5 & 2` (Bitwise): `101 & 010` -> `000` (zero).
-    * Uma expressão como `if ((A && B) || (C & D))` exige que você saiba qual operador usar para qual tipo de lógica (booleana vs. manipulação de bits).
+    * Uma expressão como `if ((A && B) || (C & D))` exige que you saiba qual operador usar para qual tipo de lógica (booleana vs. manipulação de bits).
 
 3.  **Curto-Circuito e Efeitos Colaterais:** Como vimos no nível médio, `&&` e `||` são "preguiçosos". No nível difícil, usamos isso para criar código perigoso (ou muito inteligente).
     * `if (x == 4 && ++y > 10)`: `++y` nunca é executado se `x` não for 4. O valor de `y` *depende* do valor de `x`.
