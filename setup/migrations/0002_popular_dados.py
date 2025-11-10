@@ -1179,7 +1179,7 @@ Vamos analisar três armadilhas comuns:
 1.  **Precedência de Operadores:** A ordem em que C avalia operadores é fundamental. Operadores lógicos (`&&`, `||`) **NÃO** têm a mesma precedência que operadores bitwise (`&`, `|`).
     * `&&` tem precedência *maior* que `||`.
     * `&` tem precedência *maior* que `|`.
-    * *Armadilha:* `if (flags & MASCARA_A || flags & MASCARA_B)` não faz o que parece. `||` tem a precedência *mais baixa*, então o código é avaliado corretamente. A armadilha real é `if (x == 1 & y == 2)`. O operador `==` tem precedência *maior* que `&`, então isso é avaliado como `if (x == (1 & y) == 2)`, o que está errado.
+    * *Armadilha:* `if (flags & MASCARA_A || flags & MABCARA_B)` não faz o que parece. `||` tem a precedência *mais baixa*, então o código é avaliado corretamente. A armadilha real é `if (x == 1 & y == 2)`. O operador `==` tem precedência *maior* que `&`, então isso é avaliado como `if (x == (1 & y) == 2)`, o que está errado.
 
 2.  **Combinando Lógico e Bitwise:** Operadores lógicos (`&&`, `||`) tratam qualquer valor diferente de zero como `true` (1). Operadores bitwise (`&`, `|`) manipulam bits individuais.
     * `5 && 2` (Lógico): "Verdadeiro E Verdadeiro" -> `1` (True).
