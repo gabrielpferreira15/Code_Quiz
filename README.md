@@ -99,7 +99,7 @@ Realizamos um teste End-To-End nessa entrega para mostrar o fluxo da aplicação
 
 Gravamos também um vídeo mostrando o processo de build e deploy automático com o CI/CD, para acessá-lo [clique aqui](https://www.youtube.com/watch?v=Grty1cKuSCw)
 
-Por fim, gravamos um vídeo mostrando nosso site rodando e apresentando as novas funcionalidades implemnetadas, para acessá-lo [clique aqui](<[https://www.youtube.com/watch?v=Grty1cKuSCw](https://youtu.be/_81RyFBqOhM)>) (Histórias implementadas: 1 e 5).
+Por fim, gravamos um vídeo mostrando nosso site rodando e apresentando as novas funcionalidades implemnetadas, para acessá-lo [clique aqui]([https://www.youtube.com/watch?v=Grty1cKuSCw](https://youtu.be/_81RyFBqOhM) (Histórias implementadas: 1 e 5).
 
 ## Bug/Issue tracker
 
