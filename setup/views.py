@@ -97,7 +97,7 @@ def jogar_quiz(request, assunto_id):
         else:
             revisao_data = request.session.get('quiz_revisao_data', [])
             revisao_data.append({
-                'pergunta': pergunta_respondida.texto,
+                'pergunta_texto': pergunta_respondida.texto,
                 'resposta_selecionada_texto': resposta_selecionada.texto,
                 'resposta_correta_texto': resposta_correta.texto,
                 'pergunta_id': pergunta_respondida.id,

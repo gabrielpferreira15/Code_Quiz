@@ -31,18 +31,18 @@
             <div style="margin-top: 15px;">
                 {% for item in revisao_data %}
                     <div style="border-top: 1px solid #eee; padding-top: 10px; margin-top: 10px;">
-                        <p><strong>Pergunta:</strong> {{ item.pergunta.texto }}</p>
+                        <p><strong>Pergunta:</strong> {{ item.pergunta_texto|safe }}</p>
                         
                         <p style="color: red;">
-                            <strong>Sua Resposta:</strong> {{ item.resposta_selecionada_texto }}
+                            <strong>Sua Resposta:</strong> {{ item.resposta_selecionada_texto|safe }}
                         </p>
 
                         <p style="color: green;">
-                            <strong>Resposta Correta:</strong> {{ item.resposta_correta_texto }}
+                            <strong>Resposta Correta:</strong> {{ item.resposta_correta_texto|safe }}
                         </p>
 
-                        {% if item.pergunta.explicacao %}
-                            <p><em><strong>Explicação:</strong> {{ item.pergunta.explicacao }}</em></p>
+                        {% if item.explicacao %}
+                            <p><em><strong>Explicação:</strong> {{ item.explicacao|safe }}</em></p>
                         {% endif %}
                     </div>
                 {% endfor %}
