@@ -4,7 +4,15 @@ from .models import Linguagem, Assunto, Pergunta, Resposta, Dificuldade, Pergunt
 from django.http import JsonResponse
 from django.contrib.auth.forms import UserCreationForm 
 from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.views import LoginView
 from django.utils import timezone
+
+class CustomLoginView(LoginView):
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return redirect('configurar_quiz')
+        return super().dispatch(request, *args, **kwargs)
 
 def home_redirect(request):
     if request.user.is_authenticated:
@@ -13,6 +21,9 @@ def home_redirect(request):
         return redirect('login')
 
 def signup(request):
+    if request.user.is_authenticated:
+        return redirect('configurar_quiz')
+    
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
@@ -22,15 +33,18 @@ def signup(request):
         form = UserCreationForm()
     return render(request, 'registration/signup.html', {'form': form})
 
+@login_required
 def configurar_quiz(request):
     linguagens = Linguagem.objects.all()
     return render(request, 'setup/configurar_quiz.html', {'linguagens': linguagens})
 
+@login_required
 def get_dificuldades(request):
     dificuldades = Dificuldade.objects.all()
     dificuldades_lista = [{'id': d.id, 'nome': d.nome} for d in dificuldades]
     return JsonResponse(dificuldades_lista, safe=False)
 
+@login_required
 def get_assuntos(request, linguagem_id):
     assuntos = Assunto.objects.filter(linguagem_id=linguagem_id)
     
@@ -44,6 +58,7 @@ def get_assuntos(request, linguagem_id):
 
     return JsonResponse(assuntos_lista, safe=False)
 
+@login_required
 def iniciar_novo_quiz(request, assunto_id, dificuldade_id):
     assunto = get_object_or_404(Assunto, id=assunto_id)
     dificuldade = get_object_or_404(Dificuldade, id=dificuldade_id)
@@ -64,6 +79,7 @@ def iniciar_novo_quiz(request, assunto_id, dificuldade_id):
     
     return redirect('jogar_quiz', assunto_id=assunto_id)
 
+@login_required
 def jogar_quiz(request, assunto_id):
     total_perguntas = request.session.get('quiz_total_perguntas', 0)
     assunto = get_object_or_404(Assunto, id=assunto_id)
@@ -172,6 +188,7 @@ def custom_logout(request):
     logout(request)
     return redirect('login')
 
+@login_required
 def pagina_contexto(request, assunto_id, dificuldade_id):
     assunto = get_object_or_404(Assunto, id=assunto_id)
     dificuldade = get_object_or_404(Dificuldade, id=dificuldade_id)
@@ -189,6 +206,7 @@ def pagina_contexto(request, assunto_id, dificuldade_id):
     }
     return render(request, 'setup/pagina_contexto.html', context)
 
+@login_required
 def ranking_quiz(request, assunto_id, dificuldade_id):
     assunto = get_object_or_404(Assunto, id=assunto_id)
     dificuldade = get_object_or_404(Dificuldade, id=dificuldade_id)
@@ -202,6 +220,7 @@ def ranking_quiz(request, assunto_id, dificuldade_id):
     }
     return render(request, 'setup/ranking.html', context)
 
+@login_required
 def selecionar_ranking(request):
     linguagens = Linguagem.objects.all()
     context = {

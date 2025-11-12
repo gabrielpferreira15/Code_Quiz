@@ -66,3 +66,20 @@ button[type="submit"] {
 button[type="submit"]:hover {
     background-color: #6ed072; 
 }
+
+p {
+    color: #c0d0e0;
+    margin-top: 20px;
+}
+
+p a {
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+p a:hover {
+    color: #6ed072;
+    text-decoration: underline;
+}

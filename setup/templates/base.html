@@ -43,6 +43,13 @@
         margin-right: 15px; /* Cria um espaço entre a logo e o título */
     }
     
+    /* Estilo base do H1 (com ou sem dropdown) */
+    .header-left h1 {
+        margin: 0;
+        font-size: 2.0em;
+        color: #4CAF50;
+    }
+    
     /* --- ESTILOS DO NOVO DROPDOWN --- */
     .nav-dropdown {
         position: relative; /* Contexto para o menu flutuante */
@@ -51,9 +58,6 @@
     
     /* O H1 agora é o gatilho do dropdown */
     .nav-dropdown h1 {
-        margin: 0;
-        font-size: 2.0em;
-        color: #4CAF50;
         cursor: pointer; /* Indica que é interativo */
         display: flex;
         align-items: center;
@@ -152,6 +156,7 @@
         <div class="header-left">
             <img src="{% static 'setup/logo.png' %}" alt="Logo Code Quiz" class="header-logo">
             
+            {% if user.is_authenticated %}
             <div class="nav-dropdown">
                 <h1>Code Quiz <span class="arrow">▼</span></h1>
                 <div class="dropdown-content">
@@ -159,6 +164,9 @@
                     <a href="{% url 'selecionar_ranking' %}">Ver Rankings</a>
                 </div>
             </div>
+            {% else %}
+            <h1>Code Quiz</h1>
+            {% endif %}
         </div>
         
         <nav>
