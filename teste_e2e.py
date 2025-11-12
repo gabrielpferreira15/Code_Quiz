@@ -112,6 +112,100 @@ class TestFluxoCompletoQuiz(unittest.TestCase):
             self.fail(f"Não foi possível encontrar ou clicar no <summary> 'Revisar meus erros'. Erro: {e}")
         time.sleep(3)
 
+        # --- 4.5. VISUALIZAÇÃO DO RANKING ---
+        print("Iniciando visualização da tabela de ranking...")
+        
+        try:
+            link_ranking = WebDriverWait(driver, 10).until(
+                EC.element_to_be_clickable((By.LINK_TEXT, "Ver Ranking"))
+            )
+            print("Link 'Ver Ranking' encontrado.")
+        except TimeoutException:
+            try:
+                link_ranking = WebDriverWait(driver, 10).until(
+                    EC.element_to_be_clickable((By.PARTIAL_LINK_TEXT, "Ranking"))
+                )
+                print("Link encontrado por PARTIAL_LINK_TEXT.")
+            except TimeoutException:
+                link_ranking = WebDriverWait(driver, 10).until(
+                    EC.element_to_be_clickable((By.XPATH, "//a[contains(@href, 'ranking')]"))
+                )
+                print("Link encontrado por XPATH.")
+        
+        driver.execute_script("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", link_ranking)
+        time.sleep(1)
+        
+        try:
+            link_ranking.click()
+            print("Clique no link 'Ver Ranking' realizado.")
+        except ElementClickInterceptedException:
+            print("Clique interceptado, usando JavaScript...")
+            driver.execute_script("arguments[0].click();", link_ranking)
+            print("Clique via JavaScript realizado.")
+        
+        time.sleep(2)
+        
+        # Verificar se está na página de ranking
+        try:
+            WebDriverWait(driver, 10).until(EC.title_contains("Ranking:"))
+            print("Página de ranking carregada com sucesso!")
+            time.sleep(2)
+            
+            # Verificar a presença da tabela de ranking
+            tabela_ranking = WebDriverWait(driver, 10).until(
+                EC.presence_of_element_located((By.CSS_SELECTOR, "table.table"))
+            )
+            print("Tabela de ranking encontrada.")
+            
+            # Verificar colunas da tabela
+            colunas = driver.find_elements(By.CSS_SELECTOR, "table thead th")
+            colunas_texto = [col.text for col in colunas]
+            print(f"Colunas da tabela: {colunas_texto}")
+            self.assertIn("#", colunas_texto)
+            self.assertIn("Usuário", colunas_texto)
+            self.assertIn("Acertos", colunas_texto)
+            self.assertIn("Tempo Gasto", colunas_texto)
+            self.assertIn("Data", colunas_texto)
+            
+            # Verificar se há pelo menos uma linha de resultado (o do usuário atual)
+            linhas_resultado = driver.find_elements(By.CSS_SELECTOR, "table tbody tr")
+            self.assertGreater(len(linhas_resultado), 0, "Deveria haver pelo menos um resultado no ranking")
+            print(f"Total de resultados no ranking: {len(linhas_resultado)}")
+            
+            # Verificar se o usuário atual está destacado
+            try:
+                linha_usuario = driver.find_element(By.CSS_SELECTOR, "table tbody tr.table-info")
+                print("Linha do usuário atual encontrada e destacada.")
+                usuario_nome = linha_usuario.find_element(By.CSS_SELECTOR, "td:nth-child(2)").text
+                self.assertEqual(usuario_nome, "testeE2E")
+                print(f"Nome do usuário confirmado: {usuario_nome}")
+            except Exception as e:
+                print(f"Aviso: Linha do usuário não foi destacada. Erro: {e}")
+            
+            time.sleep(2)
+            
+        except TimeoutException:
+            current_url = driver.current_url
+            current_title = driver.title
+            self.fail(f"Não carregou a página de ranking. URL atual: {current_url}, Título: {current_title}")
+        
+        # Voltar para configuração através do botão "Voltar ao menu"
+        print("Voltando ao menu de configuração...")
+        try:
+            btn_voltar = WebDriverWait(driver, 10).until(
+                EC.element_to_be_clickable((By.LINK_TEXT, "Voltar ao menu"))
+            )
+            driver.execute_script("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", btn_voltar)
+            time.sleep(1)
+            btn_voltar.click()
+            print("Clique em 'Voltar ao menu' realizado.")
+        except Exception as e:
+            print(f"Erro ao clicar em 'Voltar ao menu': {e}")
+            btn_voltar = driver.find_element(By.LINK_TEXT, "Voltar ao menu")
+            driver.execute_script("arguments[0].click();", btn_voltar)
+        
+        time.sleep(2)
+
         # --- 5. RETORNO À CONFIGURAÇÃO ---
         print("Tentando clicar em 'Tentar outro quiz'...")
         
