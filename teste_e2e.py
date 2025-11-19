@@ -52,9 +52,55 @@ class TestFluxoCompletoQuiz(unittest.TestCase):
         time.sleep(2)
         
         driver.find_element(By.ID, "gerar-quiz-btn").click()
-        print("Quiz configurado e iniciado.")
+        print("Quiz configurado. Aguardando página de contexto...")
 
-        # --- 3. JOGAR O QUIZ (COM 1 ERRO INTENCIONAL) ---
+        # --- 3. PÁGINA DE CONTEXTO ---
+        WebDriverWait(driver, 10).until(EC.title_contains("Contexto:"))
+        print("Página de contexto carregada.")
+        time.sleep(2)
+        
+        # Verificar elementos da página de contexto
+        try:
+            contexto_titulo = WebDriverWait(driver, 10).until(
+                EC.presence_of_element_located((By.CSS_SELECTOR, ".card-title"))
+            )
+            print(f"Título do contexto encontrado: {contexto_titulo.text}")
+            
+            # Verificar se o texto de contexto está presente
+            contexto_texto = driver.find_element(By.CSS_SELECTOR, ".contexto-texto")
+            print("Texto de contexto encontrado e exibido.")
+            
+            # Verificar botões disponíveis
+            btn_comecar = WebDriverWait(driver, 10).until(
+                EC.element_to_be_clickable((By.LINK_TEXT, "COMEÇAR O QUIZ!"))
+            )
+            print("Botão 'COMEÇAR O QUIZ!' encontrado.")
+            
+            btn_voltar = driver.find_element(By.LINK_TEXT, "Voltar")
+            print("Botão 'Voltar' encontrado.")
+            
+        except Exception as e:
+            self.fail(f"Erro ao verificar elementos da página de contexto: {e}")
+        
+        # Aguardar alguns segundos na página de contexto antes de prosseguir
+        print("Aguardando na página de contexto...")
+        time.sleep(5)
+        
+        # Clicar no botão para começar o quiz
+        driver.execute_script("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", btn_comecar)
+        time.sleep(1)
+        
+        try:
+            btn_comecar.click()
+            print("Clique em 'COMEÇAR O QUIZ!' realizado.")
+        except ElementClickInterceptedException:
+            print("Clique interceptado, usando JavaScript...")
+            driver.execute_script("arguments[0].click();", btn_comecar)
+            print("Clique via JavaScript realizado.")
+        
+        time.sleep(2)
+
+        # --- 4. JOGAR O QUIZ (COM 1 ERRO INTENCIONAL) ---
         WebDriverWait(driver, 10).until(EC.title_contains("Quiz:"))
         print("Iniciando a resolução do quiz...")
 
@@ -88,7 +134,7 @@ class TestFluxoCompletoQuiz(unittest.TestCase):
         
         print("Quiz finalizado.")
 
-        # --- 4. RESULTADOS E REVISÃO DE ERROS ---
+        # --- 5. RESULTADOS E REVISÃO DE ERROS ---
         WebDriverWait(driver, 10).until(EC.title_contains("Resultado do Quiz"))
         print("Página de resultados carregada.")
         time.sleep(2)
@@ -112,8 +158,8 @@ class TestFluxoCompletoQuiz(unittest.TestCase):
             self.fail(f"Não foi possível encontrar ou clicar no <summary> 'Revisar meus erros'. Erro: {e}")
         time.sleep(3)
 
-        # --- 4.5. VISUALIZAÇÃO DO RANKING ---
-        print("Iniciando visualização da tabela de ranking...")
+        # --- 6. VISUALIZAÇÃO DO RANKING ---
+        print("Iniciando navegação para o ranking...")
         
         try:
             link_ranking = WebDriverWait(driver, 10).until(
@@ -162,10 +208,10 @@ class TestFluxoCompletoQuiz(unittest.TestCase):
             colunas_texto = [col.text for col in colunas]
             print(f"Colunas da tabela: {colunas_texto}")
             self.assertIn("#", colunas_texto)
-            self.assertIn("Usuário", colunas_texto)
-            self.assertIn("Acertos", colunas_texto)
-            self.assertIn("Tempo Gasto", colunas_texto)
-            self.assertIn("Data", colunas_texto)
+            self.assertIn("USUÁRIO", colunas_texto)
+            self.assertIn("ACERTOS", colunas_texto)
+            self.assertIn("TEMPO GASTO", colunas_texto)
+            self.assertIn("DATA", colunas_texto)
             
             # Verificar se há pelo menos uma linha de resultado (o do usuário atual)
             linhas_resultado = driver.find_elements(By.CSS_SELECTOR, "table tbody tr")
@@ -189,66 +235,59 @@ class TestFluxoCompletoQuiz(unittest.TestCase):
             current_title = driver.title
             self.fail(f"Não carregou a página de ranking. URL atual: {current_url}, Título: {current_title}")
         
-        # Voltar para configuração através do botão "Voltar ao menu"
-        print("Voltando ao menu de configuração...")
+        # --- 7. RETORNO À CONFIGURAÇÃO ---
+        print("Voltando ao menu de configuração a partir do ranking...")
+        
+        # Esperar um pouco mais para garantir que a página está totalmente carregada
+        time.sleep(2)
+        
         try:
-            btn_voltar = WebDriverWait(driver, 10).until(
+            # Primeira tentativa: por texto exato
+            btn_voltar = WebDriverWait(driver, 15).until(
                 EC.element_to_be_clickable((By.LINK_TEXT, "Voltar ao menu"))
             )
-            driver.execute_script("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", btn_voltar)
-            time.sleep(1)
-            btn_voltar.click()
-            print("Clique em 'Voltar ao menu' realizado.")
-        except Exception as e:
-            print(f"Erro ao clicar em 'Voltar ao menu': {e}")
-            btn_voltar = driver.find_element(By.LINK_TEXT, "Voltar ao menu")
-            driver.execute_script("arguments[0].click();", btn_voltar)
-        
-        time.sleep(2)
-
-        # --- 5. RETORNO À CONFIGURAÇÃO ---
-        print("Tentando clicar em 'Tentar outro quiz'...")
-        
-        try:
-            link_quiz = WebDriverWait(driver, 10).until(
-                EC.element_to_be_clickable((By.LINK_TEXT, "Tentar outro quiz"))
-            )
-            print("Link encontrado por LINK_TEXT.")
+            print("Botão 'Voltar ao menu' encontrado por LINK_TEXT.")
         except TimeoutException:
             print("LINK_TEXT não funcionou, tentando PARTIAL_LINK_TEXT...")
             try:
-                link_quiz = WebDriverWait(driver, 10).until(
-                    EC.element_to_be_clickable((By.PARTIAL_LINK_TEXT, "Tentar outro"))
+                btn_voltar = WebDriverWait(driver, 10).until(
+                    EC.element_to_be_clickable((By.PARTIAL_LINK_TEXT, "Voltar"))
                 )
-                print("Link encontrado por PARTIAL_LINK_TEXT.")
+                print("Botão encontrado por PARTIAL_LINK_TEXT.")
             except TimeoutException:
                 print("PARTIAL_LINK_TEXT não funcionou, tentando XPATH...")
                 try:
-                    link_quiz = WebDriverWait(driver, 10).until(
-                        EC.element_to_be_clickable((By.XPATH, "//a[contains(@href, 'configurar')]"))
+                    btn_voltar = WebDriverWait(driver, 10).until(
+                        EC.element_to_be_clickable((By.XPATH, "//a[contains(text(), 'Voltar ao menu')]"))
                     )
-                    print("Link encontrado por XPATH (href contém 'configurar').")
+                    print("Botão encontrado por XPATH (texto contém 'Voltar ao menu').")
                 except TimeoutException:
-                    link_quiz = WebDriverWait(driver, 10).until(
-                        EC.element_to_be_clickable((By.CSS_SELECTOR, "a[href*='configurar']"))
-                    )
-                    print("Link encontrado por CSS_SELECTOR.")
+                    try:
+                        btn_voltar = WebDriverWait(driver, 10).until(
+                            EC.element_to_be_clickable((By.XPATH, "//a[contains(@href, 'configurar')]"))
+                        )
+                        print("Botão encontrado por XPATH (href contém 'configurar').")
+                    except TimeoutException:
+                        btn_voltar = WebDriverWait(driver, 10).until(
+                            EC.element_to_be_clickable((By.CSS_SELECTOR, "a.btn-secondary"))
+                        )
+                        print("Botão encontrado por CSS_SELECTOR (classe btn-secondary).")
         
-        driver.execute_script("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", link_quiz)
-        time.sleep(1)
+        # Rolar a página até o botão
+        driver.execute_script("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", btn_voltar)
+        time.sleep(2)
         
         try:
-            link_quiz.click()
-            print("Clique normal realizado com sucesso.")
+            btn_voltar.click()
+            print("Clique em 'Voltar ao menu' realizado.")
         except ElementClickInterceptedException:
-            print("Clique normal interceptado, usando JavaScript...")
-            driver.execute_script("arguments[0].click();", link_quiz)
+            print("Clique interceptado, usando JavaScript...")
+            driver.execute_script("arguments[0].click();", btn_voltar)
             print("Clique via JavaScript realizado.")
         
-        print("Aguardando redirecionamento para configuração...")
         time.sleep(3)
 
-        # --- 6. VERIFICAÇÃO DO RETORNO ---
+        # --- 8. VERIFICAÇÃO DO RETORNO ---
         try:
             WebDriverWait(driver, 10).until(EC.title_contains("Configurar Quiz"))
             print("Retornou à página de configuração com sucesso!")
@@ -258,7 +297,7 @@ class TestFluxoCompletoQuiz(unittest.TestCase):
             current_title = driver.title
             self.fail(f"Não retornou para a página de configuração. URL atual: {current_url}, Título: {current_title}")
 
-        # --- 7. LOGOUT ---
+        # --- 9. LOGOUT ---
         print("Iniciando etapa de logout...")
         
         try:
