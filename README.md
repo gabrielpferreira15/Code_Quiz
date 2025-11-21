@@ -108,3 +108,40 @@ Atualizamos nosso bugtracker com os problemas que ocorreram e foram resolvidos d
 <img width="1440" height="695" alt="Image" src="https://github.com/user-attachments/assets/9f305989-650e-4ebf-aa8b-2ca36d4be1f5" />
 
 </details>
+
+---
+
+<details>
+<summary>ENTREGA 4:</summary>
+
+## Relatório
+
+Atualizamos o documento de pair programming para registrar a divisão e a realização das tarefas desta entrega. Para acessá-lo, [clique aqui](https://docs.google.com/document/d/1kqsCHQ-e9Ho9ilVLpZDfgsCuCJPcbY5WjvUd7AGKhz8/edit?tab=t.0)
+
+## Jira
+
+Nós atualizamos nosso Jira e marcamos as histórias implementadas nesta entrega. Segue abaixo as imagens do Backlog e do Quadro ao fim da Entrega 4:
+
+Backlog:
+
+<img width="1317" height="668" alt="Image" src="https://github.com/user-attachments/assets/180fda86-9fa2-42a5-8a7a-21d345919b96" />
+
+Quadro:
+
+<img width="1318" height="672" alt="Image" src="https://github.com/user-attachments/assets/86983cb8-2e7a-4b1c-8072-655380fe663c" />
+
+## Screencasts
+
+Realizamos um screencast mostrando o sistema em funcionamento com as novas funcionalidades implementadas. Para acessá-lo, [clique aqui](https://www.youtube.com/watch?v=lQ5ovGY_mL4) (Histórias implementadas: 6 e 7).
+
+Realizamos um teste End-To-End com as modificações para testar as histórias criadas nessa entrega para mostrar o fluxo da aplicação, para acessá-lo [clique aqui](https://www.youtube.com/watch?v=ZVeP-WX8D6w)
+
+Gravamos também um vídeo mostrando o processo de build e deploy automático com o CI/CD modificado para essa entrega, para acessá-lo [clique aqui](https://www.youtube.com/watch?v=N805bi8LKoY)
+
+## Bug/Issue tracker
+
+Atualizamos nosso bugtracker com algumas melhorias para o futuro e problemas encontrados durante o processo da Entrega 4.
+
+<img width="1440" height="693" alt="Image" src="https://github.com/user-attachments/assets/32612413-251f-4145-82bd-417461a37e42" />
+
+</details>
