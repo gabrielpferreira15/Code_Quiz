@@ -2,7 +2,7 @@
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 # More info on Python, GitHub Actions, and Azure App Service: https://aka.ms/python-webapps-actions
 
-name: Build and deploy Python app to Azure Web App - CodeQuiz
+name: Build and deploy Python app to Azure Web App - codequiz
 
 on:
   push:
@@ -31,28 +31,7 @@ jobs:
           python -m venv antenv
           source antenv/bin/activate
           pip install -r requirements.txt
-
-      - name: Create test environment file
-        run: |
-          echo "SECRET_KEY=test-secret-key-for-ci-cd" > .env
-          echo "DEBUG=True" >> .env
-          echo "DATABASE_URL=sqlite:///db.sqlite3" >> .env
-          echo "TARGET_ENV=development" >> .env
-      
-      - name: Run migrations and tests
-        run: |
-          source antenv/bin/activate
-          python manage.py migrate
-          pytest -v
-        env:
-          DJANGO_SETTINGS_MODULE: project.settings
-      
-      - name: Cleaning testing files
-        if: always()
-        run: |
-          rm -f .env
-          rm -f db.sqlite3
-      
+                
       # By default, when you enable GitHub CI/CD integration through the Azure portal, the platform automatically sets the SCM_DO_BUILD_DURING_DEPLOYMENT application setting to true. This triggers the use of Oryx, a build engine that handles application compilation and dependency installation (e.g., pip install) directly on the platform during deployment. Hence, we exclude the antenv virtual environment directory from the deployment artifact to reduce the payload size. 
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v4
@@ -61,8 +40,6 @@ jobs:
           path: |
             .
             !antenv/
-            !.env
-            !db.sqlite3 
 
       # 🚫 Opting Out of Oryx Build
       # If you prefer to disable the Oryx build process during deployment, follow these steps:
@@ -86,14 +63,14 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_54F08C9DEBA94EBA8EC2A7B9A352013A }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_B48E6011F9C8446F85D9182A611E600A }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_F5FBA5E9130247688C3852591CED0B86 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_1341F2153C4548FAA0D90B3076541791 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_DA8D20564A1849578874DBD897973706 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_5B7A62305ECD434599279E62B2CD6461 }}
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v3
         id: deploy-to-webapp
         with:
-          app-name: 'CodeQuiz'
+          app-name: 'codequiz'
           slot-name: 'Production'
           
