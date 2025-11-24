@@ -2,7 +2,7 @@
 
 Obrigado por considerar contribuir com o Code Quiz! Este documento fornece instruções claras para configurar o ambiente de desenvolvimento e contribuir com o projeto.
 
-## 📋 Pré-requisitos
+## Pré-requisitos
 
 Antes de começar, certifique-se de ter instalado:
 
@@ -12,7 +12,7 @@ Antes de começar, certifique-se de ter instalado:
 - **Google Chrome** (para testes E2E)
 - **ChromeDriver** (para Selenium - [Download aqui](https://chromedriver.chromium.org/downloads))
 
-## 🚀 Configuração do Ambiente
+## Configuração do Ambiente
 
 ### 1. Clone o Repositório
 
@@ -63,7 +63,7 @@ python manage.py runserver
 
 Acesse o projeto em: `http://127.0.0.1:8000/`
 
-## 🧪 Executando os Testes
+## Executando os Testes
 
 ### Testes Unitários
 
@@ -92,7 +92,7 @@ python teste_e2e.py -v
 
 **Nota:** Para os testes E2E funcionarem, você precisa ter um usuário chamado `testeE2E` com senha `123teste123`. Você pode criá-lo manualmente ou através do admin do Django.
 
-## 📁 Estrutura do Projeto
+## Estrutura do Projeto
 
 ```
 Code_Quiz/
@@ -116,7 +116,7 @@ Code_Quiz/
     └── migrations/         # Migrações do banco
 ```
 
-## 🤝 Como Contribuir
+## Como Contribuir
 
 ### 1. Crie uma Branch
 
@@ -167,7 +167,7 @@ git push origin feature/sua-feature
 - Descreva suas alterações de forma clara
 - Aguarde a revisão
 
-## 🎯 Diretrizes de Código
+## Diretrizes de Código
 
 ### Python/Django
 
@@ -188,7 +188,7 @@ git push origin feature/sua-feature
 - Mantenha a cobertura de testes alta
 - Teste casos de erro e edge cases
 
-## 🐛 Reportando Bugs
+## Reportando Bugs
 
 Ao reportar bugs, inclua:
 
@@ -198,7 +198,7 @@ Ao reportar bugs, inclua:
 4. **Screenshots** (se aplicável)
 5. **Ambiente** (SO, versão do Python, navegador)
 
-## 💡 Sugestões de Funcionalidades
+## Sugestões de Funcionalidades
 
 Ao sugerir novas funcionalidades:
 
@@ -207,16 +207,16 @@ Ao sugerir novas funcionalidades:
 3. Considere **alternativas**
 4. Adicione **contexto adicional** se necessário
 
-## 📚 Recursos Úteis
+## Recursos Úteis
 
 - [Documentação do Django](https://docs.djangoproject.com/)
 - [Python PEP 8](https://peps.python.org/pep-0008/)
 - [Selenium Documentation](https://selenium-python.readthedocs.io/)
 - [pytest Documentation](https://docs.pytest.org/)
 
-## ❓ Precisa de Ajuda?
+## Precisa de Ajuda?
 
 - Abra uma [Issue](https://github.com/gabrielpferreira15/Code_Quiz/issues)
 - Entre em contato com os mantenedores
 
-**Obrigado por contribuir! 🎉**
+**Obrigado por contribuir!**
