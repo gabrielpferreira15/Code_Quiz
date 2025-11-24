@@ -17,7 +17,7 @@ Antes de começar, certifique-se de ter instalado:
 ### 1. Clone o Repositório
 
 ```bash
-git clone https://github.com/Bernalencouto/Code_Quiz.git
+git clone https://github.com/gabrielpferreira15/Code_Quiz.git
 cd Code_Quiz
 ```
 
