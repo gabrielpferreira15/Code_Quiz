@@ -124,7 +124,7 @@ Nós atualizamos nosso Jira e marcamos as histórias implementadas nesta entrega
 
 Backlog:
 
-<img width="1317" height="668" alt="Image" src="https://github.com/user-attachments/assets/180fda86-9fa2-42a5-8a7a-21d345919b96" />
+<img width="1224" height="650" alt="Image" src="https://github.com/user-attachments/assets/268d550a-5603-4306-b24d-d0a555eb9544" />
 
 Quadro:
 
